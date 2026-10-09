@@ -38,7 +38,7 @@
     'k1|k9','dol|s1','p2|s1','p4|s4','p6|s7','p7|s8','p9|s9'
   ]);
   const STORAGE='dolmen-added';
-  const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+  // v26: exhibition animation does not depend on OS/browser motion preferences.
   const LABEL_FONT='"Noto Serif KR", "Nanum Myeongjo", Georgia, serif';
   const F=1000;
   const RAD={3:15,2:7.5,1:3.8,0:2.8};
@@ -204,7 +204,7 @@
     for(const n of nodes){
       if(draggedNodeId===n.id){n.vx=n.vy=n.vz=0;continue;}
       n.x+=n.vx;n.y+=n.vy;n.z+=n.vz;
-      const damp=reducedMotion.matches?.80:.89;n.vx*=damp;n.vy*=damp;n.vz*=damp;
+      const damp=.89;n.vx*=damp;n.vy*=damp;n.vz*=damp;
       if(n.id==='dol'){n.x+=(n.hx-n.x)*.12;n.y+=(n.hy-n.y)*.12;n.z+=(n.hz-n.z)*.12;}
     }
     alpha=Math.max(.025,alpha*.965);
@@ -214,7 +214,7 @@
     skyCtx.clearRect(0,0,W,H);
     const ox=Math.sin(yaw)*13,oy=Math.sin(pitch)*8;
     for(const s of dust){
-      const aa=s.a*(reducedMotion.matches?1:.72+.28*Math.sin(t/1050*s.s+s.p));
+      const aa=s.a*(.72+.28*Math.sin(t/1050*s.s+s.p));
       skyCtx.fillStyle=`rgba(207,214,230,${aa})`;skyCtx.beginPath();skyCtx.arc(s.x*W+ox*s.r,s.y*H+oy*s.r,s.r,0,Math.PI*2);skyCtx.fill();
     }
   }
@@ -274,7 +274,7 @@
   function drawSphere(n,p,t){
     if(!p.visible||!visibleNode(n))return;
     if(n.id==='dol'){drawDolmenCloud(n,p,t);return;}
-    const rank=n.rank??1,twinkle=reducedMotion.matches?1:(.85+.15*Math.sin(t/900+n.phase));
+    const rank=n.rank??1,twinkle=.85+.15*Math.sin(t/900+n.phase);
     const bright=clamp(n.randBright??1,.4,1.3),glow=clamp(n.randGlow??1,.6,1.7);
     const base=nodeOpacity(n)*depthFade(p)*twinkle;
     const opacity=clamp(base*(.38+.62*bright),0,1);
@@ -337,7 +337,7 @@
 
   function frame(t){
     if(!active){raf=0;return;}
-    if(autoRotate&&!pointers.size&&!reducedMotion.matches&&performance.now()-lastInteraction>2200)yaw+=.0009;
+    if(autoRotate&&!pointers.size&&performance.now()-lastInteraction>2200)yaw+=.0009;
     dist+=(targetDist-dist)*.14;
     simulate();drawSky(t);drawGraph(t);updateOverlays();raf=requestAnimationFrame(frame);
   }
@@ -429,7 +429,7 @@
   function releaseDraggedNode(state){
     const n=nodeById(state.nodeId);if(!n)return;
     const samples=state.samples||[];
-    if(!reducedMotion.matches&&samples.length){
+    if(samples.length){
       let sx=0,sy=0,sz=0,sw=0;
       samples.forEach((v,i)=>{const w=i+1;sx+=v.x*w;sy+=v.y*w;sz+=v.z*w;sw+=w;});
       let vx=(sx/sw)*16*0.68,vy=(sy/sw)*16*0.68,vz=(sz/sw)*16*0.68;

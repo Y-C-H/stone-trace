@@ -1,0 +1,100 @@
+{
+  "baseVersion": "stone-traces-v25-fix",
+  "resultVersion": "stone-traces-v26",
+  "animation": {
+    "reducedMotionDependencyRemoved": true,
+    "openingAnimationRestored": true,
+    "openingDuration": 3.6,
+    "openingSkipWorking": true,
+    "cameraFocusAnimationRestored": true,
+    "cameraFocusDuration": 0.75,
+    "previousNextAnimationWorking": true,
+    "browserTests": {
+      "browser": "Chromium 144.0.7559.96, Linux headless",
+      "navigationMethod": "Original HTML/CSS/JS loaded inline due to local HTTP navigation policy; opening PNGs embedded as original data URIs",
+      "testedSettings": [
+        "prefers-reduced-motion: reduce",
+        "prefers-reduced-motion: no-preference"
+      ],
+      "openingCSSAnimations": "PASS both settings; checked stone/logo animation names and intermediate opacity",
+      "openingAutoFinish": "PASS both settings; overlay removed and Chapter 01 visible ~4.1s after start",
+      "openingSkip": "PASS both settings; no repeated overlay after 800ms",
+      "viewports": [
+        "1920x1080",
+        "1440x900",
+        "1366x768",
+        "1024x768",
+        "390x844"
+      ],
+      "openingResponsive": "PASS all five viewports with reduced motion enabled; artwork within viewport",
+      "snapshots": [
+        "testshots/v26-opening-1440-reduced-on.png",
+        "testshots/v26-opening-390-reduced-on.png"
+      ],
+      "edgeNotTested": true,
+      "fullHTTPBrowserIntegrationNotTested": true,
+      "webgl2GPUAvailable": false,
+      "cameraAnimation": "PASS extracted camera-transition functions under Node VM; not end-to-end WebGL"
+    }
+  },
+  "lighting": {
+    "brightnessDropBugFixed": true,
+    "rootCause": "Selected cupmark was dimmed on focus completion by opacity 0.75->0.56 (beam), 0.50->0.36 (halo), plus beam geometry shrink and halo size shrink; selection change lifted focused flag and brightness returned",
+    "focusLightingDecoupled": true,
+    "selectionTimeDecayRemoved": true,
+    "steadyModeConstant": true,
+    "pulseModeRepeating": true,
+    "pulseMultiplierRange": [
+      0.65,
+      1
+    ],
+    "brightnessSliderWorking": true,
+    "multipleLightsPreserved": true,
+    "selectToTogglePreserved": true,
+    "newSelectionDoesNotChangeExistingLights": true,
+    "markerVisibilityStatePreserved": true,
+    "testScope": "PASS Node.js VM evaluation of actual extracted transition, brightness, selection and drawSelectedBeacon functions using controlled rendering uniforms; no real GPU evaluation",
+    "uniforms": "PASS beam and halo uniform intensity and sizes invariant before/during/after focus or selection of another cupmark",
+    "points": "PASS steady 10s; pulse .65-1 range and repeated variation; 25/75/100%; on/off individual state"
+  },
+  "dataIntegrity": {
+    "measuredCupmarkDataModified": false,
+    "cameraFocusTargetsModified": false,
+    "modelGeometryModified": false,
+    "textureModified": false,
+    "chapter01PointCloudModified": false,
+    "exactOriginalFileHashesVerified": 197,
+    "changedSourceFiles": [
+      "css/style.css",
+      "js/dolmenViewer.js",
+      "js/endingSky.js",
+      "js/knowledgeGraph.js",
+      "js/main.js"
+    ]
+  },
+  "regression": {
+    "openingPreserved": true,
+    "chapter01Preserved": true,
+    "chapter03Preserved": true,
+    "chapter04Preserved": true,
+    "endingPreserved": true,
+    "details": "Content and datasets unchanged; only motion-preference-based suppression removed from graph/ending render control"
+  },
+  "tests": {
+    "jsSyntax": "PASS all 7 project JS files via node --check",
+    "desktopTests": {
+      "1920x1080": "opening PASS (headless Chromium)",
+      "1440x900": "opening PASS (headless Chromium)",
+      "1366x768": "opening PASS (headless Chromium)",
+      "1024x768": "opening PASS (headless Chromium)"
+    },
+    "mobileTests": {
+      "390x844": "opening layout and click-to-skip PASS under emulated viewport, physical touch NOT tested"
+    },
+    "knownIssues": [
+      "Chromium browser navigation to local HTTP blocked by environment policy; full HTTP browser integration not tested",
+      "WebGL2 disabled in sandbox Chromium; real GPU occlusion/transparency/3D rendering not verified",
+      "Microsoft Edge and physical devices not tested"
+    ]
+  }
+}

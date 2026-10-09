@@ -134,7 +134,7 @@
     document.querySelectorAll('.interpretation-item').forEach(btn=>btn.addEventListener('click',()=>{
       const d=interpretationData[btn.dataset.interpretation];
       document.querySelectorAll('.interpretation-item').forEach(b=>{b.classList.toggle('active',b===btn);b.setAttribute('aria-expanded',b===btn?'true':'false');});
-      if(!document.body.classList.contains('motion-reduced'))detail.animate([{opacity:.55,transform:'translateY(4px)'},{opacity:1,transform:'none'}],{duration:280,easing:'ease-out'});
+      detail.animate([{opacity:.55,transform:'translateY(4px)'},{opacity:1,transform:'none'}],{duration:280,easing:'ease-out'});
       document.getElementById('interpretationIndex').textContent=d.index;document.getElementById('interpretationName').textContent=d.name;document.getElementById('interpretationBody').textContent=d.body;detail.querySelector('.type-label').textContent=d.type;
       if(visual)visual.src=d.illustration;
     }));
@@ -145,7 +145,6 @@
     document.getElementById('openSources')?.addEventListener('click',open);document.getElementById('closeSources').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
   }
 
-  function initMotionPreference(){if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.body.classList.add('motion-reduced');}
 
   let observationMode='overview';
 
@@ -205,7 +204,6 @@
     openingActive=true;
     document.body.classList.add('is-opening');
     overlay.addEventListener('click',()=>finishOpening({immediate:true}));
-    const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
     const images=[...overlay.querySelectorAll('.opening-composition img')];
     const imageReady=Promise.all(images.map(img=>{
       if(img.complete)return Promise.resolve(img.naturalWidth>0);
@@ -220,13 +218,13 @@
       const loaded=images.length===2&&images.every(img=>img.complete&&img.naturalWidth>0);
       overlay.classList.add(loaded?'is-playing':'is-fallback');
       // 0.2s black, 0.8s stone, 0.9s logo, 1.1s hold, 0.6s fade.
-      openingTimer=setTimeout(()=>finishOpening(),reduced?320:3000);
+      openingTimer=setTimeout(()=>finishOpening(),3000);
     });
   }
 
   document.addEventListener('DOMContentLoaded',()=>{
     document.title=`${PROJECT_TITLE_KO} — ${PROJECT_SUBTITLE}`;
-    initMotionPreference();initBookNavigation();initConstellationToc();initInterpretations();initSources();initUnifiedObservation();
+    initBookNavigation();initConstellationToc();initInterpretations();initSources();initUnifiedObservation();
     window.initEndingSky?.();
     window.initDolmenViewer?.();window.initKnowledgeGraph?.();window.setKnowledgeGraphActive?.(currentPage===0);
     updateNavigation();initOpening();

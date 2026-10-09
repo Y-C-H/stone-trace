@@ -36,7 +36,6 @@ h1,h2,h3,h4,p,dt,dd,button,label,strong,span{word-break:keep-all;overflow-wrap:b
 h1,h2,h3,h4{text-wrap:balance}
 p,dd{ text-wrap:pretty }
 
-body.motion-reduced *,body.motion-reduced *::before,body.motion-reduced *::after{animation:none!important;transition-duration:.001ms!important}
 
 /* ---------- book/page system ---------- */
 .exhibition{position:fixed;inset:0;overflow:hidden;background:var(--bg);perspective:1400px;transform-style:preserve-3d}
@@ -238,10 +237,6 @@ body.page-turning .page-navigation button,body.page-turning .constellation-toc b
   .sources-dialog{width:calc(100vw - 1rem);max-height:calc(100dvh - 1rem)}.sources-wrap{padding:1rem}.archive-grid{grid-template-columns:1fr}.reference-placeholder li{grid-template-columns:1fr;gap:.15rem}.source-principle .type-label{margin-bottom:.25rem}
 }
 
-@media (prefers-reduced-motion:reduce){
-  .exhibition-page{transition-duration:.001ms!important;transform:none!important}
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
-}
 
 /* ---------- v3 responsive overrides: constellation TOC / new chapter 01 ---------- */
 @media (max-height:820px) and (min-width:761px){
@@ -276,9 +271,6 @@ body.page-turning .page-navigation button,body.page-turning .constellation-toc b
   .interpretation-detail{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:.45rem;margin:.4rem 0 0;padding:.55rem}.interpretation-visual{border-right:1px solid rgba(255,255,255,.06);min-height:0}.interpretation-visual::before{inset:14% 8%}.interpretation-visual img{width:100%;height:100%;max-height:180px}.detail-copy h3{font-size:1.12rem;margin-bottom:.28rem}.detail-copy .detail-index{margin:.35rem 0 .2rem;font-size:.48rem}.detail-copy>p{font-size:.56rem;line-height:1.4}.detail-boundary{margin-top:.35rem;padding-top:.3rem}.detail-boundary strong{font-size:.52rem}.detail-boundary p{font-size:.52rem;line-height:1.35}
 }
 
-@media (prefers-reduced-motion:reduce){
-  .exhibition-page,.exhibition-page.from-left,.exhibition-page.leaving-left,.exhibition-page.leaving-right{transform:none!important}
-}
 
 /* ---------- v6 content architecture overrides ---------- */
 /* Chapter 01 keeps its established constellation typography even though the rest of the exhibition uses Dotum first. */
@@ -674,9 +666,6 @@ body.page-turning .page-navigation button,body.page-turning .constellation-toc b
   .constellation-toc.open .toc-map{transform:translate(44px,-50%) scale(1)}
 }
 
-@media (prefers-reduced-motion:reduce){
-  .observation-mode{transition-duration:.001ms!important;transform:none!important}
-}
 
 /* =========================================================
    v11 — museum-style typography + direct chapter titles
@@ -970,12 +959,6 @@ body.is-opening .constellation-toc,body.is-opening .page-navigation{visibility:h
 .ending-return:hover,.ending-return:focus-visible{opacity:.58;background:rgba(11,19,35,.46);border-color:rgba(210,220,235,.5)}
 body[data-page="4"] .constellation-toc,body[data-page="4"] .page-navigation,body[data-page="4"] .skip-link{opacity:0;visibility:hidden;pointer-events:none}
 @media(hover:none){.ending-return{opacity:.28}}
-@media(prefers-reduced-motion:reduce){
- .exhibition-opening.is-playing .opening-stone,.exhibition-opening.is-playing .opening-logo{animation:none;opacity:1;transform:none}
- .exhibition-opening.is-fallback .opening-fallback-title{animation:none}
- .exhibition-opening{transition:opacity .12s ease}
- .ending-return{transition:none}
-}
 
 /* v22: four actual chapter nodes connected, with line precisely terminating at Chapter 04. */
 .constellation-toc .toc-map{height:185px}

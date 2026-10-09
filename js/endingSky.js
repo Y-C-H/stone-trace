@@ -5,7 +5,6 @@
   const host=document.getElementById('exhibition-ending');
   if(!canvas||!host){window.initEndingSky=()=>{};return;}
   const ctx=canvas.getContext('2d',{alpha:false});
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
   let stars=[],active=false,frame=0,enteredAt=0,viewport={width:0,height:0,scale:1},gesture=null;
   let sourceStatus='pending';
   const SOURCE='data/cupmarks-measured.json';
@@ -61,7 +60,7 @@
     if(!active)return;
     const {width,height,scale}=viewport;
     ctx.fillStyle='#040912';ctx.fillRect(0,0,width,height);
-    const fade=reduced.matches?1:clamp((now-enteredAt)/1400,0,1);
+    const fade=clamp((now-enteredAt)/1400,0,1);
     const t=now/1000;
     for(const star of stars){
       const x=width/2+star.x*scale,y=height/2+star.y*scale;
@@ -74,7 +73,7 @@
       glow.addColorStop(1,'rgba(100,146,209,0)');
       ctx.fillStyle=glow;ctx.beginPath();ctx.arc(x,y,outer,0,Math.PI*2);ctx.fill();
       // Only the secondary outer scintillation changes; position, core size and measured brightness do not.
-      if(!reduced.matches){
+      {
         const oscillation=.5+.5*Math.sin(t*Math.PI*2/star.period+star.phase);
         const alpha=star.haloStrength*.065*oscillation*fade;
         ctx.beginPath();ctx.arc(x,y,outer*1.23,0,Math.PI*2);
@@ -89,7 +88,7 @@
       ctx.fillStyle=`rgba(255,255,255,${(b*.77*fade).toFixed(4)})`;
       ctx.beginPath();ctx.arc(x,y,core*.42,0,Math.PI*2);ctx.fill();
     }
-    if(!reduced.matches)frame=requestAnimationFrame(paint);
+    frame=requestAnimationFrame(paint);
   }
   function start(){
     if(active)return;
@@ -114,8 +113,7 @@
     window.addEventListener('exhibition:pagechange',sync);
     window.addEventListener('exhibition:pageactivated',sync);
     document.addEventListener('visibilitychange',sync);
-    window.addEventListener('resize',()=>{resize();if(active&&reduced.matches)paint(performance.now());});
-    reduced.addEventListener?.('change',()=>{stop();sync();});
+    window.addEventListener('resize',()=>{resize();});
     // The ending canvas owns touch gestures, so it can return to Chapter 04 on a right swipe.
     canvas.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){gesture={id:e.pointerId,x:e.clientX,y:e.clientY};}});
     canvas.addEventListener('pointerup',e=>{if(!gesture||e.pointerId!==gesture.id)return;

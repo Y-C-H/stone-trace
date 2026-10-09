@@ -254,7 +254,6 @@
   const lightPulseButton=document.getElementById('cupmarkLightPulse'),lightSteadyButton=document.getElementById('cupmarkLightSteady');
   const illuminatedCount=document.getElementById('cupmarkIlluminatedCount');
   let focusPresets=[],viewMode='overview',focusDistance=.2,cameraTransition=null;
-  const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
   const focusToolbar=document.getElementById('cupmarkFocusToolbar');
   const focusCounter=document.getElementById('cupmarkFocusCounter');
   const focusPrev=document.getElementById('cupmarkPrevious'),focusNext=document.getElementById('cupmarkNext');
@@ -332,7 +331,7 @@
   function transitionCamera(target,{animate=true}={}){
     cancelCameraMove();
     const goal={yaw:wrapNear(target.yaw,yaw),pitch:target.pitch,distance:target.distance,pan:target.pan.slice()};
-    if(!animate||reducedMotion.matches){({yaw,pitch,distance,pan}=goal);requestFrame();return;}
+    if(!animate){({yaw,pitch,distance,pan}=goal);requestFrame();return;}
     cameraTransition={from:{yaw,pitch,distance,pan:pan.slice()},to:goal,start:performance.now(),duration:750};
     requestFrame();
   }
@@ -430,10 +429,18 @@
     const eye=orbit.map((v,i)=>v*distance+pan[i]);
     return {eye,proj:projection(.88,w/h,Math.max(.0015,Math.min(.008,distance*.012)),100),view:lookAt(eye,pan,[0,1,0])};
   }
+  // v26: illumination depends only on the user level, the light mode and ON/OFF.
+  // Camera focus and selection of another cupmark must never attenuate a light.
+  function lightIntensityAt(index,now){
+    if(!illuminatedIndices.has(index))return 0;
+    if(lightMode==='steady')return lightBrightness;
+    const age=Math.max(0,(now-(lightActivationTimes.get(index)??now))*.001);
+    const pulse=.65+.35*(.5+.5*Math.cos(age*2.1));
+    return lightBrightness*pulse;
+  }
   function drawSelectedBeacon(matrices){
     // v25: each illuminated cupmark is drawn at its existing measured surface position.
     if(!markersOn||!markersLoaded||!illuminatedIndices.size)return;
-    const focused=viewMode==='cupmark-focus'&&!cameraTransition;
     const right=[Math.cos(yaw),0,-Math.sin(yaw)];
     const now=performance.now();
     const range=gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
@@ -446,15 +453,13 @@
     for(const index of illuminatedIndices){
       const datum=markerData[index]?.renderPositions?.[model]||markerData[index]?.displayPosition;
       if(!datum)continue;
-      const point=normPosition(datum),isClose=focused&&selectedIndex===index;
-      const age=Math.max(0,(now-(lightActivationTimes.get(index)??now))*.001);
-      const wave=lightMode==='pulse'&&!reducedMotion.matches?(.36+.64*(.5+.5*Math.cos(age*2.1))):1;
-      const intensity=lightBrightness*wave;
+      const point=normPosition(datum);
+      const intensity=lightIntensityAt(index,now);
       gl.uniform3fv(beamUniforms.point,point);
-      gl.uniform1f(beamUniforms.height,isClose?.09:.15);
-      gl.uniform1f(beamUniforms.width,isClose?.020:.028);
-      gl.uniform1f(beamUniforms.time,lightMode==='pulse'&&!reducedMotion.matches?now*.001:0);
-      gl.uniform1f(beamUniforms.opacity,(isClose?.56:.75)*intensity);
+      gl.uniform1f(beamUniforms.height,.15);
+      gl.uniform1f(beamUniforms.width,.028);
+      gl.uniform1f(beamUniforms.time,lightMode==='pulse'?now*.001:0);
+      gl.uniform1f(beamUniforms.opacity,.75*intensity);
       gl.drawArrays(gl.TRIANGLES,0,6);
     }
     gl.useProgram(haloProgram);
@@ -463,12 +468,10 @@
     for(const index of illuminatedIndices){
       const datum=markerData[index]?.renderPositions?.[model]||markerData[index]?.displayPosition;
       if(!datum)continue;
-      const isClose=focused&&selectedIndex===index;
-      const age=Math.max(0,(now-(lightActivationTimes.get(index)??now))*.001);
-      const wave=lightMode==='pulse'&&!reducedMotion.matches?(.36+.64*(.5+.5*Math.cos(age*2.1))):1;
+      const intensity=lightIntensityAt(index,now);
       gl.uniform3fv(haloUniforms.point,normPosition(datum));
-      gl.uniform1f(haloUniforms.size,Math.min(range[1],isClose?36:58));
-      gl.uniform1f(haloUniforms.opacity,(isClose?.36:.50)*lightBrightness*wave);
+      gl.uniform1f(haloUniforms.size,Math.min(range[1],58));
+      gl.uniform1f(haloUniforms.opacity,.50*intensity);
       gl.drawArrays(gl.POINTS,0,1);
     }
     gl.bindVertexArray(null);gl.depthMask(true);gl.disable(gl.BLEND);
@@ -525,7 +528,7 @@
   let beaconTick=null;
   function render(now){needsFrame=false;tickCamera(now);drawScene(false);
     // Only pulse mode requires animation frames; steady lights are static between camera/UI updates.
-    if(active&&markersOn&&illuminatedIndices.size&&lightMode==='pulse'&&!reducedMotion.matches&&!beaconTick)
+    if(active&&markersOn&&illuminatedIndices.size&&lightMode==='pulse'&&!beaconTick)
       beaconTick=setTimeout(()=>{beaconTick=null;if(active&&markersOn&&illuminatedIndices.size&&lightMode==='pulse')requestFrame();},95);
   }
   function preparePickTarget(w,h){
@@ -843,7 +846,7 @@
   new ResizeObserver(()=>requestFrame()).observe(root);
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();active=false;loading.classList.remove('is-hidden');error('그래픽 장치 연결이 끊겼습니다. 페이지를 새로고침해 주세요.');});
   activateIfNeeded();
-  window.__dolmenViewerDebug={getTextureStatus:()=>({mode,textureStatus,textureReady,globalTransform:TEXTURE_TRANSFORM}),fitCamera,zoom,focusOnMarker,getFocusPresets:()=>focusPresets.map(x=>x?{...x,target:x.target.slice(),normal:x.normal.slice()}:null),getViewMode:()=>viewMode,getMode:()=>mode,getCamera:()=>({yaw,pitch,distance,pan:pan.slice(),isAnimating:!!cameraTransition}),requestFrame,setMarkerVisibility,selectMarker,getCupmarkState:()=>({count:markerData.length,markersLoaded,markersOn,selectedIndex,illuminatedIndices:[...illuminatedIndices].sort((a,b)=>a-b),illuminatedCupmarkIds:[...illuminatedIndices].sort((a,b)=>a-b).map(i=>markerData[i]?.id),lightMode,lightBrightness}),getLightIntensityAt:(index,atMs=performance.now())=>{if(!illuminatedIndices.has(index))return 0;const age=Math.max(0,(atMs-(lightActivationTimes.get(index)??atMs))*.001);return lightBrightness*(lightMode==='pulse'&&!reducedMotion.matches?(.36+.64*(.5+.5*Math.cos(age*2.1))):1);},setLightBrightness:(x)=>{lightBrightness=clamp(x,.25,1);updateLightUI();requestFrame();},setLightMode:(x)=>{if(x==='pulse'||x==='steady'){lightMode=x;updateLightUI();requestFrame();}}};
+  window.__dolmenViewerDebug={getTextureStatus:()=>({mode,textureStatus,textureReady,globalTransform:TEXTURE_TRANSFORM}),fitCamera,zoom,focusOnMarker,getFocusPresets:()=>focusPresets.map(x=>x?{...x,target:x.target.slice(),normal:x.normal.slice()}:null),getViewMode:()=>viewMode,getMode:()=>mode,getCamera:()=>({yaw,pitch,distance,pan:pan.slice(),isAnimating:!!cameraTransition}),requestFrame,setMarkerVisibility,selectMarker,getCupmarkState:()=>({count:markerData.length,markersLoaded,markersOn,selectedIndex,illuminatedIndices:[...illuminatedIndices].sort((a,b)=>a-b),illuminatedCupmarkIds:[...illuminatedIndices].sort((a,b)=>a-b).map(i=>markerData[i]?.id),lightMode,lightBrightness}),getLightIntensityAt:(index,atMs=performance.now())=>lightIntensityAt(index,atMs),setLightBrightness:(x)=>{lightBrightness=clamp(x,.25,1);updateLightUI();requestFrame();},setLightMode:(x)=>{if(x==='pulse'||x==='steady'){lightMode=x;updateLightUI();requestFrame();}}};
  }
  window.initDolmenViewer=initialize;
 })();
