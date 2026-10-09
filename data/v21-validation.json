@@ -1,0 +1,285 @@
+{
+  "baseVersion": "stone-traces-v20",
+  "resultVersion": "stone-traces-v21",
+  "chapterCount": 4,
+  "screens": [
+    "opening",
+    "chapter-01",
+    "chapter-02",
+    "chapter-03",
+    "chapter-04",
+    "ending"
+  ],
+  "opening": {
+    "durationMilliseconds": 2050,
+    "autoTransition": true,
+    "skipByTapClickEnter": true,
+    "reducedMotionTimeoutMilliseconds": 80,
+    "durationValidated": "browser test automatic 2050ms; clicks and reduced motion tested"
+  },
+  "chapter02": {
+    "removedFields": [
+      "좌표 / 측정데이터",
+      "판독 상태",
+      "성혈 판독 상태 placeholder"
+    ],
+    "remainingFields": [
+      "선택 성혈 ID",
+      "직경",
+      "깊이"
+    ],
+    "measurementDataModified": false
+  },
+  "ending": {
+    "pointCount": 46,
+    "sourceData": "data/cupmarks-measured.json",
+    "measurementSource": "sourcePosition",
+    "projectionAxes": {
+      "horizontal": "X",
+      "vertical": "Z",
+      "heightExcluded": "Y"
+    },
+    "aspectRatioPreserved": true,
+    "uniformScale": "minimum of viewport width span and height span fit; same scalar for X and Z",
+    "diameterRange": [
+      8.5907,
+      91.8344
+    ],
+    "depthRange": [
+      0.4196,
+      51.427
+    ],
+    "sizeMapping": {
+      "formula": "1.25 + 2.30 * normalized_diameter",
+      "minPixels": 1.25,
+      "maxPixels": 3.55
+    },
+    "brightnessMapping": {
+      "formula": "0.45 + 0.54 * normalized_depth",
+      "min": 0.45,
+      "max": 0.99
+    },
+    "haloMapping": {
+      "formula": "0.12 + 0.36 * normalized_depth",
+      "min": 0.12,
+      "max": 0.48
+    },
+    "twinkleAnimation": {
+      "enabled": true,
+      "periodSeconds": [
+        4.3,
+        7.9
+      ],
+      "phase": "deterministic ID hash",
+      "property": "low-amplitude secondary outer halo only; fixed cores",
+      "pausesWhenHidden": true
+    },
+    "visibleTextCount": 0,
+    "onlyVisibleControl": "subtle bottom-left arrow; hover/focus increases opacity",
+    "extraStars": 0,
+    "sourceIds": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "C13",
+      "C14",
+      "C15",
+      "C16",
+      "C17",
+      "C18",
+      "C19",
+      "C20",
+      "C21",
+      "C22",
+      "C23",
+      "C24",
+      "C25",
+      "C26",
+      "C27",
+      "C28",
+      "C29",
+      "C30",
+      "C31",
+      "C32",
+      "C33",
+      "C34",
+      "C35",
+      "C36",
+      "C37",
+      "C38",
+      "C39",
+      "C40",
+      "C41",
+      "C42",
+      "C43",
+      "C44",
+      "C45",
+      "C46"
+    ]
+  },
+  "navigation": {
+    "openingToChapter01": true,
+    "chapter04ToEnding": true,
+    "endingReturn": true,
+    "returnControl": "bottom-left icon button; keyboard ArrowLeft or Escape; mobile right swipe",
+    "tocChapterCount": 4,
+    "browserBack": "implemented with History API; not directly tested in blocked network browser"
+  },
+  "dataIntegrity": {
+    "measuredCupmarksModified": false,
+    "chapter04Modified": false,
+    "protectedFileHashMatches": true,
+    "protectedFileCount": 24
+  },
+  "desktopTests": {
+    "desktop1920": {
+      "status": "passed_actual_canvas_and_navigation_browser",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "openingAutoOrSkipped": true,
+      "chapter02RemainingFields": [
+        "직경",
+        "깊이"
+      ],
+      "endingStars": 46,
+      "endingCanvas": {
+        "nonBackgroundPixels": 897,
+        "canvas": [
+          1972,
+          1140
+        ]
+      },
+      "endingReturn": true,
+      "pageErrors": []
+    },
+    "desktop1440": {
+      "status": "passed_actual_canvas_and_navigation_browser",
+      "viewport": [
+        1440,
+        900
+      ],
+      "openingAutoOrSkipped": true,
+      "chapter02RemainingFields": [
+        "직경",
+        "깊이"
+      ],
+      "endingStars": 46,
+      "endingCanvas": {
+        "nonBackgroundPixels": 906,
+        "canvas": [
+          1467,
+          936
+        ]
+      },
+      "endingReturn": true,
+      "pageErrors": []
+    },
+    "desktop1366": {
+      "status": "passed_actual_canvas_and_navigation_browser",
+      "viewport": [
+        1366,
+        768
+      ],
+      "openingAutoOrSkipped": true,
+      "chapter02RemainingFields": [
+        "직경",
+        "깊이"
+      ],
+      "endingStars": 46,
+      "endingCanvas": {
+        "nonBackgroundPixels": 935,
+        "canvas": [
+          1389,
+          797
+        ]
+      },
+      "endingReturn": true,
+      "pageErrors": []
+    },
+    "desktop1024": {
+      "status": "passed_actual_canvas_and_navigation_browser",
+      "viewport": [
+        1024,
+        768
+      ],
+      "openingAutoOrSkipped": true,
+      "chapter02RemainingFields": [
+        "직경",
+        "깊이"
+      ],
+      "endingStars": 46,
+      "endingCanvas": {
+        "nonBackgroundPixels": 938,
+        "canvas": [
+          1036,
+          788
+        ]
+      },
+      "endingReturn": true,
+      "pageErrors": []
+    }
+  },
+  "mobileTests": {
+    "mobile390": {
+      "status": "passed_actual_canvas_and_navigation_browser",
+      "viewport": [
+        390,
+        844
+      ],
+      "openingAutoOrSkipped": true,
+      "chapter02RemainingFields": [
+        "직경",
+        "깊이"
+      ],
+      "endingStars": 46,
+      "endingCanvas": {
+        "nonBackgroundPixels": 719,
+        "canvas": [
+          390,
+          850
+        ]
+      },
+      "endingReturn": true,
+      "pageErrors": []
+    }
+  },
+  "reducedMotion": {
+    "status": "passed",
+    "autoSkipMilliseconds": 80
+  },
+  "viewerRegression": {
+    "desktop1440": {
+      "status": "passed_mocked_WebGL_browser",
+      "texture": "ready",
+      "focusAndNavigation": "passed",
+      "consoleErrors": []
+    },
+    "mobile390": {
+      "status": "passed_mocked_WebGL_browser",
+      "texture": "ready",
+      "focusAndNavigation": "passed",
+      "consoleErrors": []
+    },
+    "texture_fallback": {
+      "status": "passed_mocked_WebGL_browser",
+      "texture": "failed",
+      "focusAndNavigation": null,
+      "consoleErrors": []
+    }
+  },
+  "knownIssues": [
+    "Real WebGL2 GPU renderer and mobile physical-device testing were unavailable; prior browser tests used mock GL WebGL and actual Canvas 2D for the ending.",
+    "Browser history back behavior and physical touch swipe not device-tested."
+  ]
+}

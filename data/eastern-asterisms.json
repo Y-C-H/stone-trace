@@ -1,0 +1,127 @@
+{
+  "source": {
+    "asterismLines": "https://raw.githubusercontent.com/Stellarium/stellarium-skycultures/master/korean/index.json",
+    "asterismDescription": "https://raw.githubusercontent.com/Stellarium/stellarium-skycultures/master/korean/description.md",
+    "starPositionReferences": [
+      "https://astro.utah.edu/~wik/courses/astr2500fall2020/hw/hw01.pdf",
+      "https://www.amcharts.com/demos/star-atlas/",
+      "https://www.star-facts.com/epsilon-lyrae-the-double-double/",
+      "https://heavens-above.com/hipentry.aspx?hip=91971",
+      "https://hipparcos-tools.cosmos.esa.int/cgi-bin/HIPcatalogueSearch.pl?hipId=97649",
+      "https://stelvia.space/en/explore/star/hip-97278",
+      "https://www.asteriastar.com/stars/alshain"
+    ],
+    "scope": "Selected three Korean traditional asterisms, not the complete historical sky chart",
+    "coordinateType": "approximate RA/Dec J2000 degrees; schematic RA/Dec plane, not time/location-specific observing sky",
+    "originalSkycultureLicense": "GNU GPL v2.0; attribution preserved"
+  },
+  "stars": [
+    {
+      "hip": 67301,
+      "ra": 206.89,
+      "dec": 49.31
+    },
+    {
+      "hip": 65378,
+      "ra": 200.985,
+      "dec": 54.93
+    },
+    {
+      "hip": 62956,
+      "ra": 193.5,
+      "dec": 55.96
+    },
+    {
+      "hip": 59774,
+      "ra": 183.854,
+      "dec": 57.03
+    },
+    {
+      "hip": 58001,
+      "ra": 178.457,
+      "dec": 53.69
+    },
+    {
+      "hip": 53910,
+      "ra": 165.46,
+      "dec": 56.38
+    },
+    {
+      "hip": 54061,
+      "ra": 165.932,
+      "dec": 61.75
+    },
+    {
+      "hip": 91919,
+      "ra": 281.085,
+      "dec": 39.6701
+    },
+    {
+      "hip": 91262,
+      "ra": 279.2347,
+      "dec": 38.7837
+    },
+    {
+      "hip": 91971,
+      "ra": 281.1931,
+      "dec": 37.6051
+    },
+    {
+      "hip": 97278,
+      "ra": 296.565,
+      "dec": 10.613
+    },
+    {
+      "hip": 97649,
+      "ra": 297.6945,
+      "dec": 8.8674
+    },
+    {
+      "hip": 98036,
+      "ra": 298.8283,
+      "dec": 6.4068
+    }
+  ],
+  "asterisms": [
+    {
+      "id": "CON korean 219",
+      "name": "북두",
+      "label": "북두칠성",
+      "lines": [
+        [
+          67301,
+          65378,
+          62956,
+          59774,
+          58001,
+          53910,
+          54061
+        ]
+      ]
+    },
+    {
+      "id": "CON korean 052",
+      "name": "직녀",
+      "label": "직녀성",
+      "lines": [
+        [
+          91919,
+          91262,
+          91971
+        ]
+      ]
+    },
+    {
+      "id": "CON korean 055",
+      "name": "하고",
+      "label": "하고성",
+      "lines": [
+        [
+          97278,
+          97649,
+          98036
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "desktop1920": {
+    "status": "passed_mocked_webgl_browser",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "chapterCount": 4,
+    "visibleNavigation": "03 / 04 after previous",
+    "cupmarkSelection": "C10 -> C11",
+    "viewerUI": "passed",
+    "chapter04OverlayDOM": "preserved",
+    "panel": {
+      "scrollHeight": 648,
+      "clientHeight": 648,
+      "overflowY": "auto"
+    },
+    "consoleExceptions": []
+  },
+  "desktop1440": {
+    "status": "passed_mocked_webgl_browser",
+    "viewport": [
+      1440,
+      900
+    ],
+    "chapterCount": 4,
+    "visibleNavigation": "03 / 04 after previous",
+    "cupmarkSelection": "C10 -> C11",
+    "viewerUI": "passed",
+    "chapter04OverlayDOM": "preserved",
+    "panel": {
+      "scrollHeight": 613,
+      "clientHeight": 496,
+      "overflowY": "auto"
+    },
+    "consoleExceptions": []
+  },
+  "desktop1366": {
+    "status": "passed_mocked_webgl_browser",
+    "viewport": [
+      1366,
+      768
+    ],
+    "chapterCount": 4,
+    "visibleNavigation": "03 / 04 after previous",
+    "cupmarkSelection": "C10 -> C11",
+    "viewerUI": "passed",
+    "chapter04OverlayDOM": "preserved",
+    "panel": {
+      "scrollHeight": 551,
+      "clientHeight": 417,
+      "overflowY": "auto"
+    },
+    "consoleExceptions": []
+  },
+  "desktop1024": {
+    "status": "passed_mocked_webgl_browser",
+    "viewport": [
+      1024,
+      768
+    ],
+    "chapterCount": 4,
+    "visibleNavigation": "03 / 04 after previous",
+    "cupmarkSelection": "C10 -> C11",
+    "viewerUI": "passed",
+    "chapter04OverlayDOM": "preserved",
+    "panel": {
+      "scrollHeight": 551,
+      "clientHeight": 420,
+      "overflowY": "auto"
+    },
+    "consoleExceptions": []
+  },
+  "mobile390": {
+    "status": "passed_mocked_webgl_browser",
+    "viewport": [
+      390,
+      844
+    ],
+    "chapterCount": 4,
+    "visibleNavigation": "03 / 04 after previous",
+    "cupmarkSelection": "C10 -> C11",
+    "viewerUI": "passed",
+    "chapter04OverlayDOM": "preserved",
+    "panel": {
+      "scrollHeight": 263,
+      "clientHeight": 157,
+      "overflowY": "auto"
+    },
+    "consoleExceptions": []
+  }
+}

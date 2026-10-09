@@ -1,0 +1,385 @@
+{
+  "meta": {
+    "sourceImage": "고인돌 성혈위치(2).png",
+    "sourceWidth": 1398,
+    "sourceHeight": 871,
+    "coordinateBasis": "pixel centers normalized uniformly by source image width",
+    "center": {
+      "sourceX": 694.47,
+      "sourceY": 435.01
+    },
+    "count": 46,
+    "status": "provisional",
+    "note": "3D 스캔 화면의 마커 위치에서 추출한 임시 상대 좌표. 실제 측정 좌표가 아님."
+  },
+  "points": [
+    {
+      "id": "P001",
+      "x": 0.021793,
+      "y": -0.166002,
+      "sourceX": 724.94,
+      "sourceY": 202.94,
+      "status": "provisional"
+    },
+    {
+      "id": "P002",
+      "x": 0.095185,
+      "y": -0.09798,
+      "sourceX": 827.54,
+      "sourceY": 298.04,
+      "status": "provisional"
+    },
+    {
+      "id": "P003",
+      "x": 0.03261,
+      "y": -0.064342,
+      "sourceX": 740.06,
+      "sourceY": 345.06,
+      "status": "provisional"
+    },
+    {
+      "id": "P004",
+      "x": -0.228501,
+      "y": -0.061819,
+      "sourceX": 375.03,
+      "sourceY": 348.59,
+      "status": "provisional"
+    },
+    {
+      "id": "P005",
+      "x": 0.322294,
+      "y": -0.048975,
+      "sourceX": 1145.04,
+      "sourceY": 366.55,
+      "status": "provisional"
+    },
+    {
+      "id": "P006",
+      "x": -0.020011,
+      "y": -0.027191,
+      "sourceX": 666.5,
+      "sourceY": 397.0,
+      "status": "provisional"
+    },
+    {
+      "id": "P007",
+      "x": -0.089298,
+      "y": -0.021038,
+      "sourceX": 569.64,
+      "sourceY": 405.6,
+      "status": "provisional"
+    },
+    {
+      "id": "P008",
+      "x": -0.296433,
+      "y": -0.012841,
+      "sourceX": 280.06,
+      "sourceY": 417.06,
+      "status": "provisional"
+    },
+    {
+      "id": "P009",
+      "x": -0.057519,
+      "y": -0.011454,
+      "sourceX": 614.06,
+      "sourceY": 419.0,
+      "status": "provisional"
+    },
+    {
+      "id": "P010",
+      "x": -0.176244,
+      "y": -0.011032,
+      "sourceX": 448.09,
+      "sourceY": 419.59,
+      "status": "provisional"
+    },
+    {
+      "id": "P011",
+      "x": 0.34122,
+      "y": -0.008235,
+      "sourceX": 1171.5,
+      "sourceY": 423.5,
+      "status": "provisional"
+    },
+    {
+      "id": "P012",
+      "x": 0.317291,
+      "y": -0.004634,
+      "sourceX": 1138.05,
+      "sourceY": 428.53,
+      "status": "provisional"
+    },
+    {
+      "id": "P013",
+      "x": -0.301484,
+      "y": 0.004282,
+      "sourceX": 273.0,
+      "sourceY": 441.0,
+      "status": "provisional"
+    },
+    {
+      "id": "P014",
+      "x": -0.030708,
+      "y": 0.018263,
+      "sourceX": 651.54,
+      "sourceY": 460.54,
+      "status": "provisional"
+    },
+    {
+      "id": "P015",
+      "x": -0.096862,
+      "y": 0.030793,
+      "sourceX": 559.06,
+      "sourceY": 478.06,
+      "status": "provisional"
+    },
+    {
+      "id": "P016",
+      "x": -0.136963,
+      "y": 0.032895,
+      "sourceX": 503.0,
+      "sourceY": 481.0,
+      "status": "provisional"
+    },
+    {
+      "id": "P017",
+      "x": 0.336279,
+      "y": 0.035053,
+      "sourceX": 1164.59,
+      "sourceY": 484.02,
+      "status": "provisional"
+    },
+    {
+      "id": "P018",
+      "x": -0.374803,
+      "y": 0.037544,
+      "sourceX": 170.5,
+      "sourceY": 487.5,
+      "status": "provisional"
+    },
+    {
+      "id": "P019",
+      "x": 0.374803,
+      "y": 0.038768,
+      "sourceX": 1218.45,
+      "sourceY": 489.21,
+      "status": "provisional"
+    },
+    {
+      "id": "P020",
+      "x": -0.339753,
+      "y": 0.03969,
+      "sourceX": 219.5,
+      "sourceY": 490.5,
+      "status": "provisional"
+    },
+    {
+      "id": "P021",
+      "x": -0.070021,
+      "y": 0.041897,
+      "sourceX": 596.59,
+      "sourceY": 493.59,
+      "status": "provisional"
+    },
+    {
+      "id": "P022",
+      "x": -0.161999,
+      "y": 0.043982,
+      "sourceX": 468.0,
+      "sourceY": 496.5,
+      "status": "provisional"
+    },
+    {
+      "id": "P023",
+      "x": -0.238179,
+      "y": 0.048989,
+      "sourceX": 361.5,
+      "sourceY": 503.5,
+      "status": "provisional"
+    },
+    {
+      "id": "P024",
+      "x": -0.095496,
+      "y": 0.04975,
+      "sourceX": 560.97,
+      "sourceY": 504.56,
+      "status": "provisional"
+    },
+    {
+      "id": "P025",
+      "x": 0.063742,
+      "y": 0.052627,
+      "sourceX": 783.59,
+      "sourceY": 508.59,
+      "status": "provisional"
+    },
+    {
+      "id": "P026",
+      "x": -0.132581,
+      "y": 0.05298,
+      "sourceX": 509.13,
+      "sourceY": 509.08,
+      "status": "provisional"
+    },
+    {
+      "id": "P027",
+      "x": -0.03248,
+      "y": 0.059745,
+      "sourceX": 649.07,
+      "sourceY": 518.54,
+      "status": "provisional"
+    },
+    {
+      "id": "P028",
+      "x": 0.312069,
+      "y": 0.061424,
+      "sourceX": 1130.75,
+      "sourceY": 520.88,
+      "status": "provisional"
+    },
+    {
+      "id": "P029",
+      "x": -0.119081,
+      "y": 0.070448,
+      "sourceX": 528.0,
+      "sourceY": 533.5,
+      "status": "provisional"
+    },
+    {
+      "id": "P030",
+      "x": -0.057207,
+      "y": 0.073667,
+      "sourceX": 614.5,
+      "sourceY": 538.0,
+      "status": "provisional"
+    },
+    {
+      "id": "P031",
+      "x": -0.300411,
+      "y": 0.077601,
+      "sourceX": 274.5,
+      "sourceY": 543.5,
+      "status": "provisional"
+    },
+    {
+      "id": "P032",
+      "x": -0.188412,
+      "y": 0.086597,
+      "sourceX": 431.08,
+      "sourceY": 556.08,
+      "status": "provisional"
+    },
+    {
+      "id": "P033",
+      "x": -0.082211,
+      "y": 0.089078,
+      "sourceX": 579.54,
+      "sourceY": 559.54,
+      "status": "provisional"
+    },
+    {
+      "id": "P034",
+      "x": -0.025351,
+      "y": 0.097673,
+      "sourceX": 659.03,
+      "sourceY": 571.56,
+      "status": "provisional"
+    },
+    {
+      "id": "P035",
+      "x": 0.222175,
+      "y": 0.111632,
+      "sourceX": 1005.08,
+      "sourceY": 591.08,
+      "status": "provisional"
+    },
+    {
+      "id": "P036",
+      "x": 0.201529,
+      "y": 0.112349,
+      "sourceX": 976.21,
+      "sourceY": 592.08,
+      "status": "provisional"
+    },
+    {
+      "id": "P037",
+      "x": -0.051073,
+      "y": 0.115924,
+      "sourceX": 623.08,
+      "sourceY": 597.08,
+      "status": "provisional"
+    },
+    {
+      "id": "P038",
+      "x": -0.026448,
+      "y": 0.125169,
+      "sourceX": 657.5,
+      "sourceY": 610.0,
+      "status": "provisional"
+    },
+    {
+      "id": "P039",
+      "x": -0.130857,
+      "y": 0.125218,
+      "sourceX": 511.54,
+      "sourceY": 610.07,
+      "status": "provisional"
+    },
+    {
+      "id": "P040",
+      "x": 0.257023,
+      "y": 0.127162,
+      "sourceX": 1053.79,
+      "sourceY": 612.79,
+      "status": "provisional"
+    },
+    {
+      "id": "P041",
+      "x": 0.181835,
+      "y": 0.133052,
+      "sourceX": 948.68,
+      "sourceY": 621.02,
+      "status": "provisional"
+    },
+    {
+      "id": "P042",
+      "x": -0.081885,
+      "y": 0.140191,
+      "sourceX": 580.0,
+      "sourceY": 631.0,
+      "status": "provisional"
+    },
+    {
+      "id": "P043",
+      "x": -0.05751,
+      "y": 0.143106,
+      "sourceX": 614.08,
+      "sourceY": 635.08,
+      "status": "provisional"
+    },
+    {
+      "id": "P044",
+      "x": -0.112589,
+      "y": 0.148113,
+      "sourceX": 537.08,
+      "sourceY": 642.08,
+      "status": "provisional"
+    },
+    {
+      "id": "P045",
+      "x": -0.05217,
+      "y": 0.156269,
+      "sourceX": 621.54,
+      "sourceY": 653.48,
+      "status": "provisional"
+    },
+    {
+      "id": "P046",
+      "x": -0.063972,
+      "y": 0.166002,
+      "sourceX": 605.04,
+      "sourceY": 667.08,
+      "status": "provisional"
+    }
+  ]
+}

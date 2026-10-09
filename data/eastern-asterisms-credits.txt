@@ -1,0 +1,5 @@
+Korean traditional skyculture line patterns: Stellarium skycultures / korean/index.json
+https://github.com/Stellarium/stellarium-skycultures/tree/master/korean
+Authors Jeong Tae-Min, Susanne M Hoffmann; skyculture description GNU GPL v2.0. See eastern-asterisms-GPL-2.0.txt.
+The bundled subset contains three documented asterisms; Hipparcos approximate RA/Dec lookup sources are recorded in eastern-asterisms.json.
+This is a limited schematic sky representation, not a historical epoch/observer-specific star map.

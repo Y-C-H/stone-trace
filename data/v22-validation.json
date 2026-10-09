@@ -1,0 +1,206 @@
+{
+  "baseVersion": "stone-traces-v21",
+  "resultVersion": "stone-traces-v22",
+  "toc": {
+    "fourNodes": true,
+    "visuallyConnected": true,
+    "path": "M44 23 L78 63 L50 105 L84 146",
+    "desktopChecked": "browser_canvas_ui",
+    "mobileChecked": "browser_canvas_ui",
+    "screenshots": [
+      "testshots/v22-chapter04-desktop.png",
+      "testshots/v22-chapter04-mobile.png"
+    ]
+  },
+  "chapter02": {
+    "removedTexts": [
+      "개념 · 맥락 (overview and detail)",
+      "원전 인용이 아니라 ‘지속·물질’을 이 전시에 적용한 큐레이터 문구입니다."
+    ],
+    "preservedQuote": "돌은 시간에 저항하지 않는다. 시간을 담고 있을 뿐이다.",
+    "renamedTexts": {
+      "물질과 지속": "고인돌 관찰",
+      "새겨진 행위": "성혈 관찰",
+      "표면의 흔적 살펴보기": "성혈 관찰",
+      "돌 전체로": "고인돌 관찰"
+    },
+    "markerEnhancement": {
+      "status": "implemented_GLSL_compiled_linked_not_hardware_browser_rendered",
+      "selectedOnly": true,
+      "depthOcclusion": true,
+      "beamHeightModelNormalized": {
+        "overview": 0.15,
+        "focus": 0.09
+      },
+      "shimmerIntervalMilliseconds": 70,
+      "fadeWithFocus": true
+    },
+    "geyserOpacity": 0.75,
+    "haloOpacity": 0.5,
+    "controlBoxWrappedCorrectly": "CSS and DOM verified; limited visual verification on real 3D viewer"
+  },
+  "chapter03": {
+    "pagePreserved": true,
+    "removedTexts": [
+      "[개념 · 맥락] 같은 데이터가 어떻게 다르게 읽히는가? 성혈에 관한 서로 다른 해석 가능성을 구분해 살펴봅니다.",
+      "읽는 방법 및 연결된 설명 블록"
+    ],
+    "interpretationSelectionTest": true
+  },
+  "chapter04": {
+    "newTitle": "성혈과 밤하늘",
+    "removedTexts": [
+      "이 활동은 성혈과 별자리의 관계를 증명하는 분석이 아닙니다.",
+      "밤하늘 배경은 현재 시각화용입니다.",
+      "성혈 별 크기는 표시용입니다.",
+      "임시 데이터 설명 박스"
+    ],
+    "temporaryLabelRemoved": true,
+    "usesMeasuredCupmarkData": true,
+    "sourceData": "data/cupmarks-measured.json (source data originally cupmarks-measured-source.xlsx)",
+    "positionMapped": "Excel/sourcePosition X→screen X; Z→screen Y, center offset and viewport-wide uniform scale only",
+    "diameterAffectsSize": {
+      "sourceUnit": "mm",
+      "range": [
+        8.5907,
+        91.8344
+      ],
+      "starRadiusPixels": [
+        1.5,
+        4.2
+      ]
+    },
+    "depthAffectsBrightness": {
+      "sourceUnit": "mm",
+      "range": [
+        0.4196,
+        51.427
+      ],
+      "brightnessRange": [
+        0.43,
+        0.98
+      ],
+      "haloStrengthRange": [
+        0.22,
+        1.0
+      ]
+    },
+    "controlBoxColorUnified": true,
+    "markerCount": 46,
+    "testedInteractions": [
+      "zoom",
+      "rotation",
+      "all-on",
+      "one-point-off",
+      "navigation"
+    ],
+    "sameDataForDesktopMobile": true
+  },
+  "ending": {
+    "preserved": true,
+    "backButtonPreserved": true,
+    "measuredDataPreserved": true
+  },
+  "dataIntegrity": {
+    "cupmarkMeasurementModified": false,
+    "sourceXlsxModified": false,
+    "geometryModified": false,
+    "textureModified": false,
+    "chapter04CoreInteractionPreserved": true,
+    "protectedFileHashPass": true
+  },
+  "desktopTests": {
+    "1920x1080": {
+      "passed": true,
+      "chapters": 4,
+      "tocNodes": 4,
+      "measuredMarks": 46,
+      "controls": "zoom/rotation/toggle/all-on",
+      "interpretationSwitch": true,
+      "endingReturn": true,
+      "pageErrors": []
+    },
+    "1440x900": {
+      "passed": true,
+      "chapters": 4,
+      "tocNodes": 4,
+      "measuredMarks": 46,
+      "controls": "zoom/rotation/toggle/all-on",
+      "interpretationSwitch": true,
+      "endingReturn": true,
+      "pageErrors": []
+    },
+    "1366x768": {
+      "passed": true,
+      "chapters": 4,
+      "tocNodes": 4,
+      "measuredMarks": 46,
+      "controls": "zoom/rotation/toggle/all-on",
+      "interpretationSwitch": true,
+      "endingReturn": true,
+      "pageErrors": []
+    },
+    "1024x768": {
+      "passed": true,
+      "chapters": 4,
+      "tocNodes": 4,
+      "measuredMarks": 46,
+      "controls": "zoom/rotation/toggle/all-on",
+      "interpretationSwitch": true,
+      "endingReturn": true,
+      "pageErrors": []
+    }
+  },
+  "mobileTests": {
+    "390x844": {
+      "passed": true,
+      "chapters": 4,
+      "tocNodes": 4,
+      "measuredMarks": 46,
+      "controls": "zoom/rotation/toggle/all-on",
+      "interpretationSwitch": true,
+      "endingReturn": true,
+      "pageErrors": []
+    },
+    "3dViewerMock": {
+      "status": "passed_mocked_WebGL_browser",
+      "texture": "ready",
+      "focusAndNavigation": "passed",
+      "consoleErrors": []
+    }
+  },
+  "webGlTests": {
+    "sixGLSLProgramPairsCompiledAndLinked": "passed EGL Mesa GL4.5 (WebGL2 GLSL 300es source)",
+    "realBrowserGPU": "untested",
+    "3dViewerDesktopMock": {
+      "status": "passed_mocked_WebGL_browser",
+      "texture": "ready",
+      "focusAndNavigation": "passed",
+      "consoleErrors": []
+    },
+    "textureFailureFallbackMock": {
+      "status": "passed_mocked_WebGL_browser",
+      "texture": "failed",
+      "focusAndNavigation": null,
+      "consoleErrors": []
+    }
+  },
+  "knownIssues": [
+    "Real desktop/mobile WebGL2 rendering of the new beacon/halo effects needs verification on user hardware.",
+    "3D viewer instruction box wrapping was checked in CSS/DOM but real hardware overlay was not visually verified.",
+    "Browser direct localhost navigation is blocked in this environment; browser tests used isolated HTML with local CSS/JS and measured-data fetch mock (actual JSON bytes)."
+  ],
+  "changedFiles": [
+    "index.html",
+    "css/style.css",
+    "css/sky-overlay.css",
+    "js/skyOverlay.js",
+    "js/main.js",
+    "js/dolmenViewer.js",
+    "testshots/v22-chapter04-mobile.png",
+    "testshots/v22-browser-tests.json",
+    "testshots/v22-chapter03.png",
+    "testshots/v22-chapter04-desktop.png",
+    "data/v22-regression-tests.json"
+  ]
+}

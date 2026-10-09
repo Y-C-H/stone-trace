@@ -1,0 +1,12 @@
+{
+  "version": "v24",
+  "spreadsheet": "data/knowledge-map-source.xlsx",
+  "nodeCount": 89,
+  "linkCount": 67,
+  "groupCount": 10,
+  "illustrationCount": 48,
+  "excludedNames": [
+    "칠성바위",
+    "바위그림"
+  ]
+}

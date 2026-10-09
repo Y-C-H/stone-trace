@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" fill="none">
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M232 248c9-54 41-86 88-90 47 4 79 36 88 90-24 22-152 22-176 0Z" stroke="#8b8578" stroke-opacity=".62" stroke-width="1.5"/>
+    <path d="M256 240c10-31 32-47 64-51 32 4 54 20 64 51" stroke="#d6b47a" stroke-opacity=".48"/>
+    <g stroke="#7fc8c0" stroke-opacity=".48">
+      <circle cx="320" cy="104" r="18"/><circle cx="421" cy="142" r="15"/><circle cx="472" cy="232" r="16"/><circle cx="417" cy="312" r="15"/><circle cx="223" cy="312" r="15"/><circle cx="168" cy="232" r="16"/><circle cx="219" cy="142" r="15"/>
+    </g>
+    <g fill="#d6b47a" fill-opacity=".68"><circle cx="320" cy="104" r="3.5"/><circle cx="421" cy="142" r="3.5"/><circle cx="472" cy="232" r="3.5"/><circle cx="417" cy="312" r="3.5"/><circle cx="223" cy="312" r="3.5"/><circle cx="168" cy="232" r="3.5"/><circle cx="219" cy="142" r="3.5"/></g>
+    <path d="M320 122v36M408 153l-35 37M455 228l-47 9M404 300l-31-39M236 300l31-39M185 228l47 9M232 153l35 37" stroke="#e7e2d8" stroke-opacity=".18" stroke-dasharray="3 8"/>
+    <ellipse cx="320" cy="242" rx="183" ry="118" stroke="#e7e2d8" stroke-opacity=".11"/>
+  </g>
+</svg>

@@ -1,0 +1,222 @@
+{
+  "baseVersion": "stone-traces-v23",
+  "resultVersion": "stone-traces-v24",
+  "chapter01": {
+    "spreadsheetFile": "data/knowledge-map-source.xlsx",
+    "sheetNames": [
+      "안내",
+      "노드",
+      "연결",
+      "분류"
+    ],
+    "originalNodeCount": 85,
+    "updatedNodeCount": 89,
+    "updatedLinkCount": 67,
+    "removedNodes": [
+      {
+        "id": "b14",
+        "label": "칠성바위",
+        "group": "r"
+      },
+      {
+        "id": "b15",
+        "label": "바위그림",
+        "group": "s"
+      }
+    ],
+    "droppedUnresolvedSheetLinks": [
+      [
+        "dol",
+        "s1"
+      ],
+      [
+        "n1",
+        "s1"
+      ],
+      [
+        "n1",
+        "r1"
+      ],
+      [
+        "r1",
+        "k9"
+      ]
+    ],
+    "retainedNodes": 89,
+    "embeddedImageCount": 48,
+    "userRequestedRemovedNames": [
+      "칠성바위",
+      "바위그림"
+    ],
+    "dataIntegrity": true,
+    "interactionPreserved": "browser UI checked; real phone hardware not tested"
+  },
+  "chapter02": {
+    "switchButtonPositionUnified": true,
+    "switchPosition": "footer right in both modes",
+    "dolmenObservationButton": "returnOverview",
+    "cupmarkObservationButton": "enterObservation",
+    "viewerSourceModified": false,
+    "actualWebGLVerified": false
+  },
+  "chapter03": {
+    "newTitle": "여러가지 해석",
+    "sourceButtonCount": 1,
+    "sourceButtonPosition": "bottom right inside dynamically updated interpretation detail",
+    "sourceDataConnected": false,
+    "sourceButtonDisabled": true,
+    "existingInterpretationsPreserved": true
+  },
+  "chapter04": {
+    "easternConstellationsImplemented": true,
+    "easternConstellationsDataSource": "Stellarium Korean traditional skyculture; named HIP star line patterns, approximate star coordinates from listed sources",
+    "constellationCount": 3,
+    "constellationNames": [
+      "북두",
+      "직녀",
+      "하고"
+    ],
+    "toggleEnabled": true,
+    "defaultEnabled": false,
+    "backgroundLayerIndependent": true,
+    "measuredCupmarksPreserved": 46,
+    "dragPreserved": true,
+    "zoomPreserved": true,
+    "rotationPreserved": true,
+    "wholeHistoricSkyReconstruction": false
+  },
+  "regression": {
+    "openingPreserved": true,
+    "chapter02ViewerCodeModified": false,
+    "chapter04CupmarkDataModified": false,
+    "endingModified": false,
+    "READMEOnlyRunInstructions": true
+  },
+  "tests": {
+    "browserInMemory": {
+      "1920x1080": {
+        "nodes": 89,
+        "edges": 67,
+        "switchFooterOffsets": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.8,
+            0.5
+          ]
+        ],
+        "sourceButtonInActiveBlock": true,
+        "sourceLinked": false,
+        "measuredCupmarks": 46,
+        "easternAsterisms": 3,
+        "fourToggleStatesPresent": true,
+        "javascriptErrors": []
+      },
+      "1440x900": {
+        "nodes": 89,
+        "edges": 67,
+        "switchFooterOffsets": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.7,
+            0.6
+          ]
+        ],
+        "sourceButtonInActiveBlock": true,
+        "sourceLinked": false,
+        "measuredCupmarks": 46,
+        "easternAsterisms": 3,
+        "fourToggleStatesPresent": true,
+        "javascriptErrors": []
+      },
+      "1366x768": {
+        "nodes": 89,
+        "edges": 67,
+        "switchFooterOffsets": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            -0.7,
+            0.7
+          ]
+        ],
+        "sourceButtonInActiveBlock": true,
+        "sourceLinked": false,
+        "measuredCupmarks": 46,
+        "easternAsterisms": 3,
+        "fourToggleStatesPresent": true,
+        "javascriptErrors": []
+      },
+      "1024x768": {
+        "nodes": 89,
+        "edges": 67,
+        "switchFooterOffsets": [
+          [
+            -4.0,
+            -0.5
+          ],
+          [
+            -0.5,
+            0.7
+          ]
+        ],
+        "sourceButtonInActiveBlock": true,
+        "sourceLinked": false,
+        "measuredCupmarks": 46,
+        "easternAsterisms": 3,
+        "fourToggleStatesPresent": true,
+        "javascriptErrors": []
+      },
+      "390x844": {
+        "nodes": 89,
+        "edges": 67,
+        "switchFooterOffsets": [
+          [
+            0.0,
+            5.6
+          ],
+          [
+            -0.2,
+            2.3
+          ]
+        ],
+        "sourceButtonInActiveBlock": true,
+        "sourceLinked": false,
+        "measuredCupmarks": 46,
+        "easternAsterisms": 3,
+        "fourToggleStatesPresent": true,
+        "javascriptErrors": []
+      }
+    },
+    "localhostHttpDataResponse": "passed",
+    "chromiumLocalhostEndToEnd": "blocked by environment administrator",
+    "actualWebGLGPU": null,
+    "mobileHardwareTouch": null
+  },
+  "files": {
+    "changedOriginalFiles": [
+      "index.html",
+      "css/style.css",
+      "css/sky-overlay.css",
+      "js/knowledgeData.js",
+      "js/skyOverlay.js",
+      "js/knowledgeGraph.js",
+      "js/main.js",
+      "data/update-stats.json"
+    ],
+    "removedLegacyNodeImageFiles": 41
+  },
+  "knownIssues": [
+    "The astronomy layer contains three well-documented representative Korean asterisms, not all 272 historical groups.",
+    "Celestial star positions use approximate modern J2000 RA/Dec and a schematic projection; this is not a precise historical nighttime projection.",
+    "Live Chromium navigation to localhost is restricted in the tool environment; UI tests used in-memory HTML/JS with actual packaged JSON, and standalone HTTP file response succeeded.",
+    "Actual GPU WebGL rendering and mobile touch-device testing were not performed."
+  ]
+}

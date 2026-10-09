@@ -1,0 +1,20 @@
+{
+  "desktop1440": {
+    "status": "passed_mocked_WebGL_browser",
+    "texture": "ready",
+    "focusAndNavigation": "passed",
+    "consoleErrors": []
+  },
+  "mobile390": {
+    "status": "passed_mocked_WebGL_browser",
+    "texture": "ready",
+    "focusAndNavigation": "passed",
+    "consoleErrors": []
+  },
+  "texture_fallback": {
+    "status": "passed_mocked_WebGL_browser",
+    "texture": "failed",
+    "focusAndNavigation": null,
+    "consoleErrors": []
+  }
+}

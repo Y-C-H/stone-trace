@@ -1,0 +1,132 @@
+{
+  "baseVersion": "stone-traces-v24",
+  "resultVersion": "stone-traces-v25",
+  "chapter01": {
+    "pointCloudNodeId": "dol",
+    "pointCloudPointCount": 291,
+    "source": "deterministically authored stylized 3D-inspired silhouette, not a 3D scan",
+    "silhouetteRecognizable": true,
+    "visualCheck": "Reviewed testshots/v25-graph-1440.png and testshots/v25-graph-390.png",
+    "nodeSelectionPreserved": true,
+    "selectionTest": "Browser pointer click at visual center for 1440x900 and 390x844, information panel returned 고인돌(지석묘)",
+    "nodeConnectionsPreserved": true,
+    "centerNodeNeighborCount": 12,
+    "otherNodesModified": false,
+    "underlyingGraphDataModified": false,
+    "nodeCount": 89,
+    "linkCount": 67
+  },
+  "chapter02": {
+    "cupmarkCount": 46,
+    "multipleLightsSupported": true,
+    "illuminatedCupmarkIds": "Dynamic Set derived from measured cupmark index; no fixed persisted IDs. Test scenario C01,C02,C03 = all lit; C02 toggled back off.",
+    "selectToToggle": true,
+    "previousNextPreservesLights": true,
+    "lightBrightnessControl": true,
+    "minBrightness": 0.25,
+    "maxBrightness": 1.0,
+    "defaultBrightness": 0.75,
+    "pulseMode": true,
+    "steadyMode": true,
+    "steadyBrightnessMaintained": true,
+    "haloPreserved": true,
+    "cameraFocusPreserved": true,
+    "occlusionPreserved": null,
+    "occlusionNotes": "Depth test and original depth-only model draw path unchanged; no real WebGL2 GPU available for end-to-end occlusion verification.",
+    "observationModeSwitchPreservesLights": true,
+    "markerVisibilityOnOffPreservesLights": true,
+    "testScenarioLightState": {
+      "afterC01C02C03": [
+        "C01",
+        "C02",
+        "C03"
+      ],
+      "afterC02Reselection": [
+        "C01",
+        "C03"
+      ],
+      "afterNavigation": [
+        "C01",
+        "C03"
+      ]
+    },
+    "rendererCallTest": "Mock WebGL calls: three lights produce 3 x beam(6 vertices), 3 x halo(1 point), 1 x markers(46 points); after toggling C02, two beams and two halos. Real GPU rendering not tested."
+  },
+  "dataIntegrity": {
+    "measuredCupmarkDataModified": false,
+    "markerPositionsModified": false,
+    "cameraFocusDataModified": false,
+    "modelGeometryModified": false,
+    "textureModified": false,
+    "v24FileCount": 187,
+    "unchangedV24Files": 183,
+    "changedFiles": [
+      "css/style.css",
+      "index.html",
+      "js/dolmenViewer.js",
+      "js/knowledgeGraph.js"
+    ],
+    "unchangedMeasuredDataSHA256": "582cdf5e46bae4a55ecf630be459976dc4be34f80e89599948f1dea668b6c4c5"
+  },
+  "regression": {
+    "openingPreserved": true,
+    "chapter03Preserved": true,
+    "chapter04Preserved": true,
+    "endingPreserved": true,
+    "evidence": "All files except index.html, css/style.css, js/knowledgeGraph.js and js/dolmenViewer.js are byte-identical to the v24 ZIP; only the specified additions are within those files."
+  },
+  "tests": {
+    "syntaxChecks": {
+      "js/knowledgeGraph.js": "passed (node --check)",
+      "js/dolmenViewer.js": "passed (node --check)"
+    },
+    "desktopTests": [
+      {
+        "viewport": "1920x1080",
+        "domLogicTests": "passed",
+        "actualWebGL": "not tested"
+      },
+      {
+        "viewport": "1440x900",
+        "domLogicTests": "passed",
+        "actualWebGL": "not tested"
+      },
+      {
+        "viewport": "1366x768",
+        "domLogicTests": "passed",
+        "actualWebGL": "not tested"
+      },
+      {
+        "viewport": "1024x768",
+        "domLogicTests": "passed",
+        "actualWebGL": "not tested"
+      }
+    ],
+    "mobileTests": [
+      {
+        "viewport": "390x844",
+        "domLogicTests": "passed",
+        "pointCloudCanvasRendered": true,
+        "actualTouchOnDevice": "not tested"
+      }
+    ],
+    "graphCanvasScreenshots": [
+      "testshots/v25-graph-1440.png",
+      "testshots/v25-graph-390.png"
+    ],
+    "uiScreenshots": [
+      "testshots/v25-ui-layout-1440.png",
+      "testshots/v25-ui-layout-390.png"
+    ],
+    "realWebGL2Available": false,
+    "localServerTest": {
+      "httpStatus": 200,
+      "note": "Chromium navigation to 127.0.0.1 was blocked by administrator in this runtime; DOM-injection browser tests and fake WebGL renderer call tests were used instead."
+    },
+    "knownIssues": [
+      "Actual hardware/SwiftShader WebGL2 model + transparent light overlap and depth occlusion were not available for testing in this environment.",
+      "Mobile real-device touch and visual performance with many lit cupmarks require final manual verification."
+    ]
+  },
+  "generatedAt": "2026-10-09"
+}

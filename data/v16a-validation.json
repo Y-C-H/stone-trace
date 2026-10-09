@@ -1,0 +1,183 @@
+{
+  "project": "돌에 새겨진 흔적",
+  "version": "stone-traces-v16a",
+  "base": "stone-traces-v15",
+  "models": {
+    "1m": {
+      "sourceFile": "dolmen_1M_poly(2).stl",
+      "sourceFormat": "binary STL",
+      "sourceBytes": 100736034,
+      "triangleCount": 2014719,
+      "uniqueVertexCount": 1038545,
+      "glbFile": "assets/models/dolmen-1m.glb",
+      "glbBytes": 36640052,
+      "boundsMinXYZ": [
+        -1466.743408203125,
+        -322.9413146972656,
+        -803.7507934570312
+      ],
+      "boundsMaxXYZ": [
+        1427.5230712890625,
+        394.3942565917969,
+        846.5983276367188
+      ],
+      "centerXYZ": [
+        -19.61016845703125,
+        35.726470947265625,
+        21.42376708984375
+      ],
+      "extentXYZ": [
+        2894.2666015625,
+        717.3355712890625,
+        1650.34912109375
+      ],
+      "sourceSHA256": "d07126b31da3c3a3472fa4cb1b45afecf84db95ebff407aa9164e5918d51aa57",
+      "geometryConversion": "Exact bitwise float32 vertex positions and original triangle order; shared vertices are indexed without changing coordinates, winding, scale or triangle count",
+      "additionalDecimation": false
+    },
+    "700k": {
+      "sourceFile": "dolmen_700K_poly(1).stl",
+      "sourceFormat": "binary STL",
+      "sourceBytes": 60395534,
+      "triangleCount": 1207909,
+      "uniqueVertexCount": 632050,
+      "glbFile": "assets/models/dolmen-700k.glb",
+      "glbBytes": 22080392,
+      "boundsMinXYZ": [
+        -1466.7635498046875,
+        -322.9413146972656,
+        -803.8015747070312
+      ],
+      "boundsMaxXYZ": [
+        1427.5526123046875,
+        394.507080078125,
+        846.6985473632812
+      ],
+      "centerXYZ": [
+        -19.60546875,
+        35.78288269042969,
+        21.448486328125
+      ],
+      "extentXYZ": [
+        2894.316162109375,
+        717.4483642578125,
+        1650.5001220703125
+      ],
+      "sourceSHA256": "0fe4e3117dfd47c7f22a6bfa79d4a1a95c4134b44d50794389e6585968873a56",
+      "geometryConversion": "Exact bitwise float32 vertex positions and original triangle order; shared vertices are indexed without changing coordinates, winding, scale or triangle count",
+      "additionalDecimation": false
+    },
+    "400k": {
+      "sourceFile": "dolmen_400K_poly(1).stl",
+      "sourceFormat": "binary STL",
+      "sourceBytes": 19961034,
+      "triangleCount": 399219,
+      "uniqueVertexCount": 215272,
+      "glbFile": "assets/models/dolmen-400k.glb",
+      "glbBytes": 7374760,
+      "boundsMinXYZ": [
+        -1466.6875,
+        -322.849609375,
+        -803.6774291992188
+      ],
+      "boundsMaxXYZ": [
+        1427.244873046875,
+        394.70452880859375,
+        846.7528076171875
+      ],
+      "centerXYZ": [
+        -19.7213134765625,
+        35.927459716796875,
+        21.537689208984375
+      ],
+      "extentXYZ": [
+        2893.932373046875,
+        717.5541381835938,
+        1650.43017578125
+      ],
+      "sourceSHA256": "0c7aa59f1e35b8aa321a281491503a80b5968f1f90b8c7c2c188c187b92f88c5",
+      "geometryConversion": "Exact bitwise float32 vertex positions and original triangle order; shared vertices are indexed without changing coordinates, winding, scale or triangle count",
+      "additionalDecimation": false
+    }
+  },
+  "coordinates": {
+    "sameAxisOrientation": true,
+    "sameCoordinateSystemWithinGeometrySimplificationTolerance": true,
+    "sameOriginReference": true,
+    "sameScaleWithinGeometrySimplificationTolerance": true,
+    "strictBoundingBoxesIdentical": false,
+    "sourceSTLProvidesUnits": false,
+    "viewerGeometryModified": false,
+    "viewerFitMethod": "Original model-space positions; normalization and centering only as GPU Model Root transform uniforms",
+    "maxOriginalBoundingFaceDeviationFrom1mUnits": 0.31027,
+    "maxOriginalBoundingFaceDeviationRelativeToLongestDimensionPercent": 0.01072,
+    "note": "Bounds vary slightly due to externally supplied simplification; no axis change, origin offset, or scale transformation was applied during conversion. STL has no explicit unit metadata. Model-origin equivalence is judged geometrically."
+  },
+  "quality": {
+    "1m": "Highest observed fine-surface continuity; cracks and depressions remain nuanced at close range",
+    "700k": "Good silhouette and prominent depressions, slightly more faceted on close inspection",
+    "400k": "Obvious large triangle facets when zoomed, unsuitable as primary conservation-viewing geometry",
+    "comparison": "Same VTK camera settings and flat lighting used for original STL comparison. testshots/dolmen-*.png and *-closeup.png"
+  },
+  "selection": {
+    "desktop": "1m",
+    "mobile": "700k",
+    "fallback": "No automatic 400k fallback; diagnostic URL override ?v16aModel=400k is available",
+    "reason": "Desktop prioritizes detail; Mobile reduces source GLB transfer from 36.64MB to 22.08MB while keeping acceptable visible geometry. Actual WebGL2 device performance is awaiting physical-browser verification",
+    "lod": "No continuous LOD or distance-based auto-switch"
+  },
+  "viewer": {
+    "implementation": "Local WebGL2, no external framework/CDN",
+    "rotation": "implemented; pointer-gesture logic tested with mocked GL",
+    "zoom": "implemented; pointer/wheel/button logic tested with mocked GL",
+    "pan": "implemented; right drag/two-pointer logic",
+    "reset": "implemented and logic tested",
+    "basic": "implemented",
+    "rakingLight": "implemented and logic tested",
+    "lightDirectionSlider": "implemented and logic tested",
+    "grayscale": "implemented and logic tested",
+    "loadingProgress": "XHR lengthComputable download progress; loaded-state transition tested with mocked GL",
+    "cameraFit": "Oriented bounding-box perspective fit, preserved original vertex data",
+    "mockedWebGL2ConsoleErrors": 0,
+    "webgl2HardwareRenderingConfirmed": false,
+    "notes": "Environment Chromium has WebGL/WebGL2 disabled; shader compilation, GPU rasterization, GPU timing and real touch-device performance cannot be certified by mocked-browser tests"
+  },
+  "regression": {
+    "sevenPagesPreserved": true,
+    "chapter01": "source DOM unchanged",
+    "chapter03": "source DOM unchanged",
+    "chapter04": "source DOM, provisional data and skyOverlay.js unchanged; navigation tested in browser mock",
+    "chapter05": "source DOM and constellation.js unchanged",
+    "chapter06": "source DOM unchanged",
+    "chapter07": "source DOM and participation.js unchanged; navigation tested in browser mock",
+    "P001ToP046": "unchanged",
+    "navigation": "core flow retained; Chapter 2 transitions tested",
+    "consoleErrorsInMockedBrowser": 0,
+    "fullLiveFunctionalRegression": "pending real GPU browser pass"
+  },
+  "tests": {
+    "staticHTMLChapterCount": 7,
+    "duplicateIds": 0,
+    "assetGLBGeometryIntegrity": "passed 3/3",
+    "software3DRender": "passed 3/3 on actual STL using VTK offscreen, same camera and close-up",
+    "testedMockBrowserViewports": [
+      "1920x1080",
+      "1440x900",
+      "1366x768",
+      "1024x768",
+      "390x844"
+    ],
+    "mockDOMEvents": "passed model load, drag-rotate, pinch zoom, pan/zoom/reset actions, three mode switches, Chapter 2 overview/detail navigation, Chapter 04/07 navigation, no page swipe during viewer gestures",
+    "mockGLBFixture": "400k geometry served for frontend parsing tests across all 5 viewports; tests of simulated loader are not benchmarks of the selected 1m/700k models",
+    "realWebGLBrowser": "not run: environment GPU context creation rejected by Chromium",
+    "actualBrowserLoadTimes": "not measured",
+    "mobileTouchOnPhysicalDevice": "not measured",
+    "realDeviceRecommendation": "Open the site on desktop and mobile browsers with WebGL2 and verify rendering, surface quality, pinch, pan and frame rate before final release"
+  },
+  "v16b": {
+    "sourceModelCoordinatesReady": true,
+    "threeDimensionalCupmarkRegistrationReadyToBegin": true,
+    "finalReleaseQAComplete": false,
+    "note": "Coordinate reference and model geometry are preserved. Complete physical-browser viewer acceptance before signing off the release."
+  }
+}

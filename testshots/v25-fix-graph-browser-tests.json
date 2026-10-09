@@ -1,0 +1,42 @@
+[
+  {
+    "size": "1920x1080",
+    "canvasRendered": true,
+    "pointCount": 1182,
+    "nodeSelected": true,
+    "connections": 12,
+    "runtimeErrors": []
+  },
+  {
+    "size": "1440x900",
+    "canvasRendered": true,
+    "pointCount": 1182,
+    "nodeSelected": true,
+    "connections": 12,
+    "runtimeErrors": []
+  },
+  {
+    "size": "1366x768",
+    "canvasRendered": true,
+    "pointCount": 1182,
+    "nodeSelected": true,
+    "connections": 12,
+    "runtimeErrors": []
+  },
+  {
+    "size": "1024x768",
+    "canvasRendered": true,
+    "pointCount": 1182,
+    "nodeSelected": true,
+    "connections": 12,
+    "runtimeErrors": []
+  },
+  {
+    "size": "390x844",
+    "canvasRendered": true,
+    "pointCount": 1182,
+    "nodeSelected": true,
+    "connections": 12,
+    "runtimeErrors": []
+  }
+]

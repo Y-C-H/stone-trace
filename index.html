@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="「돌에 새겨진 흔적」 — 3D 데이터를 활용해 세종 연기면 출토 지석묘의 기억과 성혈의 의미를 탐색하는 디지털 문화유산 전시" name="description"/>
+<title>돌에 새겨진 흔적 — 3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색</title>
+<link href="css/style.css" rel="stylesheet"/>
+<link rel="preload" as="image" href="assets/opening/opening-stone.png"/>
+<link rel="preload" as="image" href="assets/opening/opening-logo.png"/>
+<link href="css/sky-overlay.css" rel="stylesheet"/>
+</head>
+<body data-page="0">
+<a class="skip-link" href="#chapter-01">전시 본문으로 바로가기</a>
+<!-- Short exhibition opening; the original chapters retain their indices. -->
+<div class="exhibition-opening" id="exhibitionOpening" role="region" aria-label="전시 오프닝" tabindex="-1">
+  <div class="opening-composition">
+    <img class="opening-stone" src="assets/opening/opening-stone.png" alt="" fetchpriority="high" decoding="async"/>
+    <img class="opening-logo" src="assets/opening/opening-logo.png" alt="돌에 새겨진 흔적" fetchpriority="high" decoding="async"/>
+  </div>
+  <span class="opening-fallback-title" aria-hidden="true">돌에 새겨진 흔적</span>
+</div>
+<main aria-live="polite" class="exhibition">
+<!-- ========================================================
+         CHAPTER 01 — 고인돌 지식지도
+    ========================================================= -->
+<section aria-labelledby="graph-main-title" class="exhibition-page page-knowledge active" data-page-index="0" id="chapter-01">
+<canvas aria-hidden="true" class="graph-sky" id="graphSky"></canvas>
+<canvas aria-label="고인돌과 연구·해석 자료를 별자리처럼 탐색하는 3차원 지식 그래프" class="constellation-graph" id="constellationGraph"></canvas>
+<div aria-hidden="true" class="graph-glow-layer" id="graphGlowLayer"></div>
+<div aria-hidden="true" class="graph-label-layer" id="graphLabelLayer"></div>
+<header class="graph-main-header">
+<p class="graph-project-label"><span class="exhibition-name">돌에 새겨진 흔적</span><span aria-hidden="true" class="project-separator">·</span><span class="chapter-meta">CHAPTER 01</span></p>
+<h1 id="graph-main-title">고인돌 지식지도</h1>
+<p class="graph-curatorial-subtitle">고인돌의 별자리</p>
+<p class="graph-instruction">별을 짧게 누르면 이야기가 열리고, 별을 누른 채 끌었다 놓으면 탄성처럼 튕깁니다. 빈 공간 드래그는 회전, 휠은 확대·축소입니다.</p>
+<div aria-label="고인돌 별자리 군집 필터" class="graph-group-filters" id="graphGroupFilters"></div>
+</header>
+<div aria-label="고인돌 별자리 조작" class="graph-actions">
+<button id="graphRotate" type="button">자동 회전 끄기</button>
+<button id="graphFit" type="button">전체 보기</button>
+<button id="openSources" type="button">출처 · 연구자료</button>
+</div>
+<aside aria-hidden="true" aria-live="polite" class="graph-info-panel" id="graphPanel"></aside>
+
+</section>
+<section aria-labelledby="observation-chapter-title" class="exhibition-page page-dolmen page-unified-observation" data-page-index="1" id="chapter-02">
+<div class="page-frame">
+<header class="page-heading">
+<div>
+<p class="section-index">02 <span>/</span> MATTER &amp; TRACES</p>
+<h2 id="observation-chapter-title">고인돌과 성혈 관찰</h2>
+</div>
+<p><span id="observationModeQuestion">우리는 이 돌을 어떻게 지각하는가? 눈앞의 물질과 그 표면에 축적된 시간을 함께 바라봅니다.</span></p>
+</header>
+<div class="unified-observation-stage" id="unifiedObservationStage"><section aria-hidden="false" aria-labelledby="overview-stage-title" class="observation-mode observation-overview is-active" data-observation-panel="overview"><div class="observation-mode-bar"><div><p class="observation-stage-index">STAGE A · OVERVIEW</p><h3 id="overview-stage-title">고인돌 관찰</h3></div></div><div class="dolmen-layout">
+<div aria-label="실제 고인돌 3D 스캔 모델 전체 보기" class="artifact-stage">
+<div id="dolmenOverviewHost" class="dolmen-viewer-host">
+<div class="dolmen-3d-root" id="dolmen3dRoot">
+<canvas aria-label="실제 3D 스캔 고인돌. 드래그하여 회전, 휠이나 핀치로 확대" id="stoneViewer"></canvas>
+<div class="dolmen-loading" id="dolmenLoading" role="status" aria-live="polite"><strong id="dolmenLoadingTitle">3D 스캔 준비 중</strong><span id="dolmenLoadingPercent">0%</span><progress id="dolmenLoadingBar" max="100" value="0"></progress></div>
+</div>
+</div>
+</div>
+<aside aria-label="유물 및 스캔 데이터 정보" class="artifact-info">
+<div>
+<p class="panel-kicker">OBJECT INFORMATION</p>
+<span class="type-label fact">확인된 사실</span>
+</div>
+<dl class="museum-data">
+<div><dt>유물명</dt><dd class="artifact-name">세종 연기면 출토 지석묘</dd></div>
+<div><dt>위치</dt><dd>세종 연기면</dd></div>
+<div><dt>시대</dt><dd>청동기 추정</dd></div>
+<div><dt>형태</dt><dd>기반식 + 탁자식</dd></div>
+<div><dt>특징</dt><dd>추후 업데이트</dd></div>
+<div><dt>덮개돌 가로 길이</dt><dd>2,885 mm</dd></div>
+<div><dt>덮개돌 넓이</dt><dd>1,516 mm</dd></div>
+</dl>
+<div class="scan-data-summary">
+<p class="panel-kicker">SCAN DATA</p>
+<span class="type-label analysis">분석 결과</span>
+<ul>
+<li><strong>3D 모델 전체</strong><span>실제 3D 스캔 모델 확보</span></li>
+<li><strong>표면 굴곡·균열</strong><span>3D 형상으로 육안 관찰 가능</span></li>
+
+<li><strong>사람 몸 크기와의 비교</strong><span>추후 작업</span></li>
+</ul>
+</div>
+</aside>
+</div><div class="page-question curatorial-question">
+<div class="curatorial-note">
+<p>돌은 시간에 저항하지 않는다. 시간을 담고 있을 뿐이다.</p>
+</div>
+<button class="internal-observation-nav internal-observation-enter" id="enterObservation" type="button">성혈 관찰 <span aria-hidden="true">→</span></button>
+</div></section><section aria-hidden="true" aria-labelledby="detail-stage-title" class="observation-mode observation-detail" data-observation-panel="observation"><div class="observation-mode-bar"><div><p class="observation-stage-index">STAGE B · CLOSE OBSERVATION</p><h3 id="detail-stage-title">성혈 관찰</h3></div></div><div class="viewer-shell">
+<div class="viewer-main">
+<div id="dolmenDetailHost" class="dolmen-viewer-host"></div>
+<nav class="cupmark-focus-toolbar" id="cupmarkFocusToolbar" aria-label="개별 성혈 탐색" hidden>
+  <button type="button" id="cupmarkPrevious" aria-label="이전 성혈">‹ 이전</button>
+  <strong id="cupmarkFocusCounter" aria-live="polite"></strong>
+  <button type="button" id="cupmarkNext" aria-label="다음 성혈">다음 ›</button>
+  <button type="button" id="cupmarkWholeStone">전체 보기</button>
+</nav>
+<div class="viewer-status"><span><i class="analysis"></i> ACTUAL 3D SCAN</span><strong id="dolmenModelStatus">모델 준비 중</strong></div>
+<div aria-label="3D 관찰 도구" class="viewer-controls" role="group">
+<button data-viewer-action="zoom-in" aria-label="확대" title="확대" type="button">＋</button>
+<button data-viewer-action="zoom-out" aria-label="축소" title="축소" type="button">−</button>
+<button data-viewer-action="reset" type="button">전체 보기</button>
+<button data-viewer-mode="realistic" aria-pressed="true" type="button">실사</button>
+<button data-viewer-mode="surface" aria-pressed="false" type="button">표면</button>
+<button data-viewer-mode="raking" aria-pressed="false" type="button">측면광</button>
+<button data-viewer-mode="gray" aria-pressed="false" type="button">무채색</button>
+<label class="dolmen-light-control" id="dolmenLightControl" hidden>빛 방향 <input type="range" id="dolmenLightAngle" min="0" max="360" step="5" value="35" aria-label="측면광 빛 방향" /></label>
+</div>
+<p id="dolmenTextureNotice" class="dolmen-texture-notice" role="status" aria-live="polite"></p>
+<p class="viewer-help"><span>좌클릭 · 한 손가락: 회전</span><span>휠 · 핀치: 확대·축소</span><span>우클릭 · 두 손가락: 이동</span></p>
+</div>
+<aside aria-label="성혈 위치 및 측정 정보" class="measure-panel cupmark-panel" id="cupmarkPanel">
+<div class="cupmark-panel-head">
+  <p class="panel-kicker">MEASURED CUPMARKS · 3D</p>
+  <div class="cupmark-panel-headline"><h3 id="markTitle">성혈 측정 위치 <span id="cupmarkCount">불러오는 중</span></h3><button type="button" id="cupmarkPanelToggle" aria-expanded="true">측정 정보 접기</button></div>
+  <span class="cupmark-compact-selection" id="cupmarkCompactSelection" aria-live="polite"></span>
+  <p id="markDesc">실제 측정 좌표를 고인돌 표면 위에 표시합니다.</p>
+</div>
+<div class="cupmark-toggle-line">
+  <span>성혈 위치</span>
+  <div role="group" aria-label="성혈 위치 표시">
+    <button id="cupmarksOff" aria-pressed="true" type="button">OFF</button>
+    <button id="cupmarksOn" aria-pressed="false" type="button">ON</button>
+  </div>
+</div>
+<section class="cupmark-light-settings" aria-labelledby="cupmarkLightSettingsTitle">
+  <div class="cupmark-light-head"><strong id="cupmarkLightSettingsTitle">성혈 조명</strong><span id="cupmarkIlluminatedCount" aria-live="polite">켜진 성혈 0 / 0</span></div>
+  <label class="cupmark-brightness-control" for="cupmarkLightBrightness"><span>빛 밝기 <output id="cupmarkLightValue" for="cupmarkLightBrightness">75%</output></span><input id="cupmarkLightBrightness" type="range" min="25" max="100" step="1" value="75" aria-label="성혈 빛 밝기" /></label>
+  <div class="cupmark-light-mode-line"><span>발광 방식</span><div role="group" aria-label="성혈 발광 방식"><button id="cupmarkLightPulse" type="button" aria-pressed="true">맥동</button><button id="cupmarkLightSteady" type="button" aria-pressed="false">지속</button></div></div>
+  <p class="cupmark-light-hint">성혈을 선택하면 불빛이 켜지고, 다시 직접 선택하면 해당 불빛만 꺼집니다.</p>
+</section>
+<div class="cupmark-picker-wrap" id="cupmarkPickerWrap">
+  <p class="panel-kicker">위치 선택 <button type="button" id="cupmarkListToggle" aria-expanded="true">성혈 목록 접기</button></p>
+  <div class="cupmark-list" id="cupmarkList" role="group" aria-label="측정된 성혈 목록"></div>
+</div>
+<div class="cupmark-detail" id="cupmarkDetail" aria-live="polite">
+  <div class="cupmark-detail-title"><strong id="cupmarkSelectedId">성혈을 선택해 주세요</strong></div>
+  <dl class="measure-list">
+    <div><dt>직경</dt><dd id="cupmarkDiameter">—</dd></div>
+    <div><dt>깊이</dt><dd id="cupmarkDepth">—</dd></div>
+  </dl>
+</div>
+<p class="cupmark-disclaimer">금빛 표식은 측정 위치를 나타내며 실제 성혈 지름과 무관합니다. C01~C46은 새 실측 ID이고 기존 P001~P046과의 대응은 미확정입니다.</p>
+</aside>
+</div><div class="page-question compact-question observation-question">
+<div>
+<p>반복된 행위의 흔적으로 읽을 수 있을까? 누가, 왜 남겼을까?</p>
+</div>
+<button aria-label="고인돌 관찰 화면으로 돌아가기" class="internal-observation-nav internal-observation-back" id="returnOverview" type="button">← 고인돌 관찰</button>
+</div></section></div></div>
+</section><section aria-labelledby="interpretation-title" class="exhibition-page page-interpretation" data-page-index="2" id="chapter-03">
+<div class="page-frame">
+<header class="page-heading split">
+<div>
+<p class="section-index">03 <span>/</span> REACTIVATION · INTERPRETATION</p>
+<h2 id="interpretation-title">여러가지 해석</h2>
+<p class="chapter-curatorial-subtitle">다시 호출되는 돌</p>
+</div>
+
+</header>
+<div class="interpretation-layout">
+<div class="interpretation-list" role="list">
+<button aria-expanded="true" class="interpretation-item active" data-interpretation="fertility" type="button">
+<span class="item-number">01</span><strong>풍요·다산</strong><small>해석 · 가설</small><span class="item-arrow">↗</span>
+</button>
+<button aria-expanded="false" class="interpretation-item" data-interpretation="ritual" type="button">
+<span class="item-number">02</span><strong>제의·의례</strong><small>해석 · 가설</small><span class="item-arrow">↗</span>
+</button>
+<button aria-expanded="false" class="interpretation-item" data-interpretation="sun" type="button">
+<span class="item-number">03</span><strong>태양·자연의 상징</strong><small>해석 · 가설</small><span class="item-arrow">↗</span>
+</button>
+<button aria-expanded="false" class="interpretation-item" data-interpretation="folk" type="button">
+<span class="item-number">04</span><strong>민간신앙</strong><small>해석 · 가설</small><span class="item-arrow">↗</span>
+</button>
+<button aria-expanded="false" class="interpretation-item" data-interpretation="astronomy" type="button">
+<span class="item-number">05</span><strong>별자리 관련 가능성</strong><small>해석 · 가설</small><span class="item-arrow">↗</span>
+</button>
+<button aria-expanded="false" class="interpretation-item" data-interpretation="other" type="button">
+<span class="item-number">06</span><strong>그 밖의 가능성</strong><small>해석 · 가설</small><span class="item-arrow">↗</span>
+</button>
+</div>
+<article aria-live="polite" class="interpretation-detail" id="interpretationDetail">
+<figure aria-hidden="true" class="interpretation-visual">
+<img alt="" id="interpretationIllustration" src="assets/illustrations/fertility.svg"/>
+</figure>
+<div class="detail-copy">
+<span class="type-label hypothesis">해석 · 가설</span>
+<p class="detail-index" id="interpretationIndex">INTERPRETATION 01</p>
+<h3 id="interpretationName">풍요·다산</h3>
+<p id="interpretationBody">일부 연구에서는 성혈을 풍요·다산과 관련된 것으로 해석했습니다.</p>
+<button type="button" class="interpretation-source-button" aria-disabled="true" disabled>출처</button>
+
+</div>
+</article>
+</div>
+
+</div>
+</section><section aria-labelledby="sky-overlay-title" class="exhibition-page page-sky-overlay" data-page-index="3" id="chapter-04" data-page-key="sky-overlay">
+<div class="sky-overlay-frame">
+<header class="sky-overlay-heading">
+<div>
+<p class="section-index">04 <span>/</span> INTERACTIVE SKY OVERLAY</p>
+<h2 id="sky-overlay-title">성혈과 밤하늘</h2>
+<p class="chapter-curatorial-subtitle">직접 움직여 별의 배열과 비교해 보세요.</p>
+</div>
+<div class="sky-overlay-intro">
+<p>성혈 배열을 직접 움직여 밤하늘의 별과 겹쳐 보세요.</p>
+
+</div>
+</header>
+<div class="sky-workspace">
+<div class="sky-canvas-shell" id="skyCanvasShell">
+<canvas aria-label="밤하늘 위에서 성혈 배열을 이동, 확대축소, 회전하며 비교하는 체험 화면" id="skyOverlayCanvas"></canvas>
+<div class="sky-status-row">
+
+<span class="sky-layer-legend"><i class="legend-cupmark-star" aria-hidden="true">✦</i> 금빛 별 · 성혈 <i class="legend-sky-star" aria-hidden="true">✦</i> 흰 별 · 밤하늘</span>
+
+</div>
+<div class="sky-gesture-guide" aria-hidden="true">
+<span>드래그 · 이동</span><span>휠/핀치 · 확대축소</span><span >⟳ 손잡이 · 회전</span><span>성혈 클릭 · 표시 끄기</span>
+</div>
+</div>
+<aside class="sky-control-panel" aria-label="성혈 배열 조작 도구">
+<div class="sky-control-top">
+<p class="panel-kicker">CUP-MARK OVERLAY</p>
+<div class="sky-count"><strong id="skyVisibleCount">—</strong><span id="skyTotalCount">/ — 표시</span></div>
+</div>
+<div class="eastern-constellations-toggle" role="group" aria-label="동양 별자리">
+  <span>동양 별자리</span><div class="eastern-constellations-buttons">
+  <button type="button" id="easternOff" aria-pressed="true">OFF</button><button type="button" id="easternOn" aria-pressed="false">ON</button>
+  </div>
+</div>
+<div class="sky-transform-controls">
+<div class="sky-control-group">
+<span>확대 · 축소</span>
+<div class="sky-button-row"><button aria-label="성혈 배열 축소" data-sky-action="zoom-out" type="button">−</button><output id="skyScaleValue">100%</output><button aria-label="성혈 배열 확대" data-sky-action="zoom-in" type="button">＋</button></div>
+</div>
+<div class="sky-control-group">
+<label for="skyRotation"><span>회전 <small>하늘 위 ⟳ 손잡이를 직접 끌어 조정</small></span><output id="skyRotationValue">0°</output></label>
+<input aria-label="성혈 배열 회전" id="skyRotation" min="-180" max="180" step="1" type="range" value="0"/>
+<div class="sky-rotation-nudge"><button data-sky-rotate="-5" type="button">−5°</button><button data-sky-rotate="-1" type="button">−1°</button><button data-sky-rotate="1" type="button">+1°</button><button data-sky-rotate="5" type="button">+5°</button></div>
+</div>
+<div class="sky-main-actions"><button data-sky-action="reset" type="button">초기화</button><button class="accent-button" data-sky-action="confirm" type="button">확정하기</button></div>
+</div>
+<details class="sky-mark-manager" open>
+<summary>성혈 관리 <span id="skyManagerCount">—</span></summary>
+<div class="sky-manager-actions"><button data-sky-action="all-on" type="button">모두 켜기</button><button data-sky-action="all-off" type="button">모두 끄기</button></div>
+<div class="sky-mark-list" id="skyMarkList" role="list"></div>
+</details>
+</aside>
+</div>
+</div>
+<div class="sky-confirm-view" id="skyConfirmView" aria-hidden="true">
+<canvas aria-label="직접 배치한 성혈과 밤하늘 비교 결과" id="skyConfirmCanvas"></canvas>
+<div class="sky-confirm-caption"><span>직접 배치한 비교 결과</span><strong id="skyConfirmTransform">—</strong></div>
+<button class="sky-confirm-close" id="skyConfirmClose" type="button">편집으로 돌아가기</button>
+</div>
+</section>
+<!-- Ending: measured cupmarks become stars, with no visible explanatory text. -->
+<section class="exhibition-page page-ending" data-page-index="4" id="exhibition-ending" aria-label="성혈 별빛 엔딩">
+  <canvas id="endingSkyCanvas" class="ending-sky-canvas" aria-label="실제 측정 성혈 배치로 만든 밤하늘. 성혈 직경은 별 크기, 깊이는 밝기를 나타냅니다."></canvas>
+  <button type="button" id="endingReturn" class="ending-return" aria-label="Chapter 04로 돌아가기"><span aria-hidden="true">←</span></button>
+</section>
+</main>
+<!-- Constellation-shaped table of contents -->
+<nav aria-label="별자리형 전시 목차" class="constellation-toc" id="constellationToc"><button aria-controls="tocMap" aria-expanded="false" class="toc-toggle" id="tocToggle" type="button"><span aria-hidden="true">✦</span><em>목차</em></button><div class="toc-map" id="tocMap">
+<svg aria-hidden="true" class="toc-lines" viewBox="0 0 126 185"><path d="M44 23 L78 63 L50 105 L84 146"></path></svg>
+<button aria-label="1장 고인돌 지식지도" class="toc-node toc-01" data-goto="0" title="고인돌 지식지도" type="button"><span class="toc-star"></span><small>01</small><em>고인돌 지식지도</em></button>
+<button aria-label="2장 고인돌과 성혈 관찰" class="toc-node toc-02" data-goto="1" title="고인돌과 성혈 관찰" type="button"><span class="toc-star"></span><small>02</small><em>고인돌과 성혈 관찰</em></button>
+<button aria-label="3장 여러가지 해석" class="toc-node toc-03" data-goto="2" title="여러가지 해석" type="button"><span class="toc-star"></span><small>03</small><em>여러가지 해석</em></button>
+<button aria-label="4장 성혈과 밤하늘" class="toc-node toc-04" data-goto="3" title="성혈과 밤하늘" type="button"><span class="toc-star"></span><small>04</small><em>성혈과 밤하늘</em></button>
+</div></nav>
+<!-- Sequential previous / next navigation -->
+<nav aria-label="이전 및 다음 장 이동" class="page-navigation">
+<button aria-label="이전 장으로 이동" class="page-prev" id="pagePrev" type="button">
+<span aria-hidden="true" class="nav-arrow">←</span><span class="nav-copy"><small>PREVIOUS</small><strong>이전 장</strong></span>
+</button>
+<span class="page-index" id="pageIndex">01 / 04</span>
+<button aria-label="다음 장으로 이동" class="page-next" id="pageNext" type="button">
+<span class="nav-copy"><small>NEXT</small><strong>다음 장</strong></span><span aria-hidden="true" class="nav-arrow">→</span>
+</button>
+</nav>
+<!-- Research / methodology overlay -->
+<dialog aria-labelledby="sources-title" class="sources-dialog" id="sourcesDialog">
+<div class="sources-wrap">
+<header>
+<div>
+<p class="section-index">ARCHIVE <span>/</span> METHODOLOGY</p>
+<h2 id="sources-title">「돌에 새겨진 흔적」 연구자료 및 제작 과정</h2>
+</div>
+<button aria-label="연구자료 닫기" class="dialog-close" id="closeSources" type="button">×</button>
+</header>
+<div class="source-principle">
+<span class="type-label fact">확인된 사실</span>
+<span class="type-label analysis">분석 결과</span>
+<span class="type-label hypothesis">해석 · 가설</span>
+<span class="type-label context">개념 · 맥락</span>
+<p>전시 텍스트는 실제 자료에서 확인된 내용, 프로젝트 분석 결과, 연구자의 해석, 일반 맥락을 구분해 표시합니다.</p>
+</div>
+<div class="archive-grid"><section><span>01</span><h3>고인돌</h3><p>대상 유물의 명칭·위치·시대·형태와 확인된 기본 정보를 정리합니다.</p></section><section><span>02</span><h3>성혈</h3><p>성혈의 정의와 고인돌·자연 암반에서 확인되는 사례를 정리할 영역입니다.</p></section><section><span>03</span><h3>다양한 해석</h3><p>풍요·다산, 제의·의례, 자연 상징, 민간신앙, 별자리 관련 가능성 등을 구분해 제시합니다.</p></section><section><span>04</span><h3>3D 스캐닝</h3><p>스캔 장비, 촬영·정합·메시 생성, 성혈 좌표 및 깊이 측정 과정을 기록할 영역입니다.</p></section><section><span>05</span><h3>별자리 비교 방법</h3><p>점 좌표 정규화, 회전·스케일 보정, 대응점과 일치율 산정 기준을 설명할 영역입니다.</p></section><section><span>06</span><h3>제작 과정</h3><p>기획 → 기록 → 분석 → 비교 → 해석 → 참여형 전시로 이어지는 프로젝트 과정을 정리합니다.</p></section><section><span>07</span><h3>이론 틀</h3><p>베르그송의 지각과 아스만의 저장기억·기능기억을 전시의 해석 틀로 사용합니다. 원전의 직접 주장과 전시적 적용을 구분합니다.</p></section><section><span>08</span><h3>스캔 데이터 입력 현황</h3><p>현재 실제 3D 스캔 전 단계입니다. 측정값은 입력하지 않고, 데이터가 들어갈 위치와 연결 구조만 제시합니다.</p></section></div>
+<div class="reference-placeholder">
+<h3>보조자료에 기재된 참고 항목 <small>서지 검증 후 확정</small></h3>
+<ul>
+<li><span>이영문</span><strong>韓國 支石墓 調査成果와 硏究傾向</strong><em>2006</em></li>
+<li><span>우장문</span><strong>고인돌을 만든 사람들의 사유에 관한 연구 - 덮개돌의 굼을 중심으로 -</strong><em>2008</em></li>
+<li><span>우장문</span><strong>경기지역의 고인돌에 새겨진 굼의 연구</strong><em>2006</em></li>
+<li><span>박창범 · 이용복</span><strong>청원 아득이 고인돌 유적 별자리판 관련 연구</strong><em>서지 확인 예정</em></li>
+<li><span>오대양</span><strong>금강하류지역 청동기시대 묘제의 제사·의례적 성격 고찰</strong><em>2022</em></li>
+<li><span>지역N문화</span><strong>울주 방기리 알바위</strong><em>자료 URL 확인 예정</em></li>
+<li><span>박창범 외</span><strong>남한지역 바위구멍 조사 관련 연구</strong><em>서지 확인 예정</em></li><li><span>오산문화총서</span><strong>오산문화총서 관련 자료</strong><em>서지 확인 예정</em></li><li><span>앙리 베르그송 · 알라이다 아스만</span><strong>『물질과 기억』 / 『문화적 기억』</strong><em>판본·번역본 확인 예정</em></li><li><span>국가유산 GIS</span><strong>「지도에서 만나는 고인돌」</strong><em>gis-heritage.go.kr · 열람 2026.09.30</em></li></ul>
+</div>
+</div>
+</dialog>
+<script defer="" src="js/knowledgeData.js"></script>
+<script defer="" src="js/dolmenScanCloud.js"></script>
+<script defer="" src="js/knowledgeGraph.js"></script>
+
+
+<script defer="" src="js/skyOverlay.js"></script>
+
+<script defer="" src="js/dolmenViewer.js"></script>
+<script defer="" src="js/endingSky.js"></script>
+<script defer="" src="js/main.js"></script>
+</body>
+</html>

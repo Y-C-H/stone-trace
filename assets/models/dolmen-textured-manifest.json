@@ -1,0 +1,62 @@
+{
+  "format": "stone-traces-texture-glb-parts-v1",
+  "triangleCount": 752644,
+  "vertexCount": 2257932,
+  "source": "Geomagic OBJ geometry and original UV, bit-exact corner order",
+  "image": "dolmen-texture-atlas.jpg",
+  "imageBytes": 1094336,
+  "chunks": [
+    {
+      "file": "dolmen-textured-01.glb",
+      "vertices": 300000,
+      "bytes": 6001384,
+      "triangles": 100000
+    },
+    {
+      "file": "dolmen-textured-02.glb",
+      "vertices": 300000,
+      "bytes": 6001388,
+      "triangles": 100000
+    },
+    {
+      "file": "dolmen-textured-03.glb",
+      "vertices": 300000,
+      "bytes": 6001388,
+      "triangles": 100000
+    },
+    {
+      "file": "dolmen-textured-04.glb",
+      "vertices": 300000,
+      "bytes": 6001380,
+      "triangles": 100000
+    },
+    {
+      "file": "dolmen-textured-05.glb",
+      "vertices": 300000,
+      "bytes": 6001384,
+      "triangles": 100000
+    },
+    {
+      "file": "dolmen-textured-06.glb",
+      "vertices": 300000,
+      "bytes": 6001384,
+      "triangles": 100000
+    },
+    {
+      "file": "dolmen-textured-07.glb",
+      "vertices": 300000,
+      "bytes": 6001388,
+      "triangles": 100000
+    },
+    {
+      "file": "dolmen-textured-08.glb",
+      "vertices": 157932,
+      "bytes": 3160016,
+      "triangles": 52644
+    }
+  ],
+  "coordinateTransform": "existing v19 TEXTURE_TRANSFORM; unchanged",
+  "sourcePositionSha256": "713000df97db7295f096b1a3bc0f6a3ba5eedb1b4d5b62e1e306616ad9515e62",
+  "sourceUvSha256": "a3f1a93033ecd4b3d8b5df8e0381de15995add8b704fbcee005059c2847493ba",
+  "sourceJpgSha256": "50bdd16a417c8ba4734ea14017cbab1cfdc6030f595134c7dc6dc350848fec7a"
+}

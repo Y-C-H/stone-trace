@@ -1,0 +1,20 @@
+{
+  "version": "v15",
+  "base": "v14",
+  "changes": {
+    "cupmarkRendering": "warm star: ivory core + gold halo; hover ring only",
+    "rotationAffordance": "direct draggable rotation handle on sky canvas; slider/nudge retained"
+  },
+  "browserChecks": {
+    "desktopViewport": "1440x900",
+    "mobileViewport": "390x844",
+    "rotationHandleDrag": "0° -> 59°",
+    "managerToggle": "46 -> 45 -> 46",
+    "confirmViewOpened": true,
+    "consoleOrPageErrors": 0
+  },
+  "staticChecks": {
+    "duplicateHtmlIds": [],
+    "duplicateHtmlIdCount": 0
+  }
+}

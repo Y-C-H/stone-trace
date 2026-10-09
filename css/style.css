@@ -1,0 +1,1021 @@
+:root{
+  --bg:#05070d;
+  --bg-2:#101824;
+  --panel:#202c3a;
+  --text:#e7e2d8;
+  --muted:#9ba2ad;
+  --line:rgba(231,226,216,.14);
+  --line-strong:rgba(231,226,216,.28);
+  --analysis:#7fc8c0;
+  --hypothesis:#d6b47a;
+  --context:#8b8578;
+  --fact:#e7e2d8;
+  --serif:Dotum,"돋움","Nanum Gothic","Noto Sans KR","Malgun Gothic",sans-serif;
+  --sans:Dotum,"돋움","Nanum Gothic","Noto Sans KR","Malgun Gothic",sans-serif;
+  --ease:cubic-bezier(.2,.75,.25,1);
+  --page-pad-x:clamp(3.9rem,7vw,7.5rem);
+  --page-pad-top:clamp(3.8rem,6.5vh,5.4rem);
+  --page-pad-bottom:clamp(4.7rem,8vh,6.2rem);
+}
+
+*{box-sizing:border-box}
+html,body{width:100%;height:100%;margin:0;background:var(--bg);overflow:hidden;overscroll-behavior:none}
+body{color:var(--text);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+button{color:inherit}
+a{color:inherit;text-decoration:none}
+canvas{display:block}
+:focus-visible{outline:1px solid var(--hypothesis);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:fixed;left:1rem;top:-4rem;z-index:200;padding:.65rem .9rem;background:var(--text);color:var(--bg)}
+.skip-link:focus{top:1rem}
+
+/* Korean line-breaking system */
+h1,h2,h3,h4,p,dt,dd,button,label,strong,span{word-break:keep-all;overflow-wrap:break-word}
+h1,h2,h3,h4{text-wrap:balance}
+p,dd{ text-wrap:pretty }
+
+body.motion-reduced *,body.motion-reduced *::before,body.motion-reduced *::after{animation:none!important;transition-duration:.001ms!important}
+
+/* ---------- book/page system ---------- */
+.exhibition{position:fixed;inset:0;overflow:hidden;background:var(--bg);perspective:1400px;transform-style:preserve-3d}
+.exhibition-page{
+  position:absolute;inset:0;width:100%;height:100dvh;overflow:hidden;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transform:translateX(5vw) rotateY(-2.4deg) scale(.995);transform-origin:left center;
+  transition:opacity .66s var(--ease),transform .66s var(--ease),visibility 0s linear .66s;
+  will-change:opacity,transform;backface-visibility:hidden;
+}
+.exhibition-page.active{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(0) rotateY(0) scale(1);transition-delay:0s;z-index:2}
+.exhibition-page.from-left{transform:translateX(-5vw) rotateY(2.4deg) scale(.995);transform-origin:right center}
+.exhibition-page.leaving-left{opacity:0;visibility:visible;transform:translateX(-4vw) rotateY(2deg) scale(.994);transform-origin:right center;z-index:3;pointer-events:none}
+.exhibition-page.leaving-right{opacity:0;visibility:visible;transform:translateX(4vw) rotateY(-2deg) scale(.994);transform-origin:left center;z-index:3;pointer-events:none}
+body.page-turning .page-navigation button,body.page-turning .constellation-toc button{pointer-events:none}
+
+.page-frame{
+  position:relative;width:min(1360px,calc(100vw - (var(--page-pad-x) * 2)));height:100%;margin:0 auto;
+  padding:var(--page-pad-top) 0 var(--page-pad-bottom);display:flex;flex-direction:column;min-height:0;
+}
+.page-heading{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(18rem,.65fr);gap:clamp(2rem,6vw,6rem);align-items:end;margin-bottom:clamp(1rem,2.6vh,2rem);flex:0 0 auto}
+.page-heading>p{margin:0 0 .25rem;color:#9299a3;font-size:clamp(.7rem,.83vw,.9rem);line-height:1.75;max-width:37rem}
+.page-heading h2{margin:.38rem 0 0;font:400 clamp(2.15rem,4.2vw,4.8rem)/1.12 var(--serif);letter-spacing:-.035em;max-width:18ch}
+.page-heading.compact-heading h2{font-size:clamp(2rem,3.7vw,4.25rem);max-width:21ch}
+.section-index{margin:0;color:#77818f;font-size:clamp(.58rem,.62vw,.68rem);letter-spacing:.18em;text-transform:uppercase}
+.section-index span{margin:0 .5rem;color:var(--hypothesis)}
+.panel-kicker{margin:0 0 .55rem;color:#788291;font-size:.6rem;letter-spacing:.17em}
+
+.type-label{display:inline-flex;align-items:center;gap:.35rem;padding:.24rem .4rem;border:1px solid currentColor;font-size:.58rem;letter-spacing:.08em;white-space:nowrap}
+.type-label.fact{color:var(--fact)}.type-label.analysis{color:var(--analysis)}.type-label.hypothesis{color:var(--hypothesis)}.type-label.context{color:var(--context)}
+.type-dot,.plot-legend i{display:inline-block;width:7px;height:7px;border-radius:50%}
+.type-dot.fact,.plot-legend i.fact{background:var(--fact)}.type-dot.analysis,.plot-legend i.analysis{background:var(--analysis)}.type-dot.hypothesis,.plot-legend i.hypothesis{background:var(--hypothesis)}.type-dot.context,.plot-legend i.context{background:var(--context)}
+
+.primary-action,.secondary-action,.accent-button,.button-like,.page-question button{
+  border:1px solid rgba(231,226,216,.25);background:rgba(7,10,17,.56);color:var(--text);min-height:2.65rem;padding:.58rem .85rem;cursor:pointer;font-size:.7rem;letter-spacing:.055em;transition:border-color .22s,background .22s,transform .22s
+}
+.primary-action:hover,.secondary-action:hover,.accent-button:hover,.button-like:hover,.page-question button:hover{border-color:var(--hypothesis);background:rgba(214,180,122,.07);transform:translateY(-1px)}
+
+/* ---------- global navigation ---------- */
+.constellation-toc{position:fixed;z-index:74;left:.65rem;top:50%;width:126px;height:286px;transform:translateY(-50%);pointer-events:none;font-family:var(--sans)}
+.toc-toggle{display:none}
+.toc-map{position:absolute;inset:0;border:1px solid rgba(255,255,255,.055);background:linear-gradient(90deg,rgba(5,7,13,.64),rgba(5,7,13,.18));backdrop-filter:blur(7px);pointer-events:auto;transition:opacity .25s,transform .25s}
+.toc-lines{position:absolute;inset:7px 3px;width:120px;height:270px;overflow:visible}
+.toc-lines path{fill:none;stroke:rgba(192,202,222,.22);stroke-width:.8;stroke-linecap:round;stroke-linejoin:round}
+.toc-node{position:absolute;width:74px;height:32px;padding:0;border:0;background:transparent;color:#707987;cursor:pointer;text-align:left;pointer-events:auto}
+.toc-node .toc-star{position:absolute;left:0;top:50%;width:5px;height:5px;transform:translate(-50%,-50%);border-radius:50%;background:#8c96a5;box-shadow:0 0 0 3px rgba(140,150,165,.05);transition:transform .25s,background .25s,box-shadow .25s}
+.toc-node small{position:absolute;left:10px;top:3px;color:#69727f;font-size:.48rem;letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.toc-node em{position:absolute;left:10px;top:15px;max-width:88px;overflow:hidden;color:#7e8793;font-size:.55rem;font-style:normal;white-space:nowrap;opacity:0;transform:translateX(-3px);transition:opacity .22s,transform .22s,color .22s}
+.toc-node:hover em,.toc-node.active em{opacity:1;transform:none}.toc-node:hover .toc-star,.toc-node.active .toc-star{background:var(--hypothesis);box-shadow:0 0 12px rgba(214,180,122,.65),0 0 0 4px rgba(214,180,122,.08)}
+.toc-node.active .toc-star{transform:translate(-50%,-50%) scale(1.35)}.toc-node.active small,.toc-node.active em{color:#d7d0c0}
+.toc-01{left:44px;top:7px}.toc-02{left:78px;top:47px}.toc-03{left:50px;top:89px}.toc-04{left:84px;top:130px}.toc-05{left:39px;top:175px}.toc-06{left:76px;top:223px}
+
+.page-navigation{position:fixed;z-index:73;inset:0;pointer-events:none;font-family:var(--sans)}
+.page-navigation button{position:absolute;bottom:calc(1rem + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:.68rem;min-width:118px;min-height:52px;padding:.55rem .72rem;border:1px solid rgba(231,226,216,.16);background:rgba(5,7,13,.78);backdrop-filter:blur(12px);color:#9ba3ae;cursor:pointer;pointer-events:auto;transition:border-color .25s,background .25s,color .25s,transform .25s,opacity .25s}
+.page-navigation button:hover{border-color:rgba(214,180,122,.55);background:rgba(214,180,122,.075);color:var(--text);transform:translateY(-2px)}
+.page-navigation button:disabled,.page-navigation button.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.page-prev{left:clamp(.75rem,2vw,1.8rem)}.page-next{right:clamp(.75rem,2vw,1.8rem);justify-content:flex-end;text-align:right}
+.nav-arrow{font:300 1.55rem/1 var(--sans);color:var(--hypothesis)}.nav-copy{display:flex;flex-direction:column;line-height:1.1}.nav-copy small{font-size:.48rem;letter-spacing:.13em;color:#626c78}.nav-copy strong{margin-top:.26rem;font-size:.68rem;font-weight:500;white-space:nowrap}
+.page-index{position:absolute;left:50%;bottom:calc(1.2rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);min-width:5.2rem;padding:.45rem .55rem;text-align:center;color:#777f8b;background:rgba(5,7,13,.62);border:1px solid rgba(255,255,255,.06);font-size:.58rem;font-variant-numeric:tabular-nums;letter-spacing:.12em;pointer-events:none}
+
+/* ---------- Chapter 01: 고인돌의 별자리 ---------- */
+.page-knowledge{background:radial-gradient(ellipse at 50% 45%,#0e1424 0%,#03050a 76%);color:#d8d4cb}
+.graph-sky,.constellation-graph,.graph-glow-layer,.graph-label-layer{position:absolute;inset:0;width:100%;height:100%}
+.graph-sky{z-index:0;pointer-events:none}.constellation-graph{z-index:1;touch-action:none;cursor:grab}.constellation-graph.drag{cursor:grabbing}
+.graph-glow-layer{display:none}.graph-label-layer{z-index:2;pointer-events:none;overflow:hidden}
+.graph-node-label,.graph-cluster-label{position:absolute;left:0;top:0;white-space:nowrap;font-family:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;word-break:keep-all;overflow-wrap:normal;color:#e2ded4;transition:opacity .18s linear;will-change:transform,opacity}
+.graph-node-label{text-align:center;line-height:1.05;text-shadow:-1px -1px 0 rgba(3,5,10,.82),1px -1px 0 rgba(3,5,10,.82),-1px 1px 0 rgba(3,5,10,.82),1px 1px 0 rgba(3,5,10,.82),0 0 5px rgba(3,5,10,.95)}
+.graph-cluster-label{font-size:12px;font-weight:400;letter-spacing:.22em;text-shadow:0 0 8px rgba(3,5,10,.96);opacity:.52}
+.graph-main-header{position:absolute;z-index:6;top:calc(14px + env(safe-area-inset-top,0px));left:18px;max-width:min(670px,calc(100vw - 390px));pointer-events:none}
+.graph-project-label{margin:0 0 .28rem;color:#8d93a3;font:500 9px/1.5 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+.graph-main-header h1{margin:0;font:400 clamp(22px,3vw,32px)/1.22 "Noto Serif KR","Nanum Myeongjo",Georgia,serif;letter-spacing:.28em;color:#e9dfc4;text-wrap:balance}
+.graph-instruction{margin:5px 0 0;color:#9aa1ae;font:400 11px/1.55 var(--sans);max-width:610px}
+.graph-group-filters{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;pointer-events:auto;max-width:min(820px,calc(100vw - 420px))}
+.graph-data-pending{font-style:italic;color:#737c8d}
+.graph-group-filters button{display:flex;align-items:center;gap:7px;padding:4px 10px;border:1px solid #3b4257;border-radius:2px;background:rgba(10,14,24,.72);color:#cfc8b6;font:500 10.5px/1.2 var(--sans);cursor:pointer;transition:opacity .2s,border-color .2s,background .2s,color .2s}
+.graph-group-filters button:hover{border-color:#c9a862;color:#f0e3bd;background:rgba(16,20,31,.86)}.graph-group-filters button[aria-pressed="false"]{opacity:.34}.graph-group-filters i{width:8px;height:8px;border-radius:50%}.graph-group-filters .graph-add-star{border-style:dashed;color:#9ca3af}
+.graph-actions{position:absolute;z-index:7;right:14px;top:calc(14px + env(safe-area-inset-top,0px));display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:430px}
+.graph-actions button{padding:6px 10px;border:1px solid #3b4257;border-radius:2px;background:rgba(10,14,24,.72);color:#cfc8b6;font:500 10.5px var(--sans);cursor:pointer;letter-spacing:.04em}.graph-actions button:hover{border-color:#c9a862;color:#f0e3bd}
+.graph-info-panel{display:none;position:absolute;z-index:8;right:14px;bottom:calc(82px + env(safe-area-inset-bottom,0px));width:min(330px,calc(100vw - 28px));max-height:66vh;overflow:auto;padding:16px;background:rgba(9,12,20,.94);border:1px solid #363d52;border-radius:2px;backdrop-filter:blur(8px);font-family:var(--sans)}
+.graph-info-panel.on{display:block}.graph-info-panel h2{margin:0;padding-right:32px;font:400 18px/1.35 "Noto Serif KR","Nanum Myeongjo",Georgia,serif;color:#f0e3bd}.graph-info-panel>p{margin:.45rem 0 .8rem;color:#b9b6ad;font-size:12px;line-height:1.65}.graph-panel-close{position:absolute;right:8px;top:8px;width:30px;height:30px;border:1px solid #3b4257;border-radius:50%;background:transparent;color:#e9dfc4;cursor:pointer;font-size:16px}.graph-panel-tag{margin:.12rem 0 .45rem;color:#8d93a3;font-size:11px}.graph-panel-note{margin-top:.75rem;padding-top:.65rem;border-top:1px solid #363d52;color:#8d93a3;font-size:11px;line-height:1.55}.graph-connected-links{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.75rem}.graph-connected-links button{padding:2px 7px;border:1px solid #3b4257;border-radius:2px;background:transparent;color:#d2d0c7;font-size:11px;cursor:pointer}.graph-add-details{margin-top:.8rem;padding-top:.65rem;border-top:1px solid #363d52}.graph-add-details summary{cursor:pointer;font-size:12px}.graph-add-details form{display:grid;gap:7px;margin-top:8px}.graph-add-details input,.graph-add-details textarea,.graph-add-details select{width:100%;padding:6px 8px;border:1px solid #3b4257;border-radius:2px;background:transparent;color:#e9e6da;font:12px var(--sans)}.graph-add-details select option{color:#111}.graph-add-details form button{padding:7px;border:1px solid #d8d4cb;background:transparent;color:#e9e6da;cursor:pointer}
+.graph-entry-footer{position:absolute;z-index:6;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(720px,calc(100vw - 300px));display:flex;align-items:center;justify-content:center;gap:1rem;padding:.62rem .8rem;background:linear-gradient(90deg,transparent,rgba(5,7,13,.86) 17%,rgba(5,7,13,.86) 83%,transparent)}
+.graph-entry-footer p{margin:0;color:#8d93a3;font:10.5px/1.55 var(--sans);text-align:right}.graph-entry-footer p span{display:block;color:#747e90;font-size:8px;letter-spacing:.16em}.start-exhibition{flex:0 0 auto;min-height:42px;padding:.6rem .82rem;border:1px solid rgba(201,168,98,.58);background:rgba(10,14,24,.78);color:#f0e3bd;font:500 11px var(--sans);letter-spacing:.055em;cursor:pointer}.start-exhibition:hover{border-color:#f0e3bd;background:rgba(201,168,98,.08)}
+
+/* ---------- Chapter 02 ---------- */
+.page-dolmen{background:radial-gradient(circle at 34% 48%,rgba(64,64,58,.15),transparent 36rem),linear-gradient(#07090e,#0a0d13 65%,#07090e)}
+.dolmen-layout{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(250px,.68fr);gap:1rem;min-height:0;flex:1}
+.artifact-stage{position:relative;min-height:0;border:1px solid rgba(255,255,255,.07);background:#080a0e;overflow:hidden}
+#dolmenCanvas{position:absolute;inset:0;width:100%;height:100%}
+.artifact-grid{position:absolute;inset:0;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.11) 1px,transparent 1px);background-size:4rem 4rem;mask-image:linear-gradient(90deg,transparent,black 27%,black 72%,transparent)}
+.artifact-caption{position:absolute;left:1rem;right:1rem;bottom:1rem;display:flex;justify-content:space-between;gap:1rem;color:#737b87;font-size:.57rem;letter-spacing:.1em}
+.artifact-caption strong{color:#a8a9a5;font-weight:400;letter-spacing:0;text-align:right}
+.artifact-marker{position:absolute;width:2.4rem;height:2.4rem;border:0;border-radius:50%;background:transparent;cursor:pointer}
+.artifact-marker::before,.artifact-marker::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%}
+.artifact-marker::before{width:9px;height:9px;border:1px solid var(--hypothesis);background:rgba(5,7,13,.9)}
+.artifact-marker::after{width:2rem;height:2rem;border:1px solid rgba(214,180,122,.28);animation:pulse 2.8s infinite}
+.marker-a{left:35%;top:34%}.marker-b{left:56%;top:45%}.marker-c{left:68%;top:30%}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(.62);opacity:.3}50%{transform:translate(-50%,-50%) scale(1.15);opacity:.8}}
+.artifact-info{min-height:0;padding:1.25rem;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:space-between;background:rgba(12,16,23,.74)}
+.museum-data{margin:1rem 0}
+.museum-data div{display:grid;grid-template-columns:4.5rem 1fr;gap:.7rem;padding:.68rem 0;border-top:1px solid var(--line)}
+.museum-data div:last-child{border-bottom:1px solid var(--line)}
+.museum-data dt{color:#737d89;font-size:.63rem}.museum-data dd{margin:0;color:#c8c5bd;font:400 .86rem var(--serif)}
+.data-note{margin:0;color:#858e99;font-size:.64rem;line-height:1.55}.data-note .type-dot{margin-right:.3rem}
+.page-question{flex:0 0 auto;margin-top:.8rem;padding-top:.75rem;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.page-question p{margin:0;font:400 clamp(.95rem,1.55vw,1.45rem)/1.45 var(--serif);max-width:42rem}
+.page-question button{white-space:nowrap;color:var(--hypothesis)}
+
+/* ---------- Chapter 03 ---------- */
+.page-interpretation{background:linear-gradient(130deg,#070a10,#0c1119 55%,#080a0f)}
+.interpretation-layout{display:grid;grid-template-columns:minmax(250px,.7fr) minmax(0,1.3fr);border-top:1px solid var(--line);min-height:0;flex:1}
+.interpretation-list{border-right:1px solid var(--line);display:grid;grid-template-rows:repeat(5,1fr);min-height:0}
+.interpretation-item{width:100%;display:grid;grid-template-columns:2.4rem 1fr auto 1.5rem;align-items:center;gap:.55rem;padding:.55rem .75rem;border:0;border-bottom:1px solid var(--line);background:transparent;color:#8f969f;text-align:left;cursor:pointer;transition:color .2s,background .2s,padding-left .2s}
+.interpretation-item:hover,.interpretation-item.active{color:var(--text);background:rgba(255,255,255,.025);padding-left:.95rem}.interpretation-item .item-number,.interpretation-item small{font-size:.58rem;letter-spacing:.07em}.interpretation-item small{color:var(--hypothesis)}.interpretation-item strong{font:400 clamp(.9rem,1vw,1.08rem) var(--serif)}.item-arrow{justify-self:end;color:#66707c}
+.interpretation-detail{position:relative;overflow:hidden;margin:.9rem 0 .9rem 1rem;padding:clamp(1rem,1.8vw,1.6rem);display:grid;grid-template-columns:minmax(220px,.9fr) minmax(0,1.1fr);gap:clamp(1rem,2.2vw,2rem);align-items:center;min-height:0;border:1px solid rgba(255,255,255,.1);background:linear-gradient(145deg,rgba(19,28,40,.72),rgba(9,13,21,.58))}
+.interpretation-visual{position:relative;margin:0;min-width:0;align-self:stretch;display:grid;place-items:center;background:radial-gradient(circle at 50% 50%,rgba(127,200,192,.035),transparent 68%);border-right:1px solid rgba(255,255,255,.06)}.interpretation-visual::before{content:"";position:absolute;inset:10% 13%;border:1px solid rgba(214,180,122,.07);border-radius:50%;pointer-events:none}.interpretation-visual img{display:block;width:min(100%,520px);height:100%;max-height:330px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(127,200,192,.045));opacity:.93}
+.detail-copy{position:relative;z-index:2;max-width:34rem}.detail-copy .detail-index{margin:.7rem 0 .35rem;color:#6f7885;font-size:.56rem;letter-spacing:.12em}.detail-copy h3{margin:0 0 .7rem;font:400 clamp(1.65rem,2.4vw,2.45rem) var(--serif)}.detail-copy>p{margin:.2rem 0;color:#b1b2ae;font-size:clamp(.72rem,.82vw,.86rem);line-height:1.75}.detail-boundary{margin-top:1.15rem;padding-top:.75rem;border-top:1px solid var(--line)}.detail-boundary strong{color:#8b93a0;font-size:.63rem}.detail-boundary p{margin:.35rem 0 0;color:#858c95;font-size:.68rem;line-height:1.6}.compact-question{margin-top:.55rem;padding-top:.55rem}
+
+/* ---------- Chapter 04 ---------- */
+.page-observation{background:#06090e}
+.viewer-shell{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(245px,.72fr);border:1px solid var(--line);min-height:0;flex:1}
+.viewer-main{position:relative;min-width:0;min-height:0;background:radial-gradient(circle at 50% 45%,#111a22,#070a0f 68%);overflow:hidden}
+#stoneViewer{width:100%;height:100%;min-height:0;cursor:grab;touch-action:none}#stoneViewer.dragging{cursor:grabbing}
+.viewer-status{position:absolute;left:1rem;top:1rem;display:flex;flex-direction:column;gap:.25rem;font-size:.57rem;color:#68727f}.viewer-status span{letter-spacing:.11em}.viewer-status span i{margin-right:.35rem}.viewer-status strong{color:#9da5ad;font-weight:400}
+.viewer-controls{position:absolute;left:1rem;right:1rem;bottom:1rem;display:flex;gap:.3rem;flex-wrap:wrap}.viewer-controls button,.creator-toolbar button{border:1px solid rgba(255,255,255,.12);background:rgba(7,10,16,.8);color:#9ea6af;padding:.48rem .62rem;font-size:.61rem;cursor:pointer}.viewer-controls button:hover,.viewer-controls button[aria-pressed="true"]{border-color:rgba(127,200,192,.55);color:var(--analysis)}
+.viewer-help{position:absolute;right:1rem;top:1rem;margin:0;color:#606976;font-size:.57rem}
+.measure-panel{padding:1.3rem;background:rgba(18,25,34,.82);border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between;min-height:0}.measure-panel h3{margin:.7rem 0 .5rem;font:400 clamp(1.2rem,1.7vw,1.6rem) var(--serif)}.measure-panel>div>p:not(.panel-kicker){margin:.45rem 0;color:#89929d;font-size:.7rem;line-height:1.55}.measure-list{margin:.85rem 0}.measure-list div{display:flex;justify-content:space-between;gap:1rem;padding:.62rem 0;border-top:1px solid var(--line)}.measure-list div:last-child{border-bottom:1px solid var(--line)}.measure-list dt{color:#707987;font-size:.61rem}.measure-list dd{margin:0;color:var(--analysis);font-family:var(--serif)}.depth-legend p{margin:0 0 .35rem;color:#6c7480;font-size:.55rem;letter-spacing:.1em}.depth-gradient{height:5px;background:linear-gradient(90deg,#435c65,#7fc8c0,#d6b47a);opacity:.8}.depth-legend span{display:flex;justify-content:space-between;gap:.35rem;color:#69727e;font-size:.52rem;margin-top:.35rem}.depth-legend em{font-style:normal}
+
+/* ---------- Chapter 05 ---------- */
+.page-matching{background:radial-gradient(circle at 50% 45%,rgba(28,44,60,.18),transparent 45rem),#070a0f}
+.matching-frame{padding-bottom:clamp(4.5rem,7vh,5.5rem)}
+.matching-shell{display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,18rem);grid-template-rows:auto minmax(0,.32fr) minmax(0,.68fr);gap:.65rem;min-height:0;flex:1}
+.matching-toolbar{grid-column:1/-1;display:flex;align-items:end;gap:.55rem;padding-bottom:.55rem;border-bottom:1px solid var(--line)}
+.select-control{display:flex;flex-direction:column;gap:.25rem;min-width:min(18rem,100%)}.select-control label{color:#6e7784;font-size:.58rem}.select-control select{height:2.45rem;padding:0 .65rem;border:1px solid var(--line);color:#b9b9b4;background:#0a0e15;font-size:.67rem}.secondary-action{min-height:2.45rem}.demo-badge{margin-left:auto;color:#68717e;font-size:.58rem;padding:.3rem .45rem;border:1px solid var(--line)}.demo-badge.active{color:var(--hypothesis);border-color:rgba(214,180,122,.35)}
+.compare-top-row{display:grid;grid-template-columns:1fr 1fr;gap:.65rem;min-height:0}.mini-plot,.overlay-plot,.match-results{border:1px solid var(--line);background:rgba(9,13,20,.72);min-height:0}.mini-plot{display:grid;grid-template-rows:auto 1fr;min-height:0}.mini-plot header,.overlay-header{padding:.55rem .7rem;display:flex;justify-content:space-between;gap:.8rem;align-items:center;border-bottom:1px solid var(--line)}.mini-plot header span,.overlay-header span{display:block;color:#626d7a;font-size:.51rem;letter-spacing:.1em}.mini-plot header strong,.overlay-header strong{display:block;margin-top:.1rem;font:400 .78rem var(--serif)}.mini-plot canvas{width:100%;height:100%;min-height:74px}
+.overlay-plot{display:grid;grid-template-rows:auto 1fr auto;min-height:0}.overlay-plot canvas{width:100%;height:100%;min-height:160px}.segmented{display:flex;border:1px solid var(--line)}.segmented button{border:0;border-right:1px solid var(--line);background:transparent;color:#747e89;padding:.4rem .55rem;font-size:.56rem;cursor:pointer}.segmented button:last-child{border-right:0}.segmented button.active{color:var(--text);background:rgba(255,255,255,.05)}.plot-legend{display:flex;gap:.8rem;padding:.45rem .7rem;border-top:1px solid var(--line);color:#6f7985;font-size:.54rem}.plot-legend span{display:flex;align-items:center;gap:.35rem}.line-key{width:14px!important;height:1px!important;border-radius:0!important;background:#65707c!important}
+.match-results{grid-column:2;grid-row:2/span 2;padding:.85rem;overflow:hidden}.match-results h3{margin:.55rem 0 .35rem;font:400 1.2rem var(--serif)}.result-summary p{margin:.35rem 0;color:#7c8591;font-size:.64rem;line-height:1.5}.match-results dl{margin:.75rem 0 0}.match-results dl div{padding:.48rem 0;border-top:1px solid var(--line)}.match-results dt{color:#6d7682;font-size:.55rem}.match-results dd{margin:.15rem 0 0;color:#bcbab3;font:400 .74rem var(--serif)}.method-note{flex:0 0 auto;margin:.55rem 0 0;color:#7f8790;font-size:.64rem;line-height:1.5}.method-note .type-label{margin-right:.45rem}
+
+/* ---------- Chapter 06 ---------- */
+.page-participation{background:#03050a}.night-field{position:absolute;inset:0;opacity:.42;background-image:radial-gradient(circle,rgba(231,226,216,.7) 0 1px,transparent 1.5px),radial-gradient(circle,rgba(127,200,192,.45) 0 1px,transparent 1.5px);background-size:97px 97px,151px 151px;background-position:15px 21px,60px 73px;mask-image:linear-gradient(to bottom,transparent 0,black 13%,black 87%,transparent)}
+.participation-frame{z-index:2}.participation-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(285px,.72fr);gap:.7rem;min-height:0;flex:1}.creator-canvas-wrap{position:relative;min-height:0;border:1px solid var(--line);background:rgba(4,7,12,.72)}.creator-canvas-wrap canvas{width:100%;height:100%;min-height:0;cursor:crosshair}.creator-toolbar{position:absolute;left:.75rem;right:.75rem;bottom:.75rem;display:flex;justify-content:space-between;align-items:center;gap:.8rem;color:#737d89;font-size:.59rem}.creator-toolbar>div{display:flex;gap:.28rem}.participation-side{position:relative;display:grid;grid-template-rows:minmax(0,.62fr) minmax(0,.38fr);gap:.7rem;min-height:0}.creator-form{padding:.9rem;border:1px solid var(--line);background:rgba(14,20,29,.9);display:flex;flex-direction:column;gap:.5rem;min-height:0;overflow:auto;opacity:.43;pointer-events:none;transition:opacity .3s}.creator-form.open{opacity:1;pointer-events:auto}.creator-form h3{margin:0;font:400 clamp(1rem,1.25vw,1.35rem)/1.45 var(--serif)}.creator-form label{color:#747e8a;font-size:.58rem;display:grid;gap:.28rem}.creator-form input,.creator-form textarea{width:100%;border:1px solid var(--line);background:#080c12;color:var(--text);padding:.52rem;resize:none;outline:none;font-size:.68rem}.creator-form input:focus,.creator-form textarea:focus{border-color:rgba(214,180,122,.45)}.creator-form .primary-action{margin-top:auto;width:100%}
+.visitor-sky{position:relative;min-height:0;border:1px solid var(--line);background:rgba(2,4,8,.42);padding:.75rem;display:grid;grid-template-rows:auto 1fr}.visitor-sky>header{display:flex;justify-content:space-between;align-items:end;gap:.6rem}.visitor-sky h3{margin:.1rem 0;font:400 1rem var(--serif)}.visitor-sky>header>p{margin:0;color:#707985;font-size:.52rem;text-align:right}.visitor-sky-stage{position:relative;min-height:0;margin-top:.45rem;background:radial-gradient(circle at 50% 50%,rgba(18,30,43,.28),transparent 60%);overflow:hidden}.empty-sky{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0;color:#5e6875;font-size:.6rem;white-space:nowrap}.saved-constellation{position:absolute;width:84px;height:56px;border:0;background:transparent;cursor:pointer;padding:0;animation:floating 7s ease-in-out infinite}.saved-constellation canvas{width:100%;height:100%}.saved-constellation:hover{filter:brightness(1.5)}.saved-constellation::after{content:attr(data-name);position:absolute;left:50%;top:100%;transform:translateX(-50%);color:#717b87;font-size:.5rem;white-space:nowrap;opacity:0;transition:opacity .2s}.saved-constellation:hover::after{opacity:1}@keyframes floating{50%{transform:translateY(-6px)}}
+.visitor-card{position:absolute;right:.5rem;bottom:.5rem;width:min(15rem,calc(100% - 1rem));padding:.7rem;border:1px solid rgba(214,180,122,.25);background:rgba(8,12,18,.96);box-shadow:0 20px 50px rgba(0,0,0,.35);z-index:4}.visitor-card button{float:right;border:0;background:transparent;color:#808996;cursor:pointer}.visitor-card span{color:#686f7a;font-size:.5rem;letter-spacing:.1em}.visitor-card h4{margin:.4rem 0 .25rem;font:400 1rem var(--serif)}.visitor-card p{margin:0;color:#939aa3;font-size:.62rem;line-height:1.5}.closing-statement{flex:0 0 auto;margin:.55rem auto 0;max-width:56rem;text-align:center;border:0;color:#c5c0b6;font:400 clamp(1rem,1.8vw,1.65rem)/1.45 var(--serif)}
+
+/* ---------- sources overlay ---------- */
+.sources-dialog{width:min(1100px,calc(100vw - 2rem));max-height:calc(100dvh - 2rem);padding:0;color:var(--text);border:1px solid rgba(255,255,255,.13);background:#090d14;box-shadow:0 30px 120px rgba(0,0,0,.7);overflow:auto}.sources-dialog::backdrop{background:rgba(1,2,4,.82);backdrop-filter:blur(6px)}.sources-wrap{padding:2rem}.sources-wrap>header{display:flex;justify-content:space-between;align-items:start;gap:2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--line)}.sources-wrap h2{margin:.4rem 0 0;font:400 clamp(1.7rem,3vw,2.4rem) var(--serif);max-width:24ch}.dialog-close{border:0;background:transparent;color:#808895;font-size:2rem;cursor:pointer}.source-principle{margin:1.2rem 0;padding:1rem;border:1px solid var(--line)}.source-principle .type-label{margin-right:.3rem}.source-principle p{margin:.7rem 0 0;color:#878f99;font-size:.7rem}.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.archive-grid section{min-height:8rem;padding:.9rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.archive-grid section>span{color:#5d6672;font-size:.56rem}.archive-grid h3{margin:.45rem 0 .4rem;font:400 1.05rem var(--serif)}.archive-grid p{margin:0;color:#858d97;font-size:.66rem}.reference-placeholder{margin-top:1.5rem}.reference-placeholder h3{font:400 1.15rem var(--serif)}.reference-placeholder h3 small{color:#69727d;font:.56rem var(--sans)}.reference-placeholder ul{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}.reference-placeholder li{display:grid;grid-template-columns:9rem 1fr 7rem;gap:1rem;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.65rem}.reference-placeholder li span,.reference-placeholder li em{color:#6f7884;font-style:normal}.reference-placeholder li strong{font-weight:400;color:#aaa9a4}
+
+/* ---------- 1366x768 / short desktop ---------- */
+@media (max-height:820px) and (min-width:761px){
+  :root{--page-pad-top:3.1rem;--page-pad-bottom:3.7rem}
+  .page-heading{margin-bottom:.72rem}.page-heading h2{font-size:clamp(1.8rem,3.3vw,3.5rem)}.page-heading.compact-heading h2{font-size:clamp(1.75rem,3vw,3.15rem)}.page-heading>p{font-size:.7rem;line-height:1.55}
+  .dolmen-layout{gap:.7rem}.artifact-info{padding:.9rem}.museum-data div{padding:.48rem 0}.page-question{margin-top:.5rem;padding-top:.45rem}
+  .interpretation-detail{padding:1.5rem}.interpretation-item{padding:.4rem .65rem}.detail-copy>p{line-height:1.55}.detail-boundary{margin-top:.7rem;padding-top:.5rem}
+  .measure-panel{padding:1rem}.measure-list{margin:.55rem 0}.measure-list div{padding:.45rem 0}
+  .matching-shell{gap:.45rem}.matching-toolbar{padding-bottom:.35rem}.mini-plot header,.overlay-header{padding:.38rem .55rem}.plot-legend{padding:.3rem .55rem}.match-results{padding:.65rem}.match-results dl div{padding:.32rem 0}.method-note{margin-top:.35rem}
+  .creator-form{padding:.7rem;gap:.42rem}.visitor-sky{padding:.6rem}.closing-statement{margin-top:.35rem}
+}
+
+/* ---------- tablet ---------- */
+@media (max-width:1050px){
+  :root{--page-pad-x:3.2rem}
+  .chapter-nav button:hover,.chapter-nav button.active{grid-template-columns:1.6rem 0fr}.chapter-nav button em{display:none}
+  .page-heading{grid-template-columns:1fr minmax(15rem,.62fr);gap:2rem}
+  .dolmen-layout{grid-template-columns:minmax(0,1.9fr) minmax(220px,.7fr)}
+  .viewer-shell{grid-template-columns:minmax(0,1.8fr) minmax(220px,.72fr)}
+  .matching-shell{grid-template-columns:minmax(0,1fr) 14rem}
+  .participation-layout{grid-template-columns:minmax(0,1.5fr) minmax(250px,.7fr)}
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:760px){
+  :root{--page-pad-x:1rem;--page-pad-top:4.2rem;--page-pad-bottom:6.2rem}
+  .exhibition-page{height:100dvh}
+  .page-frame{width:calc(100vw - 2rem)}
+  .page-heading,.page-heading.split{display:block;margin-bottom:.65rem}.page-heading h2,.page-heading.compact-heading h2{font-size:clamp(1.7rem,8.5vw,2.55rem);line-height:1.15;max-width:100%;margin-top:.28rem}.page-heading>p{margin:.45rem 0 0;font-size:.63rem;line-height:1.5;max-width:100%}
+  .section-index{font-size:.52rem}
+  .chapter-nav{right:50%;top:auto;bottom:.45rem;transform:translateX(50%);grid-auto-flow:column;gap:.1rem;padding:.2rem .32rem}.chapter-nav button{display:block;width:1.8rem;min-height:1.6rem;padding:.25rem 0;text-align:center}.chapter-nav button.active{color:var(--hypothesis)}.chapter-nav button em{display:none}
+  .page-navigation{bottom:2.9rem;grid-template-columns:auto 3.8rem auto}.page-navigation button{padding:.38rem .48rem;font-size:.58rem}.page-index{font-size:.54rem}
+
+  /* page 1 */
+  .graph-head{left:12px;top:calc(10px + env(safe-area-inset-top,0px))}.graph-head small{font-size:8px}.graph-head h1{font-size:18px;letter-spacing:.2em}
+  .graph-tools{right:10px;top:calc(72px + env(safe-area-inset-top,0px));gap:4px}.graph-tools button{font-size:9px;padding:5px 7px}.graph-tools button:nth-child(3){display:none}
+  .graph-legend{left:12px;bottom:132px;font-size:8px;line-height:1.7}.graph-bottom{min-height:116px;padding:12px 12px calc(12px + env(safe-area-inset-bottom,0px));text-align:left}.graph-bottom-copy{margin:0;padding-right:0}.graph-title{font-size:13px;padding-right:7.5rem}.graph-description{font-size:10px;line-height:1.45;padding-right:7.5rem}.start-exhibition{right:12px;bottom:calc(16px + env(safe-area-inset-bottom,0px));font-size:9px;padding:.55rem .62rem}
+
+  /* page 2 */
+  .dolmen-layout{grid-template-columns:1fr;grid-template-rows:minmax(0,1.65fr) minmax(0,.75fr);gap:.5rem}.artifact-info{padding:.65rem;display:grid;grid-template-columns:1fr 1.3fr;gap:.7rem;align-items:start}.artifact-info>.panel-kicker,.data-note{grid-column:1}.museum-data{grid-column:2;grid-row:1/span 3;margin:0}.museum-data div{grid-template-columns:3.6rem 1fr;padding:.28rem 0}.museum-data dt{font-size:.55rem}.museum-data dd{font-size:.67rem}.data-note{font-size:.55rem}.artifact-caption{font-size:.47rem;display:block}.artifact-caption strong{display:block;text-align:left;margin-top:.15rem}.page-question{gap:.5rem}.page-question p{font-size:.78rem}.page-question button{font-size:.57rem;min-height:2.1rem;padding:.4rem .5rem}
+
+  /* page 3 */
+  .interpretation-layout{grid-template-columns:1fr;grid-template-rows:minmax(0,.52fr) minmax(0,1.1fr);border-top:1px solid var(--line)}.interpretation-list{border-right:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr)}.interpretation-item{grid-template-columns:1.6rem 1fr 1rem;padding:.22rem .35rem}.interpretation-item small{display:none}.interpretation-item strong{font-size:.72rem}.interpretation-item .item-number{font-size:.5rem}.interpretation-detail{margin:.4rem 0 0;padding:.75rem}.detail-copy h3{font-size:1.25rem;margin-bottom:.4rem}.detail-copy>p{font-size:.62rem;line-height:1.48}.detail-boundary{margin-top:.45rem;padding-top:.35rem}.detail-boundary p{font-size:.58rem;line-height:1.42}.detail-orbit{display:none}.compact-question{margin-top:.3rem;padding-top:.3rem}
+
+  /* page 4 */
+  .viewer-shell{grid-template-columns:1fr;grid-template-rows:minmax(0,1.45fr) minmax(0,.62fr)}.measure-panel{border-left:0;border-top:1px solid var(--line);padding:.65rem;display:grid;grid-template-columns:1.1fr 1fr;gap:.6rem}.measure-list{margin:0}.measure-list div{padding:.28rem 0}.depth-legend{grid-column:1/-1}.viewer-controls{bottom:.55rem;left:.55rem;right:.55rem}.viewer-controls button{font-size:.53rem;padding:.36rem .42rem}.viewer-status{left:.55rem;top:.55rem}.viewer-help{display:none}
+
+  /* page 5 */
+  .matching-frame{padding-bottom:4.2rem}.matching-shell{grid-template-columns:1fr;grid-template-rows:auto minmax(0,.28fr) minmax(0,.52fr) minmax(0,.34fr);gap:.35rem}.matching-toolbar{grid-column:1;gap:.35rem;padding-bottom:.25rem}.select-control{min-width:0;flex:1}.select-control select{height:2rem;font-size:.55rem}.secondary-action{min-height:2rem;font-size:.55rem;padding:.35rem .45rem}.demo-badge{display:none}.compare-top-row{grid-template-columns:1fr 1fr;gap:.35rem}.mini-plot header{padding:.28rem .4rem}.mini-plot canvas{min-height:52px}.overlay-header{padding:.3rem .4rem;display:block}.segmented{margin-top:.25rem}.segmented button{padding:.28rem .35rem;font-size:.49rem}.overlay-plot canvas{min-height:90px}.plot-legend{padding:.25rem .4rem;font-size:.48rem}.match-results{grid-column:1;grid-row:4;padding:.45rem;display:grid;grid-template-columns:.9fr 1.1fr;gap:.5rem}.match-results h3{font-size:.9rem;margin:.3rem 0 .2rem}.result-summary p{font-size:.53rem}.match-results dl{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 .5rem}.match-results dl div{padding:.22rem 0}.match-results dt{font-size:.48rem}.match-results dd{font-size:.57rem}.method-note{display:none}
+
+  /* page 6 */
+  .participation-layout{grid-template-columns:1fr;grid-template-rows:minmax(0,1.45fr) minmax(0,.78fr);gap:.4rem}.participation-side{grid-template-columns:1fr;grid-template-rows:1fr}.creator-form{position:absolute;inset:.35rem;z-index:8;opacity:0;transform:translateY(8px);visibility:hidden;pointer-events:none;transition:opacity .25s,transform .25s,visibility 0s linear .25s}.creator-form.open{opacity:1;transform:none;visibility:visible;pointer-events:auto;transition-delay:0s}.visitor-sky{padding:.5rem}.visitor-sky>header>p{display:none}.visitor-sky-stage{margin-top:.25rem}.creator-toolbar{left:.45rem;right:.45rem;bottom:.45rem;display:block}.creator-toolbar>div{display:flex;gap:.2rem;margin-top:.25rem}.creator-toolbar button{font-size:.5rem;padding:.32rem .36rem}.closing-statement{font-size:.66rem;line-height:1.3;margin-top:.22rem;padding:0 .35rem}
+
+  .sources-dialog{width:calc(100vw - 1rem);max-height:calc(100dvh - 1rem)}.sources-wrap{padding:1rem}.archive-grid{grid-template-columns:1fr}.reference-placeholder li{grid-template-columns:1fr;gap:.15rem}.source-principle .type-label{margin-bottom:.25rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .exhibition-page{transition-duration:.001ms!important;transform:none!important}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.001ms!important}
+}
+
+/* ---------- v3 responsive overrides: constellation TOC / new chapter 01 ---------- */
+@media (max-height:820px) and (min-width:761px){
+  .graph-main-header{top:10px}.graph-main-header h1{font-size:25px}.graph-instruction{font-size:10.5px}.graph-group-filters{margin-top:7px}.graph-group-filters button{padding:3px 8px;font-size:10px}
+  .graph-actions{top:10px}.graph-actions button{padding:5px 8px;font-size:9.5px}.graph-info-panel{bottom:72px;max-height:62vh}
+  .interpretation-detail{grid-template-columns:minmax(190px,.82fr) minmax(0,1.18fr);padding:1rem;gap:1rem}.interpretation-visual img{max-height:245px}.detail-copy>p{line-height:1.55}.detail-boundary{margin-top:.7rem;padding-top:.5rem}
+}
+
+@media (max-width:1050px) and (min-width:761px){
+  .constellation-toc{left:.35rem;width:112px}.toc-map{opacity:.86}.toc-node em{display:none}.toc-node.active em,.toc-node:hover em{display:block;position:absolute;left:12px;top:13px;padding:2px 4px;background:rgba(5,7,13,.8);z-index:2}
+  .interpretation-detail{grid-template-columns:minmax(180px,.75fr) minmax(0,1.25fr)}
+}
+
+@media (max-width:760px){
+  .constellation-toc{left:9px;top:50%;width:42px;height:42px;transform:translateY(-50%);pointer-events:auto}
+  .toc-toggle{display:flex;position:absolute;inset:0;z-index:3;align-items:center;justify-content:center;gap:0;width:42px;height:42px;border:1px solid rgba(214,180,122,.28);border-radius:50%;background:rgba(5,7,13,.84);color:#d6b47a;cursor:pointer;box-shadow:0 0 24px rgba(214,180,122,.08)}
+  .toc-toggle span{font-size:16px}.toc-toggle em{display:none}
+  .toc-map{left:0;top:50%;right:auto;bottom:auto;width:126px;height:286px;transform:translate(-8px,-50%) scale(.94);transform-origin:left center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,transform .25s,visibility 0s linear .25s}
+  .constellation-toc.open .toc-map{opacity:1;visibility:visible;pointer-events:auto;transform:translate(44px,-50%) scale(1);transition-delay:0s}.constellation-toc.open .toc-toggle{background:rgba(18,22,31,.94)}
+  .toc-node em{display:none}.toc-node.active em,.toc-node:hover em{display:block;position:absolute;left:10px;top:14px;padding:2px 4px;background:rgba(5,7,13,.88);font-size:.5rem}
+
+  .page-navigation{inset:0;bottom:0;display:block;transform:none;padding:0;background:none;border:0;backdrop-filter:none}
+  .page-navigation button{bottom:calc(3.15rem + env(safe-area-inset-bottom,0px));min-width:92px;min-height:46px;padding:.45rem .55rem;gap:.45rem;background:rgba(5,7,13,.88)}
+  .page-prev{left:.65rem}.page-next{right:.65rem}.nav-arrow{font-size:1.25rem}.nav-copy small{font-size:.42rem}.nav-copy strong{font-size:.6rem}.page-index{bottom:calc(.55rem + env(safe-area-inset-bottom,0px));font-size:.52rem;padding:.35rem .45rem}
+
+  .graph-main-header{left:12px;right:12px;top:calc(10px + env(safe-area-inset-top,0px));max-width:none;padding-right:80px}.graph-project-label{font-size:7.5px}.graph-main-header h1{font-size:24px}.graph-instruction{font-size:9.5px;max-width:260px}
+  .graph-group-filters{gap:4px;margin-top:7px;max-width:calc(100vw - 108px);flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;padding:0 0 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}.graph-group-filters::-webkit-scrollbar{display:none}.graph-group-filters button{flex:0 0 auto;padding:3px 7px;font-size:9px}.graph-group-filters i{width:6px;height:6px}.graph-group-filters .graph-add-star{display:none}
+  .graph-actions{right:8px;top:calc(10px + env(safe-area-inset-top,0px));max-width:78px;display:grid;grid-template-columns:1fr;gap:4px}.graph-actions button{padding:5px 6px;font-size:8px;white-space:nowrap}.graph-actions #graphOpenAdd{display:none}
+  .graph-info-panel{left:10px;right:10px;bottom:calc(100px + env(safe-area-inset-bottom,0px));width:auto;max-height:43vh;padding:12px}.graph-info-panel h2{font-size:16px}.graph-info-panel>p{font-size:10.5px}.graph-panel-tag,.graph-panel-note,.graph-connected-links button,.graph-add-details{font-size:10px}
+  .graph-entry-footer{bottom:calc(94px + env(safe-area-inset-bottom,0px));width:calc(100vw - 94px);left:auto;right:10px;transform:none;justify-content:flex-end;padding:.35rem;background:linear-gradient(90deg,transparent,rgba(4,6,12,.75) 28%)}.graph-entry-footer p{display:none}.start-exhibition{min-height:38px;font-size:9px;padding:.5rem .65rem}
+
+  .interpretation-detail{grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:.45rem;margin:.4rem 0 0;padding:.55rem}.interpretation-visual{border-right:1px solid rgba(255,255,255,.06);min-height:0}.interpretation-visual::before{inset:14% 8%}.interpretation-visual img{width:100%;height:100%;max-height:180px}.detail-copy h3{font-size:1.12rem;margin-bottom:.28rem}.detail-copy .detail-index{margin:.35rem 0 .2rem;font-size:.48rem}.detail-copy>p{font-size:.56rem;line-height:1.4}.detail-boundary{margin-top:.35rem;padding-top:.3rem}.detail-boundary strong{font-size:.52rem}.detail-boundary p{font-size:.52rem;line-height:1.35}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .exhibition-page,.exhibition-page.from-left,.exhibition-page.leaving-left,.exhibition-page.leaving-right{transform:none!important}
+}
+
+/* ---------- v6 content architecture overrides ---------- */
+/* Chapter 01 keeps its established constellation typography even though the rest of the exhibition uses Dotum first. */
+.page-knowledge{
+  --sans:"Pretendard","Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
+  --serif:"Noto Serif KR","Nanum Myeongjo","Batang",Georgia,serif;
+}
+
+/* Seven-node constellation TOC */
+.constellation-toc{height:326px}
+.toc-map{height:326px}
+.toc-lines{height:310px}
+.toc-01{left:44px;top:3px}.toc-02{left:78px;top:43px}.toc-03{left:50px;top:83px}.toc-04{left:84px;top:123px}.toc-05{left:39px;top:165px}.toc-06{left:76px;top:209px}.toc-07{left:48px;top:259px}
+
+/* Chapter 02 — scan placeholders and explicit curatorial application */
+.artifact-info{justify-content:flex-start;gap:.7rem;overflow:auto}
+.museum-data{margin:.55rem 0 .15rem}
+.museum-data div{padding:.48rem 0}
+.scan-data-summary{margin-top:.15rem;padding-top:.55rem;border-top:1px solid var(--line)}
+.scan-data-summary>.type-label{margin-bottom:.45rem}
+.scan-data-summary ul{list-style:none;margin:.15rem 0 0;padding:0;display:grid;gap:.3rem}
+.scan-data-summary li{display:grid;gap:.08rem;padding:.32rem 0;border-top:1px solid rgba(231,226,216,.08)}
+.scan-data-summary li strong{font-size:.61rem;font-weight:500;color:#bdbab2}
+.scan-data-summary li span{font-size:.55rem;color:#727b86}
+.curatorial-question{align-items:flex-end}
+.curatorial-note{min-width:0;max-width:52rem}
+.curatorial-note p{margin:.35rem 0 .1rem;font-size:clamp(.88rem,1.3vw,1.18rem);line-height:1.45}
+.curatorial-note small{display:block;color:#727b86;font-size:.58rem;line-height:1.45}
+
+/* Chapter 03 — observation is now the third page. */
+.observation-question>div{min-width:0}
+.observation-question>div>p{margin:.3rem 0 0;font-size:clamp(.82rem,1.22vw,1.08rem)}
+.measure-list{margin:.55rem 0}
+.measure-list div{padding:.45rem 0}
+
+/* Chapter 04 — six interpretations. */
+.interpretation-list{grid-template-rows:repeat(6,1fr)}
+.interpretation-item{padding:.42rem .75rem}
+
+/* Chapter 05 — example disclaimer is always visible. */
+.demo-disclaimer{flex:0 0 auto;margin:0 0 .45rem;color:#858d97;font-size:.6rem;line-height:1.45}
+.demo-disclaimer .type-label{margin-right:.45rem}
+
+/* Chapter 06 — research history */
+.page-history{background:radial-gradient(circle at 72% 26%,rgba(127,200,192,.055),transparent 31rem),linear-gradient(135deg,#070a10,#0b1017 58%,#07090d)}
+.history-frame{min-height:0}
+.history-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.7rem;min-height:0;flex:1}
+.history-card{position:relative;min-height:0;padding:clamp(.8rem,1.5vw,1.2rem);border:1px solid var(--line);background:linear-gradient(145deg,rgba(18,25,34,.78),rgba(8,11,17,.62));overflow:auto}
+.history-card .type-label{position:absolute;right:.8rem;top:.8rem}
+.history-number{margin:0;color:#626b77;font-size:.56rem;letter-spacing:.15em}
+.history-card h3{margin:.55rem 0 .5rem;font:500 clamp(1rem,1.4vw,1.35rem)/1.35 var(--serif);color:#d0cbc1}
+.history-card>p:last-child{margin:0;color:#9299a2;font-size:clamp(.65rem,.78vw,.78rem);line-height:1.65;max-width:48rem}
+.history-scan-placeholder{flex:0 0 auto;margin-top:.7rem;padding:.65rem .8rem;border:1px dashed rgba(127,200,192,.24);display:flex;align-items:center;gap:.8rem;background:rgba(8,15,20,.42)}
+.history-scan-placeholder strong{display:block;font-size:.72rem;font-weight:500;color:#aeb5b4}
+.history-scan-placeholder p{margin:.08rem 0 0;color:#6f7983;font-size:.58rem}
+
+/* Chapter 07 — final reflective question and collapsible closing text. */
+.participation-question{font-weight:600;color:#cbc5b8}
+.closing-area{flex:0 0 auto;margin-top:.45rem;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:1rem}
+.closing-area .closing-statement{margin:0;max-width:none;text-align:left}
+.closing-details{position:relative}
+.closing-details summary{list-style:none;cursor:pointer;padding:.4rem .58rem;border:1px solid var(--line);color:#7d8691;font-size:.56rem;white-space:nowrap}
+.closing-details summary::-webkit-details-marker{display:none}
+.closing-details[open]{z-index:8}
+.closing-details p{position:absolute;right:0;bottom:calc(100% + .4rem);width:min(30rem,70vw);margin:0;padding:.75rem;border:1px solid var(--line);background:rgba(8,12,18,.97);color:#9aa1a7;font-size:.62rem;line-height:1.65;box-shadow:0 18px 55px rgba(0,0,0,.42)}
+
+@media (max-height:820px) and (min-width:761px){
+  .scan-data-summary li{padding:.2rem 0}.scan-data-summary li strong{font-size:.56rem}.scan-data-summary li span{font-size:.51rem}
+  .curatorial-note p{font-size:.82rem}.curatorial-note small{font-size:.52rem}
+  .interpretation-item{padding:.28rem .6rem}.interpretation-item strong{font-size:.83rem}
+  .history-grid{gap:.5rem}.history-card{padding:.72rem}.history-card h3{margin:.35rem 0 .35rem;font-size:.95rem}.history-card>p:last-child{font-size:.61rem;line-height:1.5}.history-scan-placeholder{margin-top:.45rem;padding:.45rem .6rem}
+  .closing-area{margin-top:.25rem}.closing-area .closing-statement{font-size:.8rem}
+}
+
+@media (max-width:760px){
+  .toc-map{height:326px}
+  .artifact-info{grid-template-columns:.8fr 1.2fr;grid-template-rows:auto 1fr;overflow:hidden}
+  .artifact-info>div:first-child{grid-column:1;grid-row:1}.museum-data{grid-column:2;grid-row:1/span 2;margin:0}.scan-data-summary{grid-column:1;grid-row:2;margin:0;padding-top:.35rem;overflow:auto}
+  .scan-data-summary ul{gap:.15rem}.scan-data-summary li{padding:.16rem 0}.scan-data-summary li strong{font-size:.5rem}.scan-data-summary li span{font-size:.46rem;line-height:1.25}
+  .curatorial-question{align-items:center}.curatorial-note p{font-size:.68rem}.curatorial-note small{display:none}
+  .observation-question>div>p{font-size:.66rem}
+  .interpretation-list{grid-template-rows:repeat(3,1fr);grid-template-columns:1fr 1fr}
+  .demo-disclaimer{font-size:.5rem;margin-bottom:.25rem}.demo-disclaimer .type-label{display:none}
+  .history-grid{grid-template-columns:1fr;grid-template-rows:repeat(4,1fr);gap:.28rem}.history-card{padding:.48rem .58rem;overflow:hidden}.history-card .type-label{right:.5rem;top:.42rem;font-size:.45rem}.history-number{font-size:.45rem}.history-card h3{margin:.18rem 0 .15rem;font-size:.7rem}.history-card>p:last-child{font-size:.5rem;line-height:1.35}.history-scan-placeholder{margin-top:.3rem;padding:.35rem .45rem}.history-scan-placeholder .type-label{display:none}.history-scan-placeholder strong{font-size:.55rem}.history-scan-placeholder p{font-size:.48rem}
+  .closing-area{display:flex;margin-top:.18rem;gap:.35rem}.closing-area .closing-statement{font-size:.6rem;line-height:1.25}.closing-details summary{font-size:.48rem;padding:.3rem .4rem}.closing-details p{width:min(24rem,82vw);font-size:.54rem;line-height:1.5}
+}
+@media (max-width:760px){
+  .page-observation .page-frame{padding-top:3rem;padding-bottom:5.2rem}
+}
+@media (max-width:760px){
+  .page-observation .depth-legend{display:none}
+  .page-observation .measure-panel{gap:.35rem}
+  .page-observation .measure-panel h3{margin:.35rem 0 .25rem;font-size:1rem}
+  .page-observation .measure-panel>div>p:not(.panel-kicker){font-size:.56rem;line-height:1.35;margin:.25rem 0}
+}
+@media (min-width:761px){
+  .page-history .history-grid,
+  .page-history .history-scan-placeholder{margin-left:3rem}
+}
+
+/* =========================================================
+   v8 readability pass — required information >= 12px
+   Keeps spatial metadata small, but never shrinks explanatory,
+   boundary, placeholder, interaction, or archival copy below 12px.
+   ========================================================= */
+:root{
+  --read-primary:#e7e2d8;
+  --read-secondary:#b8bec5;
+  --read-note:#aab2bc;
+  --read-dim:#929ca8;
+}
+
+/* Shared reading hierarchy */
+.page-heading>p{font-size:clamp(12.5px,.84vw,14.5px);color:var(--read-secondary);line-height:1.7}
+.primary-action,.secondary-action,.accent-button,.button-like,.page-question button{font-size:12px}
+.nav-copy strong{font-size:12px;color:#b9bec5}.nav-copy small{color:#7f8996}
+.type-label{font-size:10.5px}
+
+/* Chapter 01: keep constellation labels spatial, enlarge the readable UI around them. */
+.graph-instruction{font-size:12.5px;color:#b6bdc7;line-height:1.6}
+.graph-group-filters button,.graph-actions button{font-size:12px;color:#d6d0c1}
+.graph-group-filters button[aria-pressed="false"]{opacity:.58}
+.graph-info-panel>p{font-size:13px;color:#d1cec6;line-height:1.7}
+.graph-panel-note{font-size:12px;color:#abb3bd;line-height:1.65}
+.graph-connected-links button,.graph-add-details summary{font-size:12px}
+.graph-add-details input,.graph-add-details textarea,.graph-add-details select{font-size:13px}
+.graph-entry-footer p{font-size:12px;color:#aeb6c0}.graph-entry-footer p span{font-size:9px;color:#87919e}
+.start-exhibition{font-size:12px}
+
+/* Chapter 02: actual-data / placeholder boundaries must be legible. */
+.artifact-caption{font-size:10.5px;color:#8f99a5;line-height:1.5}
+.artifact-caption strong{font-size:12px;color:#c0c4c5;line-height:1.55}
+.museum-data dt{font-size:11px;color:#929ca7}.museum-data dd{font-size:13px;color:#d0cdc5}
+.scan-data-summary li strong{font-size:12px;color:#cbc7be;line-height:1.45}
+.scan-data-summary li span{font-size:12px;color:#aeb6bf;line-height:1.48}
+.curatorial-note small{display:block;font-size:12px;color:#aeb6bf;line-height:1.55}
+.data-note{font-size:12px;color:#adb5be}
+
+/* Chapter 03: prototype/measurement guidance and controls. */
+.viewer-status strong{font-size:12px;color:#b8c0c8;line-height:1.45}
+.viewer-help{font-size:12px;color:#aeb6c0;line-height:1.5;padding:.28rem .42rem;background:rgba(5,8,13,.58);backdrop-filter:blur(3px);max-width:25rem}
+.viewer-controls button,.creator-toolbar button{font-size:12px}
+.measure-panel>div>p:not(.panel-kicker){font-size:12.5px;color:#b7bec6;line-height:1.6}
+.measure-list dt,.measure-list dd{font-size:12px}
+.measure-list dt{color:#9ba5b0}
+.depth-legend span{font-size:11px;color:#8f99a5}
+.observation-question>div>p{font-size:clamp(13px,1.22vw,17px)}
+
+/* Chapter 04: interpretation body and the 'reading method' boundary are primary content. */
+.detail-copy>p{font-size:13px;color:#c9c9c4;line-height:1.72}
+.detail-boundary{margin-top:1rem;padding:.72rem .78rem;border-top:1px solid rgba(214,180,122,.22);border-left:2px solid rgba(214,180,122,.42);background:rgba(214,180,122,.035)}
+.detail-boundary strong{font-size:12px;color:#c8c1b2}
+.detail-boundary p{font-size:13.5px;color:#c1c5ca;line-height:1.65}
+.interpretation-item strong{min-font-size:12px}
+
+/* Chapter 05: example status, result text and interpretive limits stay visible. */
+.demo-disclaimer{font-size:12.5px;color:#b7bec6;line-height:1.55}
+.select-control label{font-size:12px;color:#9fa8b3}.select-control select{font-size:12px}
+.secondary-action{font-size:12px}
+.demo-badge{font-size:12px;color:#aab2bc}
+.segmented button{font-size:12px}
+.plot-legend{font-size:12px;color:#9fa8b3}
+.match-results{overflow:auto}
+.result-summary p{font-size:12.5px;color:#adb5bf;line-height:1.55}
+.match-results dt{font-size:12px;color:#9da7b2}.match-results dd{font-size:12.5px;color:#c8c5bd}
+.method-note{display:block;font-size:12.5px;color:#b5bcc5;line-height:1.58}
+
+/* Chapter 06: research-history prose is the page's main content. */
+.history-card{overflow:auto;scrollbar-width:thin}
+.history-card>p:last-child{font-size:clamp(12.5px,.82vw,13.5px);color:#b8bec5;line-height:1.62}
+.history-scan-placeholder strong{font-size:12px;color:#c0c6c5}
+.history-scan-placeholder p{font-size:12px;color:#9faab4;line-height:1.45}
+
+/* Chapter 07: interaction/state copy and closing message are readable content. */
+.creator-toolbar{font-size:12px;color:#aab3bd}
+.creator-form label{font-size:12px;color:#a5aeb8}.creator-form input,.creator-form textarea{font-size:13px}
+.visitor-sky>header>p{display:block;font-size:12px;color:#9ea8b2;line-height:1.45}
+.empty-sky{font-size:12px;color:#8e99a5}
+.visitor-card p{font-size:12.5px;color:#b7bec6;line-height:1.55}
+.closing-details summary{font-size:12px;color:#a5aeb8}
+.closing-details p{font-size:13px;color:#b7bec5;line-height:1.68}
+
+/* Sources: scrolling is available, so there is no reason to compress body copy. */
+.source-principle p{font-size:13px;color:#b7bec6;line-height:1.65}
+.archive-grid p{font-size:13px;color:#b0b8c1;line-height:1.6}
+.reference-placeholder li{font-size:12.5px;line-height:1.55}
+.reference-placeholder li span,.reference-placeholder li em{color:#98a2ae}.reference-placeholder li strong{color:#c3c1bb}
+
+/* Short desktop: reduce spacing, never the essential copy. */
+@media (max-height:820px) and (min-width:761px){
+  .page-heading>p{font-size:12px;line-height:1.55}
+  .scan-data-summary li{padding:.16rem 0}.scan-data-summary li strong,.scan-data-summary li span{font-size:12px}
+  .curatorial-note p{font-size:13px}.curatorial-note small{font-size:12px}
+  .detail-copy>p{font-size:12.5px}.detail-boundary p{font-size:13px}
+  .history-card{padding:.58rem .65rem}.history-card h3{margin:.25rem 0 .28rem}.history-card>p:last-child{font-size:12px;line-height:1.5}
+  .history-scan-placeholder{margin-top:.35rem;padding:.4rem .55rem}.history-scan-placeholder strong,.history-scan-placeholder p{font-size:12px}
+  .closing-area .closing-statement{font-size:13px}
+}
+
+/* Mobile: change layout instead of shrinking readable text. */
+@media (max-width:760px){
+  .page-heading>p{font-size:12px;line-height:1.55}
+  .page-heading{margin-bottom:.5rem}
+  .nav-copy strong{font-size:12px}
+
+  /* Chapter 01 controls remain horizontally/vertically compact but readable. */
+  .graph-main-header{padding-right:116px}
+  .graph-instruction{font-size:12px;max-width:245px;line-height:1.45}
+  .graph-group-filters{max-width:calc(100vw - 132px)}
+  .graph-group-filters button{font-size:12px;padding:4px 8px}
+  .graph-actions{max-width:106px}.graph-actions button{font-size:12px;padding:5px 6px;white-space:normal;line-height:1.2}
+  .graph-info-panel{max-height:48vh;overflow:auto}.graph-info-panel>p{font-size:13px}.graph-panel-note,.graph-connected-links button,.graph-add-details summary{font-size:12px}
+  .start-exhibition{font-size:12px;min-height:42px}
+
+  /* Chapter 02: allow the information panel itself to scroll if needed. */
+  .artifact-info{overflow:auto;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr)}
+  .museum-data dt{font-size:11px}.museum-data dd{font-size:12px}
+  .scan-data-summary li strong,.scan-data-summary li span{font-size:12px;line-height:1.4}
+  .artifact-caption strong{font-size:12px}
+  .curatorial-question{align-items:flex-start}.curatorial-note p{font-size:13px}.curatorial-note small{display:block;font-size:12px;line-height:1.45}
+  .page-question button{font-size:12px}
+
+  /* Chapter 03: retain prototype warnings instead of hiding them. */
+  .viewer-help{display:block;top:2.75rem;right:.55rem;max-width:160px;font-size:12px;line-height:1.35}
+  .viewer-controls button{font-size:12px;padding:.38rem .44rem}
+  .measure-panel{overflow:auto}.measure-panel>div>p:not(.panel-kicker){font-size:12px;line-height:1.45}.measure-list dt,.measure-list dd{font-size:12px}
+  .observation-question>div>p{font-size:13px;line-height:1.45}
+
+  /* Chapter 04: reserve less room for the illustration and scroll the detail if needed. */
+  .interpretation-detail{grid-template-columns:minmax(88px,.52fr) minmax(0,1.48fr);overflow:auto;align-items:start}
+  .interpretation-visual img{max-height:135px}
+  .interpretation-item strong{font-size:12px}
+  .detail-copy{min-width:0}.detail-copy>p{font-size:13px;line-height:1.55}.detail-boundary{margin-top:.45rem;padding:.55rem .58rem}.detail-boundary strong{font-size:12px}.detail-boundary p{font-size:13px;line-height:1.52}
+
+  /* Chapter 05: keep disclaimers and method note, compress canvases rather than copy. */
+  .matching-frame{padding-bottom:4.55rem}
+  .demo-disclaimer{font-size:12px;margin-bottom:.3rem}.demo-disclaimer .type-label{display:inline-flex}
+  .matching-toolbar{flex-wrap:wrap}.select-control label,.select-control select,.secondary-action,.demo-badge{font-size:12px}.demo-badge{display:inline-flex;margin-left:0}
+  .segmented button,.plot-legend{font-size:12px}
+  .mini-plot canvas{min-height:42px}.overlay-plot canvas{min-height:72px}
+  .match-results{padding:.42rem;overflow:auto}.result-summary p,.match-results dt,.match-results dd{font-size:12px}.match-results h3{margin:.2rem 0 .15rem}
+  .method-note{display:block;font-size:12px;line-height:1.42;margin-top:.28rem}
+
+  /* Chapter 06: each history card may scroll internally; text never drops to 8px. */
+  .history-grid{grid-template-columns:1fr;grid-template-rows:repeat(4,minmax(0,1fr));gap:.28rem;overflow:hidden}
+  .history-card{padding:.42rem .55rem;overflow:auto}.history-card h3{font-size:14px;margin:.14rem 0 .18rem}.history-card>p:last-child{font-size:12px;line-height:1.45}.history-card .type-label{font-size:10px}
+  .history-scan-placeholder{margin-top:.28rem;padding:.35rem .45rem}.history-scan-placeholder strong,.history-scan-placeholder p{font-size:12px}.history-scan-placeholder .type-label{display:inline-flex}
+
+  /* Chapter 07: local-storage scope and closing copy remain visible. */
+  .creator-toolbar{font-size:12px}.creator-toolbar button{font-size:12px}
+  .creator-form label{font-size:12px}.creator-form input,.creator-form textarea{font-size:13px}
+  .visitor-sky>header{align-items:flex-start}.visitor-sky>header>p{display:block;font-size:12px;max-width:9.5rem}
+  .closing-area{gap:.35rem}.closing-area .closing-statement{font-size:12px;line-height:1.35}
+  .closing-details summary{font-size:12px}.closing-details p{font-size:12.5px;line-height:1.55;width:min(24rem,86vw);max-height:42vh;overflow:auto}
+
+  /* Sources are scrollable; keep their body text readable. */
+  .source-principle p,.archive-grid p{font-size:13px}.reference-placeholder li{font-size:12px}
+}
+/* Specificity guard: mobile v6 rule previously shrank this essential sentence below 12px. */
+@media (max-width:760px){
+  .page-observation .measure-panel>div>p:not(.panel-kicker){font-size:12px;line-height:1.45;color:#b7bec6}
+}
+
+/* v8 final readability/layout corrections */
+.type-label{font-size:12px}
+.museum-data dt{font-size:12px}
+.graph-panel-tag{font-size:12px;color:#aeb6bf}
+
+@media (max-width:760px){
+  .history-card .type-label{font-size:12px}
+
+  /* Keep the third chapter's closing question above the fixed navigation. */
+  .page-observation .page-frame{padding-top:3rem;padding-bottom:6.7rem}
+  .page-observation .page-question{margin-top:.28rem;padding-top:.32rem}
+
+  /* Make room for the method note without shrinking it. */
+  .page-matching .page-frame{padding-top:3.3rem;padding-bottom:6.6rem}
+  .page-matching .page-heading{margin-bottom:.35rem}
+  .page-matching .page-heading h2{font-size:clamp(1.85rem,8vw,2.1rem);line-height:1.04}
+  .matching-shell{gap:.24rem}
+  .method-note{margin-top:.18rem;line-height:1.35}
+
+  /* Closing reflection and its details control must both remain inside the viewport. */
+  .closing-area{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.45rem;min-width:0}
+  .closing-area .closing-statement{min-width:0;padding:0;font-size:12px;line-height:1.35}
+  .closing-details{justify-self:end;min-width:0}
+  .closing-details summary{font-size:12px;padding:.36rem .45rem}
+}
+
+/* v9 — Chapter 01 spreadsheet photo integration */
+.graph-info-panel{width:min(360px,calc(100vw - 28px))}
+.graph-node-photo{margin:.62rem 0 .78rem;border:1px solid rgba(142,151,174,.28);background:rgba(2,4,9,.72);overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.18)}
+.graph-node-photo img{display:block;width:100%;height:auto;max-height:210px;object-fit:contain;background:#05070d}
+@media (max-width:700px){
+  .graph-node-photo{margin:.5rem 0 .65rem}
+  .graph-node-photo img{max-height:155px}
+}
+
+/* =========================================================
+   v10 — Chapter 02 unified observation flow
+   ========================================================= */
+.page-unified-observation{
+  background:radial-gradient(circle at 34% 48%,rgba(64,64,58,.14),transparent 36rem),linear-gradient(#07090e,#0a0d13 62%,#06090e);
+}
+.page-unified-observation .page-frame{padding-bottom:clamp(4.9rem,8vh,6.2rem)}
+.unified-observation-stage{position:relative;min-height:0;flex:1;overflow:hidden}
+.observation-mode{
+  position:absolute;inset:0;display:flex;flex-direction:column;min-height:0;
+  opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.045);
+  transition:opacity .52s var(--ease),transform .52s var(--ease),visibility 0s linear .52s;
+  will-change:opacity,transform;
+}
+.observation-mode.is-active{
+  opacity:1;visibility:visible;pointer-events:auto;transform:scale(1);
+  transition-delay:0s;z-index:2;
+}
+.observation-overview:not(.is-active){transform:scale(1.035)}
+.observation-detail:not(.is-active){transform:scale(1.055)}
+.observation-mode-bar{
+  flex:0 0 auto;min-height:40px;margin-bottom:.48rem;padding:.15rem 0 .42rem;
+  display:flex;align-items:end;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(231,226,216,.09)
+}
+.observation-mode-bar>div{min-width:0}
+.observation-stage-index{margin:0 0 .06rem;color:#68727f;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.observation-mode-bar h3{margin:0;color:#d2cdc3;font:400 clamp(1rem,1.35vw,1.35rem)/1.25 var(--serif);letter-spacing:-.015em}
+.internal-observation-nav{
+  flex:0 0 auto;min-height:40px;padding:.48rem .72rem;border:1px solid rgba(214,180,122,.32);
+  background:rgba(9,13,20,.62);color:#d7c08f;font-size:12px;letter-spacing:.035em;cursor:pointer;
+  transition:border-color .2s,background .2s,color .2s,transform .2s;
+}
+.internal-observation-nav:hover{border-color:rgba(214,180,122,.7);background:rgba(214,180,122,.07);color:#f0e3bd;transform:translateY(-1px)}
+.page-unified-observation .dolmen-layout,.page-unified-observation .viewer-shell{flex:1;min-height:0}
+.page-unified-observation .page-question{margin-top:.48rem;padding-top:.48rem}
+.page-unified-observation .viewer-main,.page-unified-observation .artifact-stage{min-height:0}
+.page-unified-observation .measure-panel{overflow:auto}
+.page-unified-observation .depth-legend p{font-size:12px;color:#9ca6b1}
+.page-unified-observation .depth-legend span{font-size:12px;color:#939daa}
+.page-unified-observation .viewer-status{font-size:12px;color:#8994a1}
+.page-unified-observation .viewer-help{font-size:12px;color:#8f99a6;line-height:1.45;max-width:310px;text-align:right}
+.page-unified-observation .viewer-controls button{font-size:12px}
+.page-unified-observation .measure-list dt,.page-unified-observation .measure-list dd{font-size:12px}
+.page-unified-observation .measure-panel>div>p:not(.panel-kicker){font-size:12.5px;color:#b7bec6;line-height:1.55}
+.page-unified-observation .observation-question>div>p{font-size:clamp(13px,1.22vw,17px);line-height:1.45}
+
+/* Six-node constellation table of contents after the chapter merge. */
+.constellation-toc{height:252px}
+.toc-map{height:252px}
+.toc-lines{height:238px}
+.toc-01{left:44px;top:7px}.toc-02{left:78px;top:47px}.toc-03{left:50px;top:89px}.toc-04{left:84px;top:130px}.toc-05{left:39px;top:175px}.toc-06{left:76px;top:215px}
+
+@media (max-height:820px) and (min-width:761px){
+  .page-unified-observation .page-heading{margin-bottom:.48rem}
+  .page-unified-observation .observation-mode-bar{min-height:34px;margin-bottom:.32rem;padding-bottom:.28rem}
+  .page-unified-observation .artifact-info,.page-unified-observation .measure-panel{padding:.78rem}
+  .page-unified-observation .museum-data{margin:.45rem 0}
+  .page-unified-observation .museum-data div{padding:.34rem 0}
+  .page-unified-observation .scan-data-summary li{padding:.12rem 0}
+  .page-unified-observation .measure-list{margin:.35rem 0}
+  .page-unified-observation .measure-list div{padding:.34rem 0}
+  .page-unified-observation .page-question{margin-top:.3rem;padding-top:.3rem}
+}
+
+@media (max-width:760px){
+  .page-unified-observation .page-frame{padding-top:3rem;padding-bottom:6.65rem}
+  .page-unified-observation .page-heading{margin-bottom:.38rem}
+  .page-unified-observation .page-heading h2{font-size:clamp(1.75rem,8vw,2.15rem)}
+  .unified-observation-stage{overflow:hidden}
+  .observation-mode-bar{min-height:34px;margin-bottom:.3rem;padding-bottom:.25rem;align-items:center}
+  .observation-stage-index{font-size:9px}
+  .observation-mode-bar h3{font-size:14px}
+  .internal-observation-nav{min-height:36px;padding:.38rem .52rem;font-size:12px}
+  .page-unified-observation .dolmen-layout{grid-template-columns:1fr;grid-template-rows:minmax(0,1.28fr) minmax(0,.88fr);gap:.38rem}
+  .page-unified-observation .artifact-info{padding:.55rem;overflow:auto;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:.5rem}
+  .page-unified-observation .museum-data div{padding:.22rem 0}
+  .page-unified-observation .scan-data-summary{overflow:auto}
+  .page-unified-observation .scan-data-summary li strong,.page-unified-observation .scan-data-summary li span{font-size:12px;line-height:1.35}
+  .page-unified-observation .artifact-caption{left:.55rem;right:.55rem;bottom:.5rem}
+  .page-unified-observation .artifact-caption span{font-size:10px}.page-unified-observation .artifact-caption strong{font-size:12px}
+  .page-unified-observation .curatorial-note p{font-size:13px;line-height:1.4}.page-unified-observation .curatorial-note small{display:block;font-size:12px;line-height:1.4}
+  .page-unified-observation .page-question{gap:.45rem;margin-top:.25rem;padding-top:.25rem;align-items:flex-start}
+  .page-unified-observation .page-question button{font-size:12px;min-height:38px;padding:.4rem .5rem}
+
+  .page-unified-observation .viewer-shell{grid-template-columns:1fr;grid-template-rows:minmax(0,1.28fr) minmax(0,.88fr)}
+  .page-unified-observation .measure-panel{border-left:0;border-top:1px solid var(--line);padding:.55rem;display:grid;grid-template-columns:1.05fr 1fr;gap:.45rem;overflow:auto}
+  .page-unified-observation .measure-list{margin:0}.page-unified-observation .measure-list div{padding:.24rem 0}
+  .page-unified-observation .depth-legend{grid-column:1/-1}
+  .page-unified-observation .viewer-controls{left:.5rem;right:.5rem;bottom:.5rem;gap:.22rem}.page-unified-observation .viewer-controls button{font-size:12px;padding:.34rem .4rem}
+  .page-unified-observation .viewer-status{left:.5rem;top:.5rem;font-size:11px}
+  .page-unified-observation .viewer-help{display:block;right:.5rem;top:.5rem;max-width:148px;font-size:12px;line-height:1.3}
+  .page-unified-observation .observation-question>div>p{font-size:13px;line-height:1.4}
+
+  .toc-map{height:252px}
+  .constellation-toc.open .toc-map{transform:translate(44px,-50%) scale(1)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .observation-mode{transition-duration:.001ms!important;transform:none!important}
+}
+
+/* =========================================================
+   v11 — museum-style typography + direct chapter titles
+   Curatorial reading uses Korean serif; interaction/data stays sans.
+   ========================================================= */
+:root{
+  --font-display:"Noto Serif CJK KR","Noto Serif KR","Nanum Myeongjo","Batang","Baekmuk Batang",serif;
+  --font-curatorial:"Noto Serif CJK KR","Noto Serif KR","Nanum Myeongjo","Batang","Baekmuk Batang",serif;
+  --font-ui:"Noto Sans CJK KR","Noto Sans KR","Nanum Gothic","Malgun Gothic",Dotum,"돋움",sans-serif;
+  --serif:var(--font-curatorial);
+  --sans:var(--font-ui);
+}
+body{font-family:var(--font-ui)}
+button,input,textarea,select,.type-label,.panel-kicker,.section-index,.page-navigation,.constellation-toc{font-family:var(--font-ui)}
+
+/* Exhibition / chapter titles: restrained museum wall-title proportions. */
+.page-heading h2{
+  font-family:var(--font-display);font-size:clamp(30px,3.25vw,42px);font-weight:500;line-height:1.22;
+  letter-spacing:-.018em;max-width:18ch;color:#ece6da;
+}
+.page-heading.compact-heading h2{font-size:clamp(29px,3vw,40px);max-width:19ch}
+.chapter-curatorial-subtitle{
+  margin:.28rem 0 0;color:#8f887b;font:400 13px/1.45 var(--font-curatorial);letter-spacing:.01em;
+}
+
+/* Project title / Chapter 01. Keep spatial node typography intact. */
+.graph-project-label{display:flex;align-items:baseline;gap:.46rem;margin:0 0 .3rem;text-transform:none;letter-spacing:0}
+.graph-project-label .exhibition-name{color:#bdb4a4;font:500 13px/1.4 var(--font-display);letter-spacing:.01em}
+.graph-project-label .project-separator{color:#687180;font:400 9px/1 var(--font-ui)}
+.graph-project-label .chapter-meta{color:#848d9b;font:500 9px/1.4 var(--font-ui);letter-spacing:.16em;text-transform:uppercase}
+.graph-main-header h1{
+  font-family:var(--font-display);font-size:clamp(28px,3vw,38px);font-weight:500;line-height:1.22;
+  letter-spacing:-.015em;color:#eee3c9;
+}
+.graph-curatorial-subtitle{margin:3px 0 0;color:#9e9584;font:400 13px/1.45 var(--font-curatorial);letter-spacing:.01em}
+.graph-info-panel h2{font-family:var(--font-display);font-weight:500;letter-spacing:-.01em}
+.graph-info-panel>p,.graph-panel-note,.graph-panel-tag,.graph-connected-links button{font-family:var(--font-ui)}
+
+/* Curatorial reading copy. */
+#observationModeQuestion,.curatorial-note p,.observation-question>div>p,.participation-question,
+.detail-copy>p,.detail-boundary p,.closing-statement,.closing-details p{
+  font-family:var(--font-curatorial);
+}
+#observationModeQuestion{font-size:14px;line-height:1.65;color:#c7c1b6}
+.curatorial-note p{font-weight:400;line-height:1.58;color:#d0c9bc}
+.observation-question>div>p{font-weight:400;line-height:1.55}
+.participation-question{font-weight:500;color:#ded6c8;line-height:1.5}
+.detail-copy>p{font-size:14px;line-height:1.72;color:#d0cbc1}
+.detail-boundary p{font-size:14px;line-height:1.7;color:#c9c5bd}
+.closing-details p{font-size:13.5px;line-height:1.72;color:#c8c3ba}
+
+/* Artifact names and interpretive/history headings read as exhibition text. */
+.museum-data dd{font-family:var(--font-ui);font-size:13px}
+.museum-data dd.artifact-name{font-family:var(--font-curatorial);font-size:15px;font-weight:500;color:#ded7ca;line-height:1.5}
+.interpretation-item strong,.detail-copy h3,.history-card h3,.creator-form h3,.visitor-sky h3,.visitor-card h4,.sources-wrap h2,.archive-grid h3,.reference-placeholder h3{
+  font-family:var(--font-curatorial);
+}
+.history-card h3{font-weight:500;letter-spacing:-.01em}
+
+/* Data / measurement / comparison remains UI typography. */
+.measure-list dd,.match-results dd,.mini-plot header strong,.overlay-header strong,.depth-legend,.viewer-status,
+.result-summary,.plot-legend,.museum-data dt,.scan-data-summary,.creator-toolbar,.creator-form label{
+  font-family:var(--font-ui);
+}
+.measure-list dd,.match-results dd{font-weight:500;letter-spacing:.01em}
+
+/* Full, direct TOC titles appear without clipping when active/hovered. */
+.toc-node em{max-width:none;width:max-content;overflow:visible;font-family:var(--font-ui);white-space:nowrap}
+.toc-node:hover em,.toc-node.active em{
+  padding:2px 5px;background:rgba(5,7,13,.88);box-shadow:0 0 0 1px rgba(255,255,255,.045);
+}
+
+/* Navigation now names the adjacent chapter; allow the Korean title to fit. */
+.page-navigation button{min-width:154px}
+.nav-copy strong{max-width:15rem;white-space:nowrap;font-family:var(--font-ui);font-size:12px}
+
+/* Keep serif strokes readable against the dark exhibition palette. */
+.page-heading h2,.chapter-curatorial-subtitle,.graph-main-header h1,.graph-curatorial-subtitle,
+.curatorial-note p,.observation-question>div>p,.participation-question,.detail-copy h3,.detail-copy>p,
+.detail-boundary p,.history-card h3,.closing-statement,.closing-details p{opacity:1}
+
+@media (max-height:820px) and (min-width:761px){
+  .page-heading h2{font-size:clamp(28px,3vw,38px)}
+  .page-heading.compact-heading h2{font-size:clamp(27px,2.8vw,36px)}
+  .chapter-curatorial-subtitle{font-size:12.5px;margin-top:.15rem}
+  #observationModeQuestion{font-size:13px}
+  .detail-copy>p,.detail-boundary p{font-size:13px}
+}
+
+@media (max-width:760px){
+  .page-heading h2,.page-matching .page-heading h2,.page-unified-observation .page-heading h2{
+    font-size:clamp(24px,7.2vw,29px);line-height:1.24;letter-spacing:-.018em;max-width:15ch;word-break:keep-all;
+  }
+  .page-heading.compact-heading h2{font-size:clamp(23px,6.9vw,28px);max-width:15ch}
+  .chapter-curatorial-subtitle{font-size:12.5px;line-height:1.35;margin-top:.12rem}
+  .graph-main-header h1{font-size:26px;line-height:1.22;letter-spacing:-.015em}
+  .graph-project-label .exhibition-name{font-size:12px}
+  .graph-curatorial-subtitle{font-size:12px;line-height:1.35}
+  #observationModeQuestion{font-size:13px;line-height:1.55}
+  .detail-copy>p,.detail-boundary p{font-size:13px;line-height:1.6}
+  .museum-data dd.artifact-name{font-size:13.5px}
+
+  .page-navigation button{min-width:112px;max-width:43vw}
+  .nav-copy strong{max-width:34vw;overflow:hidden;text-overflow:ellipsis;font-size:12px}
+  .toc-node.active em,.toc-node:hover em{max-width:calc(100vw - 88px);overflow:hidden;text-overflow:ellipsis}
+}
+@media (max-width:760px){
+  /* Curatorial subtitles remain a desktop/tablet layer; direct titles lead on small screens. */
+  .chapter-curatorial-subtitle,.graph-curatorial-subtitle{display:none}
+}
+/* Metadata inside interpretive panels remains UI typography. */
+.detail-copy .detail-index{font-family:var(--font-ui)}
+
+/* v12 — spreadsheet photo gallery support in Chapter 01 */
+.graph-node-photo-gallery{display:grid;gap:.5rem;margin:.62rem 0 .78rem}
+.graph-node-photo-gallery .graph-node-photo{margin:0}
+.graph-node-photo[hidden]{display:none}
+@media (max-width:700px){
+  .graph-node-photo-gallery{gap:.4rem;margin:.5rem 0 .65rem}
+}
+
+/* v16-A — genuine 3D scan viewer, shared across Chapter 02 overview and detail. */
+.page-unified-observation .artifact-stage{position:relative;overflow:hidden;background:radial-gradient(circle at 50% 48%,#1a242c,#06090e 73%)}
+.page-unified-observation .viewer-main{overflow:hidden}
+.dolmen-viewer-host,.dolmen-3d-root{position:absolute;inset:0;min-width:0;min-height:0}
+.dolmen-3d-root{background:radial-gradient(ellipse at 50% 44%,rgba(40,53,59,.42),rgba(7,10,15,0) 76%)}
+#stoneViewer{display:block;width:100%;height:100%;touch-action:none;cursor:grab}
+#stoneViewer.dragging{cursor:grabbing}
+.dolmen-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#d0d4d7;background:rgba(6,10,16,.84);z-index:3;text-align:center;font-size:13px}
+.dolmen-loading strong{font-size:14px;font-weight:500;letter-spacing:.04em}
+.dolmen-loading span{font-variant-numeric:tabular-nums;color:#a3b1ba;font-size:13px}
+.dolmen-loading progress{width:min(220px,62%);height:5px;accent-color:#7fc8c0}
+.dolmen-loading.is-hidden{display:none}
+.dolmen-loading.is-error{background:rgba(24,9,9,.92);padding:15px}
+.page-unified-observation .viewer-controls{z-index:4;align-items:center;pointer-events:none}
+.page-unified-observation .viewer-controls>*{pointer-events:auto}
+.page-unified-observation .viewer-status{z-index:2;pointer-events:none;max-width:180px}
+.page-unified-observation .viewer-help{z-index:2;pointer-events:none}
+.page-unified-observation .artifact-caption{pointer-events:none;z-index:2;background:linear-gradient(transparent,rgba(1,4,7,.85));padding-top:12px}
+.page-unified-observation .viewer-controls button[data-viewer-mode][aria-pressed="true"]{color:#b1e6df;border-color:rgba(127,200,192,.68);background:rgba(24,51,51,.87)}
+.dolmen-light-control{display:inline-flex;align-items:center;gap:7px;padding:6px 8px;background:rgba(7,10,16,.88);border:1px solid rgba(255,255,255,.16);color:#c2ced3;font-size:12px;white-space:nowrap}
+.dolmen-light-control[hidden]{display:none}
+.dolmen-light-control input{width:85px;accent-color:#7fc8c0}
+.page-unified-observation .measure-panel .measure-list dd{font-size:12px;color:#b0c4ca}
+@media (max-width:760px){
+ .page-unified-observation .viewer-controls{gap:4px;bottom:8px;left:7px;right:7px}
+ .page-unified-observation .viewer-controls button{font-size:12px;padding:6px 8px;min-height:30px}
+ .page-unified-observation .viewer-help{top:31px;right:7px;max-width:185px;font-size:12px;background:rgba(6,9,13,.66)}
+ .page-unified-observation .viewer-status{top:7px;left:7px;max-width:155px}
+ .dolmen-light-control{padding:3px 6px}
+ .dolmen-light-control input{width:74px}
+}
+/* Small-screen scan-first layout: reserve enough unobstructed room for the stone. */
+@media (max-width:760px){
+  .page-unified-observation .viewer-shell{grid-template-rows:minmax(0,1.58fr) minmax(0,.72fr)}
+  .page-unified-observation .viewer-help{display:none}
+  .page-unified-observation .viewer-status{max-width:calc(100% - 18px)}
+  .page-unified-observation .viewer-status strong{font-size:12px;line-height:1.3}
+  .page-unified-observation .viewer-controls button{white-space:nowrap}
+}
+
+/* v16-B — measured cupmark selector; limited to Chapter 02 detail panel. */
+.page-unified-observation .cupmark-panel{min-width:0;display:flex;flex-direction:column;gap:9px;overflow-y:auto;padding:14px 14px 12px;scrollbar-color:#364048 transparent}
+.cupmark-panel-head h3{font-size:16px;margin:3px 0 2px;color:#e7e0d1}
+.cupmark-panel-head h3 span{font-size:12px;color:#ccad74;margin-left:6px;font-weight:400}
+.cupmark-panel-head p:not(.panel-kicker){font-size:12px;line-height:1.55;color:#b4bac2;margin:0}
+.cupmark-toggle-line{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;color:#d3d5d4;border-top:1px solid var(--line);padding-top:9px}
+.cupmark-toggle-line>div{display:flex;gap:5px}
+.cupmark-toggle-line button{min-width:53px;padding:6px 8px;background:#111923;border:1px solid #34404b;color:#b7bfc6;font-size:12px;cursor:pointer}
+.cupmark-toggle-line button[aria-pressed="true"]{background:#383322;border-color:#ad925a;color:#f1d49b}
+.cupmark-picker-wrap{min-height:0}
+.cupmark-picker-wrap .panel-kicker{display:flex;justify-content:space-between;align-items:center;gap:5px}
+.cupmark-hint{letter-spacing:0;text-transform:none;font-size:11px;color:#9ca6ae}
+.cupmark-list{margin-top:7px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-content:start;gap:5px;max-height:146px;overflow-y:auto;padding:0 4px 4px 0;scrollbar-color:#3d4851 transparent}
+.cupmark-list button{min-height:31px;border:1px solid #343c44;color:#cad0d3;background:#11171e;font-size:12px;cursor:pointer;border-radius:2px}
+.cupmark-list button:hover,.cupmark-list button:focus-visible{border-color:#c8a66c;color:#f6e5c6}
+.cupmark-list button[aria-pressed="true"]{border-color:#d4ae70;color:#ffe6b3;background:#393122}
+.cupmark-detail{border:1px solid rgba(184,154,100,.24);padding:10px 11px;background:rgba(20,21,20,.55)}
+.cupmark-detail-title{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:13px;color:#eddec6;margin-bottom:5px}
+.cupmark-detail-title span{font-size:11px;color:#a6afbb}
+.cupmark-detail .measure-list{margin:0}
+.cupmark-detail .measure-list div{padding:4px 0;display:grid;grid-template-columns:minmax(65px,.6fr) 1fr;gap:6px}
+.cupmark-detail .measure-list dt,.cupmark-detail .measure-list dd{font-size:12px;line-height:1.35}
+.cupmark-disclaimer{font-size:11px;line-height:1.5;color:#a2adb4;margin:0}
+@media (max-width:760px){
+ .page-unified-observation .cupmark-panel{display:flex;gap:6px;padding:8px 10px 10px;overflow-y:auto}
+ .cupmark-panel-head h3{font-size:14px}.cupmark-panel-head p:not(.panel-kicker){font-size:12px}
+ .cupmark-list{max-height:72px;grid-template-columns:repeat(6,minmax(0,1fr));gap:3px}
+ .cupmark-list button{min-height:29px}
+ .cupmark-detail{padding:7px 8px}
+ .cupmark-detail .measure-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 8px}
+ .cupmark-detail .measure-list div{padding:3px 0;grid-template-columns:48px 1fr}
+ .cupmark-disclaimer{font-size:11px}
+}
+/* Keep the compact selector in normal document flow: older .measure-panel grid rules
+   otherwise cause the scroll list and detail card to overlap at narrow heights. */
+.page-unified-observation .measure-panel.cupmark-panel{display:block;overflow-y:auto;overscroll-behavior:contain}
+.page-unified-observation .measure-panel.cupmark-panel>*{margin:0 0 10px}
+.page-unified-observation .measure-panel.cupmark-panel .cupmark-list{margin:7px 0 0}
+@media (max-width:760px){
+ .page-unified-observation .measure-panel.cupmark-panel{display:block;overflow-y:auto;padding:8px 10px 10px}
+ .page-unified-observation .measure-panel.cupmark-panel>*{margin-bottom:9px}
+}
+
+/* v16-C — measured cupmark close observation and focus navigation */
+.page-unified-observation .viewer-main{position:relative}
+.cupmark-focus-toolbar[hidden]{display:none!important}
+.cupmark-focus-toolbar{position:absolute;right:10px;top:10px;z-index:5;display:flex;align-items:center;gap:5px;max-width:calc(100% - 16px);padding:4px;background:rgba(7,11,17,.9);border:1px solid rgba(191,163,109,.44);box-shadow:0 4px 20px #0008;flex-wrap:wrap}
+.cupmark-focus-toolbar button{font-size:12px;min-height:36px;color:#e8d7b6;background:rgba(33,31,25,.8);border:1px solid #60533e;padding:6px 10px;cursor:pointer}
+.cupmark-focus-toolbar button:hover:not(:disabled),.cupmark-focus-toolbar button:focus-visible{border-color:#e4c58f;background:#423723}
+.cupmark-focus-toolbar button:disabled{opacity:.36;cursor:not-allowed}
+.cupmark-focus-toolbar strong{font-size:12px;color:#e5d2ac;font-variant-numeric:tabular-nums;min-width:78px;text-align:center}
+#chapter-02[data-view-mode="cupmark-focus"] .viewer-help{display:none}
+.cupmark-panel-headline{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.cupmark-panel-headline button,#cupmarkListToggle{font-size:12px;color:#d2c4a9;border:1px solid #4a4a42;background:#181d22;min-height:31px;padding:4px 7px;cursor:pointer}
+.cupmark-panel-headline h3{min-width:0}
+.cupmark-compact-selection{color:#dec18a;font-size:12px}
+.cupmark-compact-selection:empty{display:none}
+.cupmark-picker-wrap.is-folded .cupmark-list{display:none}
+@media(min-width:761px){
+ .cupmark-panel-headline button{display:none}
+ .cupmark-list{max-height:125px}
+}
+@media(max-width:760px){
+ .cupmark-focus-toolbar{left:7px;right:7px;top:42px;justify-content:space-between;gap:3px;padding:3px}
+ .cupmark-focus-toolbar button{font-size:12px;padding:6px;min-height:36px}
+ .cupmark-focus-toolbar strong{min-width:64px;font-size:12px}
+ #chapter-02[data-view-mode="cupmark-focus"] .viewer-shell{grid-template-rows:minmax(0,1fr) auto;min-height:0}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel{max-height:min(230px,34vh);min-height:0}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed{height:auto;max-height:85px;overflow:hidden;padding:7px 10px}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed > :not(.cupmark-panel-head){display:none!important}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed .cupmark-panel-head>p:not(.panel-kicker){display:none}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed .cupmark-panel-headline{margin-bottom:0}
+ .cupmark-list{max-height:80px}
+}
+@media(max-width:365px){.cupmark-focus-toolbar strong{min-width:44px}.cupmark-focus-toolbar button{padding:5px}}
+/* Reserve the left 56px mobile edge for the site's fixed constellation TOC. */
+@media(max-width:760px){.cupmark-focus-toolbar{left:auto;right:7px;max-width:calc(100% - 72px);justify-content:flex-end}}
+@media(max-width:760px){.cupmark-focus-toolbar{top:67px}}
+
+/* v19: texture-load fallback message; intentionally outside the model canvas. */
+.dolmen-texture-notice{position:absolute;left:12px;right:12px;bottom:58px;z-index:5;pointer-events:none;color:#e3c29b;background:rgba(14,14,16,.90);font-size:12px;line-height:1.45;padding:5px 8px;max-width:480px}
+.dolmen-texture-notice:empty{display:none}
+@media(max-width:760px){.dolmen-texture-notice{bottom:72px;left:8px;right:8px}}
+
+/* v20 — four-chapter TOC, verified object dimensions */
+.constellation-toc{height:185px}
+.toc-map{height:185px}
+.toc-lines{height:169px}
+.page-unified-observation .artifact-info{overflow-y:auto;justify-content:flex-start}
+.page-unified-observation .museum-data{flex:0 0 auto}
+.page-unified-observation .museum-data dt,.page-unified-observation .museum-data dd{font-size:12px;line-height:1.5}
+@media(max-width:760px){
+  .page-unified-observation .artifact-info{overflow-y:auto}
+  .page-unified-observation .museum-data div{grid-template-columns:minmax(5.5rem,46%) minmax(0,1fr)}
+  .page-unified-observation .museum-data dt,.page-unified-observation .museum-data dd{font-size:12px}
+}
+@media(max-width:760px){
+  .constellation-toc{height:42px}
+  .toc-map{height:185px}
+}
+
+/* v21: short, unnumbered opening and measured-cupmark night-sky ending. */
+/* v23: two transparent artwork layers, timed from a single playback start.
+   The stone finishes at 1.0s and the logo starts immediately, with zero solo hold. */
+.exhibition-opening{position:fixed;inset:0;z-index:300;display:grid;place-items:center;overflow:hidden;background:#000;cursor:pointer;opacity:1;transition:opacity .6s ease;}
+.opening-composition{position:relative;width:min(94vw,960px,139vh);aspect-ratio:1.55;pointer-events:none;}
+.opening-stone,.opening-logo{display:block;position:absolute;height:auto;max-width:none;opacity:0;transform-origin:50% 50%;user-select:none;-webkit-user-drag:none;}
+.opening-stone{left:8%;top:20%;width:84%;}
+.opening-logo{left:-2%;top:-7%;width:104%;}
+.exhibition-opening.is-playing .opening-stone{animation:v23-stone-fade .8s ease-out .2s both;}
+.exhibition-opening.is-playing .opening-logo{animation:v23-logo-bounce .9s cubic-bezier(.2,.7,.22,1) 1s both;}
+@keyframes v23-stone-fade{from{opacity:0}to{opacity:1}}
+@keyframes v23-logo-bounce{
+  0%{opacity:0;transform:translateY(12px) scale(.85)}
+  45%{opacity:1;transform:translateY(-6px) scale(1.08)}
+  70%{opacity:1;transform:translateY(2px) scale(.98)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+.opening-fallback-title{position:absolute;display:none;max-width:90%;text-align:center;color:#ddd8cb;font:400 clamp(1.5rem,4vw,3.2rem)/1.5 var(--serif);letter-spacing:.12em;pointer-events:none;}
+.exhibition-opening.is-fallback .opening-composition{display:none}
+.exhibition-opening.is-fallback .opening-fallback-title{display:block;animation:v23-stone-fade .5s ease-out both;}
+.exhibition-opening.is-closing{opacity:0;pointer-events:none}
+.exhibition-opening.is-skipped{transition:none;opacity:0;pointer-events:none}
+@media(max-width:600px){.opening-composition{width:min(94vw,139vh)}}
+body.is-opening .constellation-toc,body.is-opening .page-navigation{visibility:hidden;pointer-events:none}
+.page-ending{background:#040912;isolation:isolate}
+.ending-sky-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+/* Only visible UI in the ending: deliberately subdued corner arrow. */
+.ending-return{position:absolute;z-index:5;left:calc(1rem + env(safe-area-inset-left,0px));bottom:calc(.9rem + env(safe-area-inset-bottom,0px));display:grid;place-items:center;width:48px;height:48px;min-width:44px;min-height:44px;padding:0;border:1px solid rgba(210,220,235,.28);border-radius:50%;color:#e4eaf7;background:rgba(11,19,35,.16);font:300 1.45rem/1 var(--sans);opacity:.15;cursor:pointer;transition:opacity .26s ease,background .26s ease,border-color .26s ease;}
+.ending-return:hover,.ending-return:focus-visible{opacity:.58;background:rgba(11,19,35,.46);border-color:rgba(210,220,235,.5)}
+body[data-page="4"] .constellation-toc,body[data-page="4"] .page-navigation,body[data-page="4"] .skip-link{opacity:0;visibility:hidden;pointer-events:none}
+@media(hover:none){.ending-return{opacity:.28}}
+@media(prefers-reduced-motion:reduce){
+ .exhibition-opening.is-playing .opening-stone,.exhibition-opening.is-playing .opening-logo{animation:none;opacity:1;transform:none}
+ .exhibition-opening.is-fallback .opening-fallback-title{animation:none}
+ .exhibition-opening{transition:opacity .12s ease}
+ .ending-return{transition:none}
+}
+
+/* v22: four actual chapter nodes connected, with line precisely terminating at Chapter 04. */
+.constellation-toc .toc-map{height:185px}
+.constellation-toc .toc-lines{position:absolute;inset:0;width:126px;height:185px;overflow:hidden}
+.constellation-toc .toc-01{left:44px;top:7px}
+.constellation-toc .toc-02{left:78px;top:47px}
+.constellation-toc .toc-03{left:50px;top:89px}
+.constellation-toc .toc-04{left:84px;top:130px}
+.page-unified-observation .viewer-help{display:flex;flex-wrap:wrap;gap:3px 12px;justify-content:flex-end;max-width:min(96%,530px);line-height:1.5;text-align:right}
+.page-unified-observation .viewer-help span{white-space:nowrap;word-break:keep-all;overflow-wrap:normal}
+@media(max-width:760px){
+ .constellation-toc .toc-map{height:185px}
+ .page-unified-observation .viewer-help{display:flex;right:6px;top:34px;gap:2px 8px;max-width:calc(100% - 14px);padding:4px 7px;font-size:12px}
+ #chapter-02[data-view-mode="cupmark-focus"] .viewer-help{display:none}
+}
+
+/* v24: identical bottom-right screen-switch placement in both observation modes */
+.page-unified-observation .observation-detail .observation-question{display:flex;align-items:center;justify-content:space-between}
+.page-unified-observation .observation-detail .internal-observation-back{margin-left:auto;flex-shrink:0}
+/* v24: inert, intentionally unlinked source button inside each active interpretation block */
+.interpretation-detail .detail-copy{display:flex;flex-direction:column;align-self:stretch;min-width:0}
+.interpretation-source-button{align-self:flex-end;margin-top:auto;min-height:34px;padding:6px 13px;border:1px solid rgba(209,181,125,.4);background:rgba(12,18,26,.5);color:#b9a27b;font:12px var(--font-ui,system-ui,sans-serif);border-radius:2px;opacity:.9;cursor:default}
+.interpretation-source-button:disabled{opacity:.9;color:#b9a27b}
+@media(max-width:760px){.interpretation-source-button{margin-top:8px;min-height:32px}.page-unified-observation .observation-detail .observation-question>div{min-width:0}.page-unified-observation .observation-detail .internal-observation-back{max-width:46%;white-space:nowrap}}
+
+/* v25 — measured cupmark multi-light controls (matches existing dark museum UI) */
+.cupmark-light-settings{border:1px solid rgba(177,147,93,.34);background:rgba(14,17,20,.58);padding:10px 11px;display:grid;gap:9px;color:#d6d3c9}
+.cupmark-light-head,.cupmark-light-mode-line{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cupmark-light-head strong{font-size:13px;font-weight:600;color:#e7d7b8}
+.cupmark-light-head span{font-size:11px;font-variant-numeric:tabular-nums;color:#b9aa8c}
+.cupmark-brightness-control{display:grid;gap:5px;cursor:pointer}
+.cupmark-brightness-control>span{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:#c5cbd0}
+.cupmark-brightness-control output{color:#efd2a0;font-variant-numeric:tabular-nums}
+.cupmark-brightness-control input{width:100%;margin:0;accent-color:#bda06b;cursor:pointer;min-height:22px}
+.cupmark-light-mode-line>span{font-size:12px;color:#c5cbd0}
+.cupmark-light-mode-line>div{display:flex;gap:5px}
+.cupmark-light-mode-line button{min-width:58px;min-height:32px;padding:5px 9px;border:1px solid #3f4447;background:#111923;color:#bec6c9;font-size:12px;cursor:pointer}
+.cupmark-light-mode-line button[aria-pressed="true"]{color:#f1d49b;background:#383322;border-color:#ad925a}
+.cupmark-light-mode-line button:hover,.cupmark-light-mode-line button:focus-visible{border-color:#d0b17d}
+.cupmark-light-hint{font-size:11px;line-height:1.55;color:#a4abb0;margin:0}
+.cupmark-list button[data-light-on="true"]{box-shadow:inset 0 -2px 0 rgba(230,188,112,.95);color:#ecd3a4}
+.cupmark-list button[data-light-on="true"][aria-pressed="true"]{background:#433723;border-color:#e2c188}
+@media(max-width:760px){.cupmark-light-settings{padding:8px 9px;gap:7px}.cupmark-light-hint{font-size:10px}}

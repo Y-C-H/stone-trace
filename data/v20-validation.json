@@ -1,0 +1,103 @@
+{
+  "baseVersion": "stone-traces-v19-webglfix",
+  "resultVersion": "stone-traces-v20",
+  "chapterCount": 4,
+  "removedChapters": [
+    "chapter-05",
+    "chapter-06",
+    "chapter-07"
+  ],
+  "chapter02Information": {
+    "artifact": "세종 연기면 출토 지석묘",
+    "location": "세종 연기면",
+    "period": "청동기 추정",
+    "form": "기반식 + 탁자식",
+    "features": "추후 업데이트",
+    "capstoneLength": "2,885 mm",
+    "capstoneWidth": "1,516 mm"
+  },
+  "navigation": {
+    "pageCount": 4,
+    "tocNodeCount": 4,
+    "nextHiddenOnLastPage": "implemented_in_main_js",
+    "previousAvailableFromSecondPage": "implemented_in_main_js",
+    "pageTransitionPreserved": true
+  },
+  "duplicateButtonsRemoved": {
+    "chapter01": 1,
+    "chapter02": 1,
+    "chapter03": 1,
+    "total": 3,
+    "withinChapterObservationButtonPreserved": true,
+    "cupmarkNavigationPreserved": true
+  },
+  "viewerPreserved": true,
+  "cupmarkDataModified": false,
+  "chapter04Modified": false,
+  "preservedHashes": {
+    "js/dolmenViewer.js": "f12dd61f3e3222d7bcd13f7611f6a99098b4e1d21d6546221541e2fd3d1afeee",
+    "js/skyOverlay.js": "9023172a86598b662b0fa68af80d35d888e821abc6be9cd90564ea4517c6422c",
+    "css/sky-overlay.css": "3efec6063646a0fe6c80338d2d6a91b1e823baa06a8e3d7aa8802fa312922e59",
+    "data/cupmarks-measured.json": "582cdf5e46bae4a55ecf630be459976dc4be34f80e89599948f1dea668b6c4c5",
+    "data/cupmarks-provisional.js": "f750288f2f36cfdfd09d51f7d05225d0076608546ded75639d039dfc79b4596c",
+    "data/cupmarks-provisional.json": "b4dfe7f4e388cb04546fb5898455875f8463fccd4b0789311d2b62ffc32be7b5",
+    "assets/models/dolmen-texture-atlas.jpg": "50bdd16a417c8ba4734ea14017cbab1cfdc6030f595134c7dc6dc350848fec7a",
+    "assets/models/dolmen-700k.glb": "05aa0cb1fdc2b83e6ddd3985f74e4ec9f5c747aa8153d3cde30a5a0ac6eb4e87",
+    "assets/models/dolmen-1m.glb": "2a02ec11341fa2bb570e090dffc2f38418bfe68e126436cca8bdc8583fb5be95",
+    "assets/models/dolmen-textured-manifest.json": "6e47fb8fe019c656aabe6526bd491a7a37f6fb8011d05ce955a9c9245746fc4d",
+    "assets/models/dolmen-textured-07.glb": "32f8ec0291982e13c4dce6b5481b36e6eba18551055ee6a38f677e3efbaadd31",
+    "assets/models/dolmen-textured-06.glb": "9b2abffb5d5662f38a0eb987e85c3d7889d734beaf57a3cafdb4a2ed451b9b5b",
+    "assets/models/dolmen-textured-01.glb": "9116e009a4a6efbfddaff95e2c374f2e339396d2cf3b2854766438f663cbe341",
+    "assets/models/dolmen-textured-05.glb": "7db08e7e31dcefb4b7497e3816aa38f1020423e22a7674187d5ab771b7b0e058",
+    "assets/models/dolmen-textured-08.glb": "2fb17df7f3f130a5e20cac0afd40a2f63d318bf5ec4406899f9a28798066845d",
+    "assets/models/dolmen-textured-03.glb": "d02d3e584c2d42b4f41afe88b971f917581c60cb5049424e90691599c0d1a1ab",
+    "assets/models/dolmen-textured-02.glb": "bba093eef7cf58db5338cdc5acbe2ff34cfefee7cd052fc8e558365e9f9a672b",
+    "assets/models/dolmen-textured-04.glb": "c843792f9b0db6f467753887068a330b83288b04eaac824d5d40ccdbf8cc6478"
+  },
+  "desktopTests": {
+    "1920x1080": {
+      "pageNavigation": "pass_mocked_browser",
+      "chapter02Info": "pass",
+      "cupmarkSelection": "pass_mocked_webgl",
+      "chapter04DOM": "preserved",
+      "actualWebGL": "not_tested"
+    },
+    "1440x900": {
+      "pageNavigation": "pass_mocked_browser",
+      "chapter02Info": "pass",
+      "cupmarkSelection": "pass_mocked_webgl",
+      "chapter04DOM": "preserved",
+      "actualWebGL": "not_tested"
+    },
+    "1366x768": {
+      "pageNavigation": "pass_mocked_browser",
+      "chapter02Info": "pass",
+      "cupmarkSelection": "pass_mocked_webgl",
+      "chapter04DOM": "preserved",
+      "actualWebGL": "not_tested"
+    },
+    "1024x768": {
+      "pageNavigation": "pass_mocked_browser",
+      "chapter02Info": "pass",
+      "cupmarkSelection": "pass_mocked_webgl",
+      "chapter04DOM": "preserved",
+      "actualWebGL": "not_tested"
+    }
+  },
+  "mobileTests": {
+    "390x844": {
+      "pageNavigation": "pass_mocked_browser",
+      "chapter02Info": "pass_scrollable",
+      "cupmarkSelection": "pass_mocked_webgl",
+      "chapter04DOM": "preserved",
+      "touchGesture": "not_tested_real_device",
+      "actualWebGL": "not_tested"
+    }
+  },
+  "knownIssues": [
+    "실제 WebGL2 GPU 텍스처 렌더링 및 모바일 실기기 터치 테스트가 필요합니다.",
+    "v19-webglfix의 GPU 호환성 수정은 원본 그대로 보존했으며 배포 환경에서 별도 확인이 필요합니다."
+  ],
+  "javascriptSyntaxCheck": "pass",
+  "localHTTPResourceResponses": "pass"
+}

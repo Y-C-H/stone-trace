@@ -1,0 +1,92 @@
+{
+  "1m": {
+    "source": "dolmen_1M_poly(2).stl",
+    "stlBytes": 100736034,
+    "glbBytes": 36640052,
+    "triangles": 2014719,
+    "vertices": 1038545,
+    "boundsMin": [
+      -1466.743408203125,
+      -322.9413146972656,
+      -803.7507934570312
+    ],
+    "boundsMax": [
+      1427.5230712890625,
+      394.3942565917969,
+      846.5983276367188
+    ],
+    "center": [
+      -19.61016845703125,
+      35.726470947265625,
+      21.42376708984375
+    ],
+    "extent": [
+      2894.2666015625,
+      717.3355712890625,
+      1650.34912109375
+    ],
+    "sourceSHA256": "d07126b31da3c3a3472fa4cb1b45afecf84db95ebff407aa9164e5918d51aa57",
+    "validation": "Every original float32 vertex bit pattern and all ordered triangle indices preserved",
+    "conversionSeconds": 6.09
+  },
+  "700k": {
+    "source": "dolmen_700K_poly(1).stl",
+    "stlBytes": 60395534,
+    "glbBytes": 22080392,
+    "triangles": 1207909,
+    "vertices": 632050,
+    "boundsMin": [
+      -1466.7635498046875,
+      -322.9413146972656,
+      -803.8015747070312
+    ],
+    "boundsMax": [
+      1427.5526123046875,
+      394.507080078125,
+      846.6985473632812
+    ],
+    "center": [
+      -19.60546875,
+      35.78288269042969,
+      21.448486328125
+    ],
+    "extent": [
+      2894.316162109375,
+      717.4483642578125,
+      1650.5001220703125
+    ],
+    "sourceSHA256": "0fe4e3117dfd47c7f22a6bfa79d4a1a95c4134b44d50794389e6585968873a56",
+    "validation": "Every original float32 vertex bit pattern and all ordered triangle indices preserved",
+    "conversionSeconds": 3.56
+  },
+  "400k": {
+    "source": "dolmen_400K_poly(1).stl",
+    "stlBytes": 19961034,
+    "glbBytes": 7374760,
+    "triangles": 399219,
+    "vertices": 215272,
+    "boundsMin": [
+      -1466.6875,
+      -322.849609375,
+      -803.6774291992188
+    ],
+    "boundsMax": [
+      1427.244873046875,
+      394.70452880859375,
+      846.7528076171875
+    ],
+    "center": [
+      -19.7213134765625,
+      35.927459716796875,
+      21.537689208984375
+    ],
+    "extent": [
+      2893.932373046875,
+      717.5541381835938,
+      1650.43017578125
+    ],
+    "sourceSHA256": "0c7aa59f1e35b8aa321a281491503a80b5968f1f90b8c7c2c188c187b92f88c5",
+    "validation": "Every original float32 vertex bit pattern and all ordered triangle indices preserved",
+    "conversionSeconds": 1.09
+  }
+}

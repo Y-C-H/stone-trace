@@ -1,0 +1,104 @@
+{
+  "baseVersion": "stone-traces-v22",
+  "resultVersion": "stone-traces-v23",
+  "opening": {
+    "image1": "assets/opening/opening-stone.png",
+    "image2": "assets/opening/opening-logo.png",
+    "image1Loaded": true,
+    "image2Loaded": true,
+    "originalImageBytesPreserved": true,
+    "fadeInDurationSeconds": 0.8,
+    "fadeInDelaySeconds": 0.2,
+    "logoAnimationDurationSeconds": 0.9,
+    "logoAnimationStartSeconds": 1.0,
+    "image1StandaloneHoldSeconds": 0,
+    "finalCompositionHoldSeconds": 1.1,
+    "fadeOutDurationSeconds": 0.6,
+    "totalPlaybackDurationSeconds": 3.6,
+    "assetWaitCeilingSeconds": 0.9,
+    "compositionChecked": true,
+    "screenshotFiles": [
+      "v23-01-black.png",
+      "v23-02-stone-fade.png",
+      "v23-03-stone-complete.png",
+      "v23-04-logo-bounce.png",
+      "v23-05-logo-complete.png",
+      "v23-06-desktop-composition.png",
+      "v23-07-chapter01.png",
+      "v23-08-mobile-composition.png",
+      "v23-09-chapter03-after-removal.png"
+    ],
+    "autoTransition": true,
+    "skipEnabled": true,
+    "skipMethodsTested": [
+      "click",
+      "touch",
+      "Enter"
+    ],
+    "reducedMotion": {
+      "passed": true,
+      "duration": 0.94
+    },
+    "responsiveTestScreens": [
+      "1920x1080",
+      "1440x900",
+      "1366x768",
+      "1024x768",
+      "390x844",
+      "320x640"
+    ],
+    "timingFromPlaybackToOverlayRemovalSeconds": {
+      "1920x1080": 3.626,
+      "1440x900": 3.601,
+      "1366x768": 3.621,
+      "1024x768": 3.61,
+      "390x844": 3.616,
+      "320x640": 3.63
+    }
+  },
+  "chapter03": {
+    "removedText": "다음 장에서 성혈 배열을 밤하늘에 직접 겹쳐볼 수 있습니다.",
+    "removalVerified": true
+  },
+  "dataIntegrity": {
+    "measuredCupmarksModified": false,
+    "chapter04Modified": false,
+    "endingModified": false,
+    "viewerModified": false,
+    "modelsModified": false,
+    "unchangedExcept": [
+      "index.html",
+      "css/style.css",
+      "js/main.js"
+    ]
+  },
+  "desktopTests": {
+    "resolutionUI": [
+      "1920x1080",
+      "1440x900",
+      "1366x768",
+      "1024x768"
+    ],
+    "passed": true
+  },
+  "mobileTests": {
+    "resolutionUI": [
+      "390x844",
+      "320x640"
+    ],
+    "passed": true,
+    "realDevicesTested": false
+  },
+  "browserRegression": {
+    "v22Workflow": "chapter03_interpretation_chapter04_measured_46_points_zoom_rotate_onoff_ending_return",
+    "desktopMobileUISimulationPassed": true
+  },
+  "knownIssues": [
+    "Chromium headless browser blocked localhost HTTP access in this execution environment. Tests used the actual project HTML/CSS/JavaScript in a browser with in-memory image URLs.",
+    "Real WebGL2 GPU and physical mobile device rendering were not tested."
+  ],
+  "assetHashes": {
+    "stone": "3b2e4ebb8850235af24bee31614aadad9521617b17f996ea1393055a0e4e0708",
+    "logo": "1bc48aa3564eb0dbfb78f6d1289dad5b03891e852921c2d21439b9478c34e2d6"
+  }
+}

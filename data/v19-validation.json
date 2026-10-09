@@ -1,0 +1,271 @@
+{
+  "baseVersion": "stone-traces-v16c (shader-fixed)",
+  "basePackage": "stone-traces-v16c-shaderfix.zip",
+  "textureSource": {
+    "obj": "경량화텍스쳐(2).obj",
+    "mtl": "경량화텍스쳐(2).mtl",
+    "image": "KakaoTalk_20261008_140810922(2).jpg",
+    "imageWidth": 1467,
+    "imageHeight": 2048,
+    "imageFileSize": 1094336,
+    "atlasModified": false
+  },
+  "obj": {
+    "vertexCount": 406691,
+    "uvCount": 2257932,
+    "normalCount": 0,
+    "faceCount": 752644,
+    "triangleCount": 752644,
+    "bounds": {
+      "min": [
+        -1638.9576416015625,
+        -348.74462890625,
+        -1666.873291015625
+      ],
+      "max": [
+        1558.1312255859375,
+        366.0746154785156,
+        508.1663513183594
+      ]
+    },
+    "allFacesHaveUV": true
+  },
+  "material": {
+    "materialCount": 1,
+    "materialName": "Sharp_Fusion_1",
+    "mapKd": "경량화텍스쳐.jpg",
+    "textureResolved": true,
+    "resolutionMethod": "Provided KakaoTalk JPG designated as atlas by prompt; embedded unchanged JPEG in GLB, no source JPG rename",
+    "inputMaterialEncoding": "CP949"
+  },
+  "coordinateComparison": {
+    "v16cBounds": {
+      "min": [
+        -1466.7635498046875,
+        -322.9413146972656,
+        -803.8015747070312
+      ],
+      "max": [
+        1427.5526123046875,
+        394.507080078125,
+        846.6985473632812
+      ]
+    },
+    "textureModelBounds": {
+      "min": [
+        -1638.9576416015625,
+        -348.74462890625,
+        -1666.873291015625
+      ],
+      "max": [
+        1558.1312255859375,
+        366.0746154785156,
+        508.1663513183594
+      ]
+    },
+    "texturedBoundsAfterGlobalTransform": {
+      "min": [
+        -1552.1052904573482,
+        -322.30681190625,
+        -1015.1345607018718
+      ],
+      "max": [
+        1648.9284391023791,
+        392.5124324785156,
+        1165.7077944242944
+      ]
+    },
+    "sameCoordinateSpace": false,
+    "globalRigidTransformApplied": {
+      "yawRadians": 0.00181612185,
+      "yawDegrees": 0.10405611708649116,
+      "uniformScale": 1,
+      "translation": [
+        89.8768916,
+        26.437817,
+        654.565736
+      ],
+      "method": "3D reference-surface nearest-neighbor registration using upper-face vertices (not manual per-point correction)"
+    },
+    "surfaceValidationSampleMedianNearestVertexDistance": 3.62075481,
+    "surfaceValidationSampleP95NearestVertexDistance": 7.19736717
+  },
+  "webModel": {
+    "filename": "assets/models/dolmen-textured-manifest.json",
+    "triangleCount": 752644,
+    "vertexCornerCount": 2257932,
+    "fileSize": 46264048,
+    "textureEmbedded": false,
+    "sourceVerticesAndUVPreserved": true,
+    "jPEGByteHashUnchanged": true,
+    "textureResize": false,
+    "textureCompression": false,
+    "uvConvention": "OBJ original vt retained; KHR_texture_transform offset (0,1) scale (1,-1) for glTF standard viewers; WebGL upload UNPACK_FLIP_Y on source JPEG",
+    "format": "partitioned GLB + original JPG atlas",
+    "externalTextureShared": true
+  },
+  "cupmarks": {
+    "count": 46,
+    "measurementDataModified": false,
+    "markerPositionModified": false,
+    "markerDriftDetected": false,
+    "markerDistanceToTexturedSurfaceMean": 2.994903624200311,
+    "markerDistanceToTexturedSurfaceMax": 7.174282301346606,
+    "markerDistanceThreshold": 10,
+    "markerCountOutsideThreshold": 0,
+    "referenceMeshUsedForOcclusion": true
+  },
+  "focus": {
+    "v16cFocusLogicModified": false,
+    "focusWorksInTextureMode": "UI mock passed; physical WebGL GPU test pending",
+    "previousNextWorks": true,
+    "wholeStoneReturnWorks": true
+  },
+  "modes": {
+    "realistic": true,
+    "surface": true,
+    "rakingLight": true,
+    "monochrome": true,
+    "cameraPreservedBetweenModes": true
+  },
+  "fallback": {
+    "textureLoadFailureHandled": true,
+    "fallbackToSurfaceTestedInUIMock": true
+  },
+  "desktop": {
+    "uiMockTestedSizes": [
+      "1920x1080",
+      "1440x900",
+      "1366x768",
+      "1024x768"
+    ],
+    "passed": true
+  },
+  "mobile": {
+    "uiMockTestedSizes": [
+      "390x844"
+    ],
+    "passed": true,
+    "gpuTouchTested": false
+  },
+  "shaderCompile": {
+    "standaloneEGLCompilation": true,
+    "programLinksPassed": 4
+  },
+  "visualValidation": {
+    "offlineVTKOriginalOBJTextureRenders": true,
+    "screenshots": [
+      "texture-source-top.png",
+      "texture-source-perspective.png",
+      "texture-source-side.png",
+      "texture-source-closeup.png",
+      "v19-01-realistic-overview.png",
+      "v19-02-realistic-top.png",
+      "v19-03-realistic-oblique.png",
+      "v19-04-realistic-closeup.png",
+      "v19-05-surface-same-camera.png",
+      "v19-06-raking-same-camera.png",
+      "v19-07-grayscale-same-camera.png",
+      "v19-08-realistic-markers.png",
+      "v19-09-realistic-C10-focus.png",
+      "v19-10-raking-C10-focus.png",
+      "v19-11-gray-C10-focus.png",
+      "v19-12-next-C11-realistic.png",
+      "v19-13-mobile-realistic-focus.png"
+    ],
+    "sameCameraComparison": [
+      "v19-04-realistic-closeup.png",
+      "v19-05-surface-same-camera.png",
+      "v19-06-raking-same-camera.png",
+      "v19-07-grayscale-same-camera.png"
+    ],
+    "browserGPURenderingValidated": false
+  },
+  "preservedBytes": [
+    "data/cupmarks-measured.json",
+    "data/cupmarks-measured-source.xlsx",
+    "assets/models/dolmen-700k.glb",
+    "assets/models/dolmen-1m.glb",
+    "js/skyOverlay.js",
+    "js/constellation.js",
+    "js/knowledgeGraph.js",
+    "js/knowledgeData.js",
+    "js/participation.js",
+    "data/cupmarks-provisional.json",
+    "data/cupmarks-provisional.js"
+  ],
+  "chaptersUnmodified": [
+    "chapter-01",
+    "chapter-03",
+    "chapter-04",
+    "chapter-05",
+    "chapter-06",
+    "chapter-07"
+  ],
+  "chapter04Modified": false,
+  "sourceDataModified": false,
+  "knownLimitations": [
+    "Chromium in this execution environment has WebGL2 disabled, so actual browser-GPU texture mapping, occlusion and touch/orbit performance require manual device validation.",
+    "Textured OBJ has some gravel/surroundings beyond the reference capstone bounding box; geometry left intact.",
+    "Texture import uses estimated rigid global alignment; 46 rendered marker coordinates were not adjusted."
+  ],
+  "textureTransportFix": {
+    "reason": "Single 46MB GLB request failed on user browser; split transfer into smaller valid glTF GLB partitions, provide diagnostic failure path; specific environment failure still unverified",
+    "partitionCount": 8,
+    "parts": [
+      {
+        "file": "dolmen-textured-01.glb",
+        "vertices": 300000,
+        "bytes": 6001384,
+        "triangles": 100000
+      },
+      {
+        "file": "dolmen-textured-02.glb",
+        "vertices": 300000,
+        "bytes": 6001388,
+        "triangles": 100000
+      },
+      {
+        "file": "dolmen-textured-03.glb",
+        "vertices": 300000,
+        "bytes": 6001388,
+        "triangles": 100000
+      },
+      {
+        "file": "dolmen-textured-04.glb",
+        "vertices": 300000,
+        "bytes": 6001380,
+        "triangles": 100000
+      },
+      {
+        "file": "dolmen-textured-05.glb",
+        "vertices": 300000,
+        "bytes": 6001384,
+        "triangles": 100000
+      },
+      {
+        "file": "dolmen-textured-06.glb",
+        "vertices": 300000,
+        "bytes": 6001384,
+        "triangles": 100000
+      },
+      {
+        "file": "dolmen-textured-07.glb",
+        "vertices": 300000,
+        "bytes": 6001388,
+        "triangles": 100000
+      },
+      {
+        "file": "dolmen-textured-08.glb",
+        "vertices": 157932,
+        "bytes": 3160016,
+        "triangles": 52644
+      }
+    ],
+    "atlasFile": "assets/models/dolmen-texture-atlas.jpg",
+    "geometryAndUvByteExact": true,
+    "atlasByteExact": true,
+    "cameraAndMeasurementDataModified": false,
+    "fallbackKeepsSurface": true
+  }
+}

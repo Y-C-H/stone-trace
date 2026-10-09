@@ -1,0 +1,80 @@
+{
+  "project": "돌에 새겨진 흔적",
+  "version": "stone-traces-v16c",
+  "base": "stone-traces-v16b.zip",
+  "cupmarkCount": 46,
+  "focus": {
+    "focusableCount": 46,
+    "surfaceNormalCount": 46,
+    "focusFailedCount": 0,
+    "normalMethod": "Unit vector from v16-B renderPositions[model] minus surfacePoints[model]; same nearest-face normal used in original validated +0.8 mesh offset; no mesh reanalysis",
+    "targetMethod": "(renderPositions[displayModel] - GLB bbox center)/GLB maxExtent; preserve sourcePosition and renderPositions",
+    "orientation": "Yaw from surface normal X/Z, pitch clamped +0.45..+1.42 radians; +Y world up; yaw angular unwrap",
+    "distanceMethod": "5.5 measured diameters of visible context converted via GLB maxExtent and FOV=0.88 radians; visible vertical size constrained 0.16..0.26 normalized; distance range 0.17..0.31 then conservative height guard",
+    "animationDurationMs": 750,
+    "animationEasing": "smoothstep",
+    "reducedMotion": "immediate move if media preference is reduce",
+    "cameraCollisionFailures": 0,
+    "collisionValidation": "offline 46/46 target eye positions are above global GLB maximum Y by at least 0.012 normalized, strict sufficient no-mesh-intersection at endpoints; interaction safety bound recomputed for orbit/zoom/pan",
+    "minCameraYClearanceNormalized": 0.04326,
+    "maxCameraYClearanceNormalized": 0.157681,
+    "minFocusDistanceNormalized": 0.17,
+    "maxFocusDistanceNormalized": 0.185342,
+    "clippingFailures": null,
+    "clippingAssessment": "Conservative camera Y guard and near=clamp(distance*0.012,0.0015,0.008); GPU clipping not tested in current environment"
+  },
+  "navigation": {
+    "previousNext": true,
+    "wholeStoneReturn": true,
+    "listSync": true,
+    "markerSync": true,
+    "boundaryButtonsDisabled": true,
+    "manualInputInterruptsTransition": true,
+    "keyboardSelection": true
+  },
+  "views": {
+    "default": true,
+    "rakingLight": true,
+    "monochrome": true
+  },
+  "mobile": {
+    "tested": true,
+    "markerTap": null,
+    "focus": true,
+    "bottomSheet": true,
+    "testedResolution": "390x844",
+    "caveat": "DOM and pointer-state flow checked using mocked WebGL2; actual GPU touch-picking requires hardware validation"
+  },
+  "sourceDataModified": false,
+  "sourceDataSha256": "582cdf5e46bae4a55ecf630be459976dc4be34f80e89599948f1dea668b6c4c5",
+  "chapter04Modified": false,
+  "referenceModel": "assets/models/dolmen-1m.glb",
+  "displayModel": "assets/models/dolmen-700k.glb",
+  "testStatus": {
+    "codeSyntax": "All JS files pass node --check",
+    "sourceHash": "v16-B measured JSON, source xlsx, provisional data, all GLB models, and all other JS files byte identical",
+    "chapterRegression": "HTML for chapters 01,03,04,05,06,07 identical to v16-B",
+    "desktopMock": "1920x1080, 1440x900, 1366x768, 1024x768; focus, nav, lighting, reset and selectors pass",
+    "mobileMock": "390x844 same tests pass after fixed constellation TOC overlay collision",
+    "browserWebGL2": "unavailable under headless Chromium in current runner, even with SwiftShader flags",
+    "offlineGeometry": "8 screenshots produced with actual 700K GLB mesh using VTK, not browser GPU screenshots",
+    "screenshots": [
+      "v16c-01-overview.png",
+      "v16c-02-selected-C10.png",
+      "v16c-03-focus-C10.png",
+      "v16c-04-focus-raking.png",
+      "v16c-05-focus-grayscale.png",
+      "v16c-06-next-C11.png",
+      "v16c-07-return-overview.png",
+      "v16c-08-mobile-focus.png",
+      "v16c-desktop1440-ui-dom-test.png",
+      "v16c-mobile-focus-ui-mocked.png",
+      "v16c-mobile390-ui-dom-test.png"
+    ]
+  },
+  "unresolved": [
+    "Real GPU WebGL2 marker drawing/occlusion/picking and clipping should be tested on desktop and mobile devices",
+    "Mobile physical-device touch and performance",
+    "Any extreme user-modified orbit/camera situations beyond conservative top-height safety model"
+  ]
+}

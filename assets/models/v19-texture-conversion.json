@@ -1,0 +1,27 @@
+{
+  "inputObj": "경량화텍스쳐(2).obj",
+  "inputMtl": "경량화텍스쳐(2).mtl",
+  "inputImage": "KakaoTalk_20261008_140810922(2).jpg",
+  "sourceImageSha256": "50bdd16a417c8ba4734ea14017cbab1cfdc6030f595134c7dc6dc350848fec7a",
+  "vertexCountOriginal": 406691,
+  "uvCountOriginal": 2257932,
+  "triangleCount": 752644,
+  "glbCornerCount": 2257932,
+  "glbSize": 46254672,
+  "geometryChanged": false,
+  "uvNumericValuesChanged": false,
+  "textureBytesChanged": false,
+  "bounds": [
+    [
+      -1638.9576416015625,
+      -348.74462890625,
+      -1666.873291015625
+    ],
+    [
+      1558.1312255859375,
+      366.0746154785156,
+      508.1663513183594
+    ]
+  ],
+  "textureEmbedded": true
+}

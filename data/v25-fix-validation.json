@@ -1,0 +1,103 @@
+{
+  "baseVersion": "stone-traces-v25",
+  "resultVersion": "stone-traces-v25-fix",
+  "sourceModel": "assets/models/dolmen-700k.glb",
+  "sourceModelSHA256": "05aa0cb1fdc2b83e6ddd3985f74e4ec9f5c747aa8153d3cde30a5a0ac6eb4e87",
+  "sourceModelGeometryVerified": true,
+  "sourceTriangleCount": 1207909,
+  "sourceVertexCount": 632050,
+  "selectedViewDirection": {
+    "sourceY": "vertical",
+    "pretiltRadians": 0.64,
+    "graphYawRadians": 0.35,
+    "graphPitchRadians": 0.2
+  },
+  "extractedPointCount": 1182,
+  "silhouetteGenerationMethod": "Sampled 550000 points on triangles of the v25 700K GLB; screen-space nearest-surface bins; boundary + interior + reverse-side sampling; normalized lightweight 3D JS array. No manually drawn polygon or extra supports.",
+  "pointDataFile": "js/dolmenScanCloud.js",
+  "shapeComparisonCompleted": true,
+  "shapeComparisonMethod": "Same-source sample and extracted cloud rendered under the same reference projection; reviewed for asymmetrical slab outline, bulges and lower uneven region.",
+  "shapeComparisonImages": [
+    "testshots/v25-fix-model-cloud-comparison.png",
+    "testshots/v25-fix-graph-1440.png",
+    "testshots/v25-fix-graph-390.png"
+  ],
+  "silhouetteRecognizable": true,
+  "nodeSelectionPreserved": true,
+  "nodeConnectionsPreserved": true,
+  "centerNodeId": "dol",
+  "centerNodeConnections": 12,
+  "otherNodesModified": false,
+  "chapter02Modified": false,
+  "measuredCupmarkDataModified": false,
+  "openingPreserved": true,
+  "chapter03Preserved": true,
+  "chapter04Preserved": true,
+  "endingPreserved": true,
+  "dataIntegrity": {
+    "changedExistingSourceFiles": [
+      "index.html",
+      "js/knowledgeGraph.js"
+    ],
+    "newPointDataFile": "js/dolmenScanCloud.js",
+    "viewerSourceUnchanged": true,
+    "modelsAndTexturesUnchanged": true,
+    "knowledgeDataUnchanged": true,
+    "cupmarksUnchanged": true,
+    "READMEUnchanged": true
+  },
+  "desktopTests": [
+    {
+      "size": "1920x1080",
+      "canvasRendered": true,
+      "pointCount": 1182,
+      "nodeSelected": true,
+      "connections": 12,
+      "runtimeErrors": []
+    },
+    {
+      "size": "1440x900",
+      "canvasRendered": true,
+      "pointCount": 1182,
+      "nodeSelected": true,
+      "connections": 12,
+      "runtimeErrors": []
+    },
+    {
+      "size": "1366x768",
+      "canvasRendered": true,
+      "pointCount": 1182,
+      "nodeSelected": true,
+      "connections": 12,
+      "runtimeErrors": []
+    },
+    {
+      "size": "1024x768",
+      "canvasRendered": true,
+      "pointCount": 1182,
+      "nodeSelected": true,
+      "connections": 12,
+      "runtimeErrors": []
+    }
+  ],
+  "mobileTests": [
+    {
+      "size": "390x844",
+      "canvasRendered": true,
+      "pointCount": 1182,
+      "nodeSelected": true,
+      "connections": 12,
+      "runtimeErrors": []
+    }
+  ],
+  "pointerSelectionTests": {
+    "1440x900": "direct mouse click picked center dol node",
+    "390x844": "direct touch picked center dol node"
+  },
+  "runtimeJavaScriptSyntaxCheck": true,
+  "knownIssues": [
+    "Actual WebGL GPU rendering of Chapter 02 and whole-site e2e regression were not retested in this fix (source files are unchanged).",
+    "Point cloud faithfully samples model triangles and silhouettes, but it is a low-density display representation rather than the full scan.",
+    "Mobile graph labels may overlap the central point cloud at certain rotations, as graph node/label layout remains unchanged."
+  ]
+}

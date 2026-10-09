@@ -1,0 +1,7 @@
+{
+  "stone": "세종 연기면 출토 지석묘",
+  "unit": { "length": "mm", "coord": "mm" },
+  "cupmarks": [
+    { "id": 1, "x": null, "y": null, "z": null, "diameter": null, "depth": null }
+  ]
+}

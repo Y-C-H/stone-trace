@@ -1,0 +1,52 @@
+{
+  "1920x1080": {
+    "passed": true,
+    "chapters": 4,
+    "tocNodes": 4,
+    "measuredMarks": 46,
+    "controls": "zoom/rotation/toggle/all-on",
+    "interpretationSwitch": true,
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "1440x900": {
+    "passed": true,
+    "chapters": 4,
+    "tocNodes": 4,
+    "measuredMarks": 46,
+    "controls": "zoom/rotation/toggle/all-on",
+    "interpretationSwitch": true,
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "1366x768": {
+    "passed": true,
+    "chapters": 4,
+    "tocNodes": 4,
+    "measuredMarks": 46,
+    "controls": "zoom/rotation/toggle/all-on",
+    "interpretationSwitch": true,
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "1024x768": {
+    "passed": true,
+    "chapters": 4,
+    "tocNodes": 4,
+    "measuredMarks": 46,
+    "controls": "zoom/rotation/toggle/all-on",
+    "interpretationSwitch": true,
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "390x844": {
+    "passed": true,
+    "chapters": 4,
+    "tocNodes": 4,
+    "measuredMarks": 46,
+    "controls": "zoom/rotation/toggle/all-on",
+    "interpretationSwitch": true,
+    "endingReturn": true,
+    "pageErrors": []
+  }
+}

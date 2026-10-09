@@ -1,0 +1,225 @@
+{
+  "1920x1080": {
+    "durationFromPlaybackSeconds": 3.626,
+    "twoImagesLoaded": true,
+    "bounds": {
+      "stone": {
+        "x": 556.796875,
+        "y": 354.1875,
+        "width": 806.390625,
+        "height": 604.78125,
+        "opacity": "0",
+        "animation": "v23-stone-fade"
+      },
+      "logo": {
+        "x": 535.6917724609375,
+        "y": 223.91952514648438,
+        "width": 848.632080078125,
+        "height": 282.59844970703125,
+        "opacity": "0",
+        "animation": "v23-logo-bounce"
+      },
+      "composition": {
+        "x": 480,
+        "y": 230.328125,
+        "width": 960,
+        "height": 619.34375,
+        "opacity": "1",
+        "animation": "none"
+      },
+      "screen": [
+        1920,
+        1080
+      ]
+    },
+    "chapter03TextRemoved": true,
+    "browserJsErrors": []
+  },
+  "1440x900": {
+    "durationFromPlaybackSeconds": 3.601,
+    "twoImagesLoaded": true,
+    "bounds": {
+      "stone": {
+        "x": 316.796875,
+        "y": 264.1875,
+        "width": 806.390625,
+        "height": 604.78125,
+        "opacity": "0",
+        "animation": "v23-stone-fade"
+      },
+      "logo": {
+        "x": 295.6917724609375,
+        "y": 133.91952514648438,
+        "width": 848.632080078125,
+        "height": 282.59844970703125,
+        "opacity": "0",
+        "animation": "v23-logo-bounce"
+      },
+      "composition": {
+        "x": 240,
+        "y": 140.328125,
+        "width": 960,
+        "height": 619.34375,
+        "opacity": "1",
+        "animation": "none"
+      },
+      "screen": [
+        1440,
+        900
+      ]
+    },
+    "chapter03TextRemoved": true,
+    "browserJsErrors": []
+  },
+  "1366x768": {
+    "durationFromPlaybackSeconds": 3.621,
+    "twoImagesLoaded": true,
+    "bounds": {
+      "stone": {
+        "x": 279.796875,
+        "y": 198.1875,
+        "width": 806.390625,
+        "height": 604.78125,
+        "opacity": "0",
+        "animation": "v23-stone-fade"
+      },
+      "logo": {
+        "x": 258.6917724609375,
+        "y": 67.91952514648438,
+        "width": 848.632080078125,
+        "height": 282.59844970703125,
+        "opacity": "0",
+        "animation": "v23-logo-bounce"
+      },
+      "composition": {
+        "x": 203,
+        "y": 74.328125,
+        "width": 960,
+        "height": 619.34375,
+        "opacity": "1",
+        "animation": "none"
+      },
+      "screen": [
+        1366,
+        768
+      ]
+    },
+    "chapter03TextRemoved": true,
+    "browserJsErrors": []
+  },
+  "1024x768": {
+    "durationFromPlaybackSeconds": 3.61,
+    "twoImagesLoaded": true,
+    "bounds": {
+      "stone": {
+        "x": 108.796875,
+        "y": 198.1875,
+        "width": 806.390625,
+        "height": 604.78125,
+        "opacity": "0",
+        "animation": "v23-stone-fade"
+      },
+      "logo": {
+        "x": 87.6917724609375,
+        "y": 67.91952514648438,
+        "width": 848.632080078125,
+        "height": 282.59844970703125,
+        "opacity": "0",
+        "animation": "v23-logo-bounce"
+      },
+      "composition": {
+        "x": 32,
+        "y": 74.328125,
+        "width": 960,
+        "height": 619.34375,
+        "opacity": "1",
+        "animation": "none"
+      },
+      "screen": [
+        1024,
+        768
+      ]
+    },
+    "chapter03TextRemoved": true,
+    "browserJsErrors": []
+  },
+  "390x844": {
+    "durationFromPlaybackSeconds": 3.616,
+    "twoImagesLoaded": true,
+    "bounds": {
+      "stone": {
+        "x": 41.015625,
+        "y": 351.046875,
+        "width": 307.9375,
+        "height": 230.953125,
+        "opacity": "0",
+        "animation": "v23-stone-fade"
+      },
+      "logo": {
+        "x": 32.96875,
+        "y": 308.724609375,
+        "width": 324.0625,
+        "height": 107.91015625,
+        "opacity": "0",
+        "animation": "v23-logo-bounce"
+      },
+      "composition": {
+        "x": 11.703125,
+        "y": 303.75,
+        "width": 366.59375,
+        "height": 236.5,
+        "opacity": "1",
+        "animation": "none"
+      },
+      "screen": [
+        390,
+        844
+      ]
+    },
+    "chapter03TextRemoved": true,
+    "browserJsErrors": []
+  },
+  "320x640": {
+    "durationFromPlaybackSeconds": 3.63,
+    "twoImagesLoaded": true,
+    "bounds": {
+      "stone": {
+        "x": 33.65625,
+        "y": 261.78125,
+        "width": 252.65625,
+        "height": 189.484375,
+        "opacity": "0",
+        "animation": "v23-stone-fade"
+      },
+      "logo": {
+        "x": 27.040237426757812,
+        "y": 229.20352172851562,
+        "width": 265.9039306640625,
+        "height": 88.54608154296875,
+        "opacity": "0",
+        "animation": "v23-logo-bounce"
+      },
+      "composition": {
+        "x": 9.59375,
+        "y": 222.96875,
+        "width": 300.796875,
+        "height": 194.0625,
+        "opacity": "1",
+        "animation": "none"
+      },
+      "screen": [
+        320,
+        640
+      ]
+    },
+    "chapter03TextRemoved": true,
+    "browserJsErrors": []
+  },
+  "skip-keyboard": true,
+  "skip-click": true,
+  "skip-touch": true,
+  "reducedMotion": {
+    "passed": true,
+    "duration": 0.94
+  }
+}

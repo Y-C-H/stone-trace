@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" fill="none">
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M163 286 236 202 302 238 353 148 427 187 487 124" stroke="#7fc8c0" stroke-opacity=".5"/>
+    <path d="M178 273 251 190 314 229 367 159 438 177 475 137" stroke="#d6b47a" stroke-opacity=".58"/>
+    <g fill="#7fc8c0"><circle cx="163" cy="286" r="5"/><circle cx="236" cy="202" r="5"/><circle cx="302" cy="238" r="5"/><circle cx="353" cy="148" r="5"/><circle cx="427" cy="187" r="5"/><circle cx="487" cy="124" r="5"/></g>
+    <g fill="#d6b47a"><circle cx="178" cy="273" r="5"/><circle cx="251" cy="190" r="5"/><circle cx="314" cy="229" r="5"/><circle cx="367" cy="159" r="5"/><circle cx="438" cy="177" r="5"/><circle cx="475" cy="137" r="5"/></g>
+    <g stroke="#e7e2d8" stroke-opacity=".18" stroke-dasharray="4 7"><path d="M163 286 178 273"/><path d="M236 202 251 190"/><path d="M302 238 314 229"/><path d="M353 148 367 159"/><path d="M427 187 438 177"/><path d="M487 124 475 137"/></g>
+    <ellipse cx="320" cy="210" rx="218" ry="128" stroke="#8b8578" stroke-opacity=".16"/>
+    <path d="M98 210h444M320 70v280" stroke="#8b8578" stroke-opacity=".1"/>
+  </g>
+</svg>

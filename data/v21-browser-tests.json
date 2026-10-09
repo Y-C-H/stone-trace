@@ -1,0 +1,116 @@
+{
+  "desktop1920": {
+    "status": "passed_actual_canvas_and_navigation_browser",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "openingAutoOrSkipped": true,
+    "chapter02RemainingFields": [
+      "직경",
+      "깊이"
+    ],
+    "endingStars": 46,
+    "endingCanvas": {
+      "nonBackgroundPixels": 897,
+      "canvas": [
+        1972,
+        1140
+      ]
+    },
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "desktop1440": {
+    "status": "passed_actual_canvas_and_navigation_browser",
+    "viewport": [
+      1440,
+      900
+    ],
+    "openingAutoOrSkipped": true,
+    "chapter02RemainingFields": [
+      "직경",
+      "깊이"
+    ],
+    "endingStars": 46,
+    "endingCanvas": {
+      "nonBackgroundPixels": 906,
+      "canvas": [
+        1467,
+        936
+      ]
+    },
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "desktop1366": {
+    "status": "passed_actual_canvas_and_navigation_browser",
+    "viewport": [
+      1366,
+      768
+    ],
+    "openingAutoOrSkipped": true,
+    "chapter02RemainingFields": [
+      "직경",
+      "깊이"
+    ],
+    "endingStars": 46,
+    "endingCanvas": {
+      "nonBackgroundPixels": 935,
+      "canvas": [
+        1389,
+        797
+      ]
+    },
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "desktop1024": {
+    "status": "passed_actual_canvas_and_navigation_browser",
+    "viewport": [
+      1024,
+      768
+    ],
+    "openingAutoOrSkipped": true,
+    "chapter02RemainingFields": [
+      "직경",
+      "깊이"
+    ],
+    "endingStars": 46,
+    "endingCanvas": {
+      "nonBackgroundPixels": 938,
+      "canvas": [
+        1036,
+        788
+      ]
+    },
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "mobile390": {
+    "status": "passed_actual_canvas_and_navigation_browser",
+    "viewport": [
+      390,
+      844
+    ],
+    "openingAutoOrSkipped": true,
+    "chapter02RemainingFields": [
+      "직경",
+      "깊이"
+    ],
+    "endingStars": 46,
+    "endingCanvas": {
+      "nonBackgroundPixels": 719,
+      "canvas": [
+        390,
+        850
+      ]
+    },
+    "endingReturn": true,
+    "pageErrors": []
+  },
+  "reducedMotion": {
+    "status": "passed",
+    "autoSkipMilliseconds": 80
+  }
+}

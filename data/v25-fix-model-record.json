@@ -1,0 +1,30 @@
+{
+  "sourceModel": "assets/models/dolmen-700k.glb",
+  "sourceSHA256": "05aa0cb1fdc2b83e6ddd3985f74e4ec9f5c747aa8153d3cde30a5a0ac6eb4e87",
+  "triangles": 1207909,
+  "vertices": 632050,
+  "sampleSource": "trimesh.sample.sample_surface",
+  "sourceSurfaceSamples": 550000,
+  "sourceBounds": [
+    [
+      -1466.7635498046875,
+      -322.9413146972656,
+      -803.8015747070312
+    ],
+    [
+      1427.5526123046875,
+      394.507080078125,
+      846.6985473632812
+    ]
+  ],
+  "coordinateScale": 0.04,
+  "pretiltRadians": 0.64,
+  "defaultYawRadians": 0.35,
+  "defaultPitchRadians": 0.2,
+  "contourPointCount": 158,
+  "visiblePointCount": 804,
+  "reverseSidePointCount": 220,
+  "extractedPointCount": 1182,
+  "generatedPointFile": "js/dolmenScanCloud.js",
+  "note": "Point locations originate on the source scan triangles, no hand-made support outlines."
+}

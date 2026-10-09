@@ -1,0 +1,2440 @@
+[
+  {
+    "id": "C01",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 2,
+    "sourcePositionRaw": "-292.941040,328.487183,-72.369949",
+    "sourcePosition": {
+      "x": -292.94104,
+      "y": 328.487183,
+      "z": -72.369949
+    },
+    "displayPosition": {
+      "x": -292.94104,
+      "y": 328.487183,
+      "z": -72.369949
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -293.13713863,
+        "y": 329.39377188,
+        "z": -72.51111379
+      },
+      "700k": {
+        "x": -293.05041403,
+        "y": 329.36124767,
+        "z": -72.50588901
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -292.96993229,
+        "y": 328.62075571,
+        "z": -72.39074758
+      },
+      "700k": {
+        "x": -292.95224466,
+        "y": 328.57672528,
+        "z": -72.38387518
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.138235,
+      "700k": 0.091309
+    },
+    "diameter": 80.3675,
+    "depth": 21.3874,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C02",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 3,
+    "sourcePositionRaw": "-195.389369,350.596903,-30.890050",
+    "sourcePosition": {
+      "x": -195.389369,
+      "y": 350.596903,
+      "z": -30.89005
+    },
+    "displayPosition": {
+      "x": -195.389369,
+      "y": 350.596903,
+      "z": -30.89005
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -195.51229854,
+        "y": 351.32460665,
+        "z": -31.03680068
+      },
+      "700k": {
+        "x": -195.53109724,
+        "y": 351.43042555,
+        "z": -31.03783593
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -195.38160284,
+        "y": 350.55092978,
+        "z": -30.88077892
+      },
+      "700k": {
+        "x": -195.39899664,
+        "y": 350.65352445,
+        "z": -30.90008914
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.047537,
+      "700k": 0.058305
+    },
+    "diameter": 61.1358,
+    "depth": 12.7711,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C03",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 4,
+    "sourcePositionRaw": "123.254715,342.970062,-212.607346",
+    "sourcePosition": {
+      "x": 123.254715,
+      "y": 342.970062,
+      "z": -212.607346
+    },
+    "displayPosition": {
+      "x": 123.254715,
+      "y": 342.970062,
+      "z": -212.607346
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 123.15578803,
+        "y": 343.70278835,
+        "z": -212.55125774
+      },
+      "700k": {
+        "x": 123.28297347,
+        "y": 343.57840902,
+        "z": -212.55824352
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 123.26251995,
+        "y": 342.9122528,
+        "z": -212.61177114
+      },
+      "700k": {
+        "x": 123.24597258,
+        "y": 342.78185565,
+        "z": -212.622537
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.058501,
+      "700k": 0.189021
+    },
+    "diameter": 52.0832,
+    "depth": 9.7793,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C04",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 5,
+    "sourcePositionRaw": "329.202515,335.423340,-316.891418",
+    "sourcePosition": {
+      "x": 329.202515,
+      "y": 335.42334,
+      "z": -316.891418
+    },
+    "displayPosition": {
+      "x": 329.202515,
+      "y": 335.42334,
+      "z": -316.891418
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 329.03743959,
+        "y": 336.27582068,
+        "z": -317.00330703
+      },
+      "700k": {
+        "x": 329.03707974,
+        "y": 336.28570349,
+        "z": -316.99712995
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 329.18828027,
+        "y": 335.49685087,
+        "z": -316.90106638
+      },
+      "700k": {
+        "x": 329.18672228,
+        "y": 335.50566261,
+        "z": -316.90150943
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.075495,
+      "700k": 0.084429
+    },
+    "diameter": 60.0184,
+    "depth": 23.8691,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C05",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 6,
+    "sourcePositionRaw": "-102.069679,357.611359,225.511978",
+    "sourcePosition": {
+      "x": -102.069679,
+      "y": 357.611359,
+      "z": 225.511978
+    },
+    "displayPosition": {
+      "x": -102.069679,
+      "y": 357.611359,
+      "z": 225.511978
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -102.19803356,
+        "y": 358.4403794,
+        "z": 225.47130049
+      },
+      "700k": {
+        "x": -102.1865891,
+        "y": 358.45624404,
+        "z": 225.47178468
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -102.07577416,
+        "y": 357.65072662,
+        "z": 225.51004635
+      },
+      "700k": {
+        "x": -102.07705628,
+        "y": 357.6646731,
+        "z": 225.50944171
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.039883,
+      "700k": 0.053882
+    },
+    "diameter": 43.696,
+    "depth": 13.0195,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C06",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 7,
+    "sourcePositionRaw": "-228.650345,356.427460,155.875198",
+    "sourcePosition": {
+      "x": -228.650345,
+      "y": 356.42746,
+      "z": 155.875198
+    },
+    "displayPosition": {
+      "x": -228.650345,
+      "y": 356.42746,
+      "z": 155.875198
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -228.59040644,
+        "y": 357.2556163,
+        "z": 155.95069303
+      },
+      "700k": {
+        "x": -228.54828143,
+        "y": 357.32551789,
+        "z": 156.01321835
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -228.64791887,
+        "y": 356.46098124,
+        "z": 155.87825381
+      },
+      "700k": {
+        "x": -228.63758406,
+        "y": 356.53974361,
+        "z": 155.8924546
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.033748,
+      "700k": 0.114316
+    },
+    "diameter": 32.8949,
+    "depth": 8.8471,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C07",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 8,
+    "sourcePositionRaw": "-314.526611,357.206146,184.740692",
+    "sourcePosition": {
+      "x": -314.526611,
+      "y": 357.206146,
+      "z": 184.740692
+    },
+    "displayPosition": {
+      "x": -314.526611,
+      "y": 357.206146,
+      "z": 184.740692
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -314.59931021,
+        "y": 358.1832169,
+        "z": 184.84456488
+      },
+      "700k": {
+        "x": -314.64746912,
+        "y": 358.23191123,
+        "z": 184.85569403
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -314.5402809,
+        "y": 357.38986825,
+        "z": 184.7602236
+      },
+      "700k": {
+        "x": -314.55443363,
+        "y": 357.44228644,
+        "z": 184.76716651
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.185263,
+      "700k": 0.239243
+    },
+    "diameter": 17.8671,
+    "depth": 4.5896,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C08",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 9,
+    "sourcePositionRaw": "-452.053406,295.734039,455.333832",
+    "sourcePosition": {
+      "x": -452.053406,
+      "y": 295.734039,
+      "z": 455.333832
+    },
+    "displayPosition": {
+      "x": -452.053406,
+      "y": 295.734039,
+      "z": 455.333832
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -451.9668535,
+        "y": 296.48556007,
+        "z": 455.49250115
+      },
+      "700k": {
+        "x": -452.18708894,
+        "y": 296.57151688,
+        "z": 455.46991602
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -452.05643502,
+        "y": 295.70773853,
+        "z": 455.32827916
+      },
+      "700k": {
+        "x": -452.06257768,
+        "y": 295.79149641,
+        "z": 455.34316841
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.02705,
+      "700k": 0.058929
+    },
+    "diameter": 40.9433,
+    "depth": 16.9342,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C09",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 10,
+    "sourcePositionRaw": "-79.819710,317.816681,445.320709",
+    "sourcePosition": {
+      "x": -79.81971,
+      "y": 317.816681,
+      "z": 445.320709
+    },
+    "displayPosition": {
+      "x": -79.81971,
+      "y": 317.816681,
+      "z": 445.320709
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -79.77255722,
+        "y": 318.44138691,
+        "z": 445.8194025
+      },
+      "700k": {
+        "x": -79.73731727,
+        "y": 318.51922419,
+        "z": 445.91290776
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -79.81966674,
+        "y": 317.81725418,
+        "z": 445.32116656
+      },
+      "700k": {
+        "x": -79.80876692,
+        "y": 317.90999005,
+        "z": 445.39936254
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.000735,
+      "700k": 0.122526
+    },
+    "diameter": 40.2115,
+    "depth": 15.9508,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C10",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 11,
+    "sourcePositionRaw": "-190.186737,288.035858,509.857300",
+    "sourcePosition": {
+      "x": -190.186737,
+      "y": 288.035858,
+      "z": 509.8573
+    },
+    "displayPosition": {
+      "x": -190.186737,
+      "y": 288.035858,
+      "z": 509.8573
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -190.03095663,
+        "y": 288.96177478,
+        "z": 509.82443265
+      },
+      "700k": {
+        "x": -190.06255436,
+        "y": 288.94371004,
+        "z": 509.84601933
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -190.16360552,
+        "y": 288.17334533,
+        "z": 509.8524196
+      },
+      "700k": {
+        "x": -190.17096637,
+        "y": 288.15115104,
+        "z": 509.85586741
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.139505,
+      "700k": 0.116375
+    },
+    "diameter": 34.2068,
+    "depth": 20.1902,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C11",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 12,
+    "sourcePositionRaw": "-169.592651,329.602020,417.141998",
+    "sourcePosition": {
+      "x": -169.592651,
+      "y": 329.60202,
+      "z": 417.141998
+    },
+    "displayPosition": {
+      "x": -169.592651,
+      "y": 329.60202,
+      "z": 417.141998
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -169.66225591,
+        "y": 330.36451791,
+        "z": 417.49317982
+      },
+      "700k": {
+        "x": -169.59595038,
+        "y": 330.17513823,
+        "z": 417.56659224
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -169.59615153,
+        "y": 329.6403671,
+        "z": 417.15965944
+      },
+      "700k": {
+        "x": -169.59224982,
+        "y": 329.53233275,
+        "z": 417.09037025
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.042364,
+      "700k": 0.086729
+    },
+    "diameter": 15.8728,
+    "depth": 8.0549,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C12",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 13,
+    "sourcePositionRaw": "-402.091064,344.902313,248.274567",
+    "sourcePosition": {
+      "x": -402.091064,
+      "y": 344.902313,
+      "z": 248.274567
+    },
+    "displayPosition": {
+      "x": -402.091064,
+      "y": 344.902313,
+      "z": 248.274567
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -402.03281999,
+        "y": 345.52767231,
+        "z": 248.48427267
+      },
+      "700k": {
+        "x": -401.9970125,
+        "y": 345.58841527,
+        "z": 248.50515142
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -402.10318952,
+        "y": 344.77212269,
+        "z": 248.23090946
+      },
+      "700k": {
+        "x": -402.10009704,
+        "y": 344.83641732,
+        "z": 248.25242086
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.13785,
+      "700k": 0.070102
+    },
+    "diameter": 38.5589,
+    "depth": 7.802,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C13",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 14,
+    "sourcePositionRaw": "-1067.678833,229.862915,286.222046",
+    "sourcePosition": {
+      "x": -1067.678833,
+      "y": 229.862915,
+      "z": 286.222046
+    },
+    "displayPosition": {
+      "x": -1067.678833,
+      "y": 229.862915,
+      "z": 286.222046
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -1068.02364747,
+        "y": 230.57886701,
+        "z": 285.88947864
+      },
+      "700k": {
+        "x": -1068.04951729,
+        "y": 230.61214172,
+        "z": 285.78696841
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -1067.70342741,
+        "y": 229.91398135,
+        "z": 286.19832514
+      },
+      "700k": {
+        "x": -1067.73483094,
+        "y": 229.97609798,
+        "z": 286.15632039
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.061444,
+      "700k": 0.142359
+    },
+    "diameter": 25.0105,
+    "depth": 36.0668,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C14",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 15,
+    "sourcePositionRaw": "-834.907527,297.759281,161.479283",
+    "sourcePosition": {
+      "x": -834.907527,
+      "y": 297.759281,
+      "z": 161.479283
+    },
+    "displayPosition": {
+      "x": -834.907527,
+      "y": 297.759281,
+      "z": 161.479283
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -834.86876977,
+        "y": 298.38292838,
+        "z": 161.81275441
+      },
+      "700k": {
+        "x": -834.86201633,
+        "y": 298.35557902,
+        "z": 161.81376751
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -834.91254678,
+        "y": 297.67850714,
+        "z": 161.4360923
+      },
+      "700k": {
+        "x": -834.91515064,
+        "y": 297.65939319,
+        "z": 161.42325242
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.091734,
+      "700k": 0.114783
+    },
+    "diameter": 56.8478,
+    "depth": 11.9706,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C15",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 16,
+    "sourcePositionRaw": "1127.692139,239.076111,207.191910",
+    "sourcePosition": {
+      "x": 1127.692139,
+      "y": 239.076111,
+      "z": 207.19191
+    },
+    "displayPosition": {
+      "x": 1127.692139,
+      "y": 239.076111,
+      "z": 207.19191
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 1127.862997,
+        "y": 239.87434897,
+        "z": 207.60747644
+      },
+      "700k": {
+        "x": 1127.90349026,
+        "y": 239.84451334,
+        "z": 207.67399863
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 1127.71377744,
+        "y": 239.17720446,
+        "z": 207.24453973
+      },
+      "700k": {
+        "x": 1127.72195757,
+        "y": 239.18452131,
+        "z": 207.25992564
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.116009,
+      "700k": 0.131408
+    },
+    "diameter": 91.8344,
+    "depth": 51.427,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C16",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 17,
+    "sourcePositionRaw": "744.028137,274.255493,404.377258",
+    "sourcePosition": {
+      "x": 744.028137,
+      "y": 274.255493,
+      "z": 404.377258
+    },
+    "displayPosition": {
+      "x": 744.028137,
+      "y": 274.255493,
+      "z": 404.377258
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 744.13563068,
+        "y": 275.01404964,
+        "z": 404.88134563
+      },
+      "700k": {
+        "x": 744.12406497,
+        "y": 275.00967241,
+        "z": 404.93632576
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 744.04186206,
+        "y": 274.35234744,
+        "z": 404.44162118
+      },
+      "700k": {
+        "x": 744.04274314,
+        "y": 274.37032553,
+        "z": 404.46238253
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.117097,
+      "700k": 0.143687
+    },
+    "diameter": 55.8651,
+    "depth": 23.368,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C17",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 18,
+    "sourcePositionRaw": "1365.477539,173.216202,151.317474",
+    "sourcePosition": {
+      "x": 1365.477539,
+      "y": 173.216202,
+      "z": 151.317474
+    },
+    "displayPosition": {
+      "x": 1365.477539,
+      "y": 173.216202,
+      "z": 151.317474
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 1365.88964661,
+        "y": 173.96501445,
+        "z": 151.23598434
+      },
+      "700k": {
+        "x": 1365.95615467,
+        "y": 174.06635553,
+        "z": 151.19054963
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 1365.50566543,
+        "y": 173.26730861,
+        "z": 151.31191232
+      },
+      "700k": {
+        "x": 1365.56697348,
+        "y": 173.37506234,
+        "z": 151.29375681
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.0586,
+      "700k": 0.183841
+    },
+    "diameter": 87.2781,
+    "depth": 40.843,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C18",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 19,
+    "sourcePositionRaw": "86.850296,312.898712,-573.957031",
+    "sourcePosition": {
+      "x": 86.850296,
+      "y": 312.898712,
+      "z": -573.957031
+    },
+    "displayPosition": {
+      "x": 86.850296,
+      "y": 312.898712,
+      "z": -573.957031
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 87.20209612,
+        "y": 313.71107682,
+        "z": -573.81453777
+      },
+      "700k": {
+        "x": 86.96243844,
+        "y": 313.79932013,
+        "z": -573.63089726
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 86.88822104,
+        "y": 312.9862872,
+        "z": -573.94166983
+      },
+      "700k": {
+        "x": 86.86941111,
+        "y": 313.05222416,
+        "z": -573.90144023
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.096663,
+      "700k": 0.164383
+    },
+    "diameter": 89.453,
+    "depth": 19.0081,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C19",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 20,
+    "sourcePositionRaw": "244.207809,366.027435,193.383362",
+    "sourcePosition": {
+      "x": 244.207809,
+      "y": 366.027435,
+      "z": 193.383362
+    },
+    "displayPosition": {
+      "x": 244.207809,
+      "y": 366.027435,
+      "z": 193.383362
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 244.07860649,
+        "y": 366.79116818,
+        "z": 193.48956933
+      },
+      "700k": {
+        "x": 244.09446227,
+        "y": 366.86972007,
+        "z": 193.48754015
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 244.21081133,
+        "y": 366.00968782,
+        "z": 193.38089402
+      },
+      "700k": {
+        "x": 244.20036427,
+        "y": 366.08275718,
+        "z": 193.39020453
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.018168,
+      "700k": 0.056239
+    },
+    "diameter": 43.2074,
+    "depth": 6.7616,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C20",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 21,
+    "sourcePositionRaw": "-653.620972,310.773132,315.153107",
+    "sourcePosition": {
+      "x": -653.620972,
+      "y": 310.773132,
+      "z": 315.153107
+    },
+    "displayPosition": {
+      "x": -653.620972,
+      "y": 310.773132,
+      "z": 315.153107
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -653.7309521,
+        "y": 311.69346753,
+        "z": 315.28214438
+      },
+      "700k": {
+        "x": -653.62351357,
+        "y": 311.78080805,
+        "z": 315.26527796
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -653.63693419,
+        "y": 310.90670677,
+        "z": 315.1718351
+      },
+      "700k": {
+        "x": -653.6215082,
+        "y": 310.98572152,
+        "z": 315.17677172
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.135823,
+      "700k": 0.213903
+    },
+    "diameter": 39.0341,
+    "depth": 8.8286,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C21",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 22,
+    "sourcePositionRaw": "-475.137268,340.297974,125.030396",
+    "sourcePosition": {
+      "x": -475.137268,
+      "y": 340.297974,
+      "z": 125.030396
+    },
+    "displayPosition": {
+      "x": -475.137268,
+      "y": 340.297974,
+      "z": 125.030396
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -475.09790235,
+        "y": 341.16445294,
+        "z": 125.12801535
+      },
+      "700k": {
+        "x": -475.10250809,
+        "y": 341.07481638,
+        "z": 125.08688841
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -475.13398251,
+        "y": 340.37029115,
+        "z": 125.0385434
+      },
+      "700k": {
+        "x": -475.13817442,
+        "y": 340.27771669,
+        "z": 125.02892288
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.072849,
+      "700k": 0.020331
+    },
+    "diameter": 36.1201,
+    "depth": 8.6901,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C22",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 23,
+    "sourcePositionRaw": "-607.766418,325.423218,-38.287018",
+    "sourcePosition": {
+      "x": -607.766418,
+      "y": 325.423218,
+      "z": -38.287018
+    },
+    "displayPosition": {
+      "x": -607.766418,
+      "y": 325.423218,
+      "z": -38.287018
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -607.92106433,
+        "y": 326.17266726,
+        "z": -37.93981482
+      },
+      "700k": {
+        "x": -607.81577896,
+        "y": 326.39592549,
+        "z": -38.18447033
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -607.7738384,
+        "y": 325.45917887,
+        "z": -38.27035813
+      },
+      "700k": {
+        "x": -607.78908959,
+        "y": 325.59834305,
+        "z": -38.24059448
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.040321,
+      "700k": 0.182587
+    },
+    "diameter": 31.6121,
+    "depth": 13.088,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C23",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 24,
+    "sourcePositionRaw": "1157.405762,272.737549,-180.986603",
+    "sourcePosition": {
+      "x": 1157.405762,
+      "y": 272.737549,
+      "z": -180.986603
+    },
+    "displayPosition": {
+      "x": 1157.405762,
+      "y": 272.737549,
+      "z": -180.986603
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 1157.9596183,
+        "y": 273.35202891,
+        "z": -181.17802975
+      },
+      "700k": {
+        "x": 1157.99037906,
+        "y": 273.4094142,
+        "z": -181.20626985
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 1157.43779494,
+        "y": 272.77308818,
+        "z": -180.9976744
+      },
+      "700k": {
+        "x": 1157.4805183,
+        "y": 272.82346192,
+        "z": -181.0146923
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.049109,
+      "700k": 0.117297
+    },
+    "diameter": 91.5808,
+    "depth": 24.2834,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C24",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 25,
+    "sourcePositionRaw": "1229.230713,251.851776,-29.012682",
+    "sourcePosition": {
+      "x": 1229.230713,
+      "y": 251.851776,
+      "z": -29.012682
+    },
+    "displayPosition": {
+      "x": 1229.230713,
+      "y": 251.851776,
+      "z": -29.012682
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 1229.39237119,
+        "y": 252.72789299,
+        "z": -29.0734887
+      },
+      "700k": {
+        "x": 1229.62717825,
+        "y": 252.41465184,
+        "z": -28.90459309
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 1229.24754525,
+        "y": 251.94299948,
+        "z": -29.01901335
+      },
+      "700k": {
+        "x": 1229.17207246,
+        "y": 251.76852194,
+        "z": -29.02866926
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.092979,
+      "700k": 0.10308
+    },
+    "diameter": 15.6059,
+    "depth": 2.3789,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C25",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 26,
+    "sourcePositionRaw": "1144.274414,304.670319,-5.844993",
+    "sourcePosition": {
+      "x": 1144.274414,
+      "y": 304.670319,
+      "z": -5.844993
+    },
+    "displayPosition": {
+      "x": 1144.274414,
+      "y": 304.670319,
+      "z": -5.844993
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 1144.66641445,
+        "y": 305.37170134,
+        "z": -5.99151166
+      },
+      "700k": {
+        "x": 1144.66039929,
+        "y": 305.33200738,
+        "z": -5.99596593
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 1144.28244994,
+        "y": 304.68469721,
+        "z": -5.84799661
+      },
+      "700k": {
+        "x": 1144.26490969,
+        "y": 304.65402591,
+        "z": -5.84127552
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.016743,
+      "700k": 0.019225
+    },
+    "diameter": 51.9352,
+    "depth": 2.403,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C26",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 27,
+    "sourcePositionRaw": "1218.371582,263.643036,131.853424",
+    "sourcePosition": {
+      "x": 1218.371582,
+      "y": 263.643036,
+      "z": 131.853424
+    },
+    "displayPosition": {
+      "x": 1218.371582,
+      "y": 263.643036,
+      "z": 131.853424
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 1218.42371527,
+        "y": 264.54609087,
+        "z": 132.00389688
+      },
+      "700k": {
+        "x": 1218.42375908,
+        "y": 264.55858293,
+        "z": 132.01912993
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 1218.37823312,
+        "y": 263.75824698,
+        "z": 131.8726212
+      },
+      "700k": {
+        "x": 1218.37896629,
+        "y": 263.77260757,
+        "z": 131.87687531
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.116989,
+      "700k": 0.131884
+    },
+    "diameter": 33.8472,
+    "depth": 10.8475,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C27",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 28,
+    "sourcePositionRaw": "666.565308,259.263214,480.231415",
+    "sourcePosition": {
+      "x": 666.565308,
+      "y": 259.263214,
+      "z": 480.231415
+    },
+    "displayPosition": {
+      "x": 666.565308,
+      "y": 259.263214,
+      "z": 480.231415
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 666.86255765,
+        "y": 260.07678731,
+        "z": 480.57912509
+      },
+      "700k": {
+        "x": 666.81839787,
+        "y": 260.02927109,
+        "z": 480.60454166
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 666.60777957,
+        "y": 259.37945884,
+        "z": 480.28109645
+      },
+      "700k": {
+        "x": 666.59061669,
+        "y": 259.33981883,
+        "z": 480.26872723
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.13336,
+      "700k": 0.088888
+    },
+    "diameter": 23.1175,
+    "depth": 22.497,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C28",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 29,
+    "sourcePositionRaw": ",805.903809,274.213165,402.258331",
+    "sourcePosition": {
+      "x": 805.903809,
+      "y": 274.213165,
+      "z": 402.258331
+    },
+    "displayPosition": {
+      "x": 805.903809,
+      "y": 274.213165,
+      "z": 402.258331
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 805.9233349,
+        "y": 274.96416307,
+        "z": 402.51023611
+      },
+      "700k": {
+        "x": 805.60093144,
+        "y": 274.98893635,
+        "z": 402.46634696
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 805.90362075,
+        "y": 274.20592447,
+        "z": 402.25590233
+      },
+      "700k": {
+        "x": 805.88320776,
+        "y": 274.26593172,
+        "z": 402.27247991
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.007639,
+      "700k": 0.058386
+    },
+    "diameter": 26.7132,
+    "depth": 13.2639,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C29",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 30,
+    "sourcePositionRaw": "950.358826,223.427826,456.541107",
+    "sourcePosition": {
+      "x": 950.358826,
+      "y": 223.427826,
+      "z": 456.541107
+    },
+    "displayPosition": {
+      "x": 950.358826,
+      "y": 223.427826,
+      "z": 456.541107
+    },
+    "renderPositions": {
+      "1m": {
+        "x": 950.29120008,
+        "y": 223.98634456,
+        "z": 457.25886185
+      },
+      "700k": {
+        "x": 950.3160259,
+        "y": 224.02381348,
+        "z": 457.31367721
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": 950.35052305,
+        "y": 223.49639962,
+        "z": 456.62923129
+      },
+      "700k": {
+        "x": 950.35108364,
+        "y": 223.5356377,
+        "z": 456.6808618
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.11197,
+      "700k": 0.176677
+    },
+    "diameter": 36.9294,
+    "depth": 18.2892,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C30",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 31,
+    "sourcePositionRaw": "-1339.843750,182.251709,134.401443",
+    "sourcePosition": {
+      "x": -1339.84375,
+      "y": 182.251709,
+      "z": 134.401443
+    },
+    "displayPosition": {
+      "x": -1339.84375,
+      "y": 182.251709,
+      "z": 134.401443
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -1340.27842853,
+        "y": 182.72997674,
+        "z": 134.62534136
+      },
+      "700k": {
+        "x": -1340.26771281,
+        "y": 182.68145743,
+        "z": 134.57228999
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -1339.77001083,
+        "y": 182.17057533,
+        "z": 134.36346073
+      },
+      "700k": {
+        "x": -1339.72710679,
+        "y": 182.13347402,
+        "z": 134.35443855
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.116029,
+      "700k": 0.172611
+    },
+    "diameter": 46.7167,
+    "depth": 9.7043,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C31",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 32,
+    "sourcePositionRaw": "-1205.893799,241.363922,154.843491",
+    "sourcePosition": {
+      "x": -1205.893799,
+      "y": 241.363922,
+      "z": 154.843491
+    },
+    "displayPosition": {
+      "x": -1205.893799,
+      "y": 241.363922,
+      "z": 154.843491
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -1206.07298461,
+        "y": 242.19620183,
+        "z": 154.61616806
+      },
+      "700k": {
+        "x": -1206.06157852,
+        "y": 242.34121057,
+        "z": 154.59196962
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -1205.91030619,
+        "y": 241.44059446,
+        "z": 154.82254923
+      },
+      "700k": {
+        "x": -1205.93037119,
+        "y": 241.57694909,
+        "z": 154.78866496
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.081177,
+      "700k": 0.222989
+    },
+    "diameter": 32.1925,
+    "depth": 8.0804,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C32",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 33,
+    "sourcePositionRaw": "-47.396534,361.498566,-94.547462",
+    "sourcePosition": {
+      "x": -47.396534,
+      "y": 361.498566,
+      "z": -94.547462
+    },
+    "displayPosition": {
+      "x": -47.396534,
+      "y": 361.498566,
+      "z": -94.547462
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -47.52170959,
+        "y": 362.33878544,
+        "z": -94.4779678
+      },
+      "700k": {
+        "x": -47.55536865,
+        "y": 362.42468053,
+        "z": -94.20455347
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -47.40421938,
+        "y": 361.55015281,
+        "z": -94.54319528
+      },
+      "700k": {
+        "x": -47.42833287,
+        "y": 361.68397513,
+        "z": -94.47881134
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.05233,
+      "700k": 0.200251
+    },
+    "diameter": 40.5292,
+    "depth": 4.243,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C33",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 34,
+    "sourcePositionRaw": "-554.962402,337.282410,155.682571",
+    "sourcePosition": {
+      "x": -554.962402,
+      "y": 337.28241,
+      "z": 155.682571
+    },
+    "displayPosition": {
+      "x": -554.962402,
+      "y": 337.28241,
+      "z": 155.682571
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -554.98129367,
+        "y": 338.22074789,
+        "z": 155.71480954
+      },
+      "700k": {
+        "x": -554.93863399,
+        "y": 338.28966298,
+        "z": 155.73754693
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -554.96519993,
+        "y": 337.42138147,
+        "z": 155.68734565
+      },
+      "700k": {
+        "x": -554.95747819,
+        "y": 337.49107361,
+        "z": 155.69395987
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.139082,
+      "700k": 0.209032
+    },
+    "diameter": 24.6343,
+    "depth": 2.7834,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C34",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 35,
+    "sourcePositionRaw": "-172.659180,362.175629,270.557922",
+    "sourcePosition": {
+      "x": -172.65918,
+      "y": 362.175629,
+      "z": 270.557922
+    },
+    "displayPosition": {
+      "x": -172.65918,
+      "y": 362.175629,
+      "z": 270.557922
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -173.08012578,
+        "y": 362.92027657,
+        "z": 270.92174238
+      },
+      "700k": {
+        "x": -173.09351266,
+        "y": 362.94624141,
+        "z": 270.87950017
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -172.71784605,
+        "y": 362.27940848,
+        "z": 270.60862665
+      },
+      "700k": {
+        "x": -172.72434819,
+        "y": 362.29125332,
+        "z": 270.60617227
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.129549,
+      "700k": 0.141223
+    },
+    "diameter": 9.5369,
+    "depth": 5.1085,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C35",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 36,
+    "sourcePositionRaw": "-266.688995,341.179138,321.281677",
+    "sourcePosition": {
+      "x": -266.688995,
+      "y": 341.179138,
+      "z": 321.281677
+    },
+    "displayPosition": {
+      "x": -266.688995,
+      "y": 341.179138,
+      "z": 321.281677
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -266.93191255,
+        "y": 342.10095108,
+        "z": 321.23504815
+      },
+      "700k": {
+        "x": -266.90480554,
+        "y": 342.11376832,
+        "z": 321.1194369
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -266.72829832,
+        "y": 341.32828453,
+        "z": 321.2741326
+      },
+      "700k": {
+        "x": -266.72733822,
+        "y": 341.34519447,
+        "z": 321.25285168
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.154423,
+      "700k": 0.172846
+    },
+    "diameter": 13.3434,
+    "depth": 5.7146,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C36",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 37,
+    "sourcePositionRaw": "-93.685341,368.102844,71.138535",
+    "sourcePosition": {
+      "x": -93.685341,
+      "y": 368.102844,
+      "z": 71.138535
+    },
+    "displayPosition": {
+      "x": -93.685341,
+      "y": 368.102844,
+      "z": 71.138535
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -93.48860293,
+        "y": 368.8769196,
+        "z": 71.53764463
+      },
+      "700k": {
+        "x": -93.48860293,
+        "y": 368.8769196,
+        "z": 71.53764463
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -93.66488095,
+        "y": 368.18334508,
+        "z": 71.18004096
+      },
+      "700k": {
+        "x": -93.66488095,
+        "y": 368.18334508,
+        "z": 71.18004096
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.092854,
+      "700k": 0.092854
+    },
+    "diameter": 8.5907,
+    "depth": 5.2047,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C37",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 38,
+    "sourcePositionRaw": "-395.500336,279.237152,531.433167",
+    "sourcePosition": {
+      "x": -395.500336,
+      "y": 279.237152,
+      "z": 531.433167
+    },
+    "displayPosition": {
+      "x": -395.500336,
+      "y": 279.237152,
+      "z": 531.433167
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -395.70951747,
+        "y": 280.0228924,
+        "z": 531.53597432
+      },
+      "700k": {
+        "x": -395.73735731,
+        "y": 279.96753996,
+        "z": 531.60871619
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -395.50533384,
+        "y": 279.2559252,
+        "z": 531.43562331
+      },
+      "700k": {
+        "x": -395.49663332,
+        "y": 279.22574208,
+        "z": 531.43042462
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.019582,
+      "700k": 0.012305
+    },
+    "diameter": 16.4818,
+    "depth": 9.6003,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C38",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 39,
+    "sourcePositionRaw": "-280.330139,297.562073,503.423401",
+    "sourcePosition": {
+      "x": -280.330139,
+      "y": 297.562073,
+      "z": 503.423401
+    },
+    "displayPosition": {
+      "x": -280.330139,
+      "y": 297.562073,
+      "z": 503.423401
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -280.48764538,
+        "y": 298.3162891,
+        "z": 503.52592649
+      },
+      "700k": {
+        "x": -280.46747858,
+        "y": 298.28040316,
+        "z": 503.55528524
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -280.32553474,
+        "y": 297.54002558,
+        "z": 503.42040395
+      },
+      "700k": {
+        "x": -280.31963028,
+        "y": 297.50710899,
+        "z": 503.4133097
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.022722,
+      "700k": 0.056862
+    },
+    "diameter": 26.8984,
+    "depth": 4.8543,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C39",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 40,
+    "sourcePositionRaw": "-209.948181,258.877167,605.054993",
+    "sourcePosition": {
+      "x": -209.948181,
+      "y": 258.877167,
+      "z": 605.054993
+    },
+    "displayPosition": {
+      "x": -209.948181,
+      "y": 258.877167,
+      "z": 605.054993
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -209.93042064,
+        "y": 259.85253603,
+        "z": 605.04055533
+      },
+      "700k": {
+        "x": -209.90128448,
+        "y": 259.83811453,
+        "z": 605.03229854
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -209.94498372,
+        "y": 259.05275614,
+        "z": 605.05239388
+      },
+      "700k": {
+        "x": -209.94026912,
+        "y": 259.03928774,
+        "z": 605.05116424
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.175637,
+      "700k": 0.162359
+    },
+    "diameter": 33.16,
+    "depth": 1.9808,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C40",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 41,
+    "sourcePositionRaw": "-165.740585,274.767822,571.659485",
+    "sourcePosition": {
+      "x": -165.740585,
+      "y": 274.767822,
+      "z": 571.659485
+    },
+    "displayPosition": {
+      "x": -165.740585,
+      "y": 274.767822,
+      "z": 571.659485
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -165.79456985,
+        "y": 275.523726,
+        "z": 571.96641525
+      },
+      "700k": {
+        "x": -165.80563052,
+        "y": 275.5694144,
+        "z": 571.98397747
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -165.74174875,
+        "y": 274.78411695,
+        "z": 571.66610147
+      },
+      "700k": {
+        "x": -165.74562706,
+        "y": 274.82995808,
+        "z": 571.68463829
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.017625,
+      "700k": 0.067224
+    },
+    "diameter": 35.8131,
+    "depth": 7.2912,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C41",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 42,
+    "sourcePositionRaw": "-1063.008911,281.810760,25.427576",
+    "sourcePosition": {
+      "x": -1063.008911,
+      "y": 281.81076,
+      "z": 25.427576
+    },
+    "displayPosition": {
+      "x": -1063.008911,
+      "y": 281.81076,
+      "z": 25.427576
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -1063.17841638,
+        "y": 282.75037954,
+        "z": 25.51998476
+      },
+      "700k": {
+        "x": -1063.11427853,
+        "y": 282.72068296,
+        "z": 25.54287291
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -1063.03705113,
+        "y": 281.96674927,
+        "z": 25.44291708
+      },
+      "700k": {
+        "x": -1063.02297524,
+        "y": 281.93221464,
+        "z": 25.4429656
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.159248,
+      "700k": 0.123231
+    },
+    "diameter": 12.6308,
+    "depth": 2.452,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C42",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 43,
+    "sourcePositionRaw": "-1040.430664,288.983063,-39.574833",
+    "sourcePosition": {
+      "x": -1040.430664,
+      "y": 288.983063,
+      "z": -39.574833
+    },
+    "displayPosition": {
+      "x": -1040.430664,
+      "y": 288.983063,
+      "z": -39.574833
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -1040.67623601,
+        "y": 289.63536601,
+        "z": -39.49474927
+      },
+      "700k": {
+        "x": -1040.68983439,
+        "y": 289.60460998,
+        "z": -39.50133767
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -1040.39621539,
+        "y": 288.89155856,
+        "z": -39.58606707
+      },
+      "700k": {
+        "x": -1040.38376468,
+        "y": 288.87058822,
+        "z": -39.58813267
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.098417,
+      "700k": 0.122585
+    },
+    "diameter": 20.0833,
+    "depth": 0.4196,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C43",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 44,
+    "sourcePositionRaw": "-803.876099,303.336121,-213.316147",
+    "sourcePosition": {
+      "x": -803.876099,
+      "y": 303.336121,
+      "z": -213.316147
+    },
+    "displayPosition": {
+      "x": -803.876099,
+      "y": 303.336121,
+      "z": -213.316147
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -803.81959162,
+        "y": 304.22926936,
+        "z": -213.44963094
+      },
+      "700k": {
+        "x": -803.79340961,
+        "y": 304.28382518,
+        "z": -213.47938908
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -803.86955204,
+        "y": 303.43960137,
+        "z": -213.33161248
+      },
+      "700k": {
+        "x": -803.86194554,
+        "y": 303.49833395,
+        "z": -213.34408819
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.104834,
+      "700k": 0.165209
+    },
+    "diameter": 27.8981,
+    "depth": 3.1581,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C44",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 45,
+    "sourcePositionRaw": "-446.322638,357.511089,195.799414",
+    "sourcePosition": {
+      "x": -446.322638,
+      "y": 357.511089,
+      "z": 195.799414
+    },
+    "displayPosition": {
+      "x": -446.322638,
+      "y": 357.511089,
+      "z": 195.799414
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -446.47967895,
+        "y": 358.35577374,
+        "z": 196.00237275
+      },
+      "700k": {
+        "x": -446.48723351,
+        "y": 358.39334431,
+        "z": 196.04138152
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -446.33736822,
+        "y": 357.59031926,
+        "z": 195.81845125
+      },
+      "700k": {
+        "x": -446.34557344,
+        "y": 357.6340262,
+        "z": 195.83313078
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.082806,
+      "700k": 0.129524
+    },
+    "diameter": 16.847,
+    "depth": 1.7921,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C45",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 46,
+    "sourcePositionRaw": "-320.876953,361.602142,116.737473",
+    "sourcePosition": {
+      "x": -320.876953,
+      "y": 361.602142,
+      "z": 116.737473
+    },
+    "displayPosition": {
+      "x": -320.876953,
+      "y": 361.602142,
+      "z": 116.737473
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -321.13703611,
+        "y": 362.40354317,
+        "z": 116.89991316
+      },
+      "700k": {
+        "x": -321.16225355,
+        "y": 362.4351924,
+        "z": 116.85738824
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -320.89455247,
+        "y": 361.65637172,
+        "z": 116.7484651
+      },
+      "700k": {
+        "x": -320.90641558,
+        "y": 361.68484002,
+        "z": 116.75006495
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.058064,
+      "700k": 0.088688
+    },
+    "diameter": 29.6171,
+    "depth": 4.2669,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  },
+  {
+    "id": "C46",
+    "legacyId": null,
+    "status": "measured",
+    "sourceRow": 47,
+    "sourcePositionRaw": "-70.565826,347.532562,358.628204",
+    "sourcePosition": {
+      "x": -70.565826,
+      "y": 347.532562,
+      "z": 358.628204
+    },
+    "displayPosition": {
+      "x": -70.565826,
+      "y": 347.532562,
+      "z": 358.628204
+    },
+    "renderPositions": {
+      "1m": {
+        "x": -70.5642285,
+        "y": 348.31250061,
+        "z": 358.70756068
+      },
+      "700k": {
+        "x": -70.52499786,
+        "y": 348.29345492,
+        "z": 358.8248647
+      }
+    },
+    "surfacePoints": {
+      "1m": {
+        "x": -70.56585867,
+        "y": 347.51661138,
+        "z": 358.62658107
+      },
+      "700k": {
+        "x": -70.56650271,
+        "y": 347.51995042,
+        "z": 358.62494441
+      }
+    },
+    "surfaceDistance": {
+      "1m": 0.016033,
+      "700k": 0.013044
+    },
+    "diameter": 22.6665,
+    "depth": 11.0665,
+    "measurementUnit": "mm",
+    "diameterUnit": "mm",
+    "depthUnit": "mm",
+    "diameterGrade": null,
+    "depthGrade": null,
+    "note": null
+  }
+]

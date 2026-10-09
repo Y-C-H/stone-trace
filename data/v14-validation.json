@@ -1,0 +1,26 @@
+{
+  "cupmark_detection": {
+    "primary_source": "고인돌 성혈위치(2).png",
+    "primary_method": "difference mask against 고인돌(2).png, connected components, threshold > 30, component area >= 10 px",
+    "detected_points": 46,
+    "manual_point_corrections": 0,
+    "secondary_source": "고인돌 성혈위치 2(2).png",
+    "secondary_orange_components": 45,
+    "crosscheck_note": "46개의 기준 점 모두 보조 이미지의 주황색 마커에 정규화 최근접 거리 0.014 미만으로 대응했습니다. 매우 가까운 성혈 2개가 보조 이미지의 주황색 연결성분 1개로 합쳐져 45개로 검출되었습니다."
+  },
+  "static_validation": {
+    "html_duplicate_ids": 0,
+    "page_count": 7,
+    "page_indices": [0, 1, 2, 3, 4, 5, 6],
+    "toc_nodes": 7,
+    "cupmark_id_duplicates": 0,
+    "missing_local_references": 0,
+    "javascript_syntax": "pass",
+    "chapter01_knowledge_data_preserved": true,
+    "chapter01_knowledge_graph_preserved": true
+  },
+  "browser_automation": {
+    "status": "not_run",
+    "reason": "현재 실행 환경에서 Chromium의 로컬/루프백 URL 탐색이 차단되어 자동 브라우저 상호작용 테스트를 실행하지 못함"
+  }
+}

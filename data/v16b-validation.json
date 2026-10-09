@@ -1,0 +1,119 @@
+{
+  "project": "돌에 새겨진 흔적",
+  "version": "stone-traces-v16b",
+  "base": "stone-traces-v16a-no-caption.zip",
+  "excel": {
+    "file": "cupmarks-measured-source.xlsx",
+    "embeddedOriginal": "data/cupmarks-measured-source.xlsx",
+    "sheet": "시트1",
+    "header": [
+      "셩혈ID",
+      "직경(mm)",
+      "크기 등급",
+      "깊이(mm)",
+      "깊이등급",
+      "위치 (X위치,Y위치,Z위치)",
+      "비고"
+    ],
+    "rowCount": 46,
+    "validPointCount": 46,
+    "duplicateIdCount": 0,
+    "missingCoordinateCount": 0,
+    "invalidRows": [],
+    "formatAnomalies": [
+      {
+        "row": 29,
+        "id": "C28",
+        "field": "F",
+        "originalValue": ",805.903809,274.213165,402.258331",
+        "resolution": "Removed one extraneous leading comma; no coordinate value was inferred"
+      }
+    ],
+    "idPolicy": "Use original Excel C01–C46; no inference from legacy provisional P-series",
+    "coordinateColumn": "F — comma-separated X,Y,Z",
+    "measurementUnit": "mm (applies to diameter/depth columns; coordinate unit not explicitly labeled)"
+  },
+  "coordinateSystem": {
+    "excelYAxisIsVertical": true,
+    "modelVerticalAxis": "Y",
+    "axisMapping": "Excel X→Model X, Y→Y, Z→Z",
+    "axisFlip": [],
+    "unitScale": 1,
+    "translation": [
+      0,
+      0,
+      0
+    ],
+    "modelCoordinateUnits": "unlabeled numeric units; coordinate values coincide with GLB source-space",
+    "evidence": "Nearest triangle distances for all 46 points are <=0.24 source-coordinate units on both 1m and 700k; 1M upper surface Y 173..368 within model bounds",
+    "transformationApplied": false
+  },
+  "surfaceValidation": {
+    "method": "scipy.spatial.cKDTree nearest 512 triangle centroids followed by trimesh.triangles.closest_point exact candidate closest surface geometry",
+    "tolerance": 1.0,
+    "unit": "GLB source-coordinate units",
+    "pointsChecked": 46,
+    "pointsNearSurface": 46,
+    "pointsOutsideTolerance": 0,
+    "maxDistance": 0.1852625582105945,
+    "meanDistance": 0.08226246680486354,
+    "medianDistance": 0.08199151012791413,
+    "perModel": {
+      "1m": {
+        "pointsChecked": 46,
+        "maxDistance": 0.1852625582105945,
+        "meanDistance": 0.08226246680486354,
+        "medianDistance": 0.08199151012791413,
+        "withinTolerance": 46
+      },
+      "700k": {
+        "pointsChecked": 46,
+        "maxDistance": 0.23924319839440572,
+        "meanDistance": 0.11928175008793923,
+        "medianDistance": 0.1199115872484112,
+        "withinTolerance": 46
+      }
+    },
+    "rendering": "Measured sourcePosition preserved; renderPositions use mesh nearest point plus +0.8 coordinate units along upper-facing surface normal to avoid Z-fighting, both models independently",
+    "snapTolerance": 1.0,
+    "transformValidated": true
+  },
+  "models": {
+    "reference": "assets/models/dolmen-1m.glb",
+    "display": "assets/models/dolmen-700k.glb",
+    "desktopOptional": "assets/models/dolmen-1m.glb",
+    "400kUsed": false,
+    "modelSwitch": "700k default for all visitors; ?v16aModel=1m allows 1m check"
+  },
+  "chapter02": {
+    "markerCount": 46,
+    "toggle": true,
+    "selection": true,
+    "listSync": true,
+    "cameraFocus": false,
+    "markerType": "GPU point-sprite golden ring + center dot; WebGL2 depth test; GPU ID-buffer occlusion-aware selection"
+  },
+  "legacy": {
+    "P001toP046": "Preserved as separate Chapter 04 provisional data; no inferred legacyId"
+  },
+  "chapter04Modified": false,
+  "testStatus": {
+    "geometryAndData": "passed",
+    "modelAndLegacyHashes": "passed",
+    "javascriptSyntax": "passed",
+    "desktopBrowser": "UI behavior passed under mocked WebGL2 context on Chromium; actual WebGL2 blocked by environment",
+    "mobileBrowser": "390x844 UI behavior passed under mocked WebGL2 context; actual WebGL2 blocked by environment",
+    "gpuPicking": "requires real-browser validation",
+    "occlusion": "VTK model geometry preview confirms surface alignment; browser depth test not exercised",
+    "screenshots": "testshots/v16b-geometry-* are actual 700k mesh offline renderings, not browser screenshots"
+  },
+  "regression": {
+    "chapter01": "HTML unchanged",
+    "chapter03": "HTML unchanged",
+    "chapter04": "HTML and all overlay JS/data unchanged",
+    "chapter05": "HTML and constellation JS unchanged",
+    "chapter06": "HTML unchanged",
+    "chapter07": "HTML unchanged",
+    "models": "all GLB SHA256 identical to v16a"
+  }
+}
