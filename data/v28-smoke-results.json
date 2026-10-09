@@ -1,0 +1,52 @@
+[
+  {
+    "viewport": "1920x1080",
+    "asterismsLoaded": 12,
+    "labelsVisible": 12,
+    "cupmarkTransformPreserved": true,
+    "toggleWorking": true,
+    "javascriptErrors": [],
+    "sampledFocusAndOverview": true,
+    "sampledFocusCount": 2
+  },
+  {
+    "viewport": "1440x900",
+    "asterismsLoaded": 12,
+    "labelsVisible": 12,
+    "cupmarkTransformPreserved": true,
+    "toggleWorking": true,
+    "javascriptErrors": [],
+    "sampledFocusAndOverview": true,
+    "sampledFocusCount": 4
+  },
+  {
+    "viewport": "1366x768",
+    "asterismsLoaded": 12,
+    "labelsVisible": 12,
+    "cupmarkTransformPreserved": true,
+    "toggleWorking": true,
+    "javascriptErrors": [],
+    "sampledFocusAndOverview": true,
+    "sampledFocusCount": 2
+  },
+  {
+    "viewport": "1024x768",
+    "asterismsLoaded": 12,
+    "labelsVisible": 12,
+    "cupmarkTransformPreserved": true,
+    "toggleWorking": true,
+    "javascriptErrors": [],
+    "sampledFocusAndOverview": true,
+    "sampledFocusCount": 2
+  },
+  {
+    "viewport": "390x844",
+    "asterismsLoaded": 12,
+    "labelsVisible": 12,
+    "cupmarkTransformPreserved": true,
+    "toggleWorking": true,
+    "javascriptErrors": [],
+    "sampledFocusAndOverview": true,
+    "sampledFocusCount": 2
+  }
+]

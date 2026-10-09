@@ -1,0 +1,675 @@
+{
+  "version": "v27",
+  "status": "completed_as_illustrative_exhibition_reference",
+  "accuracyStatementKo": "9개 추가 성관의 구성별 명칭은 공개된 동아시아 성관 대응표를 따랐고, 좌표는 전시용 근사치입니다. 한국 전통 성관 원본의 HIP 링크와 대조한 고증 자료가 아닙니다.",
+  "coordinateSystem": "approximately J2000 equatorial in degrees",
+  "projection": "north polar equidistant reference projection",
+  "sources": [
+    "https://handwiki.org/wiki/Astronomy:List_of_Chinese_star_names",
+    "https://en.wikipedia.org/wiki/List_of_Chinese_star_names",
+    "https://fossies.org/linux/stellarium/skycultures/korean/description.md",
+    "https://en.wikipedia.org/wiki/Northern_Pole",
+    "https://en.wikipedia.org/wiki/Dipper_(Chinese_constellation)",
+    "https://en.wikipedia.org/wiki/Three_Stars_(Chinese_constellation)"
+  ],
+  "licenseNote": "Own transformed data with named star positions approximated for educational visualization. v26 legacy subset credits and GPL-2.0 text retained. No upstream full index.json copied.",
+  "asterisms": [
+    {
+      "id": "CON korean 219",
+      "nameKo": "북두",
+      "nameHanja": "",
+      "starCount": 7,
+      "stars": [
+        {
+          "identifier": 67301,
+          "raDeg": 206.89,
+          "decDeg": 49.31
+        },
+        {
+          "identifier": 65378,
+          "raDeg": 200.985,
+          "decDeg": 54.93
+        },
+        {
+          "identifier": 62956,
+          "raDeg": 193.5,
+          "decDeg": 55.96
+        },
+        {
+          "identifier": 59774,
+          "raDeg": 183.854,
+          "decDeg": 57.03
+        },
+        {
+          "identifier": 58001,
+          "raDeg": 178.457,
+          "decDeg": 53.69
+        },
+        {
+          "identifier": 53910,
+          "raDeg": 165.46,
+          "decDeg": 56.38
+        },
+        {
+          "identifier": 54061,
+          "raDeg": 165.932,
+          "decDeg": 61.75
+        }
+      ],
+      "edges": [
+        [
+          "67301",
+          "65378"
+        ],
+        [
+          "65378",
+          "62956"
+        ],
+        [
+          "62956",
+          "59774"
+        ],
+        [
+          "59774",
+          "58001"
+        ],
+        [
+          "58001",
+          "53910"
+        ],
+        [
+          "53910",
+          "54061"
+        ]
+      ],
+      "validationScope": "v26 legacy internal integrity; approximate coordinates",
+      "note": "기존 v26 데이터"
+    },
+    {
+      "id": "CON korean 052",
+      "nameKo": "직녀",
+      "nameHanja": "",
+      "starCount": 3,
+      "stars": [
+        {
+          "identifier": 91919,
+          "raDeg": 281.085,
+          "decDeg": 39.6701
+        },
+        {
+          "identifier": 91262,
+          "raDeg": 279.2347,
+          "decDeg": 38.7837
+        },
+        {
+          "identifier": 91971,
+          "raDeg": 281.1931,
+          "decDeg": 37.6051
+        }
+      ],
+      "edges": [
+        [
+          "91919",
+          "91262"
+        ],
+        [
+          "91262",
+          "91971"
+        ]
+      ],
+      "validationScope": "v26 legacy internal integrity; approximate coordinates",
+      "note": "기존 v26 데이터"
+    },
+    {
+      "id": "CON korean 055",
+      "nameKo": "하고",
+      "nameHanja": "",
+      "starCount": 3,
+      "stars": [
+        {
+          "identifier": 97278,
+          "raDeg": 296.565,
+          "decDeg": 10.613
+        },
+        {
+          "identifier": 97649,
+          "raDeg": 297.6945,
+          "decDeg": 8.8674
+        },
+        {
+          "identifier": 98036,
+          "raDeg": 298.8283,
+          "decDeg": 6.4068
+        }
+      ],
+      "edges": [
+        [
+          "97278",
+          "97649"
+        ],
+        [
+          "97649",
+          "98036"
+        ]
+      ],
+      "validationScope": "v26 legacy internal integrity; approximate coordinates",
+      "note": "기존 v26 데이터"
+    },
+    {
+      "id": "AST exhibit beiji",
+      "nameKo": "북극",
+      "nameHanja": "北極",
+      "starCount": 5,
+      "stars": [
+        {
+          "identifier": "beiji:γ-UMi",
+          "raDeg": 230.18,
+          "decDeg": 71.83
+        },
+        {
+          "identifier": "beiji:β-UMi",
+          "raDeg": 222.68,
+          "decDeg": 74.16
+        },
+        {
+          "identifier": "beiji:5-UMi",
+          "raDeg": 215.6,
+          "decDeg": 75.7
+        },
+        {
+          "identifier": "beiji:4-UMi",
+          "raDeg": 212.5,
+          "decDeg": 78.2
+        },
+        {
+          "identifier": "beiji:HIP-62561",
+          "raDeg": 192.3,
+          "decDeg": 82.3
+        }
+      ],
+      "edges": [
+        [
+          "beiji:γ-UMi",
+          "beiji:β-UMi"
+        ],
+        [
+          "beiji:β-UMi",
+          "beiji:5-UMi"
+        ],
+        [
+          "beiji:5-UMi",
+          "beiji:4-UMi"
+        ],
+        [
+          "beiji:4-UMi",
+          "beiji:HIP-62561"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "고대 북극 주변 별들의 대략적 배열"
+    },
+    {
+      "id": "AST exhibit gouchen",
+      "nameKo": "구진",
+      "nameHanja": "勾陳",
+      "starCount": 6,
+      "stars": [
+        {
+          "identifier": "gouchen:α-UMi",
+          "raDeg": 37.95,
+          "decDeg": 89.26
+        },
+        {
+          "identifier": "gouchen:δ-UMi",
+          "raDeg": 263.05,
+          "decDeg": 86.59
+        },
+        {
+          "identifier": "gouchen:ε-UMi",
+          "raDeg": 251.49,
+          "decDeg": 82.04
+        },
+        {
+          "identifier": "gouchen:ζ-UMi",
+          "raDeg": 236.01,
+          "decDeg": 77.79
+        },
+        {
+          "identifier": "gouchen:2-UMi",
+          "raDeg": 220.6,
+          "decDeg": 79.2
+        },
+        {
+          "identifier": "gouchen:HIP-113116",
+          "raDeg": 343.7,
+          "decDeg": 80.9
+        }
+      ],
+      "edges": [
+        [
+          "gouchen:α-UMi",
+          "gouchen:δ-UMi"
+        ],
+        [
+          "gouchen:δ-UMi",
+          "gouchen:ε-UMi"
+        ],
+        [
+          "gouchen:ε-UMi",
+          "gouchen:ζ-UMi"
+        ],
+        [
+          "gouchen:ζ-UMi",
+          "gouchen:2-UMi"
+        ],
+        [
+          "gouchen:2-UMi",
+          "gouchen:HIP-113116"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "갈고리형 배열; 일부 작은 별의 위치는 참고용 추정"
+    },
+    {
+      "id": "AST exhibit munchang",
+      "nameKo": "문창",
+      "nameHanja": "文昌",
+      "starCount": 6,
+      "stars": [
+        {
+          "identifier": "munchang:υ-UMa",
+          "raDeg": 147.7,
+          "decDeg": 58.0
+        },
+        {
+          "identifier": "munchang:h-UMa",
+          "raDeg": 150.0,
+          "decDeg": 56.2
+        },
+        {
+          "identifier": "munchang:φ-UMa",
+          "raDeg": 148.03,
+          "decDeg": 54.06
+        },
+        {
+          "identifier": "munchang:θ-UMa",
+          "raDeg": 143.22,
+          "decDeg": 51.68
+        },
+        {
+          "identifier": "munchang:15-UMa",
+          "raDeg": 136.5,
+          "decDeg": 51.6
+        },
+        {
+          "identifier": "munchang:18-UMa",
+          "raDeg": 137.7,
+          "decDeg": 53.9
+        }
+      ],
+      "edges": [
+        [
+          "munchang:υ-UMa",
+          "munchang:h-UMa"
+        ],
+        [
+          "munchang:h-UMa",
+          "munchang:φ-UMa"
+        ],
+        [
+          "munchang:φ-UMa",
+          "munchang:θ-UMa"
+        ],
+        [
+          "munchang:θ-UMa",
+          "munchang:15-UMa"
+        ],
+        [
+          "munchang:15-UMa",
+          "munchang:18-UMa"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "6성 구성의 전시용 도식; 제2성 동정에는 자료 차이 존재"
+    },
+    {
+      "id": "AST exhibit namdu",
+      "nameKo": "남두",
+      "nameHanja": "南斗",
+      "starCount": 6,
+      "stars": [
+        {
+          "identifier": "namdu:μ-Sgr",
+          "raDeg": 273.44,
+          "decDeg": -21.06
+        },
+        {
+          "identifier": "namdu:λ-Sgr",
+          "raDeg": 276.05,
+          "decDeg": -25.42
+        },
+        {
+          "identifier": "namdu:φ-Sgr",
+          "raDeg": 279.1,
+          "decDeg": -26.99
+        },
+        {
+          "identifier": "namdu:σ-Sgr",
+          "raDeg": 283.82,
+          "decDeg": -26.3
+        },
+        {
+          "identifier": "namdu:τ-Sgr",
+          "raDeg": 286.74,
+          "decDeg": -27.67
+        },
+        {
+          "identifier": "namdu:ζ-Sgr",
+          "raDeg": 285.65,
+          "decDeg": -29.88
+        }
+      ],
+      "edges": [
+        [
+          "namdu:μ-Sgr",
+          "namdu:λ-Sgr"
+        ],
+        [
+          "namdu:λ-Sgr",
+          "namdu:φ-Sgr"
+        ],
+        [
+          "namdu:φ-Sgr",
+          "namdu:σ-Sgr"
+        ],
+        [
+          "namdu:σ-Sgr",
+          "namdu:τ-Sgr"
+        ],
+        [
+          "namdu:τ-Sgr",
+          "namdu:ζ-Sgr"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "궁수자리의 남두육성"
+    },
+    {
+      "id": "AST exhibit gyeonu",
+      "nameKo": "견우",
+      "nameHanja": "牽牛",
+      "starCount": 6,
+      "stars": [
+        {
+          "identifier": "gyeonu:ξ2-Cap",
+          "raDeg": 302.8,
+          "decDeg": -12.7
+        },
+        {
+          "identifier": "gyeonu:α2-Cap",
+          "raDeg": 304.51,
+          "decDeg": -12.54
+        },
+        {
+          "identifier": "gyeonu:β-Cap",
+          "raDeg": 305.25,
+          "decDeg": -14.78
+        },
+        {
+          "identifier": "gyeonu:π-Cap",
+          "raDeg": 304.7,
+          "decDeg": -18.2
+        },
+        {
+          "identifier": "gyeonu:ο-Cap",
+          "raDeg": 305.9,
+          "decDeg": -18.6
+        },
+        {
+          "identifier": "gyeonu:ρ-Cap",
+          "raDeg": 307.5,
+          "decDeg": -17.8
+        }
+      ],
+      "edges": [
+        [
+          "gyeonu:ξ2-Cap",
+          "gyeonu:α2-Cap"
+        ],
+        [
+          "gyeonu:α2-Cap",
+          "gyeonu:β-Cap"
+        ],
+        [
+          "gyeonu:β-Cap",
+          "gyeonu:π-Cap"
+        ],
+        [
+          "gyeonu:π-Cap",
+          "gyeonu:ο-Cap"
+        ],
+        [
+          "gyeonu:ο-Cap",
+          "gyeonu:ρ-Cap"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "우수(牛宿)의 견우 6성; 하고의 알타이르(견우성)와 구분"
+    },
+    {
+      "id": "AST exhibit gak",
+      "nameKo": "각",
+      "nameHanja": "角",
+      "starCount": 2,
+      "stars": [
+        {
+          "identifier": "gak:α-Vir",
+          "raDeg": 201.3,
+          "decDeg": -11.16
+        },
+        {
+          "identifier": "gak:ζ-Vir",
+          "raDeg": 203.67,
+          "decDeg": -0.6
+        }
+      ],
+      "edges": [
+        [
+          "gak:α-Vir",
+          "gak:ζ-Vir"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "스피카와 제타 처녀자리"
+    },
+    {
+      "id": "AST exhibit sim",
+      "nameKo": "심",
+      "nameHanja": "心",
+      "starCount": 3,
+      "stars": [
+        {
+          "identifier": "sim:σ-Sco",
+          "raDeg": 245.3,
+          "decDeg": -25.59
+        },
+        {
+          "identifier": "sim:α-Sco",
+          "raDeg": 247.35,
+          "decDeg": -26.43
+        },
+        {
+          "identifier": "sim:τ-Sco",
+          "raDeg": 248.97,
+          "decDeg": -28.22
+        }
+      ],
+      "edges": [
+        [
+          "sim:σ-Sco",
+          "sim:α-Sco"
+        ],
+        [
+          "sim:α-Sco",
+          "sim:τ-Sco"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "안타레스 중심의 심수 3성"
+    },
+    {
+      "id": "AST exhibit myo",
+      "nameKo": "묘",
+      "nameHanja": "昴",
+      "starCount": 7,
+      "stars": [
+        {
+          "identifier": "myo:17-Tau",
+          "raDeg": 56.22,
+          "decDeg": 24.11
+        },
+        {
+          "identifier": "myo:20-Tau",
+          "raDeg": 56.46,
+          "decDeg": 24.37
+        },
+        {
+          "identifier": "myo:19-Tau",
+          "raDeg": 56.3,
+          "decDeg": 24.47
+        },
+        {
+          "identifier": "myo:21-Tau",
+          "raDeg": 56.37,
+          "decDeg": 24.56
+        },
+        {
+          "identifier": "myo:23-Tau",
+          "raDeg": 56.58,
+          "decDeg": 23.95
+        },
+        {
+          "identifier": "myo:η-Tau",
+          "raDeg": 56.87,
+          "decDeg": 24.11
+        },
+        {
+          "identifier": "myo:27-Tau",
+          "raDeg": 57.29,
+          "decDeg": 24.05
+        }
+      ],
+      "edges": [
+        [
+          "myo:17-Tau",
+          "myo:20-Tau"
+        ],
+        [
+          "myo:20-Tau",
+          "myo:19-Tau"
+        ],
+        [
+          "myo:19-Tau",
+          "myo:21-Tau"
+        ],
+        [
+          "myo:17-Tau",
+          "myo:23-Tau"
+        ],
+        [
+          "myo:23-Tau",
+          "myo:η-Tau"
+        ],
+        [
+          "myo:η-Tau",
+          "myo:27-Tau"
+        ],
+        [
+          "myo:20-Tau",
+          "myo:η-Tau"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "플레이아데스 7성; 실제 각거리는 작아 전체 보기에서는 밀집되어 보임"
+    },
+    {
+      "id": "AST exhibit sam",
+      "nameKo": "삼",
+      "nameHanja": "參",
+      "starCount": 7,
+      "stars": [
+        {
+          "identifier": "sam:δ-Ori",
+          "raDeg": 83.0,
+          "decDeg": -0.3
+        },
+        {
+          "identifier": "sam:ε-Ori",
+          "raDeg": 84.05,
+          "decDeg": -1.2
+        },
+        {
+          "identifier": "sam:ζ-Ori",
+          "raDeg": 85.19,
+          "decDeg": -1.94
+        },
+        {
+          "identifier": "sam:α-Ori",
+          "raDeg": 88.79,
+          "decDeg": 7.41
+        },
+        {
+          "identifier": "sam:γ-Ori",
+          "raDeg": 81.28,
+          "decDeg": 6.35
+        },
+        {
+          "identifier": "sam:κ-Ori",
+          "raDeg": 86.94,
+          "decDeg": -9.67
+        },
+        {
+          "identifier": "sam:β-Ori",
+          "raDeg": 78.63,
+          "decDeg": -8.2
+        }
+      ],
+      "edges": [
+        [
+          "sam:δ-Ori",
+          "sam:ε-Ori"
+        ],
+        [
+          "sam:ε-Ori",
+          "sam:ζ-Ori"
+        ],
+        [
+          "sam:α-Ori",
+          "sam:γ-Ori"
+        ],
+        [
+          "sam:α-Ori",
+          "sam:ζ-Ori"
+        ],
+        [
+          "sam:ζ-Ori",
+          "sam:κ-Ori"
+        ],
+        [
+          "sam:γ-Ori",
+          "sam:δ-Ori"
+        ],
+        [
+          "sam:δ-Ori",
+          "sam:β-Ori"
+        ],
+        [
+          "sam:κ-Ori",
+          "sam:β-Ori"
+        ]
+      ],
+      "validationScope": "illustrative",
+      "note": "오리온의 허리띠 3성과 사방의 4성"
+    }
+  ]
+}

@@ -1002,3 +1002,8 @@ body[data-page="4"] .constellation-toc,body[data-page="4"] .page-navigation,body
 .cupmark-list button[data-light-on="true"]{box-shadow:inset 0 -2px 0 rgba(230,188,112,.95);color:#ecd3a4}
 .cupmark-list button[data-light-on="true"][aria-pressed="true"]{background:#433723;border-color:#e2c188}
 @media(max-width:760px){.cupmark-light-settings{padding:8px 9px;gap:7px}.cupmark-light-hint{font-size:10px}}
+
+/* v27: all-cupmark light control uses the existing measurement palette. */
+.cupmark-list #cupmarkSelectAll{font-weight:600;border-color:#887659;color:#e1c797}
+.cupmark-list #cupmarkSelectAll[aria-pressed="true"]{background:#393122;color:#ffe6b3;border-color:#d4ae70}
+.cupmark-list #cupmarkSelectAll[data-partial="true"]{border-style:dashed}

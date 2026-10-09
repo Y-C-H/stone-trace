@@ -262,6 +262,7 @@
   const listWrap=document.getElementById('cupmarkPickerWrap'),listToggle=document.getElementById('cupmarkListToggle');
   let pickFramebuffer=null,pickTexture=null,pickDepth=null,pickW=0,pickH=0;
   const markerList=document.getElementById('cupmarkList'), markerCount=document.getElementById('cupmarkCount');
+  let selectAllButton=null;
   const markerOff=document.getElementById('cupmarksOff'),markerOn=document.getElementById('cupmarksOn');
   let center=v3(0,0,0),scale=1,modelRadius=.7,modelHalfExtents=[.5,.12,.29],maxNormalizedY=.15,mode='realistic',lightAngle=35*Math.PI/180;
   let yaw=.23,pitch=.68,distance=2.5,pan=v3(0,0,0),defaultDistance=2.5;
@@ -351,11 +352,17 @@
     brightnessSlider.value=String(Math.round(lightBrightness*100));
     lightPulseButton.setAttribute('aria-pressed',String(lightMode==='pulse'));
     lightSteadyButton.setAttribute('aria-pressed',String(lightMode==='steady'));
-    markerList.querySelectorAll('button').forEach((b,i)=>{
+    markerList.querySelectorAll('button.cupmark-single').forEach((b,i)=>{
       const lit=illuminatedIndices.has(i);
       b.dataset.lightOn=String(lit);
       b.setAttribute('aria-label',`성혈 ${markerData[i]?.id||i+1} 선택 · 불빛 ${lit?'끄기':'켜기'}`);
     });
+    if(selectAllButton){
+      const allLit=markerData.length>0&&illuminatedIndices.size===markerData.length;
+      selectAllButton.setAttribute('aria-pressed',String(allLit));
+      selectAllButton.dataset.partial=String(illuminatedIndices.size>0&&!allLit);
+      selectAllButton.setAttribute('aria-label',allLit?'전체 성혈 조명 끄기':'전체 성혈 조명 켜기');
+    }
   }
   function activateLight(index){
     if(!illuminatedIndices.has(index)){
@@ -367,9 +374,29 @@
       illuminatedIndices.delete(index);lightActivationTimes.delete(index);
     }else activateLight(index);
   }
+  // v27: all-lights is derived from the current measured points, not from the last button press.
+  function toggleAllLights(){
+    if(!markersLoaded||!markerData.length)return;
+    const allLit=illuminatedIndices.size===markerData.length;
+    if(allLit){
+      illuminatedIndices.clear();lightActivationTimes.clear();
+      // Turning every light OFF must not move the current camera.
+    }else{
+      const now=performance.now();
+      for(let i=0;i<markerData.length;i++){
+        if(!illuminatedIndices.has(i)){
+          illuminatedIndices.add(i);lightActivationTimes.set(i,now);
+        }
+      }
+      setMarkerVisibility(true);
+      // Reuse the existing animated whole-stone camera target.
+      fitCamera(true);
+    }
+    updateLightUI();requestFrame();
+  }
   function clearSelected(){
     selectedIndex=-1;
-    markerList.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'));
+    markerList.querySelectorAll('button.cupmark-single').forEach(b=>b.setAttribute('aria-pressed','false'));
     document.getElementById('cupmarkSelectedId').textContent='성혈을 선택해 주세요';
     document.getElementById('cupmarkDiameter').textContent='—';
     document.getElementById('cupmarkDepth').textContent='—';
@@ -580,8 +607,8 @@
     else if(lighting==='ensure')activateLight(index);
     selectedIndex=index;const item=markerData[index];
     updateLightUI();
-    markerList.querySelectorAll('button').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
-    const b=markerList.children[index];if(b)b.scrollIntoView({block:'nearest',inline:'nearest'});
+    markerList.querySelectorAll('button.cupmark-single').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===index)));
+    const b=markerList.querySelectorAll('button.cupmark-single')[index];if(b)b.scrollIntoView({block:'nearest',inline:'nearest'});
     document.getElementById('cupmarkSelectedId').textContent=`성혈 ${item.id}`;
     document.getElementById('cupmarkDiameter').textContent=typeof item.diameter==='number'?`${item.diameter.toFixed(2)} mm`:'—';
     document.getElementById('cupmarkDepth').textContent=typeof item.depth==='number'?`${item.depth.toFixed(2)} mm`:'—';
@@ -594,8 +621,14 @@
       markerData=data;markersLoaded=true;
       markerCount.textContent=`${data.length}개`;
       const fragment=document.createDocumentFragment();
+      selectAllButton=document.createElement('button');selectAllButton.type='button';
+      selectAllButton.id='cupmarkSelectAll';selectAllButton.textContent='모두';
+      selectAllButton.setAttribute('aria-pressed','false');
+      selectAllButton.setAttribute('aria-label','전체 성혈 조명 켜기');
+      selectAllButton.addEventListener('click',toggleAllLights);
+      fragment.appendChild(selectAllButton);
       data.forEach((m,i)=>{
-        const b=document.createElement('button');b.type='button';b.textContent=m.id;b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',`성혈 ${m.id} 선택`);
+        const b=document.createElement('button');b.type='button';b.className='cupmark-single';b.textContent=m.id;b.setAttribute('aria-pressed','false');b.setAttribute('aria-label',`성혈 ${m.id} 선택`);
         b.addEventListener('click',()=>{setMarkerVisibility(true);selectMarker(i);});fragment.appendChild(b);
       });
       markerList.replaceChildren(fragment);
@@ -846,7 +879,7 @@
   new ResizeObserver(()=>requestFrame()).observe(root);
   canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();active=false;loading.classList.remove('is-hidden');error('그래픽 장치 연결이 끊겼습니다. 페이지를 새로고침해 주세요.');});
   activateIfNeeded();
-  window.__dolmenViewerDebug={getTextureStatus:()=>({mode,textureStatus,textureReady,globalTransform:TEXTURE_TRANSFORM}),fitCamera,zoom,focusOnMarker,getFocusPresets:()=>focusPresets.map(x=>x?{...x,target:x.target.slice(),normal:x.normal.slice()}:null),getViewMode:()=>viewMode,getMode:()=>mode,getCamera:()=>({yaw,pitch,distance,pan:pan.slice(),isAnimating:!!cameraTransition}),requestFrame,setMarkerVisibility,selectMarker,getCupmarkState:()=>({count:markerData.length,markersLoaded,markersOn,selectedIndex,illuminatedIndices:[...illuminatedIndices].sort((a,b)=>a-b),illuminatedCupmarkIds:[...illuminatedIndices].sort((a,b)=>a-b).map(i=>markerData[i]?.id),lightMode,lightBrightness}),getLightIntensityAt:(index,atMs=performance.now())=>lightIntensityAt(index,atMs),setLightBrightness:(x)=>{lightBrightness=clamp(x,.25,1);updateLightUI();requestFrame();},setLightMode:(x)=>{if(x==='pulse'||x==='steady'){lightMode=x;updateLightUI();requestFrame();}}};
+  window.__dolmenViewerDebug={getTextureStatus:()=>({mode,textureStatus,textureReady,globalTransform:TEXTURE_TRANSFORM}),fitCamera,zoom,focusOnMarker,getFocusPresets:()=>focusPresets.map(x=>x?{...x,target:x.target.slice(),normal:x.normal.slice()}:null),getViewMode:()=>viewMode,getMode:()=>mode,getCamera:()=>({yaw,pitch,distance,pan:pan.slice(),isAnimating:!!cameraTransition}),requestFrame,setMarkerVisibility,selectMarker,getCupmarkState:()=>({count:markerData.length,markersLoaded,markersOn,selectedIndex,illuminatedIndices:[...illuminatedIndices].sort((a,b)=>a-b),illuminatedCupmarkIds:[...illuminatedIndices].sort((a,b)=>a-b).map(i=>markerData[i]?.id),lightMode,lightBrightness}),getLightIntensityAt:(index,atMs=performance.now())=>lightIntensityAt(index,atMs),toggleAllLights,setLightBrightness:(x)=>{lightBrightness=clamp(x,.25,1);updateLightUI();requestFrame();},setLightMode:(x)=>{if(x==='pulse'||x==='steady'){lightMode=x;updateLightUI();requestFrame();}}};
  }
  window.initDolmenViewer=initialize;
 })();

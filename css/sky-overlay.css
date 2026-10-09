@@ -47,3 +47,33 @@
 .eastern-constellations-buttons button{min-width:46px;min-height:34px;padding:5px 9px;border:1px solid rgba(211,192,153,.3);background:rgba(9,13,21,.65);color:#aeb8c3;font:12px var(--font-ui,system-ui,sans-serif);cursor:pointer}
 .eastern-constellations-buttons button[aria-pressed="true"]{color:#e9d4a8;border-color:rgba(215,183,123,.75);background:rgba(153,120,75,.11)}
 @media(max-width:760px){.eastern-constellations-toggle{padding:.32rem .58rem}.eastern-constellations-buttons button{min-height:34px;min-width:44px}}
+
+/* v27: explanatory precision indicator for all twelve illustrative Eastern asterisms */
+.eastern-constellations-toggle small{color:#8797a8;font-size:10px;white-space:nowrap;font-weight:400}
+@media(max-width:760px){.eastern-constellations-toggle small{font-size:9px}}
+
+/* v27-fix: compact constellation selector, independent of gold cup-mark gestures. */
+.sky-asterism-controls{display:none;grid-template-columns:1fr 1.05fr;gap:.32rem;align-items:center;padding:.48rem .72rem;border-bottom:1px solid rgba(231,226,216,.1)}
+.sky-control-panel.eastern-active .sky-asterism-controls{display:grid}
+.sky-asterism-controls label{grid-column:1/-1;color:#aeb8c3;font:11px var(--font-ui,system-ui,sans-serif)}
+.sky-asterism-controls select{min-width:0;width:100%;height:31px;border:1px solid rgba(185,209,229,.3);background:#090f19;color:#d5e4f0;font:12px var(--font-ui,system-ui,sans-serif);padding:0 .35rem}
+.sky-asterism-controls button{min-height:31px;font-size:11px;white-space:nowrap}
+.sky-asterism-controls button:disabled{opacity:.45;cursor:default}
+@media(max-width:760px){.sky-asterism-controls{padding:.3rem .58rem;gap:.25rem}.sky-asterism-controls label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.sky-asterism-controls select,.sky-asterism-controls button{height:29px;min-height:29px}.sky-control-panel.eastern-active{max-height:min(45vh,355px)}.sky-control-panel.eastern-active .sky-mark-manager{flex:1;min-height:36px}}
+
+/* v28: on narrow screens the star field is a full, scrollable exhibition scene.
+   Put controls below it instead of covering the only area available for 12 asterisms. */
+.sky-mobile-scroll-cue{display:none}
+@media(max-width:760px){
+  .page-sky-overlay{overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain}
+  .sky-overlay-frame{height:auto;min-height:100%;padding-bottom:calc(6rem + env(safe-area-inset-bottom,0px));gap:.6rem}
+  .sky-workspace{display:flex;flex-direction:column;flex:0 0 auto;gap:.65rem;min-height:0}
+  .sky-canvas-shell{flex:0 0 auto;height:clamp(540px,75dvh,710px);min-height:540px}
+  .sky-control-panel,.sky-control-panel.eastern-active{position:relative;inset:auto;left:auto;right:auto;bottom:auto;flex:0 0 auto;max-height:none;box-shadow:none;background:rgba(5,9,16,.96)}
+  .sky-mark-manager,.sky-control-panel.eastern-active .sky-mark-manager{flex:0 0 auto;min-height:40px;max-height:230px}
+  .sky-mark-list{max-height:154px}
+  .sky-status-row{bottom:.65rem;right:.65rem;left:.65rem}
+  .sky-mobile-scroll-cue{position:absolute;display:flex;gap:.45rem;align-items:center;right:.65rem;bottom:2.45rem;z-index:2;border:1px solid rgba(175,206,229,.34);color:#c9dfef;background:rgba(3,9,18,.82);padding:.45rem .6rem;font:11px var(--font-ui,system-ui,sans-serif);cursor:pointer}
+  .sky-mobile-scroll-cue span{font-size:17px}
+  .sky-mobile-scroll-cue:focus-visible{outline:2px solid #c7d9ec;outline-offset:2px}
+}

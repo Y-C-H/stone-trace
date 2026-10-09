@@ -1,0 +1,132 @@
+{
+  "version": {
+    "baseVersion": "stone-traces-v27",
+    "resultVersion": "stone-traces-v27-fix"
+  },
+  "skyVisualization": {
+    "asterismCount": 12,
+    "projectionMethod": "Same north-polar equidistant RA/Dec reference projection with viewport-aware UNIFORM fit of all star coordinates; 0/360 RA continuous by sin/cos.",
+    "projectionScaleAdjusted": true,
+    "overviewFit": {
+      "targetWidthFraction": 0.82,
+      "targetVisibleHeightFraction": 0.77,
+      "measuredCanvasExample": {
+        "canvas": "1080x650",
+        "constellationBoundingWidthFraction": 0.623,
+        "constellationBoundingHeightFraction": 0.77
+      },
+      "note": "Actual coverage constrained by unmodified star-coordinate aspect ratio."
+    },
+    "starSizeAdjusted": {
+      "beforeRadiusPixels": [
+        1.7,
+        2.5
+      ],
+      "afterRadiusPixels": [
+        2.9,
+        4.1
+      ],
+      "note": "4.1 when focused; ~3.25 desktop, ~2.9 mobile"
+    },
+    "edgeVisibilityImproved": {
+      "beforeWidthPixels": [
+        0.95,
+        1.4
+      ],
+      "afterWidthPixels": [
+        1.7,
+        2.35
+      ]
+    },
+    "labelSizeAdjusted": {
+      "beforeDesktopPixels": 12,
+      "beforeMobilePixels": 10,
+      "afterDesktopPixels": 14,
+      "afterMobilePixels": 12
+    },
+    "labelCollisionHandled": "Greedy, rectangle-aware placement; labels without space are withheld on constrained screens; all 12 names remain selectable by dropdown.",
+    "individualAsterismFocusAdded": true,
+    "overviewReturnWorking": "PASS under JS-state mock harness; browser unverified",
+    "backgroundContrastAdjusted": "Dim decorative sky stars to 72% only when eastern layer is enabled.",
+    "individualFocusControls": "Click/tap asterism labels or stars, or choose from a compact selection dropdown; return with 전체 성관 보기.",
+    "focusTransitionMilliseconds": 560,
+    "independentCupmarkTransform": true,
+    "easternOnOffIndependent": true
+  },
+  "dataIntegrity": {
+    "asterismCoordinatesModified": false,
+    "asterismEdgesModified": false,
+    "cupmarkCoordinatesModified": false,
+    "modelGeometryModified": false,
+    "textureModified": false,
+    "chapter01PointCloudModified": false,
+    "originalFilesCompared": 212,
+    "originalFilesUnchanged": 209,
+    "modifiedFiles": [
+      "css/sky-overlay.css",
+      "index.html",
+      "js/skyOverlay.js"
+    ],
+    "missingBaseFiles": []
+  },
+  "regression": {
+    "openingPreserved": "files unchanged; no browser regression run",
+    "chapter01Preserved": "files and data unchanged; no browser regression run",
+    "chapter02Preserved": "files and data unchanged; no WebGL regression run",
+    "chapter03Preserved": "files unchanged; no browser regression run",
+    "chapter04CupmarkInteractionsPreserved": "JS harness passed rotation and transform invariance; full pointer gesture regression unverified",
+    "endingPreserved": "files unchanged; no browser regression run"
+  },
+  "tests": {
+    "syntax": {
+      "status": "passed",
+      "method": "node --check js/skyOverlay.js and remaining JS files"
+    },
+    "jsBehavior": {
+      "status": "passed",
+      "method": "node scripts/test-v27-fix.cjs mocked Canvas/DOM",
+      "checks": [
+        "12 asterisms loaded",
+        "46 cupmarks loaded",
+        "12 distinct focus targets and transitions",
+        "overview restoration",
+        "ON/OFF",
+        "selection by label pointer",
+        "unchanged cupmark transform",
+        "desktop and mobile label bounding-box non-overlap"
+      ]
+    },
+    "desktopTests": {
+      "status": "partial",
+      "method": "actual Canvas drawing code rasterized via skia-canvas at 1360x730; NOT browser DOM / GPU tests"
+    },
+    "mobileTests": {
+      "status": "partial",
+      "method": "actual Canvas drawing code rasterized via skia-canvas at 370x620 with controls safe-area simulation; NOT mobile device browser test",
+      "overviewLabelsDisplayedInPreview": 11,
+      "asterismsSelectable": 12
+    },
+    "visualComparison": {
+      "status": "canvas-only-raster-passed",
+      "images": [
+        "testshots/v27-fix-before-after-desktop-canvas-preview.png",
+        "testshots/v27-fix-before-after-mobile-canvas-preview.png",
+        "testshots/focus-bukdu-canvas-1360.png",
+        "testshots/focus-myo-canvas-370.png"
+      ],
+      "note": "Images are rasterized with Skia from project canvas JS, not browser screenshots."
+    },
+    "browserTests": {
+      "status": "unverified",
+      "reason": "Chromium rejected local, file, data, and localhost page navigation with ERR_BLOCKED_BY_ADMINISTRATOR in this runtime."
+    },
+    "gpuWebgl": {
+      "status": "unverified"
+    },
+    "knownIssues": [
+      "Full browser viewport-size checks (1920x1080,1440x900,1366x768,1024x768,390x844) still required on local machine.",
+      "Dense mobile overview can hide a low-priority label to avoid overlapping; all names are accessible via selection control.",
+      "Approximate exhibition-grade RA/Dec dataset inherited from v27; no historical/astrometric re-verification."
+    ]
+  }
+}

@@ -1,5 +1,20 @@
-Korean traditional skyculture line patterns: Stellarium skycultures / korean/index.json
-https://github.com/Stellarium/stellarium-skycultures/tree/master/korean
-Authors Jeong Tae-Min, Susanne M Hoffmann; skyculture description GNU GPL v2.0. See eastern-asterisms-GPL-2.0.txt.
-The bundled subset contains three documented asterisms; Hipparcos approximate RA/Dec lookup sources are recorded in eastern-asterisms.json.
-This is a limited schematic sky representation, not a historical epoch/observer-specific star map.
+「돌에 새겨진 흔적」 v27 동양 성관 참고도 데이터 출처 및 한계
+
+성관 12개: 북두·직녀·하고(기존 v26) / 북극·구진·문창·남두·견우·각·심·묘·삼(추가 9개)
+
+이 시각화는 전시용 참고도입니다. 구성별 명칭은 공개된 전통 동아시아 성관 대응표를 참고했으며,
+신규 9개의 RA/Dec는 현대 좌표를 대략적으로 표시한 수치입니다.
+HIP 원본 검증이나 역사적 특정 시점의 별 위치 계산 결과가 아닙니다.
+일부 희미한 별과 문창 구성 등은 여러 자료 사이의 대응 차이가 있습니다.
+연결선은 전시에서 형태를 쉽게 볼 수 있도록 주요 구성별 사이를 연결한 예시입니다.
+고인돌 성혈의 배열과 실제로 일치한다는 고증은 아닙니다.
+
+성관/현대 별 대응: https://handwiki.org/wiki/Astronomy:List_of_Chinese_star_names
+전통 천문 체계 소개: https://fossies.org/linux/stellarium/skycultures/korean/description.md
+참고: https://en.wikipedia.org/wiki/List_of_Chinese_star_names
+기존 v26 3개 성관 출처: Stellarium skycultures / korean/index.json
+Stellarium 한국 문화권 자료의 원본 전체를 이번 버전에 재배포하지 않았습니다.
+기존 3개 서브셋에 관한 저작권 및 GPL 안내 파일은 보존했습니다.
+
+데이터: data/eastern-asterisms.json (실행용), data/eastern-asterisms-v27.json (조사/참고용)
+좌표계: 대략적인 J2000 적도 좌표, 북극 중심 등거리 개요도 투영

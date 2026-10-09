@@ -1,0 +1,171 @@
+{
+  "baseVersion": "stone-traces-v26",
+  "resultVersion": "stone-traces-v27",
+  "completionStatus": "Chapter 02 completed; Chapter 04 completed as approximate exhibition reference (not scholarly-verified astronomical catalog)",
+  "chapter02": {
+    "removedTexts": [
+      "사람 몸 크기와의 비교 / 추후 작업",
+      "C01~C46은 새 실측 ID이고 기존 P001~P046과의 대응은 미확정입니다."
+    ],
+    "selectAllButtonAdded": true,
+    "selectAllButtonPosition": "before C01 in the existing cupmark list",
+    "allLightsEnabled": true,
+    "allLightsDisabled": true,
+    "partialSelectionHandled": true,
+    "cameraOverviewWorking": "mock WebGL / DOM state test passed, native GPU test not run",
+    "brightnessControlPreserved": true,
+    "pulseModePreserved": true,
+    "steadyModePreserved": true,
+    "cameraFocusPreserved": "underlying implementation unchanged"
+  },
+  "chapter04": {
+    "previousAsterismCount": 3,
+    "targetAsterismCount": 12,
+    "implementedAsterismCount": 12,
+    "addedAsterisms": [
+      "북극",
+      "구진",
+      "문창",
+      "남두",
+      "견우",
+      "각",
+      "심",
+      "묘",
+      "삼"
+    ],
+    "skippedAsterisms": [],
+    "sourceDataset": "v26 existing 3 + hand-curated 9 using published Chinese/East Asian star-designation lists",
+    "sourceAttempted": "https://github.com/Stellarium/stellarium-skycultures/blob/master/korean/index.json",
+    "coordinateSystem": "approximate J2000 RA/Dec degrees; new 9 rounded/illustrative; not historically precessed",
+    "projectionMethod": "north-polar equidistant overview, no individual coordinate warping",
+    "dataIntegrityVerified": "12 unique names, all references resolve, 61 finite/within-bounds RA-Dec star records, all 52 line segments valid. New coordinates indicative and not compared with historical catalog.",
+    "allToggleWorking": "5 Chromium inline-DOM browser tests passed; no pageerror",
+    "cupmarkOverlayPreserved": true,
+    "generatedDataset": "data/eastern-asterisms-v27.json contains actual 12-group reference mapping, loaded diagram uses data/eastern-asterisms.json",
+    "sourceLicense": "Existing Stellarium subset attribution/GPL note retained. New 9 groups are based on independently curated public star-designation lists; source URLs documented.",
+    "mobileProjectedAboveControls": true,
+    "notHistoricallyVerified": true
+  },
+  "dataIntegrity": {
+    "measuredCupmarkDataModified": false,
+    "modelGeometryModified": false,
+    "textureModified": false,
+    "pointCloudModified": false,
+    "cameraFocusTargetsModified": false,
+    "sourceFilesChanged": [
+      "css/sky-overlay.css",
+      "css/style.css",
+      "data/eastern-asterisms-credits.txt",
+      "data/eastern-asterisms.json",
+      "index.html",
+      "js/dolmenViewer.js",
+      "js/skyOverlay.js"
+    ],
+    "sourceFilesAdded": []
+  },
+  "regression": {
+    "openingPreserved": true,
+    "chapter01Preserved": true,
+    "chapter02ViewerPreserved": "code unchanged except picker/lighting state UI",
+    "chapter03Preserved": true,
+    "chapter04InteractionsPreserved": true,
+    "endingPreserved": true
+  },
+  "tests": {
+    "javascriptSyntax": "node --check passed for js/skyOverlay.js and all JS files (see local build)",
+    "desktopTests": {
+      "1920x1080": "not tested",
+      "1440x900": "mock WebGL passed",
+      "1366x768": "not tested",
+      "1024x768": "not tested"
+    },
+    "mobileTests": {
+      "390x844": "mock WebGL passed"
+    },
+    "browserResults": [
+      {
+        "viewport": "1440x900",
+        "passed": true,
+        "measureCount": 46,
+        "buttonSize": {
+          "w": 70.5938720703125,
+          "h": 34.02239990234375
+        },
+        "cameraOverviewAnimated": true,
+        "steadyIntensitySamples": [
+          0.25,
+          0.25
+        ],
+        "browserErrors": []
+      },
+      {
+        "viewport": "390x844",
+        "passed": true,
+        "measureCount": 46,
+        "buttonSize": {
+          "w": 55.25412368774414,
+          "h": 30.88592529296875
+        },
+        "cameraOverviewAnimated": true,
+        "steadyIntensitySamples": [
+          0.25,
+          0.25
+        ],
+        "browserErrors": []
+      }
+    ],
+    "liveHTTP": "server responded HTTP 200 via requests, Chromium blocked local URL",
+    "realGPU": "not tested",
+    "knownIssues": [
+      "9 new asterisms are rounded approximate modern coordinate reference shapes, not validated against official Korean Stellarium HIP catalog; several faint stars are approximate.",
+      "Live website WebGL/GPU end-to-end rendering and interactions outside chapter04 were not repeated; Chapter02 v27 previous mock tests only.",
+      "Korean traditional constellation nomenclature may vary historically; sources for naming and data limitations documented."
+    ],
+    "chapter04BrowserDOM": {
+      "method": "Playwright Chromium, HTML/CSS/skyOverlay JS inline, local fetch intercept via JS; not HTTP/GPU full-site test",
+      "results": [
+        {
+          "viewport": "1920x1080",
+          "count": 12,
+          "on": true,
+          "off": true,
+          "errors": [],
+          "passed": true
+        },
+        {
+          "viewport": "1440x900",
+          "count": 12,
+          "on": true,
+          "off": true,
+          "errors": [],
+          "passed": true
+        },
+        {
+          "viewport": "1366x768",
+          "count": 12,
+          "on": true,
+          "off": true,
+          "errors": [],
+          "passed": true
+        },
+        {
+          "viewport": "1024x768",
+          "count": 12,
+          "on": true,
+          "off": true,
+          "errors": [],
+          "passed": true
+        },
+        {
+          "viewport": "390x844",
+          "count": 12,
+          "on": true,
+          "off": true,
+          "errors": [],
+          "passed": true
+        }
+      ],
+      "countPass": 5
+    }
+  }
+}

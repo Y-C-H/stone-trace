@@ -84,7 +84,7 @@
 <li><strong>3D 모델 전체</strong><span>실제 3D 스캔 모델 확보</span></li>
 <li><strong>표면 굴곡·균열</strong><span>3D 형상으로 육안 관찰 가능</span></li>
 
-<li><strong>사람 몸 크기와의 비교</strong><span>추후 작업</span></li>
+
 </ul>
 </div>
 </aside>
@@ -147,7 +147,7 @@
     <div><dt>깊이</dt><dd id="cupmarkDepth">—</dd></div>
   </dl>
 </div>
-<p class="cupmark-disclaimer">금빛 표식은 측정 위치를 나타내며 실제 성혈 지름과 무관합니다. C01~C46은 새 실측 ID이고 기존 P001~P046과의 대응은 미확정입니다.</p>
+<p class="cupmark-disclaimer">금빛 표식은 측정 위치를 나타내며 실제 성혈 지름과 무관합니다.</p>
 </aside>
 </div><div class="page-question compact-question observation-question">
 <div>
@@ -223,6 +223,7 @@
 <span class="sky-layer-legend"><i class="legend-cupmark-star" aria-hidden="true">✦</i> 금빛 별 · 성혈 <i class="legend-sky-star" aria-hidden="true">✦</i> 흰 별 · 밤하늘</span>
 
 </div>
+<button class="sky-mobile-scroll-cue" id="skyMobileControlsCue" type="button">성혈 조작하기 <span aria-hidden="true">↓</span></button>
 <div class="sky-gesture-guide" aria-hidden="true">
 <span>드래그 · 이동</span><span>휠/핀치 · 확대축소</span><span >⟳ 손잡이 · 회전</span><span>성혈 클릭 · 표시 끄기</span>
 </div>
@@ -233,9 +234,14 @@
 <div class="sky-count"><strong id="skyVisibleCount">—</strong><span id="skyTotalCount">/ — 표시</span></div>
 </div>
 <div class="eastern-constellations-toggle" role="group" aria-label="동양 별자리">
-  <span>동양 별자리</span><div class="eastern-constellations-buttons">
+  <span>동양 별자리 <small title="성관 내부 형태를 유지하고 성관 사이의 거리는 미학적으로 재배치한 전시용 밤하늘입니다. 실제 천문도는 아닙니다.">· 형태 재구성 12개</small></span><div class="eastern-constellations-buttons">
   <button type="button" id="easternOff" aria-pressed="true">OFF</button><button type="button" id="easternOn" aria-pressed="false">ON</button>
   </div>
+</div>
+<div class="sky-asterism-controls" role="group" aria-label="동양 성관 확대 관찰">
+  <label for="easternFocusSelect">성관 선택</label>
+  <select id="easternFocusSelect" aria-label="확대해서 볼 동양 성관" disabled><option value="">성관을 선택하세요</option></select>
+  <button id="easternOverview" type="button" disabled>전체 성관 보기</button>
 </div>
 <div class="sky-transform-controls">
 <div class="sky-control-group">

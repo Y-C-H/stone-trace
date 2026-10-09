@@ -1,0 +1,145 @@
+{
+  "version": {
+    "baseVersion": "stone-traces-v27-fix",
+    "resultVersion": "stone-traces-v28"
+  },
+  "asterismLayout": {
+    "totalAsterisms": 12,
+    "astronomicalInterAsterismSpacingRemoved": true,
+    "independentLayoutApplied": true,
+    "independentScaleApplied": true,
+    "internalStarGeometryPreserved": true,
+    "originalEdgesPreserved": true,
+    "desktopLayoutVerified": {
+      "result": "passed",
+      "method": "actual Chromium Canvas render in isolated Chapter 04 fixture",
+      "viewports": [
+        "1920x1080",
+        "1440x900",
+        "1366x768",
+        "1024x768"
+      ]
+    },
+    "mobileLayoutVerified": {
+      "result": "passed",
+      "method": "actual Chromium Canvas render in isolated Chapter 04 fixture",
+      "viewport": "390x844",
+      "change": "mobile sky is vertically scrollable; controls beneath sky"
+    },
+    "labelCollisionChecked": {
+      "result": "passed",
+      "labelCount": 12,
+      "viewports": 5,
+      "scope": "pairwise bounding boxes of rendered labels"
+    },
+    "individualFocusWorking": {
+      "result": "passed",
+      "scope": "all 12 select/focus and overview on 1440x900 and 390x844 via Chromium fixture"
+    },
+    "overviewReturnWorking": true,
+    "originalDataFileSHA256": "0cd9c2d95c401831d83240ac2beffb7a01d059c6fe15d8cb705e3b192ba01bb7"
+  },
+  "visualDesign": {
+    "starVisibilityImproved": true,
+    "edgeVisibilityImproved": true,
+    "labelReadabilityImproved": true,
+    "backgroundStarBalanceAdjusted": false,
+    "aestheticLayoutCompleted": true,
+    "beforeAfterComparisonCompleted": true,
+    "beforeAfterMethod": "actual Chromium render of isolated Chapter 04 using original v27-fix and updated v28 HTML/CSS/JS",
+    "comparisonImages": [
+      "testshots/v28-before-after-1440x900.jpg",
+      "testshots/v28-before-after-1920x1080.jpg",
+      "testshots/v28-before-after-390x844.jpg"
+    ]
+  },
+  "dataIntegrity": {
+    "asterismDataModified": false,
+    "cupmarkCoordinatesModified": false,
+    "modelGeometryModified": false,
+    "textureModified": false,
+    "chapter01PointCloudModified": false,
+    "measuredCupmarkCount": 46,
+    "unchangedOriginalFilesCount": 220,
+    "changedOriginalFiles": [
+      "css/sky-overlay.css",
+      "index.html",
+      "js/skyOverlay.js"
+    ]
+  },
+  "regression": {
+    "openingPreserved": "source unchanged; full-site browser regression unverified",
+    "chapter01Preserved": "source unchanged; full-site browser regression unverified",
+    "chapter02Preserved": "source unchanged; full-site browser regression unverified",
+    "chapter03Preserved": "source unchanged; full-site browser regression unverified",
+    "chapter04CupmarkInteractionsPreserved": "Chapter 04 Chromium fixture pass for independent transform, zoom, rotation; full-site integration unverified",
+    "endingPreserved": "source unchanged; full-site browser regression unverified"
+  },
+  "tests": {
+    "desktopTests": [
+      {
+        "viewport": "1920x1080",
+        "asterismsLoaded": 12,
+        "labelsVisible": 12,
+        "cupmarkTransformPreserved": true,
+        "toggleWorking": true,
+        "javascriptErrors": [],
+        "sampledFocusAndOverview": true,
+        "sampledFocusCount": 2
+      },
+      {
+        "viewport": "1440x900",
+        "asterismsLoaded": 12,
+        "labelsVisible": 12,
+        "cupmarkTransformPreserved": true,
+        "toggleWorking": true,
+        "javascriptErrors": [],
+        "sampledFocusAndOverview": true,
+        "sampledFocusCount": 4
+      },
+      {
+        "viewport": "1366x768",
+        "asterismsLoaded": 12,
+        "labelsVisible": 12,
+        "cupmarkTransformPreserved": true,
+        "toggleWorking": true,
+        "javascriptErrors": [],
+        "sampledFocusAndOverview": true,
+        "sampledFocusCount": 2
+      },
+      {
+        "viewport": "1024x768",
+        "asterismsLoaded": 12,
+        "labelsVisible": 12,
+        "cupmarkTransformPreserved": true,
+        "toggleWorking": true,
+        "javascriptErrors": [],
+        "sampledFocusAndOverview": true,
+        "sampledFocusCount": 2
+      }
+    ],
+    "mobileTests": [
+      {
+        "viewport": "390x844",
+        "asterismsLoaded": 12,
+        "labelsVisible": 12,
+        "cupmarkTransformPreserved": true,
+        "toggleWorking": true,
+        "javascriptErrors": [],
+        "sampledFocusAndOverview": true,
+        "sampledFocusCount": 2
+      }
+    ],
+    "browserTests": {
+      "ChromiumIsolatedChapter04": "pass",
+      "fullWebsiteNavigation": "not tested (navigation blocked for local files and HTTP URLs in current environment)",
+      "real3DWebGL": "not tested",
+      "mobilePhysicalDevice": "not tested"
+    },
+    "knownIssues": [
+      "On phones, users scroll down or tap 성혈 조작하기 to reach Chapter 04 control panel.",
+      "The illustrative arrangement intentionally does not preserve real distances between asterisms.",
+      "Full 3D WebGL and navigation regression require verification in a locally hosted browser environment."
+    ]
+  }
+}
