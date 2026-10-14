@@ -1,0 +1,113 @@
+{
+  "version": {
+    "baseline": "v34-3",
+    "result": "v34-4",
+    "type": "bug-fix"
+  },
+  "rootCause": {
+    "file": "js/dolmenViewer.js",
+    "details": "The same WebGL2 canvas and illuminatedIndices set are shared by the overview and cupmark observation stages. drawSelectedBeacon(), drawMarkers(), and pickMarker() only checked markersOn, not chapter-03 data-observation-mode. Lights/markers thus remained visible in the overview."
+  },
+  "fix": {
+    "stagePredicate": "chapter-03.dataset.observationMode === \"observation\"",
+    "artifactOverview": "Draw the original stone model only, suppress cupmark beams, halos, marker dots, and marker picking",
+    "cupmarkObservation": "Restore previously illuminated cupmarks when entering observation again",
+    "persistence": "Do not clear illuminatedIndices, markersOn, lightActivationTimes, brightness or pulse/steady mode while changing stage",
+    "performance": "Cancel pending pulse-timer callbacks on exit from observation and avoid new pulse frames outside observation",
+    "cacheBusting": "js/dolmenViewer.js?v=34-4",
+    "openingVersion": "v34-4",
+    "modifiedExistingFiles": [
+      "js/dolmenViewer.js",
+      "index.html"
+    ],
+    "untouchedData": "Original measured 46-cupmark data and scanned geometry preserved"
+  },
+  "regressionTests": {
+    "environment": "Headless Chromium + actual HTML/CSS/Viewer JS/main.js + real 46 measured cupmarks, mocked WebGL2 and tiny synthetic GLB",
+    "results": {
+      "v34_3_bug_reproduced": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "baseline": true,
+        "geometryLoaded": true,
+        "cupmarksLoaded": 46,
+        "firstLightOn": [
+          "C01"
+        ],
+        "overviewModelRedraw": true,
+        "beaconCallsAfterLeavingObservation": 6,
+        "markerCallsAfterLeavingObservation": 6,
+        "restoration": true,
+        "allLightsRestored": null,
+        "browserErrors": []
+      },
+      "v34_4_desktop": {
+        "viewport": {
+          "width": 1440,
+          "height": 900
+        },
+        "baseline": false,
+        "geometryLoaded": true,
+        "cupmarksLoaded": 46,
+        "firstLightOn": [
+          "C01"
+        ],
+        "overviewModelRedraw": true,
+        "beaconCallsAfterLeavingObservation": 0,
+        "markerCallsAfterLeavingObservation": 0,
+        "restoration": true,
+        "allLightsRestored": true,
+        "browserErrors": []
+      },
+      "v34_4_mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "baseline": false,
+        "geometryLoaded": true,
+        "cupmarksLoaded": 46,
+        "firstLightOn": [
+          "C01"
+        ],
+        "overviewModelRedraw": true,
+        "beaconCallsAfterLeavingObservation": 0,
+        "markerCallsAfterLeavingObservation": 0,
+        "restoration": true,
+        "allLightsRestored": true,
+        "browserErrors": []
+      }
+    },
+    "verifiedInteractions": [
+      "Enter cupmark observation and activate C01",
+      "Return to artifact overview: model draws, light/markers do not",
+      "No hidden pulse rendering while idle",
+      "No picking hidden markers",
+      "Re-enter cupmark observation: C01 beam and markers reappear",
+      "Turn on all 46 and verify restoration",
+      "Preserve steady mode and 63% brightness",
+      "ON/OFF control continues to work",
+      "Leave Chapter 03 and return",
+      "Desktop 1440x900 and mobile layout 390x844"
+    ],
+    "notVerified": [
+      "Actual GPU rasterization of the 700K GLB / atlas (WebGL2 context unavailable in headless Chromium in this environment)",
+      "Physical mobile hardware input and deployed GitHub Pages"
+    ]
+  },
+  "fileIntegrity": {
+    "baselineExistingFiles": 325,
+    "unchangedExistingFiles": 323,
+    "modifiedExistingFiles": [
+      "index.html",
+      "js/dolmenViewer.js"
+    ],
+    "addedFiles": [
+      "scripts/test-v34-4-regression.py",
+      "data/v34-4-validation.json"
+    ],
+    "missingExistingFiles": []
+  }
+}
