@@ -6,7 +6,7 @@
     '전승된 기억',
     '쌓여 있는 흔적',
     '오늘의 하늘에 비춰 보다',
-    '새긴 사람이 원하는 밤하늘',
+    '돌에 새겨진 하늘',
     '수치로 다시 그린 하늘'
   ];
 
@@ -110,7 +110,7 @@
 
     document.addEventListener('keydown',e=>{
       const dialog=document.getElementById('sourcesDialog');if(e.key==='Escape'&&dialog.open){dialog.close();return}if(dialog.open)return;
-      const tag=document.activeElement?.tagName;if(['INPUT','TEXTAREA','SELECT'].includes(tag))return;
+      const tag=document.activeElement?.tagName;if(['INPUT','TEXTAREA','SELECT','VIDEO'].includes(tag))return;
       if(openingState!=='finished'){
         if(e.key==='Enter'||e.key===' '){
           // The first key activation starts the opening; only later activations skip it.
@@ -135,12 +135,61 @@
   function initChapterVideo(){
     const video=document.getElementById('chapter05Video');
     if(!video)return;
+    const loading=document.getElementById('chapter05Loading');
+    const originalSource=video.querySelector('source')?.getAttribute('src');
+    let preparation=null;
+    let objectUrl=null;
+
+    // Python's simple HTTP server does not support byte ranges. Native <video>
+    // seeking may then jump back to the previous position. A local Blob URL
+    // gives the browser a fully seekable media resource independent of server
+    // support for 206 Partial Content. The original MP4 remains unchanged.
+    function prepareSeekableVideo(){
+      if(preparation)return preparation;
+      preparation=(async()=>{
+        if(!originalSource)throw new Error('Chapter 05 video source is missing');
+        const response=await fetch(originalSource,{cache:'force-cache'});
+        if(!response.ok)throw new Error(`Video HTTP ${response.status}`);
+        const blob=await response.blob();
+        if(!blob.size)throw new Error('Chapter 05 video is empty');
+        objectUrl=URL.createObjectURL(new Blob([blob],{type:'video/mp4'}));
+        video.src=objectUrl;
+        video.load();
+        if(video.readyState<1){
+          await new Promise((resolve,reject)=>{
+            const ok=()=>{cleanup();resolve();};
+            const fail=()=>{cleanup();reject(new Error('Video metadata loading failed'));};
+            const cleanup=()=>{video.removeEventListener('loadedmetadata',ok);video.removeEventListener('error',fail);};
+            video.addEventListener('loadedmetadata',ok,{once:true});
+            video.addEventListener('error',fail,{once:true});
+          });
+        }
+      })().catch(error=>{
+        // Do not lock the visitor out of the video if Blob loading fails.
+        console.warn('Chapter 05 seekable preparation failed; using original MP4.',error);
+        if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null;}
+        video.removeAttribute('src');
+        video.preload='metadata';
+        video.load();
+      }).finally(()=>{
+        if(loading)loading.hidden=true;
+      });
+      return preparation;
+    }
+
     const pauseUnlessActive=()=>{
       if(!document.getElementById('chapter-05')?.classList.contains('active')&&!video.paused)video.pause();
     };
-    window.addEventListener('exhibition:pagechange',pauseUnlessActive);
+    const onChapterChange=event=>{
+      pauseUnlessActive();
+      // Prepare on Page 4 as a low-priority head start, or on Page 5 itself.
+      // Avoid loading the 12 MB video during the opening or earlier chapters.
+      if(event.detail?.page===3||event.detail?.page===4)prepareSeekableVideo();
+    };
+    window.addEventListener('exhibition:pagechange',onChapterChange);
     document.addEventListener('visibilitychange',()=>{if(document.hidden&&!video.paused)video.pause();});
-    // The video never auto-resumes after navigation. Keep its currentTime for a later manual play.
+    if(document.getElementById('chapter-05')?.classList.contains('active'))prepareSeekableVideo();
+    // The video never auto-resumes after navigation. Keep currentTime for manual play.
   }
 
   function initInterpretations(){

@@ -1,0 +1,96 @@
+{
+  "version": "v37",
+  "base": "v36-2",
+  "date": "2026-10-14",
+  "changes": {
+    "page_1": "Removed section 07 (이론 틀) and Bergson/Assmann reference only; section 08 and other references preserved.",
+    "page_4_scrollbar": "Styled .sky-mark-list as thin muted-gold scrollbar on a transparent track, maintaining prior independent scrolling and focus/scroll persistence.",
+    "page_4_rotation": "Decoupled rotation handle geometry from state.scale; radius in CSS pixels, clamped for narrow viewports; hit testing and dragging use the same geometry.",
+    "page_5": "Updated visible title, video aria-label, constellation TOC and CHAPTER_TITLES to 돌에 새겨진 하늘. Ending remains 수치로 다시 그린 하늘.",
+    "versioning": "Updated visible v37 and cache tags for modified CSS and JavaScript."
+  },
+  "modified_files": [
+    "css/sky-overlay.css",
+    "index.html",
+    "js/main.js",
+    "js/skyOverlay.js"
+  ],
+  "browser_tests": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "page_1_research_sections": 7,
+      "references_remaining": 9,
+      "cupmark_list_scrollable": true,
+      "scrollbar_color": "rgba(215, 191, 147, 0.38) rgba(0, 0, 0, 0)",
+      "rotation_handle_distance": 232.46,
+      "rotation_scale_invariant": true,
+      "max_zoom_drag_rotation_degrees": 9.2,
+      "page_5_label": "돌에 새겨진 하늘",
+      "ending_label": "수치로 다시 그린 하늘",
+      "passed": true
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "page_1_research_sections": 7,
+      "references_remaining": 9,
+      "cupmark_list_scrollable": true,
+      "scrollbar_color": "rgba(215, 191, 147, 0.38) rgba(0, 0, 0, 0)",
+      "rotation_handle_distance": 145.13,
+      "rotation_scale_invariant": true,
+      "max_zoom_drag_rotation_degrees": 15.22,
+      "page_5_label": "돌에 새겨진 하늘",
+      "ending_label": "수치로 다시 그린 하늘",
+      "passed": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "page_1_research_sections": 7,
+      "references_remaining": 9,
+      "cupmark_list_scrollable": true,
+      "scrollbar_color": "rgba(215, 191, 147, 0.38) rgba(0, 0, 0, 0)",
+      "rotation_handle_distance": 84.89,
+      "rotation_scale_invariant": true,
+      "max_zoom_drag_rotation_degrees": 26.94,
+      "page_5_label": "돌에 새겨진 하늘",
+      "ending_label": "수치로 다시 그린 하늘",
+      "passed": true
+    },
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "page_1_research_sections": 7,
+      "references_remaining": 9,
+      "cupmark_list_scrollable": true,
+      "scrollbar_color": "rgba(215, 191, 147, 0.38) rgba(0, 0, 0, 0)",
+      "rotation_handle_distance": 68.7,
+      "rotation_scale_invariant": true,
+      "max_zoom_drag_rotation_degrees": 33.55,
+      "page_5_label": "돌에 새겨진 하늘",
+      "ending_label": "수치로 다시 그린 하늘",
+      "passed": true
+    }
+  ],
+  "validation_notes": [
+    "Chromium tests used an isolated HTML/CSS/JS layout with JSON fetch mocked from bundled source files; full local HTTP server/WebGL integration was not tested.",
+    "No Safari/Firefox or physical-mobile-device run was performed. Mobile pointer interaction was tested using Chromium viewport emulation and mouse-pointer drag; native touch gestures remain unverified.",
+    "Page 4 was restored to the top before drag tests on mobile because the last-row control test scrolls the mobile chapter down."
+  ],
+  "preserved": [
+    "46 measured cupmark points",
+    "existing MP4/WAV assets",
+    "5-node TOC layout",
+    "six chapter/ending pages",
+    "Page 6 bottom-center rotation pivot and 30-minute period"
+  ]
+}

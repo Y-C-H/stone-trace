@@ -1,0 +1,73 @@
+{
+  "version": "v37-1",
+  "base": "v37",
+  "date": "2026-10-14",
+  "changes": {
+    "page_1": "Renumbered the existing 스캔 데이터 입력 현황 research tile from 08 to 07 after section 07 deletion in v37.",
+    "page_5": "Prepared the bundled original 38-second MP4 as a complete browser Blob URL before enabling native playback controls, allowing forward/backward seeking even on servers without HTTP 206 byte-range responses; retained native seek bar and original file.",
+    "loading": "Shows a simple loading label before the video is fully seekable; falls back to the original MP4 source if fetching fails.",
+    "keyboard": "Prevents global chapter ArrowLeft/ArrowRight shortcuts while the video element has focus.",
+    "version": "Updated visible version number, accessibility label and cache version for modified CSS/JS."
+  },
+  "modified_files": [
+    "css/style.css",
+    "index.html",
+    "js/main.js"
+  ],
+  "added_files": [
+    "data/v37-1-validation.json"
+  ],
+  "browser_tests": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "chapter_1_last_research_index": "07",
+      "video_duration_s": 38,
+      "media_seekable_range_s": [
+        0,
+        38
+      ],
+      "forward_seek_to_29_s": true,
+      "backward_seek_to_8_s": true,
+      "native_seek_probe_s": 23.75,
+      "playing_progressed": true,
+      "page_leave_pauses": true,
+      "position_kept_on_return": true,
+      "page_errors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "chapter_1_last_research_index": "07",
+      "video_duration_s": 38,
+      "media_seekable_range_s": [
+        0,
+        38
+      ],
+      "forward_seek_to_29_s": true,
+      "backward_seek_to_8_s": true,
+      "native_seek_probe_s": 24.32562,
+      "playing_progressed": true,
+      "page_leave_pauses": true,
+      "position_kept_on_return": true,
+      "page_errors": []
+    }
+  ],
+  "preserved": [
+    "Original video MP4 unchanged",
+    "Other v37 assets unchanged",
+    "46 measured cupmark points",
+    "Page 4 dark scrollbar and rotation handle behavior",
+    "Page 5 and Page 6 navigation",
+    "Ending bottom-center rotation"
+  ],
+  "limitations": [
+    "Browser tests used Chromium with real bundled MP4 bytes supplied via an intercepted response in an isolated HTML/CSS/JS runtime; full HTTP/WebGL integration was not tested.",
+    "File-protocol and HTTP deployments that block the media fetch fall back to the original MP4 and may retain the original server-specific seeking limitation.",
+    "Actual iOS/Android devices, Safari and Firefox were not tested."
+  ]
+}

@@ -97,3 +97,18 @@
  .sky-mark-manager[open] .sky-mark-list{flex:none;height:min(21vh,180px);overflow-y:auto}
  @media(max-width:760px){.sky-mark-manager[open] .sky-mark-list{height:140px}}
 }
+
+/* v37: Chapter 04 cupmark manager scrollbar matches Chapters 02 and 03.
+   The bounded list and its scroll behavior are intentionally unchanged. */
+.sky-mark-list{
+  scrollbar-width:thin;
+  scrollbar-color:rgba(215,191,147,.38) transparent;
+}
+.sky-mark-list::-webkit-scrollbar{width:7px;height:7px}
+.sky-mark-list::-webkit-scrollbar-track{background:transparent}
+.sky-mark-list::-webkit-scrollbar-thumb{
+  background:rgba(137,131,117,.55);border-radius:7px;
+  border:1px solid rgba(4,9,16,.32);
+}
+.sky-mark-list::-webkit-scrollbar-thumb:hover{background:rgba(215,191,147,.64)}
+.sky-mark-list::-webkit-scrollbar-corner{background:transparent}

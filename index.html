@@ -6,10 +6,10 @@
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="「돌에 새겨진 흔적」 — 3D 데이터를 활용해 세종 연기면 출토 지석묘의 기억과 성혈의 의미를 탐색하는 디지털 문화유산 전시" name="description"/>
 <title>돌에 새겨진 흔적 — 3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색</title>
-<link href="css/style.css?v=36-1" rel="stylesheet"/>
+<link href="css/style.css?v=37-1" rel="stylesheet"/>
 <link rel="preload" as="image" href="assets/opening/opening-stone.png"/>
 <link rel="preload" as="image" href="assets/opening/opening-logo.png"/>
-<link href="css/sky-overlay.css?v=36" rel="stylesheet"/>
+<link href="css/sky-overlay.css?v=37" rel="stylesheet"/>
 </head>
 <body data-page="0">
 <a class="skip-link" href="#chapter-01">전시 본문으로 바로가기</a>
@@ -20,7 +20,7 @@
     <img class="opening-logo" src="assets/opening/opening-logo.png" alt="돌에 새겨진 흔적" fetchpriority="high" decoding="async"/>
   </div>
   <span class="opening-fallback-title" aria-hidden="true">돌에 새겨진 흔적</span>
-  <span class="opening-version" aria-label="웹사이트 버전 v36-2">v36-2</span>
+  <span class="opening-version" aria-label="웹사이트 버전 v37-1">v37-1</span>
   <audio id="openingAudio" preload="auto" src="assets/audio/opening-soft-taps-starlight.wav"></audio>
   <button class="opening-start-button" id="openingStart" type="button">화면을 클릭하여 시작하세요</button>
 </div>
@@ -281,13 +281,14 @@
   <div class="video-chapter-frame">
     <header class="video-chapter-heading">
       <p class="section-index">05 <span>/</span> FILM · INTERPRETATION</p>
-      <h2 id="chapter-05-title">새긴 사람이 원하는 밤하늘</h2>
+      <h2 id="chapter-05-title">돌에 새겨진 하늘</h2>
     </header>
     <div class="video-chapter-stage">
-      <video id="chapter05Video" controls preload="metadata" playsinline aria-label="새긴 사람이 원하는 밤하늘 영상">
+      <video id="chapter05Video" controls preload="none" playsinline aria-label="돌에 새겨진 하늘 영상">
         <source src="assets/video/page-05.mp4" type="video/mp4"/>
         브라우저가 MP4 영상 재생을 지원하지 않습니다.
       </video>
+      <div class="video-loading" id="chapter05Loading" role="status" aria-live="polite">영상을 불러오는 중입니다…</div>
     </div>
   </div>
 </section>
@@ -310,7 +311,7 @@
 <button aria-label="2장 전승된 기억" class="toc-node toc-02" data-goto="1" title="전승된 기억" type="button"><span class="toc-star"></span><small>02</small><em>전승된 기억</em></button>
 <button aria-label="3장 쌓여 있는 흔적" class="toc-node toc-03" data-goto="2" title="쌓여 있는 흔적" type="button"><span class="toc-star"></span><small>03</small><em>쌓여 있는 흔적</em></button>
 <button aria-label="4장 오늘의 하늘에 비춰 보다" class="toc-node toc-04" data-goto="3" title="오늘의 하늘에 비춰 보다" type="button"><span class="toc-star"></span><small>04</small><em>오늘의 하늘에 비춰 보다</em></button>
-<button aria-label="5장 새긴 사람이 원하는 밤하늘" class="toc-node toc-05" data-goto="4" title="새긴 사람이 원하는 밤하늘" type="button"><span class="toc-star"></span><small>05</small><em>새긴 사람이 원하는 밤하늘</em></button>
+<button aria-label="5장 돌에 새겨진 하늘" class="toc-node toc-05" data-goto="4" title="돌에 새겨진 하늘" type="button"><span class="toc-star"></span><small>05</small><em>돌에 새겨진 하늘</em></button>
 </div></nav>
 <!-- Sequential previous / next navigation -->
 <nav aria-label="이전 및 다음 장 이동" class="page-navigation">
@@ -339,7 +340,7 @@
 <span class="type-label context">개념 · 맥락</span>
 <p>전시 텍스트는 실제 자료에서 확인된 내용, 프로젝트 분석 결과, 연구자의 해석, 일반 맥락을 구분해 표시합니다.</p>
 </div>
-<div class="archive-grid"><section><span>01</span><h3>고인돌</h3><p>대상 유물의 명칭·위치·시대·형태와 확인된 기본 정보를 정리합니다.</p></section><section><span>02</span><h3>성혈</h3><p>성혈의 정의와 고인돌·자연 암반에서 확인되는 사례를 정리할 영역입니다.</p></section><section><span>03</span><h3>전승된 기억</h3><p>치성의 흔적, 별자리 투영, 친족 집단 표시, 농경사회 기념물로서의 기능을 제시합니다.</p></section><section><span>04</span><h3>3D 스캐닝</h3><p>스캔 장비, 촬영·정합·메시 생성, 성혈 좌표 및 깊이 측정 과정을 기록할 영역입니다.</p></section><section><span>05</span><h3>별자리 비교 방법</h3><p>점 좌표 정규화, 회전·스케일 보정, 대응점과 일치율 산정 기준을 설명할 영역입니다.</p></section><section><span>06</span><h3>제작 과정</h3><p>기획 → 기록 → 분석 → 비교 → 해석 → 참여형 전시로 이어지는 프로젝트 과정을 정리합니다.</p></section><section><span>07</span><h3>이론 틀</h3><p>베르그송의 지각과 아스만의 저장기억·기능기억을 전시의 해석 틀로 사용합니다. 원전의 직접 주장과 전시적 적용을 구분합니다.</p></section><section><span>08</span><h3>스캔 데이터 입력 현황</h3><p>현재 실제 3D 스캔 전 단계입니다. 측정값은 입력하지 않고, 데이터가 들어갈 위치와 연결 구조만 제시합니다.</p></section></div>
+<div class="archive-grid"><section><span>01</span><h3>고인돌</h3><p>대상 유물의 명칭·위치·시대·형태와 확인된 기본 정보를 정리합니다.</p></section><section><span>02</span><h3>성혈</h3><p>성혈의 정의와 고인돌·자연 암반에서 확인되는 사례를 정리할 영역입니다.</p></section><section><span>03</span><h3>전승된 기억</h3><p>치성의 흔적, 별자리 투영, 친족 집단 표시, 농경사회 기념물로서의 기능을 제시합니다.</p></section><section><span>04</span><h3>3D 스캐닝</h3><p>스캔 장비, 촬영·정합·메시 생성, 성혈 좌표 및 깊이 측정 과정을 기록할 영역입니다.</p></section><section><span>05</span><h3>별자리 비교 방법</h3><p>점 좌표 정규화, 회전·스케일 보정, 대응점과 일치율 산정 기준을 설명할 영역입니다.</p></section><section><span>06</span><h3>제작 과정</h3><p>기획 → 기록 → 분석 → 비교 → 해석 → 참여형 전시로 이어지는 프로젝트 과정을 정리합니다.</p></section><section><span>07</span><h3>스캔 데이터 입력 현황</h3><p>현재 실제 3D 스캔 전 단계입니다. 측정값은 입력하지 않고, 데이터가 들어갈 위치와 연결 구조만 제시합니다.</p></section></div>
 <div class="reference-placeholder">
 <h3>보조자료에 기재된 참고 항목 <small>서지 검증 후 확정</small></h3>
 <ul>
@@ -349,7 +350,7 @@
 <li><span>박창범 · 이용복</span><strong>청원 아득이 고인돌 유적 별자리판 관련 연구</strong><em>서지 확인 예정</em></li>
 <li><span>오대양</span><strong>금강하류지역 청동기시대 묘제의 제사·의례적 성격 고찰</strong><em>2022</em></li>
 <li><span>지역N문화</span><strong>울주 방기리 알바위</strong><em>자료 URL 확인 예정</em></li>
-<li><span>박창범 외</span><strong>남한지역 바위구멍 조사 관련 연구</strong><em>서지 확인 예정</em></li><li><span>오산문화총서</span><strong>오산문화총서 관련 자료</strong><em>서지 확인 예정</em></li><li><span>앙리 베르그송 · 알라이다 아스만</span><strong>『물질과 기억』 / 『문화적 기억』</strong><em>판본·번역본 확인 예정</em></li><li><span>국가유산 GIS</span><strong>「지도에서 만나는 고인돌」</strong><em>gis-heritage.go.kr · 열람 2026.09.30</em></li></ul>
+<li><span>박창범 외</span><strong>남한지역 바위구멍 조사 관련 연구</strong><em>서지 확인 예정</em></li><li><span>오산문화총서</span><strong>오산문화총서 관련 자료</strong><em>서지 확인 예정</em></li><li><span>국가유산 GIS</span><strong>「지도에서 만나는 고인돌」</strong><em>gis-heritage.go.kr · 열람 2026.09.30</em></li></ul>
 </div>
 </div>
 </dialog>
@@ -358,10 +359,10 @@
 <script defer="" src="js/knowledgeGraph.js"></script>
 
 
-<script defer="" src="js/skyOverlay.js?v=36"></script>
+<script defer="" src="js/skyOverlay.js?v=37"></script>
 
 <script defer="" src="js/dolmenViewer.js?v=34-4"></script>
 <script defer="" src="js/endingSky.js?v=36-2"></script>
-<script defer="" src="js/main.js?v=36"></script>
+<script defer="" src="js/main.js?v=37-1"></script>
 </body>
 </html>

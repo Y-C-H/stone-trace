@@ -327,8 +327,13 @@
 
   function rotationHandleGeometry(w,h){
     const b=pointBounds(),{base,cx,cy}=transformMetrics(w,h),a=rad(state.rotation),c=Math.cos(a),s=Math.sin(a);
-    const localGap=Math.max(.045,b.ry*.18),lx=0,ly=b.minY-localGap;
-    const x=lx*base*state.scale,y=ly*base*state.scale;
+    // The handle lives in screen pixels: zoom changes cupmark positions only.
+    // Preserve the original scale=1 placement where possible, clamping the
+    // radius for narrow viewports so that touch users can still reach it.
+    const localGap=Math.max(.045,b.ry*.18);
+    const unscaledDistance=Math.abs((b.minY-localGap)*base);
+    const handleDistance=Math.min(unscaledDistance,Math.max(48,Math.min(w,h)*.42));
+    const x=0,y=-handleDistance;
     return{center:{x:cx,y:cy},handle:{x:cx+x*c-y*s,y:cy+x*s+y*c},radius:w<520?15:13};
   }
 
