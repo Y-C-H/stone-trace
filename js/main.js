@@ -3,8 +3,8 @@
   const PROJECT_SUBTITLE='3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색';
   const CHAPTER_TITLES=[
     '고인돌 지식지도',
-    '전승된 기억',
     '쌓여 있는 흔적',
+    '다시 불러낸 뜻',
     '오늘의 하늘에 비춰 보다',
     '수치로 다시 그린 하늘'
   ];
@@ -123,7 +123,7 @@
   function initInterpretations(){
     const container=document.getElementById('interpretationPanels');
     if(!container)return;
-    const buttons=[...document.querySelectorAll('#chapter-02 .interpretation-item')];
+    const buttons=[...document.querySelectorAll('#chapter-03 .interpretation-item')];
     const panels=[...container.querySelectorAll('[data-interpretation-panel]')];
     function closeSources(){
       container.querySelectorAll('[data-interpretation-sources]').forEach(button=>{
@@ -160,7 +160,7 @@
       button.setAttribute('aria-expanded',String(opening));
     });
     document.addEventListener('pointerdown',event=>{
-      if(!event.target.closest('#chapter-02 .interpretation-detail'))closeSources();
+      if(!event.target.closest('#chapter-03 .interpretation-detail'))closeSources();
     });
     document.addEventListener('keydown',event=>{if(event.key==='Escape')closeSources();});
   }
@@ -174,7 +174,7 @@
   let observationMode='overview';
 
   function setObservationMode(mode,{focus=false}={}){
-    const chapter=document.getElementById('chapter-03');
+    const chapter=document.getElementById('chapter-02');
     if(!chapter||!['overview','observation'].includes(mode))return;
     observationMode=mode;
     chapter.dataset.observationMode=mode;

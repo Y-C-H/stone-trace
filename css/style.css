@@ -878,7 +878,7 @@ button,input,textarea,select,.type-label,.panel-kicker,.section-index,.page-navi
 .cupmark-focus-toolbar button:hover:not(:disabled),.cupmark-focus-toolbar button:focus-visible{border-color:#e4c58f;background:#423723}
 .cupmark-focus-toolbar button:disabled{opacity:.36;cursor:not-allowed}
 .cupmark-focus-toolbar strong{font-size:12px;color:#e5d2ac;font-variant-numeric:tabular-nums;min-width:78px;text-align:center}
-#chapter-03[data-view-mode="cupmark-focus"] .viewer-help{display:none}
+#chapter-02[data-view-mode="cupmark-focus"] .viewer-help{display:none}
 .cupmark-panel-headline{display:flex;justify-content:space-between;gap:8px;align-items:center}
 .cupmark-panel-headline button,#cupmarkListToggle{font-size:12px;color:#d2c4a9;border:1px solid #4a4a42;background:#181d22;min-height:31px;padding:4px 7px;cursor:pointer}
 .cupmark-panel-headline h3{min-width:0}
@@ -893,12 +893,12 @@ button,input,textarea,select,.type-label,.panel-kicker,.section-index,.page-navi
  .cupmark-focus-toolbar{left:7px;right:7px;top:42px;justify-content:space-between;gap:3px;padding:3px}
  .cupmark-focus-toolbar button{font-size:12px;padding:6px;min-height:36px}
  .cupmark-focus-toolbar strong{min-width:64px;font-size:12px}
- #chapter-03[data-view-mode="cupmark-focus"] .viewer-shell{grid-template-rows:minmax(0,1fr) auto;min-height:0}
- #chapter-03[data-view-mode="cupmark-focus"] .cupmark-panel{max-height:min(230px,34vh);min-height:0}
- #chapter-03[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed{height:auto;max-height:85px;overflow:hidden;padding:7px 10px}
- #chapter-03[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed > :not(.cupmark-panel-head){display:none!important}
- #chapter-03[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed .cupmark-panel-head>p:not(.panel-kicker){display:none}
- #chapter-03[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed .cupmark-panel-headline{margin-bottom:0}
+ #chapter-02[data-view-mode="cupmark-focus"] .viewer-shell{grid-template-rows:minmax(0,1fr) auto;min-height:0}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel{max-height:min(230px,34vh);min-height:0}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed{height:auto;max-height:85px;overflow:hidden;padding:7px 10px}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed > :not(.cupmark-panel-head){display:none!important}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed .cupmark-panel-head>p:not(.panel-kicker){display:none}
+ #chapter-02[data-view-mode="cupmark-focus"] .cupmark-panel.is-collapsed .cupmark-panel-headline{margin-bottom:0}
  .cupmark-list{max-height:80px}
 }
 @media(max-width:365px){.cupmark-focus-toolbar strong{min-width:44px}.cupmark-focus-toolbar button{padding:5px}}
@@ -972,7 +972,7 @@ body[data-page="4"] .constellation-toc,body[data-page="4"] .page-navigation,body
 @media(max-width:760px){
  .constellation-toc .toc-map{height:185px}
  .page-unified-observation .viewer-help{display:flex;right:6px;top:34px;gap:2px 8px;max-width:calc(100% - 14px);padding:4px 7px;font-size:12px}
- #chapter-03[data-view-mode="cupmark-focus"] .viewer-help{display:none}
+ #chapter-02[data-view-mode="cupmark-focus"] .viewer-help{display:none}
 }
 
 /* v24: identical bottom-right screen-switch placement in both observation modes */
@@ -1144,65 +1144,3 @@ body[data-page="4"] .constellation-toc,body[data-page="4"] .page-navigation,body
   .page-ending .ending-curatorial-heading{top:46px}
   .page-ending .ending-closing-question{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 }
-
-
-/* v34 — Opening version footer, chapter swap and typographic refinements */
-.exhibition-opening .opening-version{
-  position:absolute;right:clamp(16px,2.4vw,36px);bottom:calc(clamp(16px,2.7vh,30px) + env(safe-area-inset-bottom,0px));
-  z-index:1;color:rgba(229,220,201,.53);font:500 10px/1.4 var(--font-ui);
-  letter-spacing:.16em;pointer-events:none;user-select:none;
-}
-/* Knowledge map wall title now uses exactly the Chapter 02–04 title family. */
-.page-knowledge .graph-main-header h1{
-  display:block;position:static;width:auto;height:auto;overflow:visible;clip:auto;white-space:normal;
-  margin:.42rem 0 .42rem;font-family:var(--font-display);
-  font-size:clamp(30px,3.25vw,42px);font-weight:500;line-height:1.22;
-  letter-spacing:-.018em;max-width:18ch;color:#ece6da;
-}
-/* Interpretation button layout without the small golden category tag. */
-.page-interpretation .interpretation-item{grid-template-columns:2.4rem minmax(0,1fr) 1.5rem}
-/* Observation preface line-breaks are authored after each comma/full stop.
-   Its desktop column is sized to its longest unwrapped line, not an arbitrary 37rem. */
-.page-unified-observation .page-heading{
-  grid-template-columns:minmax(0,1fr) max-content;
-  gap:clamp(20px,4vw,68px);align-items:end;
-}
-.page-unified-observation .page-heading>p{
-  width:max-content;max-width:none;justify-self:end;min-width:0;
-}
-.page-unified-observation #observationModeQuestion{width:max-content;max-width:none}
-.page-unified-observation #observationModeQuestion .observation-intro-line{display:block;white-space:nowrap}
-/* Ending copy stays stationary as the Canvas sky slowly turns. */
-.page-ending .ending-curatorial-heading{text-align:left}
-.page-ending .ending-curatorial-subtitle{margin:.7rem 0 0;text-align:left}
-.page-ending .ending-closing-question{
-  left:auto;right:clamp(28px,7vw,124px);width:min(730px,calc(100vw - 170px));
-  text-align:right;bottom:calc(clamp(51px,6.2vh,79px) + env(safe-area-inset-bottom,0px));
-}
-@media(max-width:1100px) and (min-width:761px){
-  .page-unified-observation .page-heading{gap:20px}
-  .page-unified-observation #observationModeQuestion{font-size:12px;line-height:1.55}
-}
-@media(max-width:760px){
-  .page-knowledge .graph-main-header h1{
-    font-size:clamp(24px,7.2vw,29px);line-height:1.24;max-width:15ch;
-    margin:.38rem 0 .35rem;
-  }
-  .page-interpretation .interpretation-item{grid-template-columns:1.1rem minmax(0,1fr) .65rem}
-  .page-unified-observation .page-heading{display:block}
-  .page-unified-observation .page-heading>p{width:auto;max-width:100%;justify-self:start}
-  .page-unified-observation #observationModeQuestion{width:auto;max-width:100%}
-  .page-unified-observation #observationModeQuestion .observation-intro-line{white-space:normal}
-  .page-ending .ending-curatorial-heading{text-align:left}
-  .page-ending .ending-curatorial-subtitle{margin:.45rem 0 0;text-align:left}
-  .page-ending .ending-closing-question{
-    left:72px;right:20px;width:auto;text-align:right;
-    bottom:calc(70px + env(safe-area-inset-bottom,0px));
-  }
-}
-@media(max-width:760px) and (max-height:720px){
-  .page-ending .ending-closing-question{bottom:calc(61px + env(safe-area-inset-bottom,0px))}
-}
-
-/* v34-3: Preserve lower-right stage navigation after removing commentary copy. */
-.page-unified-observation .page-question .internal-observation-nav{margin-left:auto}
