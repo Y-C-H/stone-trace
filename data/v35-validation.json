@@ -1,0 +1,107 @@
+{
+  "version": "v35",
+  "baseline": "v34-4",
+  "scope": [
+    "Full-screen click-to-start black overlay",
+    "One-time opening WAV sound"
+  ],
+  "modifiedBaselineFiles": [
+    "css/style.css",
+    "index.html",
+    "js/main.js"
+  ],
+  "unchangedBaselineFiles": 324,
+  "missingBaselineFiles": [],
+  "originalBaselineFileCount": 327,
+  "addedAssets": [
+    "assets/audio/opening-soft-taps-starlight.wav"
+  ],
+  "audio": {
+    "file": "assets/audio/opening-soft-taps-starlight.wav",
+    "exactOriginalBytes": true,
+    "durationSeconds": 1.85,
+    "channels": 2,
+    "sampleRateHz": 48000,
+    "volume": 0.65,
+    "startTrigger": "synchronous within user click/keyboard activation event"
+  },
+  "opening": {
+    "states": [
+      "waiting",
+      "playing",
+      "closing",
+      "finished"
+    ],
+    "timelineSeconds": {
+      "black": 0.2,
+      "stoneFadeEnd": 1,
+      "logoFadeEnd": 1.9,
+      "fadeOutStart": 3,
+      "overlayRemovedApprox": 3.62
+    },
+    "behavior": "one full-screen CTA click to start; second click skips; keyboard Enter/Space supported; deep links bypass; popstate closes"
+  },
+  "tests": {
+    "syntax": {
+      "nodeCheck": "passed"
+    },
+    "mediaEmbeddedChromium": {
+      "result": "passed",
+      "viewport": "1440x900",
+      "realAudioFileEmbeddedAsDataUri": true,
+      "realOpeningImagesEmbeddedAsDataUri": true,
+      "audioPlaybackStarted": true,
+      "audioDurationSeconds": 1.85,
+      "audioVolume": 0.65,
+      "oneOpeningThenChapter01": true,
+      "runtimeErrors": []
+    },
+    "isolatedOpeningControl": {
+      "desktop": "passed",
+      "mobile": "passed",
+      "skip": "passed",
+      "keyboard": "passed",
+      "doubleStart": "passed",
+      "audioDenied": "passed",
+      "deepLinks": [
+        "chapter-02",
+        "chapter-03",
+        "chapter-04",
+        "ending"
+      ],
+      "popstate": [
+        "waiting",
+        "playing"
+      ],
+      "notes": "Playwright DOM tests with injected real CSS and JS, stubbed media playback calls, no HTTP networking"
+    },
+    "preservedCupmarkRegression": {
+      "desktop": "passed",
+      "mobile": "passed",
+      "cupmarkCount": 46,
+      "beaconsAfterExitOverview": 0,
+      "markersAfterExitOverview": 0,
+      "lightsRestored": true,
+      "errors": []
+    },
+    "notVerified": [
+      "Full local HTTP-server end-to-end browser navigation: sandbox Chromium navigation blocked with ERR_BLOCKED_BY_ADMINISTRATOR",
+      "Real GPU rasterization and physical mobile-device audio output",
+      "Published hosting / CDN cache"
+    ]
+  },
+  "screenshots": [
+    "testshots/v35-start-desktop.png",
+    "testshots/v35-opening-desktop.png"
+  ],
+  "integrity": {
+    "originalFiles": 327,
+    "unchangedOriginalFiles": 324,
+    "modifiedOriginalFiles": [
+      "css/style.css",
+      "index.html",
+      "js/main.js"
+    ],
+    "missingOriginalFiles": []
+  }
+}

@@ -6,10 +6,10 @@
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="「돌에 새겨진 흔적」 — 3D 데이터를 활용해 세종 연기면 출토 지석묘의 기억과 성혈의 의미를 탐색하는 디지털 문화유산 전시" name="description"/>
 <title>돌에 새겨진 흔적 — 3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색</title>
-<link href="css/style.css?v=33" rel="stylesheet"/>
+<link href="css/style.css?v=35" rel="stylesheet"/>
 <link rel="preload" as="image" href="assets/opening/opening-stone.png"/>
 <link rel="preload" as="image" href="assets/opening/opening-logo.png"/>
-<link href="css/sky-overlay.css?v=32" rel="stylesheet"/>
+<link href="css/sky-overlay.css?v=34" rel="stylesheet"/>
 </head>
 <body data-page="0">
 <a class="skip-link" href="#chapter-01">전시 본문으로 바로가기</a>
@@ -20,6 +20,9 @@
     <img class="opening-logo" src="assets/opening/opening-logo.png" alt="돌에 새겨진 흔적" fetchpriority="high" decoding="async"/>
   </div>
   <span class="opening-fallback-title" aria-hidden="true">돌에 새겨진 흔적</span>
+  <span class="opening-version" aria-label="웹사이트 버전 v35">v35</span>
+  <audio id="openingAudio" preload="auto" src="assets/audio/opening-soft-taps-starlight.wav"></audio>
+  <button class="opening-start-button" id="openingStart" type="button">화면을 클릭하여 시작하세요</button>
 </div>
 <main aria-live="polite" class="exhibition">
 <!-- ========================================================
@@ -32,8 +35,7 @@
 <div aria-hidden="true" class="graph-label-layer" id="graphLabelLayer"></div>
 <header class="graph-main-header">
 <p class="graph-project-label"><span class="exhibition-name">돌에 새겨진 흔적</span><span aria-hidden="true" class="project-separator">·</span><span class="chapter-meta">KNOWLEDGE MAP · SCATTERED MEMORIES</span></p>
-<h1 id="graph-main-title" class="sr-only">고인돌 지식지도</h1>
-<p class="graph-curatorial-subtitle">고인돌에 관한 이야기를 별자리처럼 이어 봅니다</p>
+<h1 id="graph-main-title">고인돌 지식지도</h1>
 <p class="graph-instruction"><span class="graph-instruction-lead">각 별은 고인돌에 관한 이야기 조각입니다.</span><span>별을 짧게 누르면 이야기가 열리고, 별을 누른 채 끌었다 놓으면 탄성처럼 튕깁니다. 빈 공간 드래그는 회전, 휠은 확대·축소입니다.</span></p>
 <div aria-label="고인돌 별자리 군집 필터" class="graph-group-filters" id="graphGroupFilters"></div>
 </header>
@@ -45,14 +47,75 @@
 <aside aria-hidden="true" aria-live="polite" class="graph-info-panel" id="graphPanel"></aside>
 
 </section>
-<section aria-labelledby="observation-chapter-title" class="exhibition-page page-dolmen page-unified-observation" data-page-index="1" id="chapter-02">
+<section aria-labelledby="interpretation-title" class="exhibition-page page-interpretation" data-page-index="1" id="chapter-02">
+<div class="page-frame">
+<header class="page-heading split"><div><p class="section-index">02 <span>/</span> FUNCTIONAL MEMORY · INTERPRETATION</p><h2 id="interpretation-title">전승된 기억</h2><p class="chapter-curatorial-subtitle">사람들은 이 흔적에 어떤 이름을 붙여 왔을까요</p></div></header>
+<div class="interpretation-layout"><nav class="interpretation-list" aria-label="네 가지 해석 선택"><button aria-expanded="true" aria-controls="interpretation-title-prayer" class="interpretation-item active" data-interpretation="prayer" type="button"><span class="item-number">01</span><strong>치성의 흔적</strong><span class="item-arrow">↗</span></button>
+<button aria-expanded="false" aria-controls="interpretation-title-astronomy" class="interpretation-item" data-interpretation="astronomy" type="button"><span class="item-number">02</span><strong>별자리 투영</strong><span class="item-arrow">↗</span></button>
+<button aria-expanded="false" aria-controls="interpretation-title-kinship" class="interpretation-item" data-interpretation="kinship" type="button"><span class="item-number">03</span><strong>친족 집단 표시의 기능</strong><span class="item-arrow">↗</span></button>
+<button aria-expanded="false" aria-controls="interpretation-title-agriculture" class="interpretation-item" data-interpretation="agriculture" type="button"><span class="item-number">04</span><strong>농경사회의 기념물로써의 기능</strong><span class="item-arrow">↗</span></button></nav><div class="interpretation-panels" id="interpretationPanels">
+<article class="interpretation-detail" data-interpretation-panel="prayer" aria-labelledby="interpretation-title-prayer" >
+<figure aria-hidden="true" class="interpretation-visual"><img alt="" src="assets/illustrations/folk-belief.svg" loading="lazy"/></figure>
+<div class="detail-copy">
+<span class="type-label hypothesis">민속 전승 · 해석</span>
+<p class="detail-index">INTERPRETATION 01 · 후대 민간신앙과 기억의 재구성</p>
+<h3 id="interpretation-title-prayer">치성의 흔적</h3>
+<div class="interpretation-body" tabindex="0" role="region" aria-label="치성의 흔적 설명, 스크롤하여 전체 본문 읽기">
+<p>고인돌의 성혈은 선사시대의 제작 목적과 상징에 대해서는 여러 해석이 존재하지만, 후대의 민간신앙에서는 <strong>기자(祈子)·풍요·치병 등을 기원하는 대상으로 이용된 사례가 확인된다.</strong> 국립문화유산연구원의 『한국고고학사전』에서도 성혈을 풍요와 다산을 기원하는 의례와 관련된 것으로 보는 견해가 제시되어 있다.</p>
+<p>특히 춘천 천전리 고인돌은 지역 주민들에게 <strong>‘정성바위’ 또는 ‘정승바위’</strong>로 불렸으며, 성혈이 남아 있는 고인돌에서 자녀의 출세와 출산, 질병의 치유, 재앙의 방지를 기원했다는 민속 전승이 기록되어 있다. 이 성혈은 민속적으로 <strong>기자신앙과 결부된 ‘정성 구멍’</strong>으로 설명되기도 한다.</p>
+<p>또한 청주 학평리 고인돌은 개석을 제단으로 이용하여 정월 보름에 동제를 지냈다는 전승이 남아 있어, 고인돌이 매장시설을 넘어 후대 지역사회에서 <strong>제의와 기원의 장소로 재의미화되었음</strong>을 보여준다.</p>
+<p>따라서 성혈과 고인돌의 후대 민속적 이용은 선사시대의 원래 기능이 그대로 보존되었다고 단정하기보다는, <strong>하나의 물질적 흔적이 시대에 따라 새로운 의미를 부여받으며 지속적으로 사용된 과정</strong>으로 이해할 수 있다.</p>
+</div>
+<div class="interpretation-footer"><span class="interpretation-scroll-hint">본문을 스크롤하여 읽어보세요</span><button type="button" class="interpretation-source-button" data-interpretation-sources aria-controls="interpretation-sources-prayer" aria-expanded="false">출처</button></div>
+<aside class="interpretation-source-popover" id="interpretation-sources-prayer" hidden aria-label="치성의 흔적 출처"><strong>출처 및 참고문헌</strong><ul><li>국립문화유산연구원, 『한국고고학사전』 — 성혈에 관한 해석 (사용자 제공 자료)</li><li>춘천 천전리 고인돌·청주 학평리 고인돌의 민속 전승 (상세 서지 및 원문 링크 미제공)</li></ul></aside>
+</div></article><article class="interpretation-detail" data-interpretation-panel="astronomy" aria-labelledby="interpretation-title-astronomy" hidden>
+<figure aria-hidden="true" class="interpretation-visual"><img alt="" src="assets/illustrations/astronomy.svg" loading="lazy"/></figure>
+<div class="detail-copy">
+<span class="type-label hypothesis">학설 · 해석</span>
+<p class="detail-index">INTERPRETATION 02 · 성혈의 별자리 연관 가설</p>
+<h3 id="interpretation-title-astronomy">별자리 투영</h3>
+<div class="interpretation-body" tabindex="0" role="region" aria-label="별자리 투영 설명, 스크롤하여 전체 본문 읽기">
+<p>덮개돌에 만들어진 성혈이 별자리라는 주장이 남북한 학자들에 의해 제기되고 있습니다. 그 근거로는 먼저 충북 청원 아득이 고인돌의 사례가 있습니다. 이곳은 덮개돌에 성혈이 많은데, 여기에서 출토된 돌판에도 홈이 있습니다. 경기 하남 교산동 고인돌은 북두칠성 형태로 배치되어 있습니다. 경기 용인 근삼리 고인돌과 경북 경산 대학리 고인돌은 ‘칠성바위’라고 불립니다. 대구 칠성동과 충북 괴산의 칠성면도 고인돌에서 유래한 지명입니다. 경기 남양주 삼봉2리 아양마을 고인돌에는 북두칠성 형태로 성혈이 배치되어 있습니다. <strong>이처럼 고인돌과 북두칠성은 여러 가지로 관계가 있습니다.</strong></p>
+<p><strong>성혈이 별자리에서 비롯되었다고 보는 또 하나의 이유는 별자리 교육을 쉽게 하기 위해서라는 점</strong>입니다. 성혈은 주로 높이가 낮은 개석식 고인돌에 만들었습니다. 탁자식 고인돌에도 만든 예가 있으나 덮개돌의 높이가 120cm를 넘지 않아 성혈을 내려다보는 데 어려움이 없습니다. 별자리 교육을 목적으로 만들었다는 주장은 울주 반구대 바위그림이 어로와 수렵을 가르치기 위해 만들어졌다는 해석과 관련지어 설명할 수도 있습니다. 또 하늘이 잘 보이는 비교적 높은 곳에 있는 고인돌에 성혈을 만들었다는 점도 별자리와 연결시킬 수 있습니다.</p>
+</div>
+<div class="interpretation-footer"><span class="interpretation-scroll-hint">본문을 스크롤하여 읽어보세요</span><button type="button" class="interpretation-source-button" data-interpretation-sources aria-controls="interpretation-sources-astronomy" aria-expanded="false">출처</button></div>
+<aside class="interpretation-source-popover" id="interpretation-sources-astronomy" hidden aria-label="별자리 투영 출처"><strong>출처 및 참고문헌</strong><ul><li><a href="https://www.kci.go.kr/kciportal/po/search/poSereArtiList.kci?sereId=001749&amp;volIsseId=VOL000003645" target="_blank" rel="noopener noreferrer">우장문, 「고인돌을 만든 사람들의 사유에 관한 연구 - 덮개돌의 굼을 중심으로 -」, 『선사와 고대』 29, 2008, p.160.</a></li></ul></aside>
+</div></article><article class="interpretation-detail" data-interpretation-panel="kinship" aria-labelledby="interpretation-title-kinship" hidden>
+<figure aria-hidden="true" class="interpretation-visual"><img alt="" src="assets/illustrations/ritual.svg" loading="lazy"/></figure>
+<div class="detail-copy">
+<span class="type-label hypothesis">발굴 자료 · 해석</span>
+<p class="detail-index">INTERPRETATION 03 · 양평 앙덕리 성혈 제작과 의례</p>
+<h3 id="interpretation-title-kinship">친족 집단 표시의 기능</h3>
+<div class="interpretation-body" tabindex="0" role="region" aria-label="친족 집단 표시의 기능 설명, 스크롤하여 전체 본문 읽기">
+<p>성혈에 관하여 고고학적 자료를 바탕으로 연구한 사람은 이융조입니다. 그는 양평 앙덕리 고인돌을 발굴하면서 성혈을 만드는 데 사용했던 도구 54점을 찾았습니다. 이 도구에는 성혈을 만들 때 생긴 흔적이 남아 있습니다. 이는 성혈을 먼저 만든 다음에 고인돌을 만들었음을 보여 주는 결정적인 자료입니다.</p>
+<p>발굴자는 67개의 성혈이 54점의 도구와 관계가 있다고 보았습니다. 덮개돌을 무덤방에 올리기 전에 이곳에 모인 친족들이 어떤 의식을 행했고, 그 과정에서 성혈을 만들었다고 해석했습니다. 또 성혈 하나를 만드는 데 약 8시간이 걸렸을 것이라고 주장했습니다. 결국 앙덕리 고인돌의 성혈은 고인돌을 만드는 의식에 함께한 친족들이 한 개씩 만들었다는 주장입니다. 이 연구는 고고학적 자료를 바탕으로 해석했다는 점에서, 상상력을 동원한 다른 주장과 차별화되며 큰 의의가 있습니다.</p>
+</div>
+<div class="interpretation-footer"><span class="interpretation-scroll-hint">본문을 스크롤하여 읽어보세요</span><button type="button" class="interpretation-source-button" data-interpretation-sources aria-controls="interpretation-sources-kinship" aria-expanded="false">출처</button></div>
+<aside class="interpretation-source-popover" id="interpretation-sources-kinship" hidden aria-label="친족 집단 표시의 기능 출처"><strong>출처 및 참고문헌</strong><ul><li>원문: 이융조, 「양평 앙덕리 고인돌 문화」, 한국사연구회, 『韓國史硏究』 11, 1975, pp.55–99.</li><li>재인용: 우장문, 「고인돌을 만든 사람들의 사유에 관한 연구 - 덮개돌의 굼을 중심으로 -」, 『선사와 고대』 29, 2008, pp.161–162.</li></ul></aside>
+</div></article><article class="interpretation-detail" data-interpretation-panel="agriculture" aria-labelledby="interpretation-title-agriculture" hidden>
+<figure aria-hidden="true" class="interpretation-visual"><img alt="" src="assets/illustrations/other.svg" loading="lazy"/></figure>
+<div class="detail-copy">
+<span class="type-label hypothesis">사회경제적 해석</span>
+<p class="detail-index">INTERPRETATION 04 · 암각화·집단의식·조상숭배</p>
+<h3 id="interpretation-title-agriculture">농경사회의 기념물로써의 기능</h3>
+<div class="interpretation-body" tabindex="0" role="region" aria-label="농경사회의 기념물로써의 기능 설명, 스크롤하여 전체 본문 읽기">
+<p>청동기시대 전기부터 지석묘에 암각화를 새기는 모습이 나타나는데, 그 사례가 포항 인비동 16호 지석묘에서 확인됩니다. 청동기시대 후기로 가면 암각화를 새기는 대상이 크게 늘어납니다. 지석묘 상석과 묘역구획석, 석관묘나 지석묘의 개석, 석관 내부의 단벽, 입석, 구릉이나 야산의 바위 단면, 주거지에서 나온 지석(숫돌)에도 암각화가 새겨집니다.</p>
+<p>암각화의 내용도 다양해집니다. 석검, 동심원(나선형), 석촉, 비파형동검, 성혈 등이 새겨지며, 주로 지석묘나 의례용 입석처럼 조상숭배의례와 관련된 곳에 쓰입니다. 특히 지석묘에 부장하는 유물을 본뜬 문양의 암각화가 많이 사용됩니다.</p>
+<p>이러한 양상은 청동기시대 전기부터 후기까지 진행된 농경의 확산과 본격화 속에서 나타난 것으로 추정됩니다. 농경사회에서는 집단의식을 강화하고 경작지를 배타적으로 지배하며 소유권을 나타낼 필요가 있었기 때문입니다. 이에 따라 농경사회의 기념물인 지석묘와 의례용 입석을 중심으로 한 조상숭배의례 등 집단의례에도 암각화가 영남, 호남, 호서지역에서 많이 사용된 것으로 보입니다.</p>
+<p>지석묘는 조상의 무덤을 지상에 눈에 띄게 축조하여 집단의 경작지에 대한 배타적 지배와 집단의식을 강화하는 데 활용된 것으로 보입니다. 이것이 지석묘가 신석기시대가 아니라 청동기시대에 나타나는 이유일 것입니다.</p>
+<p>포항 인비동 16호 지석묘, 대구 진천동 입석, 여수 오림동 5호 지석묘, 밀양 살내유적Ⅱ 1호 지석묘 등이 대표적인 사례입니다. 이들 유적에서는 지석묘의 상석이나 묘역석, 추상적 조상숭배의 상징물일 가능성이 있는 입석에 동심원문, 성혈, 석검문양, 석촉문양, 동검문양 등이 새겨져 있습니다. 이는 농경사회의 기념물인 지석묘와 암각화 문화가 결합한 모습을 보여줍니다.</p>
+</div>
+<div class="interpretation-footer"><span class="interpretation-scroll-hint">본문을 스크롤하여 읽어보세요</span><button type="button" class="interpretation-source-button" data-interpretation-sources aria-controls="interpretation-sources-agriculture" aria-expanded="false">출처</button></div>
+<aside class="interpretation-source-popover" id="interpretation-sources-agriculture" hidden aria-label="농경사회의 기념물로써의 기능 출처"><strong>출처 및 참고문헌</strong><ul><li>김권구, 「청동기시대 암각화의 층위관계와 암각화 확산의 사회경제적 배경 검토」, 『영남학』 제66호, 2018, pp.169–170.</li></ul></aside>
+</div></article>
+</div></div></div></section><section aria-labelledby="observation-chapter-title" class="exhibition-page page-dolmen page-unified-observation" data-page-index="2" id="chapter-03">
 <div class="page-frame">
 <header class="page-heading">
 <div>
-<p class="section-index">02 <span>/</span> STORED TRACES</p>
+<p class="section-index">03 <span>/</span> STORED TRACES</p>
 <h2 id="observation-chapter-title">쌓여 있는 흔적</h2><p class="chapter-curatorial-subtitle">돌 위에 남은 시간을 가까이 봅니다</p>
 </div>
-<p><span id="observationModeQuestion">이 돌의 표면에는 아주 오래전에 새겨진 흔적이 쌓여 있습니다. 지금은 아무도 쓰지 않아도 그대로 남아 있는 기억, 아스만은 이것을 '저장기억'이라고 불렀습니다. 먼저 돌을 가까이 보며 남아 있는 흔적부터 확인해 봅니다.</span></p>
+<p><span id="observationModeQuestion"><span class="observation-intro-line">이 돌의 표면에는 아주 오래전에 새겨진 흔적이 쌓여 있습니다.</span><span class="observation-intro-line">지금은 아무도 쓰지 않아도 그대로 남아 있는 기억,</span><span class="observation-intro-line">아스만은 이것을 '저장기억'이라고 불렀습니다.</span><span class="observation-intro-line">먼저 돌을 가까이 보며 남아 있는 흔적부터 확인해 봅니다.</span></span></p>
 </header>
 <div class="unified-observation-stage" id="unifiedObservationStage"><section aria-hidden="false" aria-labelledby="overview-stage-title" class="observation-mode observation-overview is-active" data-observation-panel="overview"><div class="observation-mode-bar"><div><p class="observation-stage-index">STAGE A · OVERVIEW</p><h3 id="overview-stage-title">고인돌 관찰</h3></div></div><div class="dolmen-layout">
 <div aria-label="실제 고인돌 3D 스캔 모델 전체 보기" class="artifact-stage">
@@ -89,9 +152,6 @@
 </div>
 </aside>
 </div><div class="page-question curatorial-question">
-<div class="curatorial-note">
-<p>돌은 시간에 저항하지 않는다. 시간을 담고 있을 뿐이다.</p>
-</div>
 <button class="internal-observation-nav internal-observation-enter" id="enterObservation" type="button">성혈 관찰 <span aria-hidden="true">→</span></button>
 </div></section><section aria-hidden="true" aria-labelledby="detail-stage-title" class="observation-mode observation-detail" data-observation-panel="observation"><div class="observation-mode-bar"><div><p class="observation-stage-index">STAGE B · CLOSE OBSERVATION</p><h3 id="detail-stage-title">성혈 관찰</h3></div></div><div class="viewer-shell">
 <div class="viewer-main">
@@ -150,73 +210,9 @@
 <p class="cupmark-disclaimer">금빛 표식은 측정 위치를 나타내며 실제 성혈 지름과 무관합니다.</p>
 </aside>
 </div><div class="page-question compact-question observation-question">
-<div>
-<p>반복된 행위의 흔적으로 읽을 수 있을까? 누가, 왜 남겼을까?</p>
-</div>
 <button aria-label="고인돌 관찰 화면으로 돌아가기" class="internal-observation-nav internal-observation-back" id="returnOverview" type="button">← 고인돌 관찰</button>
 </div></section></div></div>
-</section><section aria-labelledby="interpretation-title" class="exhibition-page page-interpretation" data-page-index="2" id="chapter-03">
-<div class="page-frame">
-<header class="page-heading split"><div><p class="section-index">03 <span>/</span> FUNCTIONAL MEMORY · INTERPRETATION</p><h2 id="interpretation-title">다시 불러낸 뜻</h2><p class="chapter-curatorial-subtitle">사람들은 이 흔적에 어떤 이름을 붙여 왔을까요</p></div></header>
-<div class="interpretation-layout"><nav class="interpretation-list" aria-label="네 가지 해석 선택"><button aria-expanded="true" aria-controls="interpretation-title-prayer" class="interpretation-item active" data-interpretation="prayer" type="button"><span class="item-number">01</span><strong>치성의 흔적</strong><small>민속 전승 · 해석</small><span class="item-arrow">↗</span></button>
-<button aria-expanded="false" aria-controls="interpretation-title-astronomy" class="interpretation-item" data-interpretation="astronomy" type="button"><span class="item-number">02</span><strong>별자리 투영</strong><small>학설 · 해석</small><span class="item-arrow">↗</span></button>
-<button aria-expanded="false" aria-controls="interpretation-title-kinship" class="interpretation-item" data-interpretation="kinship" type="button"><span class="item-number">03</span><strong>친족 집단 표시의 기능</strong><small>발굴 자료 · 해석</small><span class="item-arrow">↗</span></button>
-<button aria-expanded="false" aria-controls="interpretation-title-agriculture" class="interpretation-item" data-interpretation="agriculture" type="button"><span class="item-number">04</span><strong>농경사회의 기념물로써의 기능</strong><small>사회경제적 해석</small><span class="item-arrow">↗</span></button></nav><div class="interpretation-panels" id="interpretationPanels">
-<article class="interpretation-detail" data-interpretation-panel="prayer" aria-labelledby="interpretation-title-prayer" >
-<figure aria-hidden="true" class="interpretation-visual"><img alt="" src="assets/illustrations/folk-belief.svg" loading="lazy"/></figure>
-<div class="detail-copy">
-<span class="type-label hypothesis">민속 전승 · 해석</span>
-<p class="detail-index">INTERPRETATION 01 · 후대 민간신앙과 기억의 재구성</p>
-<h3 id="interpretation-title-prayer">치성의 흔적</h3>
-<div class="interpretation-body" tabindex="0" role="region" aria-label="치성의 흔적 설명, 스크롤하여 전체 본문 읽기">
-<p>고인돌의 성혈은 선사시대의 제작 목적과 상징에 대해서는 여러 해석이 존재하지만, 후대의 민간신앙에서는 <strong>기자(祈子)·풍요·치병 등을 기원하는 대상으로 이용된 사례가 확인된다.</strong> 국립문화유산연구원의 『한국고고학사전』에서도 성혈을 풍요와 다산을 기원하는 의례와 관련된 것으로 보는 견해가 제시되어 있다.</p>
-<p>특히 춘천 천전리 고인돌은 지역 주민들에게 <strong>‘정성바위’ 또는 ‘정승바위’</strong>로 불렸으며, 성혈이 남아 있는 고인돌에서 자녀의 출세와 출산, 질병의 치유, 재앙의 방지를 기원했다는 민속 전승이 기록되어 있다. 이 성혈은 민속적으로 <strong>기자신앙과 결부된 ‘정성 구멍’</strong>으로 설명되기도 한다.</p>
-<p>또한 청주 학평리 고인돌은 개석을 제단으로 이용하여 정월 보름에 동제를 지냈다는 전승이 남아 있어, 고인돌이 매장시설을 넘어 후대 지역사회에서 <strong>제의와 기원의 장소로 재의미화되었음</strong>을 보여준다.</p>
-<p>따라서 성혈과 고인돌의 후대 민속적 이용은 선사시대의 원래 기능이 그대로 보존되었다고 단정하기보다는, <strong>하나의 물질적 흔적이 시대에 따라 새로운 의미를 부여받으며 지속적으로 사용된 과정</strong>으로 이해할 수 있다.</p>
-</div>
-<div class="interpretation-footer"><span class="interpretation-scroll-hint">본문을 스크롤하여 읽어보세요</span><button type="button" class="interpretation-source-button" data-interpretation-sources aria-controls="interpretation-sources-prayer" aria-expanded="false">출처</button></div>
-<aside class="interpretation-source-popover" id="interpretation-sources-prayer" hidden aria-label="치성의 흔적 출처"><strong>출처 및 참고문헌</strong><ul><li>국립문화유산연구원, 『한국고고학사전』 — 성혈에 관한 해석 (사용자 제공 자료)</li><li>춘천 천전리 고인돌·청주 학평리 고인돌의 민속 전승 (상세 서지 및 원문 링크 미제공)</li></ul></aside>
-</div></article><article class="interpretation-detail" data-interpretation-panel="astronomy" aria-labelledby="interpretation-title-astronomy" hidden>
-<figure aria-hidden="true" class="interpretation-visual"><img alt="" src="assets/illustrations/astronomy.svg" loading="lazy"/></figure>
-<div class="detail-copy">
-<span class="type-label hypothesis">학설 · 해석</span>
-<p class="detail-index">INTERPRETATION 02 · 성혈의 별자리 연관 가설</p>
-<h3 id="interpretation-title-astronomy">별자리 투영</h3>
-<div class="interpretation-body" tabindex="0" role="region" aria-label="별자리 투영 설명, 스크롤하여 전체 본문 읽기">
-<p>덮개돌에 만들어진 성혈이 별자리라는 주장이 남북한 학자들에 의해 제기되고 있습니다. 그 근거로는 먼저 충북 청원 아득이 고인돌의 사례가 있습니다. 이곳은 덮개돌에 성혈이 많은데, 여기에서 출토된 돌판에도 홈이 있습니다. 경기 하남 교산동 고인돌은 북두칠성 형태로 배치되어 있습니다. 경기 용인 근삼리 고인돌과 경북 경산 대학리 고인돌은 ‘칠성바위’라고 불립니다. 대구 칠성동과 충북 괴산의 칠성면도 고인돌에서 유래한 지명입니다. 경기 남양주 삼봉2리 아양마을 고인돌에는 북두칠성 형태로 성혈이 배치되어 있습니다. <strong>이처럼 고인돌과 북두칠성은 여러 가지로 관계가 있습니다.</strong></p>
-<p><strong>성혈이 별자리에서 비롯되었다고 보는 또 하나의 이유는 별자리 교육을 쉽게 하기 위해서라는 점</strong>입니다. 성혈은 주로 높이가 낮은 개석식 고인돌에 만들었습니다. 탁자식 고인돌에도 만든 예가 있으나 덮개돌의 높이가 120cm를 넘지 않아 성혈을 내려다보는 데 어려움이 없습니다. 별자리 교육을 목적으로 만들었다는 주장은 울주 반구대 바위그림이 어로와 수렵을 가르치기 위해 만들어졌다는 해석과 관련지어 설명할 수도 있습니다. 또 하늘이 잘 보이는 비교적 높은 곳에 있는 고인돌에 성혈을 만들었다는 점도 별자리와 연결시킬 수 있습니다.</p>
-</div>
-<div class="interpretation-footer"><span class="interpretation-scroll-hint">본문을 스크롤하여 읽어보세요</span><button type="button" class="interpretation-source-button" data-interpretation-sources aria-controls="interpretation-sources-astronomy" aria-expanded="false">출처</button></div>
-<aside class="interpretation-source-popover" id="interpretation-sources-astronomy" hidden aria-label="별자리 투영 출처"><strong>출처 및 참고문헌</strong><ul><li><a href="https://www.kci.go.kr/kciportal/po/search/poSereArtiList.kci?sereId=001749&amp;volIsseId=VOL000003645" target="_blank" rel="noopener noreferrer">우장문, 「고인돌을 만든 사람들의 사유에 관한 연구 - 덮개돌의 굼을 중심으로 -」, 『선사와 고대』 29, 2008, p.160.</a></li></ul></aside>
-</div></article><article class="interpretation-detail" data-interpretation-panel="kinship" aria-labelledby="interpretation-title-kinship" hidden>
-<figure aria-hidden="true" class="interpretation-visual"><img alt="" src="assets/illustrations/ritual.svg" loading="lazy"/></figure>
-<div class="detail-copy">
-<span class="type-label hypothesis">발굴 자료 · 해석</span>
-<p class="detail-index">INTERPRETATION 03 · 양평 앙덕리 성혈 제작과 의례</p>
-<h3 id="interpretation-title-kinship">친족 집단 표시의 기능</h3>
-<div class="interpretation-body" tabindex="0" role="region" aria-label="친족 집단 표시의 기능 설명, 스크롤하여 전체 본문 읽기">
-<p>성혈에 관하여 고고학적 자료를 바탕으로 연구한 사람은 이융조입니다. 그는 양평 앙덕리 고인돌을 발굴하면서 성혈을 만드는 데 사용했던 도구 54점을 찾았습니다. 이 도구에는 성혈을 만들 때 생긴 흔적이 남아 있습니다. 이는 성혈을 먼저 만든 다음에 고인돌을 만들었음을 보여 주는 결정적인 자료입니다.</p>
-<p>발굴자는 67개의 성혈이 54점의 도구와 관계가 있다고 보았습니다. 덮개돌을 무덤방에 올리기 전에 이곳에 모인 친족들이 어떤 의식을 행했고, 그 과정에서 성혈을 만들었다고 해석했습니다. 또 성혈 하나를 만드는 데 약 8시간이 걸렸을 것이라고 주장했습니다. 결국 앙덕리 고인돌의 성혈은 고인돌을 만드는 의식에 함께한 친족들이 한 개씩 만들었다는 주장입니다. 이 연구는 고고학적 자료를 바탕으로 해석했다는 점에서, 상상력을 동원한 다른 주장과 차별화되며 큰 의의가 있습니다.</p>
-</div>
-<div class="interpretation-footer"><span class="interpretation-scroll-hint">본문을 스크롤하여 읽어보세요</span><button type="button" class="interpretation-source-button" data-interpretation-sources aria-controls="interpretation-sources-kinship" aria-expanded="false">출처</button></div>
-<aside class="interpretation-source-popover" id="interpretation-sources-kinship" hidden aria-label="친족 집단 표시의 기능 출처"><strong>출처 및 참고문헌</strong><ul><li>원문: 이융조, 「양평 앙덕리 고인돌 문화」, 한국사연구회, 『韓國史硏究』 11, 1975, pp.55–99.</li><li>재인용: 우장문, 「고인돌을 만든 사람들의 사유에 관한 연구 - 덮개돌의 굼을 중심으로 -」, 『선사와 고대』 29, 2008, pp.161–162.</li></ul></aside>
-</div></article><article class="interpretation-detail" data-interpretation-panel="agriculture" aria-labelledby="interpretation-title-agriculture" hidden>
-<figure aria-hidden="true" class="interpretation-visual"><img alt="" src="assets/illustrations/other.svg" loading="lazy"/></figure>
-<div class="detail-copy">
-<span class="type-label hypothesis">사회경제적 해석</span>
-<p class="detail-index">INTERPRETATION 04 · 암각화·집단의식·조상숭배</p>
-<h3 id="interpretation-title-agriculture">농경사회의 기념물로써의 기능</h3>
-<div class="interpretation-body" tabindex="0" role="region" aria-label="농경사회의 기념물로써의 기능 설명, 스크롤하여 전체 본문 읽기">
-<p>청동기시대 전기부터 지석묘에 암각화를 새기는 모습이 나타나는데, 그 사례가 포항 인비동 16호 지석묘에서 확인됩니다. 청동기시대 후기로 가면 암각화를 새기는 대상이 크게 늘어납니다. 지석묘 상석과 묘역구획석, 석관묘나 지석묘의 개석, 석관 내부의 단벽, 입석, 구릉이나 야산의 바위 단면, 주거지에서 나온 지석(숫돌)에도 암각화가 새겨집니다.</p>
-<p>암각화의 내용도 다양해집니다. 석검, 동심원(나선형), 석촉, 비파형동검, 성혈 등이 새겨지며, 주로 지석묘나 의례용 입석처럼 조상숭배의례와 관련된 곳에 쓰입니다. 특히 지석묘에 부장하는 유물을 본뜬 문양의 암각화가 많이 사용됩니다.</p>
-<p>이러한 양상은 청동기시대 전기부터 후기까지 진행된 농경의 확산과 본격화 속에서 나타난 것으로 추정됩니다. 농경사회에서는 집단의식을 강화하고 경작지를 배타적으로 지배하며 소유권을 나타낼 필요가 있었기 때문입니다. 이에 따라 농경사회의 기념물인 지석묘와 의례용 입석을 중심으로 한 조상숭배의례 등 집단의례에도 암각화가 영남, 호남, 호서지역에서 많이 사용된 것으로 보입니다.</p>
-<p>지석묘는 조상의 무덤을 지상에 눈에 띄게 축조하여 집단의 경작지에 대한 배타적 지배와 집단의식을 강화하는 데 활용된 것으로 보입니다. 이것이 지석묘가 신석기시대가 아니라 청동기시대에 나타나는 이유일 것입니다.</p>
-<p>포항 인비동 16호 지석묘, 대구 진천동 입석, 여수 오림동 5호 지석묘, 밀양 살내유적Ⅱ 1호 지석묘 등이 대표적인 사례입니다. 이들 유적에서는 지석묘의 상석이나 묘역석, 추상적 조상숭배의 상징물일 가능성이 있는 입석에 동심원문, 성혈, 석검문양, 석촉문양, 동검문양 등이 새겨져 있습니다. 이는 농경사회의 기념물인 지석묘와 암각화 문화가 결합한 모습을 보여줍니다.</p>
-</div>
-<div class="interpretation-footer"><span class="interpretation-scroll-hint">본문을 스크롤하여 읽어보세요</span><button type="button" class="interpretation-source-button" data-interpretation-sources aria-controls="interpretation-sources-agriculture" aria-expanded="false">출처</button></div>
-<aside class="interpretation-source-popover" id="interpretation-sources-agriculture" hidden aria-label="농경사회의 기념물로써의 기능 출처"><strong>출처 및 참고문헌</strong><ul><li>김권구, 「청동기시대 암각화의 층위관계와 암각화 확산의 사회경제적 배경 검토」, 『영남학』 제66호, 2018, pp.169–170.</li></ul></aside>
-</div></article>
-</div></div></div></section><section aria-labelledby="sky-overlay-title" class="exhibition-page page-sky-overlay" data-page-index="3" id="chapter-04" data-page-key="sky-overlay">
+</section><section aria-labelledby="sky-overlay-title" class="exhibition-page page-sky-overlay" data-page-index="3" id="chapter-04" data-page-key="sky-overlay">
 <div class="sky-overlay-frame">
 <header class="sky-overlay-heading">
 <div>
@@ -224,10 +220,7 @@
 <h2 id="sky-overlay-title">오늘의 하늘에 비춰 보다</h2>
 <p class="chapter-curatorial-subtitle">성혈과 별을 겹쳐 보며 우리도 물어봅니다</p>
 </div>
-<div class="sky-overlay-intro">
-<p>오늘의 관람객이 직접 해 보는 비교</p>
 
-</div>
 </header>
 <div class="sky-workspace">
 <div class="sky-canvas-shell" id="skyCanvasShell">
@@ -299,8 +292,8 @@
 <nav aria-label="별자리형 전시 목차" class="constellation-toc" id="constellationToc"><button aria-controls="tocMap" aria-expanded="false" class="toc-toggle" id="tocToggle" type="button"><span aria-hidden="true">✦</span><em>목차</em></button><div class="toc-map" id="tocMap">
 <svg aria-hidden="true" class="toc-lines" viewBox="0 0 126 185"><path d="M44 23 L78 63 L50 105 L84 146"></path></svg>
 <button aria-label="1장 고인돌 지식지도" class="toc-node toc-01" data-goto="0" title="고인돌 지식지도" type="button"><span class="toc-star"></span><small>01</small><em>고인돌 지식지도</em></button>
-<button aria-label="2장 쌓여 있는 흔적" class="toc-node toc-02" data-goto="1" title="쌓여 있는 흔적" type="button"><span class="toc-star"></span><small>02</small><em>쌓여 있는 흔적</em></button>
-<button aria-label="3장 다시 불러낸 뜻" class="toc-node toc-03" data-goto="2" title="다시 불러낸 뜻" type="button"><span class="toc-star"></span><small>03</small><em>다시 불러낸 뜻</em></button>
+<button aria-label="2장 전승된 기억" class="toc-node toc-02" data-goto="1" title="전승된 기억" type="button"><span class="toc-star"></span><small>02</small><em>전승된 기억</em></button>
+<button aria-label="3장 쌓여 있는 흔적" class="toc-node toc-03" data-goto="2" title="쌓여 있는 흔적" type="button"><span class="toc-star"></span><small>03</small><em>쌓여 있는 흔적</em></button>
 <button aria-label="4장 오늘의 하늘에 비춰 보다" class="toc-node toc-04" data-goto="3" title="오늘의 하늘에 비춰 보다" type="button"><span class="toc-star"></span><small>04</small><em>오늘의 하늘에 비춰 보다</em></button>
 </div></nav>
 <!-- Sequential previous / next navigation -->
@@ -330,7 +323,7 @@
 <span class="type-label context">개념 · 맥락</span>
 <p>전시 텍스트는 실제 자료에서 확인된 내용, 프로젝트 분석 결과, 연구자의 해석, 일반 맥락을 구분해 표시합니다.</p>
 </div>
-<div class="archive-grid"><section><span>01</span><h3>고인돌</h3><p>대상 유물의 명칭·위치·시대·형태와 확인된 기본 정보를 정리합니다.</p></section><section><span>02</span><h3>성혈</h3><p>성혈의 정의와 고인돌·자연 암반에서 확인되는 사례를 정리할 영역입니다.</p></section><section><span>03</span><h3>다시 불러낸 뜻</h3><p>치성의 흔적, 별자리 투영, 친족 집단 표시, 농경사회 기념물로서의 기능을 제시합니다.</p></section><section><span>04</span><h3>3D 스캐닝</h3><p>스캔 장비, 촬영·정합·메시 생성, 성혈 좌표 및 깊이 측정 과정을 기록할 영역입니다.</p></section><section><span>05</span><h3>별자리 비교 방법</h3><p>점 좌표 정규화, 회전·스케일 보정, 대응점과 일치율 산정 기준을 설명할 영역입니다.</p></section><section><span>06</span><h3>제작 과정</h3><p>기획 → 기록 → 분석 → 비교 → 해석 → 참여형 전시로 이어지는 프로젝트 과정을 정리합니다.</p></section><section><span>07</span><h3>이론 틀</h3><p>베르그송의 지각과 아스만의 저장기억·기능기억을 전시의 해석 틀로 사용합니다. 원전의 직접 주장과 전시적 적용을 구분합니다.</p></section><section><span>08</span><h3>스캔 데이터 입력 현황</h3><p>현재 실제 3D 스캔 전 단계입니다. 측정값은 입력하지 않고, 데이터가 들어갈 위치와 연결 구조만 제시합니다.</p></section></div>
+<div class="archive-grid"><section><span>01</span><h3>고인돌</h3><p>대상 유물의 명칭·위치·시대·형태와 확인된 기본 정보를 정리합니다.</p></section><section><span>02</span><h3>성혈</h3><p>성혈의 정의와 고인돌·자연 암반에서 확인되는 사례를 정리할 영역입니다.</p></section><section><span>03</span><h3>전승된 기억</h3><p>치성의 흔적, 별자리 투영, 친족 집단 표시, 농경사회 기념물로서의 기능을 제시합니다.</p></section><section><span>04</span><h3>3D 스캐닝</h3><p>스캔 장비, 촬영·정합·메시 생성, 성혈 좌표 및 깊이 측정 과정을 기록할 영역입니다.</p></section><section><span>05</span><h3>별자리 비교 방법</h3><p>점 좌표 정규화, 회전·스케일 보정, 대응점과 일치율 산정 기준을 설명할 영역입니다.</p></section><section><span>06</span><h3>제작 과정</h3><p>기획 → 기록 → 분석 → 비교 → 해석 → 참여형 전시로 이어지는 프로젝트 과정을 정리합니다.</p></section><section><span>07</span><h3>이론 틀</h3><p>베르그송의 지각과 아스만의 저장기억·기능기억을 전시의 해석 틀로 사용합니다. 원전의 직접 주장과 전시적 적용을 구분합니다.</p></section><section><span>08</span><h3>스캔 데이터 입력 현황</h3><p>현재 실제 3D 스캔 전 단계입니다. 측정값은 입력하지 않고, 데이터가 들어갈 위치와 연결 구조만 제시합니다.</p></section></div>
 <div class="reference-placeholder">
 <h3>보조자료에 기재된 참고 항목 <small>서지 검증 후 확정</small></h3>
 <ul>
@@ -351,8 +344,8 @@
 
 <script defer="" src="js/skyOverlay.js"></script>
 
-<script defer="" src="js/dolmenViewer.js"></script>
-<script defer="" src="js/endingSky.js?v=33"></script>
-<script defer="" src="js/main.js?v=32"></script>
+<script defer="" src="js/dolmenViewer.js?v=34-4"></script>
+<script defer="" src="js/endingSky.js?v=34"></script>
+<script defer="" src="js/main.js?v=35"></script>
 </body>
 </html>

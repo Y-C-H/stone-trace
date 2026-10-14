@@ -3,8 +3,8 @@
   const PROJECT_SUBTITLE='3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색';
   const CHAPTER_TITLES=[
     '고인돌 지식지도',
+    '전승된 기억',
     '쌓여 있는 흔적',
-    '다시 불러낸 뜻',
     '오늘의 하늘에 비춰 보다',
     '수치로 다시 그린 하늘'
   ];
@@ -106,8 +106,15 @@
     document.addEventListener('keydown',e=>{
       const dialog=document.getElementById('sourcesDialog');if(e.key==='Escape'&&dialog.open){dialog.close();return}if(dialog.open)return;
       const tag=document.activeElement?.tagName;if(['INPUT','TEXTAREA','SELECT'].includes(tag))return;
-      if(openingActive&&(e.key==='Enter'||e.key===' ')){e.preventDefault();finishOpening({immediate:true});return;}
-      if(openingActive)return;
+      if(openingState!=='finished'){
+        if(e.key==='Enter'||e.key===' '){
+          // The first key activation starts the opening; only later activations skip it.
+          e.preventDefault();
+          if(openingState==='waiting')startOpening();
+          else if(openingState==='playing')finishOpening({immediate:true});
+        }
+        return;
+      }
       if(currentPage===ENDING_INDEX&&e.key==='Escape'){e.preventDefault();goToPage(3);return;}
       if(e.key==='ArrowRight'){e.preventDefault();nextPage()}if(e.key==='ArrowLeft'){e.preventDefault();previousPage()}
     });
@@ -123,7 +130,7 @@
   function initInterpretations(){
     const container=document.getElementById('interpretationPanels');
     if(!container)return;
-    const buttons=[...document.querySelectorAll('#chapter-03 .interpretation-item')];
+    const buttons=[...document.querySelectorAll('#chapter-02 .interpretation-item')];
     const panels=[...container.querySelectorAll('[data-interpretation-panel]')];
     function closeSources(){
       container.querySelectorAll('[data-interpretation-sources]').forEach(button=>{
@@ -160,7 +167,7 @@
       button.setAttribute('aria-expanded',String(opening));
     });
     document.addEventListener('pointerdown',event=>{
-      if(!event.target.closest('#chapter-03 .interpretation-detail'))closeSources();
+      if(!event.target.closest('#chapter-02 .interpretation-detail'))closeSources();
     });
     document.addEventListener('keydown',event=>{if(event.key==='Escape')closeSources();});
   }
@@ -174,7 +181,7 @@
   let observationMode='overview';
 
   function setObservationMode(mode,{focus=false}={}){
-    const chapter=document.getElementById('chapter-02');
+    const chapter=document.getElementById('chapter-03');
     if(!chapter||!['overview','observation'].includes(mode))return;
     observationMode=mode;
     chapter.dataset.observationMode=mode;
@@ -202,47 +209,81 @@
     setObservationMode('overview');
   }
 
-  let openingActive=false;
+  // v35: Exactly one opening instance, with a user gesture to enable its audio.
+  let openingState='finished'; // waiting → playing → closing → finished
   let openingTimer=null;
   let openingRemovalTimer=null;
+  let openingAudio=null;
+
+  function stopOpeningAudio(){
+    if(!openingAudio)return;
+    openingAudio.pause();
+    try{openingAudio.currentTime=0;}catch(_error){/* Not seekable yet. */}
+  }
+
   function finishOpening({immediate=false}={}){
-    if(!openingActive)return;
-    openingActive=false;
+    if(openingState==='finished'||(openingState==='closing'&&!immediate))return;
+    openingState=immediate?'finished':'closing';
     clearTimeout(openingTimer);
     clearTimeout(openingRemovalTimer);
     const overlay=document.getElementById('exhibitionOpening');
+    if(immediate)stopOpeningAudio();
     overlay?.classList.add(immediate?'is-skipped':'is-closing');
     overlay?.setAttribute('aria-hidden','true');
-    // Keep the Chapter navigation hidden until the overlay finishes fading.
+    // Leave chapter navigation hidden until the old 600 ms fade-out completes.
     openingRemovalTimer=setTimeout(()=>{
+      openingState='finished';
+      stopOpeningAudio();
       document.body.classList.remove('is-opening');
       overlay?.remove();
     },immediate?0:620);
   }
+
+  function startOpening(){
+    if(openingState!=='waiting')return;
+    openingState='playing'; // Guard repeated touch/click/keyboard activation.
+    const overlay=document.getElementById('exhibitionOpening');
+    const button=document.getElementById('openingStart');
+    if(button){button.disabled=true;button.hidden=true;}
+
+    // Trigger CSS animations and audio playback in the very same user gesture.
+    overlay?.classList.add('is-playing');
+    if(openingAudio){
+      openingAudio.volume=.65;
+      try{openingAudio.currentTime=0;}catch(_error){/* Still loading; playback can proceed. */}
+      try{
+        const playback=openingAudio.play();
+        if(playback&&typeof playback.catch==='function')playback.catch(()=>{/* Continue silently if blocked. */});
+      }catch(_error){/* Audio is optional; never interrupt the exhibition. */}
+    }
+    // 0.2s black, 0.8s stone, 0.9s logo, 1.1s hold, 0.6s fade.
+    openingTimer=setTimeout(()=>finishOpening(),3000);
+  }
+
   function initOpening(){
     const overlay=document.getElementById('exhibitionOpening');
     if(!overlay)return;
     if(location.hash==='#ending'||/^#chapter-0[2-4]$/.test(location.hash)){
       overlay.remove();return;
     }
-    openingActive=true;
+    openingState='waiting';
     document.body.classList.add('is-opening');
-    overlay.addEventListener('click',()=>finishOpening({immediate:true}));
-    const images=[...overlay.querySelectorAll('.opening-composition img')];
-    const imageReady=Promise.all(images.map(img=>{
-      if(img.complete)return Promise.resolve(img.naturalWidth>0);
-      return new Promise(resolve=>{
-        img.addEventListener('load',()=>resolve(true),{once:true});
-        img.addEventListener('error',()=>resolve(false),{once:true});
-      });
-    }));
-    // Limit asset waiting so even a slow or failed image cannot block exhibition entry.
-    Promise.race([imageReady,new Promise(resolve=>setTimeout(()=>resolve(null),900))]).then(()=>{
-      if(!openingActive)return;
-      const loaded=images.length===2&&images.every(img=>img.complete&&img.naturalWidth>0);
-      overlay.classList.add(loaded?'is-playing':'is-fallback');
-      // 0.2s black, 0.8s stone, 0.9s logo, 1.1s hold, 0.6s fade.
-      openingTimer=setTimeout(()=>finishOpening(),3000);
+    openingAudio=document.getElementById('openingAudio');
+    if(openingAudio){openingAudio.volume=.65;openingAudio.preload='auto';openingAudio.load();}
+
+    document.getElementById('openingStart')?.addEventListener('click',event=>{
+      event.stopPropagation(); // The initiating click must NEVER also skip the opening.
+      startOpening();
+    });
+    overlay.addEventListener('click',()=>{
+      if(openingState==='playing')finishOpening({immediate:true});
+    });
+
+    // HTML image and audio preload during the waiting screen. Broken artwork uses
+    // the existing fallback without forcing a second start or re-playing sound.
+    overlay.querySelectorAll('.opening-composition img').forEach(img=>{
+      if(img.complete&&img.naturalWidth===0)overlay.classList.add('is-fallback');
+      else img.addEventListener('error',()=>overlay.classList.add('is-fallback'),{once:true});
     });
   }
 

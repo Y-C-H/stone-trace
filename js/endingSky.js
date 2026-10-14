@@ -12,6 +12,9 @@
       viewport={width:0,height:0,scale:1},gesture=null,sourceStatus='pending',
       skyCache=null,auroraCache=null,starCache=null,renderedFrames=0,renderWorkMs=0;
   const SOURCE='data/cupmarks-measured.json';
+  // One revolution in 30 minutes, measured stars and decorative sky sharing a rigid turn.
+  const ROTATION_PERIOD_MS=1800000;
+  let skyElapsedMs=0,previousSkyTick=0;
   const clamp=(x,min,max)=>Math.max(min,Math.min(max,x));
   const lerp=(a,b,t)=>a+(b-a)*t;
   const reduced=!!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -106,7 +109,7 @@
         const fold=.6+.4*Math.sin(xx*28+noise*3.2);
         const across=Math.pow(Math.max(0,Math.sin(Math.PI*xx)),.55);
         const strength=(broad*(.20+.37*noise)+inner*.25*fold)*across;
-        const alpha=clamp(strength*.57,0,.27);
+        const alpha=clamp(strength*.30,0,.15);
         const i=(y*w+x)*4;
         data[i]=31+Math.round(10*noise);
         data[i+1]=110+Math.round(30*noise);
@@ -118,7 +121,7 @@
     // Subtle, curved wisp softened once at cache construction time.
     c.save();c.filter=`blur(${Math.max(7,Math.round(w*.014))}px)`;
     for(let i=0;i<3;i++){
-      c.strokeStyle=`rgba(${i===0?'99,172,157':'60,128,153'},${i===0?.075:.042})`;
+      c.strokeStyle=`rgba(${i===0?'99,172,157':'60,128,153'},${i===0?.04:.023})`;
       c.lineWidth=(9+i*11)*ratio;
       c.beginPath();c.moveTo(-40*ratio,h*(.28+.045*i));
       c.bezierCurveTo(w*.22,h*(.13+.043*i),w*.57,h*(.48+.035*i),w+50*ratio,h*(.28+.025*i));
@@ -194,11 +197,15 @@
     const {width,height}=viewport,elapsed=Math.max(0,now-enteredAt);
     if(!skyCache)return;
     ctx.globalAlpha=1;ctx.drawImage(skyCache,0,0,width,height);
+    // Turn the entire star field + aurora as a rigid visual layer.  The gradient
+    // night sky is fixed behind it; HTML headings and return control never rotate.
+    const rotation=(skyElapsedMs%ROTATION_PERIOD_MS)/ROTATION_PERIOD_MS*Math.PI*2;
+    ctx.save();ctx.translate(width*.5,height*.5);ctx.rotate(rotation);ctx.translate(-width*.5,-height*.5);
     // Atmospheric veil remains gentle and behind all stars and written elements.
     const auroraFade=reduced?1:clamp((elapsed-1050)/1750,0,1);
     const move=reduced?0:Math.sin(now/38000*Math.PI*2);
     const breathe=reduced?1:.96+.04*Math.sin(now/27000*Math.PI*2);
-    ctx.globalAlpha=.90*auroraFade*breathe;
+    ctx.globalAlpha=.78*auroraFade*breathe;
     ctx.drawImage(auroraCache,-7+move*7,-5+Math.cos(now/41000*Math.PI*2)*3,width+14,height+10);
     ctx.globalAlpha=1;
     const bgFade=reduced?1:clamp((elapsed-1300)/1500,0,1);
@@ -215,12 +222,15 @@
     if(sourceStatus==='failed'){
       ctx.fillStyle='rgba(234,231,223,.88)';ctx.font='14px sans-serif';ctx.textAlign='center';
       ctx.fillText('성혈 데이터를 불러올 수 없습니다.',width/2,height*.52);
-      return;
+      ctx.restore();return;
     }
     drawMeasuredStars(elapsed,now);
+    ctx.restore();
   }
   function paint(now){
     frame=0;if(!active)return;
+    if(previousSkyTick)skyElapsedMs+=Math.min(Math.max(0,now-previousSkyTick),100);
+    previousSkyTick=now;
     if(!lastPaint||now-lastPaint>=(viewport.width<650?33:22)){
       const before=performance.now();drawScene(now);renderWorkMs+=performance.now()-before;renderedFrames++;lastPaint=now;
     }
@@ -228,10 +238,10 @@
   }
   function start(){
     if(active)return;
-    active=true;enteredAt=performance.now();lastPaint=0;
+    active=true;enteredAt=performance.now();lastPaint=0;previousSkyTick=0;
     resize();frame=requestAnimationFrame(paint);
   }
-  function stop(){active=false;cancelAnimationFrame(frame);frame=0;lastPaint=0;}
+  function stop(){active=false;cancelAnimationFrame(frame);frame=0;lastPaint=0;previousSkyTick=0;}
   function sync(){
     const shouldRun=host.classList.contains('active')&&document.visibilityState!=='hidden';
     if(shouldRun)start();else stop();
@@ -260,7 +270,7 @@
   }
   window.__endingSkyDebug=Object.freeze({
     getStatus:()=>({sourceStatus,measuredCount:stars.length,decorativeCount:backgroundStars.length,
-      active,viewport:{...viewport},reducedMotion:reduced,renderedFrames,averageDrawMs:renderedFrames?renderWorkMs/renderedFrames:0}),
+      active,viewport:{...viewport},reducedMotion:reduced,skyRotationDegrees:skyElapsedMs/ROTATION_PERIOD_MS*360,rotationPeriodMs:ROTATION_PERIOD_MS,renderedFrames,averageDrawMs:renderedFrames?renderWorkMs/renderedFrames:0}),
     // Deterministic isolated-browser screenshots of the real Canvas renderer.
     renderAt:(seconds)=>{if(skyCache)drawScene(enteredAt+Math.max(0,seconds)*1000);}
   });

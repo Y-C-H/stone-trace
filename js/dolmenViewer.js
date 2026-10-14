@@ -323,7 +323,7 @@
     focusCounter.textContent=focused?`${markerData[selectedIndex].id} · ${selectedIndex+1} / ${markerData.length}`:'';
     focusPrev.disabled=!focused||selectedIndex===0;
     focusNext.disabled=!focused||selectedIndex===markerData.length-1;
-    document.getElementById('chapter-02').dataset.viewMode=viewMode;
+    document.getElementById('chapter-03').dataset.viewMode=viewMode;
     panelSelection.textContent=focused?`관찰 중 · ${markerData[selectedIndex].id}`:'';
     if(focused&&!panel.dataset.userExpanded&&isMobile){panel.classList.add('is-collapsed');panelToggle.setAttribute('aria-expanded','false');panelToggle.textContent='측정 정보 펼치기';}
     if(!focused){panel.classList.remove('is-collapsed');panelToggle.setAttribute('aria-expanded','true');panelToggle.textContent='측정 정보 접기';delete panel.dataset.userExpanded;}
@@ -458,6 +458,12 @@
   }
   // v26: illumination depends only on the user level, the light mode and ON/OFF.
   // Camera focus and selection of another cupmark must never attenuate a light.
+  // v34-4: Overview and cupmark observation share a canvas but NOT a visibility state.
+  // Keep illuminatedIndices/markersOn untouched when changing stages so the lights
+  // reappear exactly as selected when visitors return to cupmark observation.
+  function inCupmarkObservation(){
+    return document.getElementById('chapter-03').dataset.observationMode==='observation';
+  }
   function lightIntensityAt(index,now){
     if(!illuminatedIndices.has(index))return 0;
     if(lightMode==='steady')return lightBrightness;
@@ -467,7 +473,7 @@
   }
   function drawSelectedBeacon(matrices){
     // v25: each illuminated cupmark is drawn at its existing measured surface position.
-    if(!markersOn||!markersLoaded||!illuminatedIndices.size)return;
+    if(!inCupmarkObservation()||!markersOn||!markersLoaded||!illuminatedIndices.size)return;
     const right=[Math.cos(yaw),0,-Math.sin(yaw)];
     const now=performance.now();
     const range=gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
@@ -504,7 +510,7 @@
     gl.bindVertexArray(null);gl.depthMask(true);gl.disable(gl.BLEND);
   }
   function drawMarkers(matrices,picking){
-    if(!markersOn||!markersLoaded||!markerData.length)return;
+    if(!inCupmarkObservation()||!markersOn||!markersLoaded||!markerData.length)return;
     const u=markerPrograms[picking?1:0];
     gl.useProgram(u.program);
     gl.uniformMatrix4fv(u.proj,false,matrices.proj);gl.uniformMatrix4fv(u.view,false,matrices.view);
@@ -555,8 +561,8 @@
   let beaconTick=null;
   function render(now){needsFrame=false;tickCamera(now);drawScene(false);
     // Only pulse mode requires animation frames; steady lights are static between camera/UI updates.
-    if(active&&markersOn&&illuminatedIndices.size&&lightMode==='pulse'&&!beaconTick)
-      beaconTick=setTimeout(()=>{beaconTick=null;if(active&&markersOn&&illuminatedIndices.size&&lightMode==='pulse')requestFrame();},95);
+    if(active&&inCupmarkObservation()&&markersOn&&illuminatedIndices.size&&lightMode==='pulse'&&!beaconTick)
+      beaconTick=setTimeout(()=>{beaconTick=null;if(active&&inCupmarkObservation()&&markersOn&&illuminatedIndices.size&&lightMode==='pulse')requestFrame();},95);
   }
   function preparePickTarget(w,h){
     if(pickFramebuffer&&w===pickW&&h===pickH)return;
@@ -575,7 +581,7 @@
     gl.bindFramebuffer(gl.FRAMEBUFFER,null);
   }
   function pickMarker(clientX,clientY){
-    if(!markersOn||!markersLoaded||!loaded||!active)return;
+    if(!inCupmarkObservation()||!markersOn||!markersLoaded||!loaded||!active)return;
     const rect=canvas.getBoundingClientRect();if(!rect.width||!rect.height)return;
     try{
       drawScene(true);
@@ -825,8 +831,15 @@
   }
   function error(message){loadingTitle.textContent=message;percent.textContent='';bar.hidden=true;loading.classList.add('is-error');window.__dolmenViewerStatus={model,error:message};}
   function activateIfNeeded(){
-    active=document.body.dataset.page==='1';if(!active)return;
-    const stage=document.getElementById('chapter-02').dataset.observationMode||'overview';
+    // v34-2: After swapping Chapters 02/03, observation is page index 2 (third page).
+    // The old '1' gate disabled drawing on Chapter 03 and enabled it on Chapter 02.
+    active=document.body.dataset.page==='2';
+    if(!active||!inCupmarkObservation()) {
+      // Do not render hidden pulsing lights in the overview or on another page.
+      if(beaconTick!==null){clearTimeout(beaconTick);beaconTick=null;}
+    }
+    if(!active)return;
+    const stage=document.getElementById('chapter-03').dataset.observationMode||'overview';
     const host=stage==='observation'?detail:overview;
     if(root.parentElement!==host){
       host.appendChild(root);
@@ -873,7 +886,10 @@
   panelToggle.addEventListener('click',()=>{const collapse=!panel.classList.contains('is-collapsed');panel.classList.toggle('is-collapsed',collapse);panel.dataset.userExpanded=String(!collapse);panelToggle.setAttribute('aria-expanded',String(!collapse));panelToggle.textContent=collapse?'측정 정보 펼치기':'측정 정보 접기';});
   listToggle.addEventListener('click',()=>{const fold=!listWrap.classList.contains('is-folded');listWrap.classList.toggle('is-folded',fold);listToggle.setAttribute('aria-expanded',String(!fold));listToggle.textContent=fold?'성혈 목록 펼치기':'성혈 목록 접기';});
   loadMarkers();
+  // pagechange fires before the incoming page has finished becoming visible;
+  // pageactivated requests a fresh frame after the .active layout is applied.
   window.addEventListener('exhibition:pagechange',activateIfNeeded);
+  window.addEventListener('exhibition:pageactivated',activateIfNeeded);
   window.addEventListener('exhibition:observationchange',activateIfNeeded);
   window.addEventListener('resize',()=>{if(loaded){defaultDistance=fitDistance();requestFrame();}});
   new ResizeObserver(()=>requestFrame()).observe(root);
