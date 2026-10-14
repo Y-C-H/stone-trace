@@ -1,0 +1,67 @@
+{
+  "version": {
+    "baseVersion": "v29",
+    "resultVersion": "v30"
+  },
+  "knowledgeMap": {
+    "sourceWorkbook": "data/knowledge-map-source.xlsx",
+    "nodeCount": 91,
+    "linkCount": 109,
+    "categoryCount": 13,
+    "duplicateIds": 0,
+    "invalidLinks": 0,
+    "b14Included": true,
+    "updatedFromWorkbookInV29": true,
+    "v30WorkbookChanges": false,
+    "graphInteractionWorking": "presumed_from_unchanged_chapter01_logic"
+  },
+  "pointCloud": {
+    "baseVersionPointCount": 600,
+    "resultPointCount": 905,
+    "approvedVariant": "B",
+    "addedPointCount": 305,
+    "scanReselectedCount": 75,
+    "estimatedUndersideCount": 230,
+    "pointSizeIncreased": false,
+    "pointSizeRenderer": "unchanged_from_v29",
+    "base600PointsPreservedUnchanged": true,
+    "lowerVoidReduced": "yes_visual_completion_applied_beneath_capstone",
+    "supportStructureReconstructedAsSolidBlock": false,
+    "sourceModel": "assets/models/dolmen-700k.glb",
+    "notes": "Underside completion is a visualization supplement using approved preview B, not an archaeological reconstruction."
+  },
+  "dataIntegrity": {
+    "chapter01OnlyModified": true,
+    "chapter02CupmarkDataModified": false,
+    "chapter02ModelModified": false,
+    "textureModified": false,
+    "chapter04AsterismDataModified": false,
+    "endingDataModified": false,
+    "knowledgeMapWorkbookModified": false
+  },
+  "regression": {
+    "openingPreserved": "source_unchanged",
+    "chapter01InteractionsPreserved": "logic_unchanged_cloud_data_only",
+    "chapter02Preserved": "source_unchanged",
+    "chapter03Preserved": "source_unchanged",
+    "chapter04Preserved": "source_unchanged",
+    "endingPreserved": "source_unchanged"
+  },
+  "tests": {
+    "previewBasis": "/mnt/data/v30-preview-only/candidate-B.json",
+    "visualComparison": "v30-preview-only/v30-before-after.png",
+    "desktopTests": "not_re-run_in_this_turn",
+    "mobileTests": "not_re-run_in_this_turn",
+    "knownIssues": [
+      "Added underside completion includes estimated points for visual continuity.",
+      "Full browser regression not re-run in this turn."
+    ]
+  },
+  "fileIntegrity": {
+    "modifiedBaselineFiles": [
+      "js/dolmenScanCloud.js",
+      "data/v30-validation.json"
+    ],
+    "missingBaselineFiles": []
+  }
+}

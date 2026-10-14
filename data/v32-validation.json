@@ -1,0 +1,96 @@
+{
+  "version": {
+    "baseVersion": "v31",
+    "resultVersion": "v32"
+  },
+  "textUpdates": {
+    "chapter01TitleRemoved": true,
+    "chapter01SubtitleChanged": true,
+    "chapter01LabelChanged": true,
+    "chapter01InstructionAdded": true,
+    "chapter02TitleChanged": true,
+    "chapter02SubtitleAdded": true,
+    "chapter02LabelChanged": true,
+    "chapter02IntroductionChanged": true,
+    "chapter02DynamicTextOverrideFixed": true,
+    "chapter02ArtifactFeatureChanged": true,
+    "chapter03TitleChanged": true,
+    "chapter03SubtitleChanged": true,
+    "chapter03LabelChanged": true,
+    "chapter04TitleChanged": true,
+    "chapter04SubtitleChanged": true,
+    "chapter04LabelChanged": true,
+    "chapter04IntroductionChanged": true,
+    "chapter04ComparisonCaptionChanged": true,
+    "endingLabelAdded": true,
+    "endingTitleAdded": true,
+    "endingSubtitleAdded": true,
+    "endingClosingQuestionAdded": true,
+    "navigationTitlesUpdated": true
+  },
+  "dataIntegrity": {
+    "knowledgeMapDataModified": false,
+    "dolmenPointCloudModified": false,
+    "cupmarkCoordinatesModified": false,
+    "modelGeometryModified": false,
+    "textureModified": false,
+    "asterismDataModified": false,
+    "interpretationBodiesModified": false,
+    "endingStarDataModified": false
+  },
+  "regression": {
+    "openingPreserved": "source_unchanged",
+    "chapter01InteractionsPreserved": "isolated_browser_checked; underlying logic unchanged",
+    "chapter02ViewerPreserved": "viewer code and model unchanged; full WebGL integration not tested",
+    "chapter03InterpretationsPreserved": "four panel DOM trees byte-equivalent when serialized",
+    "chapter04InteractionsPreserved": "skyOverlay.js unchanged; isolated visual load",
+    "endingAnimationPreserved": "endingSky.js unchanged; isolated measured-stars rendering visually checked"
+  },
+  "tests": {
+    "desktopTests": [
+      {
+        "viewport": "1920x1080",
+        "status": "passed_isolated_layout_and_script"
+      },
+      {
+        "viewport": "1440x900",
+        "status": "passed_isolated_layout_and_script"
+      },
+      {
+        "viewport": "1366x768",
+        "status": "passed_isolated_layout_and_script"
+      },
+      {
+        "viewport": "1024x768",
+        "status": "passed_isolated_layout_and_script"
+      }
+    ],
+    "mobileTests": [
+      {
+        "viewport": "390x844",
+        "status": "passed_isolated_layout_and_script",
+        "actualTouchDevice": "not_tested"
+      }
+    ],
+    "textVerification": "passed_exact_string_and_DOM_checks",
+    "visualComparison": "testshots/v32-*-isolated.png (Chapter 01-04 and Ending, 5 viewports)",
+    "browserTests": "Original HTML/CSS and actual JS inlined into headless Chromium; network/model content stubbed as needed; no full-site remote or actual 3D model test",
+    "knownIssues": [
+      "The sandbox browser blocks local and virtual-host navigation, so full site URL regression was unavailable.",
+      "Chapter 02 GLB texture/GPU rendering not verified here.",
+      "No real mobile hardware touch test."
+    ]
+  },
+  "fileIntegrity": {
+    "unchangedBaselineFiles": 255,
+    "modifiedBaselineFiles": [
+      "css/sky-overlay.css",
+      "css/style.css",
+      "index.html",
+      "js/main.js"
+    ],
+    "missingBaselineFiles": [],
+    "baselineFileCount": 259
+  },
+  "schema": "v32"
+}

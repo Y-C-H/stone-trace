@@ -5,8 +5,8 @@
  */
 (function(){
   const DATA=window.STONE_GRAPH_DATA||{groups:{},nodes:[],links:[]};
-  const BASE_NODES=(DATA.nodes||[]).map(n=>[n.id,n.label,n.g,n.text,n.image,n.images,n.source]);
-  const BASE_LINKS=(DATA.links||[]).map(l=>[l.source,l.target,l.sourceType]);
+  const BASE_NODES=(DATA.nodes||[]).map(n=>[n.id,n.label,n.g,n.text,n.image,n.images,n.source,n.memoryRole,n.memoryLens]);
+  const BASE_LINKS=(DATA.links||[]).map(l=>[l.source,l.target,l.sourceType,l.relationType,l.reason]);
 
   /* Visual system follows the user-supplied "별자리페이지프롬프트":
    * radial night-sky background, spherical nodes, subtle depth fading,
@@ -29,15 +29,22 @@
     n:[-75,405,-235],
     d:[475,455,315],
     e:[-575,145,95],
-    w:[-360,445,-85]
+    w:[-360,445,-85],
+    r:[-760,-340,-95],
+    m:[185,-520,-120]
   };
-  const GROUP_SPREAD={c:0,a:84,b:70,p:86,u:82,s:74,k:76,e:75,n:60,w:85,d:74};
-  const HUB_BY_GROUP={c:'dol',a:'a5',b:'b2',p:'p1',u:'u1',s:'s1',k:'k1',e:'e0',n:'n1',w:'w2',d:'d0'};
+  const GROUP_SPREAD={c:0,a:84,b:70,p:86,u:82,s:74,k:76,e:75,n:60,w:85,d:74,r:65,m:72};
+  const HUB_BY_GROUP={c:'dol',a:'a5',b:'b2',p:'p1',u:'u1',s:'s1',k:'k1',e:'e0',n:'n1',w:'w2',d:'d0',r:'r1',m:'m1'};
   const CORE_LINKS=new Set([
     'b2|dol','b2|b5','b5|u8','k1|u1','d0|dol','dol|n1',
     'k1|k9','dol|s1','p2|s1','p4|s4','p6|s7','p7|s8','p9|s9'
   ]);
   const STORAGE='dolmen-added';
+  const MEMORY_COLORS={
+    '매체':'#82c5ed','저장기억':'#9bc8a2','기능기억':'#f2c47c',
+    '소통적 기억':'#d5abed','지각':'#f2a69b','해석틀':'#cad2e0'
+  };
+  let memoryMode=false;
   // v26: exhibition animation does not depend on OS/browser motion preferences.
   const LABEL_FONT='"Noto Serif KR", "Nanum Myeongjo", Georgia, serif';
   const F=1000;
@@ -66,6 +73,7 @@
   function linkedToFocus(n){return !focusId||n.id===focusId||(adj[focusId]&&adj[focusId].has(n.id))}
   function visibleNode(n){return !!on[n.g]}
   function nodeOpacity(n){if(!visibleNode(n))return 0;return linkedToFocus(n)?1:.18}
+  function nodeColor(n){return memoryMode&&MEMORY_COLORS[n.memoryRole]?MEMORY_COLORS[n.memoryRole]:(GR[n.g]?.[1]||'#dfe8f5')}
 
   function rebuildAdj(){
     adj={};
@@ -105,8 +113,8 @@
   }
 
   function loadData(){
-    nodes=BASE_NODES.map(([id,label,g,text,image,images,source])=>({id,label,g,text,image,images:Array.isArray(images)?images:(image?[image]:[]),source}));
-    links=BASE_LINKS.map(([source,target,sourceType])=>({source,target,sourceType}));
+    nodes=BASE_NODES.map(([id,label,g,text,image,images,source,memoryRole,memoryLens])=>({id,label,g,text,image,images:Array.isArray(images)?images:(image?[image]:[]),source,memoryRole:memoryRole||'',memoryLens:memoryLens||''}));
+    links=BASE_LINKS.map(([source,target,sourceType,relationType,reason])=>({source,target,sourceType,relationType:relationType||'',reason:reason||''}));
     try{
       const saved=JSON.parse(localStorage.getItem(STORAGE)||'[]');
       saved.forEach((r,i)=>addNode(r,false,i));
@@ -148,12 +156,21 @@
 
   function renderFilters(){
     filters.innerHTML='';
-    Object.entries(GR).forEach(([g,[name,color]])=>{
+    Object.entries(GR).filter(([g])=>nodes.some(n=>n.g===g)).forEach(([g,[name,color]])=>{
       const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',on[g]?'true':'false');
       const i=document.createElement('i');i.style.background=color;b.append(i,document.createTextNode(name));
       b.addEventListener('click',()=>{on[g]=!on[g];b.setAttribute('aria-pressed',on[g]?'true':'false');if(focusId&&!on[groupOf(focusId)])closePanel();});
       filters.appendChild(b);
     });
+    const memoryButton=document.createElement('button');memoryButton.type='button';memoryButton.className='graph-memory-toggle';
+    memoryButton.textContent='기억 보기';memoryButton.setAttribute('aria-pressed','false');
+    memoryButton.title='기억의 역할에 따라 노드 색상을 구분합니다.';
+    memoryButton.addEventListener('click',()=>{
+      memoryMode=!memoryMode;memoryButton.setAttribute('aria-pressed',String(memoryMode));
+      memoryButton.textContent=memoryMode?'분류 보기':'기억 보기';
+      for(const n of nodes){const label=labels.get(n.id);if(label)label.style.color=nodeColor(n);}
+    });
+    filters.appendChild(memoryButton);
     const add=document.createElement('button');add.type='button';add.className='graph-add-star';add.textContent='별 추가하기';add.addEventListener('click',openAddPanel);filters.appendChild(add);
   }
 
@@ -279,7 +296,7 @@
     const base=nodeOpacity(n)*depthFade(p)*twinkle;
     const opacity=clamp(base*(.38+.62*bright),0,1);
     const r=Math.max(1.1,RAD[rank]*p.s*(n.randSize??1));
-    const color=GR[n.g]?.[1]||'#dfe8f5',shadow=GR[n.g]?.[2]||'#4f5f78';
+    const color=nodeColor(n),shadow=memoryMode?shadowColor(color):GR[n.g]?.[2]||'#4f5f78';
     const showHalo=rank>=2||bright>1.02;
     if(showHalo){
       const haloScale=(rank===3?3.4:2.45)*glow;
@@ -365,7 +382,18 @@
   function closeButton(){const b=document.createElement('button');b.type='button';b.className='graph-panel-close';b.textContent='×';b.setAttribute('aria-label','닫기');b.addEventListener('click',closePanel);return b;}
   function connectedButtons(id){
     const wrap=document.createElement('div');wrap.className='graph-connected-links';
-    for(const x of (adj[id]||[])){const n=nodeById(x);if(!n)continue;const b=document.createElement('button');b.type='button';b.textContent=n.label;b.addEventListener('click',()=>selectNode(n.id));wrap.appendChild(b);}
+    for(const x of (adj[id]||[])){
+      const n=nodeById(x);if(!n)continue;
+      const item=document.createElement('div');item.className='graph-connected-item';
+      const b=document.createElement('button');b.type='button';b.textContent=n.label;
+      b.addEventListener('click',()=>selectNode(n.id));item.appendChild(b);
+      const edge=links.find(l=>(l.source===id&&l.target===x)||(l.source===x&&l.target===id));
+      if(edge&&(edge.relationType||edge.reason)){
+        const detail=document.createElement('span');detail.className='graph-connection-detail';
+        detail.textContent=[edge.relationType,edge.reason].filter(Boolean).join(' · ');item.appendChild(detail);
+      }
+      wrap.appendChild(item);
+    }
     return wrap;
   }
   function showInfo(id){
@@ -385,9 +413,16 @@
     }
     if(n.text){const p=document.createElement('p');p.textContent=n.text;panel.appendChild(p);}
     else{const pending=document.createElement('div');pending.className='graph-panel-note graph-data-pending';pending.textContent='설명 데이터 입력 예정';panel.appendChild(pending);}
+    if(n.memoryRole){const r=document.createElement('div');r.className='graph-memory-role';r.textContent='기억의 역할 · '+n.memoryRole;panel.appendChild(r);}
+    if(n.memoryLens){
+      const box=document.createElement('section');box.className='graph-memory-lens';
+      const title=document.createElement('strong');title.textContent='기억의 눈으로 보면';
+      const content=document.createElement('p');content.textContent=n.memoryLens;
+      box.append(title,content);panel.appendChild(box);
+    }
     if(adj[id]?.size){const s=document.createElement('div');s.className='graph-panel-tag';s.textContent='연결된 별';panel.append(s,connectedButtons(id));}
     if(n.g==='p'){const note=document.createElement('div');note.className='graph-panel-note';note.textContent='철학 노드와 그 연결은 자료의 내용이 아니라 연구 방향을 정리한 해석 초안입니다. 인용 전에 원전으로 확인하세요.';panel.appendChild(note);}
-    if(n.g==='s'){const note=document.createElement('div');note.className='graph-panel-note';note.textContent='스캔 데이터 노드는 실제 3D 스캔 후 값이 입력될 자리입니다. 현재 설명은 데이터 구조와 전시 연결 방식을 보여주는 안내입니다.';panel.appendChild(note);}
+    // Group 's' is now 바위그림; do not append the former scan-data placeholder note.
     panel.appendChild(buildAddDetails());panel.classList.add('on');panel.setAttribute('aria-hidden','false');
   }
   function selectNode(id){focusId=id;hoverId=id;lastInteraction=performance.now();showInfo(id);targetDist=Math.max(fitDistance*.58,fitDistance*(id==='dol'?.72:.82));}

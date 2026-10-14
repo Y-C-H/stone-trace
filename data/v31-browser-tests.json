@@ -1,0 +1,67 @@
+[
+  {
+    "viewport": "1920x1080",
+    "buttonCount": 4,
+    "panelCount": 4,
+    "navigationPass": true,
+    "contentScrollPass": true,
+    "sourcesOpenClosePass": true,
+    "pageErrors": [],
+    "layout": {
+      "height": 797.328125,
+      "width": 1360
+    }
+  },
+  {
+    "viewport": "1440x900",
+    "buttonCount": 4,
+    "panelCount": 4,
+    "navigationPass": true,
+    "contentScrollPass": true,
+    "sourcesOpenClosePass": true,
+    "pageErrors": [],
+    "layout": {
+      "height": 645.15625,
+      "width": 1238.390625
+    }
+  },
+  {
+    "viewport": "1366x768",
+    "buttonCount": 4,
+    "panelCount": 4,
+    "navigationPass": true,
+    "contentScrollPass": true,
+    "sourcesOpenClosePass": true,
+    "pageErrors": [],
+    "layout": {
+      "height": 559.90625,
+      "width": 1174.75
+    }
+  },
+  {
+    "viewport": "1024x768",
+    "buttonCount": 4,
+    "panelCount": 4,
+    "navigationPass": true,
+    "contentScrollPass": true,
+    "sourcesOpenClosePass": true,
+    "pageErrors": [],
+    "layout": {
+      "height": 568.796875,
+      "width": 921.59375
+    }
+  },
+  {
+    "viewport": "390x844",
+    "buttonCount": 4,
+    "panelCount": 4,
+    "navigationPass": true,
+    "contentScrollPass": true,
+    "sourcesOpenClosePass": true,
+    "pageErrors": [],
+    "layout": {
+      "height": 613.15625,
+      "width": 358
+    }
+  }
+]

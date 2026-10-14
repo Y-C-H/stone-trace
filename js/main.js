@@ -1,21 +1,12 @@
 (function(){
   const PROJECT_TITLE_KO='돌에 새겨진 흔적';
   const PROJECT_SUBTITLE='3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색';
-  const interpretationData={
-    fertility:{index:'INTERPRETATION 01',name:'풍요·다산',body:'일부 연구에서는 성혈을 풍요·다산과 관련된 것으로 해석했습니다.',boundary:'이 설명은 성혈의 의미를 확정하는 결론이 아니라 선행 연구에서 제시된 해석 가능성입니다.',type:'해석 · 가설',illustration:'assets/illustrations/fertility.svg'},
-    ritual:{index:'INTERPRETATION 02',name:'제의·의례',body:'일부 연구에서는 성혈을 공동체의 제의·의례 행위와 관련된 것으로 해석했습니다.',boundary:'의례와의 관계는 유물의 배치, 주변 맥락, 비교 사례 등과 함께 검토해야 하는 해석 영역입니다.',type:'해석 · 가설',illustration:'assets/illustrations/ritual.svg'},
-    sun:{index:'INTERPRETATION 03',name:'태양·자연의 상징',body:'일부 연구에서는 돌에 남은 원형의 홈을 태양 또는 자연의 상징과 연결해 해석했습니다.',boundary:'원형이라는 형태만으로 특정 상징을 단정하지 않고, 선행 연구의 한 관점으로 제시합니다.',type:'해석 · 가설',illustration:'assets/illustrations/sun.svg'},
-    folk:{index:'INTERPRETATION 04',name:'민간신앙',body:'일부 연구에서는 성혈을 민간신앙 또는 주술적 행위와 관련된 것으로 해석했습니다.',boundary:'민간신앙과의 관련성 역시 하나의 해석 가능성이며, 대상 유물의 제작 의도를 확정하는 설명으로 사용하지 않습니다.',type:'해석 · 가설',illustration:'assets/illustrations/folk-belief.svg'},
-    astronomy:{index:'INTERPRETATION 05',name:'별자리 관련 가능성',body:'일부 연구에서는 성혈 또는 돌에 남은 점·홈의 배열을 별자리와 연결해 해석한 사례가 있습니다. 하나의 해석 가능성일 뿐 결론이 아닙니다.',boundary:'형태적 유사성과 과거 제작자의 의도는 서로 다른 문제이므로, 분석 결과와 역사적 해석을 구분합니다.',type:'해석 · 가설',illustration:'assets/illustrations/astronomy.svg'},
-    other:{index:'INTERPRETATION 06',name:'그 밖의 가능성',body:'일부 연구에서는 성혈을 인구나 수량의 기록, 장소 표식 등으로 해석했습니다.',boundary:'서로 다른 해석의 근거와 한계를 함께 보여주고, 하나의 설명으로 수렴시키지 않습니다.',type:'해석 · 가설',illustration:'assets/illustrations/other.svg'}
-  };
-
   const CHAPTER_TITLES=[
     '고인돌 지식지도',
-    '고인돌과 성혈 관찰',
-    '여러가지 해석',
-    '성혈을 밤하늘에 겹쳐보기',
-    '마지막 장면'
+    '쌓여 있는 흔적',
+    '다시 불러낸 뜻',
+    '오늘의 하늘에 비춰 보다',
+    '수치로 다시 그린 하늘'
   ];
 
   let pages=[];
@@ -130,14 +121,48 @@
   }
 
   function initInterpretations(){
-    const detail=document.getElementById('interpretationDetail'),visual=document.getElementById('interpretationIllustration');
-    document.querySelectorAll('.interpretation-item').forEach(btn=>btn.addEventListener('click',()=>{
-      const d=interpretationData[btn.dataset.interpretation];
-      document.querySelectorAll('.interpretation-item').forEach(b=>{b.classList.toggle('active',b===btn);b.setAttribute('aria-expanded',b===btn?'true':'false');});
-      detail.animate([{opacity:.55,transform:'translateY(4px)'},{opacity:1,transform:'none'}],{duration:280,easing:'ease-out'});
-      document.getElementById('interpretationIndex').textContent=d.index;document.getElementById('interpretationName').textContent=d.name;document.getElementById('interpretationBody').textContent=d.body;detail.querySelector('.type-label').textContent=d.type;
-      if(visual)visual.src=d.illustration;
-    }));
+    const container=document.getElementById('interpretationPanels');
+    if(!container)return;
+    const buttons=[...document.querySelectorAll('#chapter-03 .interpretation-item')];
+    const panels=[...container.querySelectorAll('[data-interpretation-panel]')];
+    function closeSources(){
+      container.querySelectorAll('[data-interpretation-sources]').forEach(button=>{
+        button.setAttribute('aria-expanded','false');
+        const source=document.getElementById(button.getAttribute('aria-controls'));
+        if(source)source.hidden=true;
+      });
+    }
+    function selectInterpretation(key){
+      const selected=panels.find(panel=>panel.dataset.interpretationPanel===key);
+      if(!selected)return;
+      closeSources();
+      buttons.forEach(button=>{
+        const active=button.dataset.interpretation===key;
+        button.classList.toggle('active',active);
+        button.setAttribute('aria-expanded',String(active));
+      });
+      panels.forEach(panel=>{panel.hidden=panel!==selected;});
+      const body=selected.querySelector('.interpretation-body');
+      if(body)body.scrollTop=0;
+      if(typeof selected.animate==='function'){
+        selected.animate([{opacity:.6,transform:'translateY(4px)'},{opacity:1,transform:'translateY(0)'}],{duration:220,easing:'ease-out'});
+      }
+    }
+    buttons.forEach(button=>button.addEventListener('click',()=>selectInterpretation(button.dataset.interpretation)));
+    container.addEventListener('click',event=>{
+      const button=event.target.closest('[data-interpretation-sources]');
+      if(!button)return;
+      const opening=button.getAttribute('aria-expanded')!=='true';
+      closeSources();
+      const source=document.getElementById(button.getAttribute('aria-controls'));
+      if(!source)return;
+      source.hidden=!opening;
+      button.setAttribute('aria-expanded',String(opening));
+    });
+    document.addEventListener('pointerdown',event=>{
+      if(!event.target.closest('#chapter-03 .interpretation-detail'))closeSources();
+    });
+    document.addEventListener('keydown',event=>{if(event.key==='Escape')closeSources();});
   }
 
   function initSources(){
@@ -160,10 +185,9 @@
     observation?.classList.toggle('is-active',!isOverview);
     overview?.setAttribute('aria-hidden',isOverview?'false':'true');
     observation?.setAttribute('aria-hidden',isOverview?'true':'false');
-    const question=document.getElementById('observationModeQuestion');
-    if(question)question.textContent=isOverview
-      ?'우리는 이 돌을 어떻게 지각하는가? 눈앞의 물질과 그 표면에 축적된 시간을 함께 바라봅니다.'
-      :'실측 좌표로 등록한 성혈 위치를 켜고 선택하여 직경과 깊이 등의 측정 정보를 살펴보실 수 있습니다.';
+    // v32: Keep the curatorial introduction constant in both observation modes.
+    // The stage headings and interaction help already explain mode-specific actions.
+    // Do not overwrite #observationModeQuestion here.
     requestAnimationFrame(()=>window.dispatchEvent(new CustomEvent('exhibition:observationchange',{detail:{mode}})));
     if(focus){
       const target=isOverview?document.getElementById('enterObservation'):document.getElementById('returnOverview');

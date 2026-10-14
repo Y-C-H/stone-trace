@@ -1,0 +1,123 @@
+{
+  "version": {
+    "baseVersion": "v30",
+    "resultVersion": "v31"
+  },
+  "chapter03": {
+    "oldTitleAndSixDescriptionsRemoved": true,
+    "newHeading": "성혈의 네 가지 해석",
+    "interpretationCount": 4,
+    "titles": [
+      "치성의 흔적",
+      "별자리 투영",
+      "친족 집단 표시의 기능",
+      "농경사회의 기념물로써의 기능"
+    ],
+    "paragraphCounts": [
+      4,
+      2,
+      2,
+      5
+    ],
+    "sourceButtonCount": 4,
+    "sourceButtonActive": true,
+    "sourceDetailsAsProvided": true,
+    "sourceVerification": "User-provided material; independently unverified. First interpretation lacks complete bibliography and links. Other unlinked sources are displayed as citations. KCI link is user-provided.",
+    "readingUI": "Scrollable main text in detail panel. Source button remains pinned in the lower-right footer.",
+    "illustrationStyle": "existing static exhibition illustrations reused",
+    "visualStyle": "existing dark museum theme preserved"
+  },
+  "regression": {
+    "changedBaselineFiles": [
+      "css/style.css",
+      "index.html",
+      "js/main.js"
+    ],
+    "unchangedBaselineFiles": 250,
+    "missingBaselineFiles": [],
+    "chapter01": "unchanged_sources",
+    "chapter02": "unchanged_sources",
+    "chapter04": "unchanged_sources",
+    "ending": "unchanged_sources",
+    "3dModelsAndMeasurements": "unchanged_files"
+  },
+  "testing": {
+    "javascriptSyntax": "passed_node_check",
+    "pageStructure": "passed_bs4_and_file_diff",
+    "isolatedChapter03Chromium": [
+      {
+        "viewport": "1920x1080",
+        "buttonCount": 4,
+        "panelCount": 4,
+        "navigationPass": true,
+        "contentScrollPass": true,
+        "sourcesOpenClosePass": true,
+        "pageErrors": [],
+        "layout": {
+          "height": 797.328125,
+          "width": 1360
+        }
+      },
+      {
+        "viewport": "1440x900",
+        "buttonCount": 4,
+        "panelCount": 4,
+        "navigationPass": true,
+        "contentScrollPass": true,
+        "sourcesOpenClosePass": true,
+        "pageErrors": [],
+        "layout": {
+          "height": 645.15625,
+          "width": 1238.390625
+        }
+      },
+      {
+        "viewport": "1366x768",
+        "buttonCount": 4,
+        "panelCount": 4,
+        "navigationPass": true,
+        "contentScrollPass": true,
+        "sourcesOpenClosePass": true,
+        "pageErrors": [],
+        "layout": {
+          "height": 559.90625,
+          "width": 1174.75
+        }
+      },
+      {
+        "viewport": "1024x768",
+        "buttonCount": 4,
+        "panelCount": 4,
+        "navigationPass": true,
+        "contentScrollPass": true,
+        "sourcesOpenClosePass": true,
+        "pageErrors": [],
+        "layout": {
+          "height": 568.796875,
+          "width": 921.59375
+        }
+      },
+      {
+        "viewport": "390x844",
+        "buttonCount": 4,
+        "panelCount": 4,
+        "navigationPass": true,
+        "contentScrollPass": true,
+        "sourcesOpenClosePass": true,
+        "pageErrors": [],
+        "layout": {
+          "height": 613.15625,
+          "width": 358
+        }
+      }
+    ],
+    "actualIntegratedSite": "not_verified_due_to_browser_policy_blocking_file_and_local_network_access",
+    "mobilePhysicalDevice": "not_tested",
+    "screenshotPreviews": [
+      "testshots/v31-ch03-1440x900-default.png",
+      "testshots/v31-ch03-390x844-default.png",
+      "testshots/v31-ch03-1440x900-agriculture.png",
+      "testshots/v31-ch03-390x844-agriculture.png"
+    ]
+  }
+}

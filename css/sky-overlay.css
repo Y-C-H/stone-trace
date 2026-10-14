@@ -77,3 +77,6 @@
   .sky-mobile-scroll-cue span{font-size:17px}
   .sky-mobile-scroll-cue:focus-visible{outline:2px solid #c7d9ec;outline-offset:2px}
 }
+
+/* v32: the new Chapter 04 introduction must remain visible on mobile. */
+@media(max-width:760px){.sky-overlay-heading .sky-overlay-intro>p:first-child{display:block;margin-top:0}}

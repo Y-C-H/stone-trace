@@ -1,0 +1,107 @@
+[
+  {
+    "viewport": "1920x1080",
+    "stats": {
+      "dataNodes": 91,
+      "links": 109,
+      "groups": 13,
+      "cloud": 600,
+      "graphNodes": 91,
+      "graphLinks": 109,
+      "b14": "암각화",
+      "filterButtons": 13,
+      "pointSizeRadius": 1920
+    },
+    "errors": [],
+    "memoryToggleOn": "true",
+    "memoryToggleRestored": "false",
+    "panelContainsMemoryRole": true,
+    "panelContainsMemoryLens": true,
+    "panelContainsRelations": true,
+    "screenshot": "testshots/v29-graph-1920x1080.png"
+  },
+  {
+    "viewport": "1440x900",
+    "stats": {
+      "dataNodes": 91,
+      "links": 109,
+      "groups": 13,
+      "cloud": 600,
+      "graphNodes": 91,
+      "graphLinks": 109,
+      "b14": "암각화",
+      "filterButtons": 13,
+      "pointSizeRadius": 1440
+    },
+    "errors": [],
+    "memoryToggleOn": "true",
+    "memoryToggleRestored": "false",
+    "panelContainsMemoryRole": true,
+    "panelContainsMemoryLens": true,
+    "panelContainsRelations": true,
+    "screenshot": "testshots/v29-graph-1440x900.png"
+  },
+  {
+    "viewport": "1366x768",
+    "stats": {
+      "dataNodes": 91,
+      "links": 109,
+      "groups": 13,
+      "cloud": 600,
+      "graphNodes": 91,
+      "graphLinks": 109,
+      "b14": "암각화",
+      "filterButtons": 13,
+      "pointSizeRadius": 1366
+    },
+    "errors": [],
+    "memoryToggleOn": "true",
+    "memoryToggleRestored": "false",
+    "panelContainsMemoryRole": true,
+    "panelContainsMemoryLens": true,
+    "panelContainsRelations": true,
+    "screenshot": "testshots/v29-graph-1366x768.png"
+  },
+  {
+    "viewport": "1024x768",
+    "stats": {
+      "dataNodes": 91,
+      "links": 109,
+      "groups": 13,
+      "cloud": 600,
+      "graphNodes": 91,
+      "graphLinks": 109,
+      "b14": "암각화",
+      "filterButtons": 13,
+      "pointSizeRadius": 1024
+    },
+    "errors": [],
+    "memoryToggleOn": "true",
+    "memoryToggleRestored": "false",
+    "panelContainsMemoryRole": true,
+    "panelContainsMemoryLens": true,
+    "panelContainsRelations": true,
+    "screenshot": "testshots/v29-graph-1024x768.png"
+  },
+  {
+    "viewport": "390x844",
+    "stats": {
+      "dataNodes": 91,
+      "links": 109,
+      "groups": 13,
+      "cloud": 600,
+      "graphNodes": 91,
+      "graphLinks": 109,
+      "b14": "암각화",
+      "filterButtons": 13,
+      "pointSizeRadius": 390
+    },
+    "errors": [],
+    "memoryToggleOn": "true",
+    "memoryToggleRestored": "false",
+    "panelContainsMemoryRole": true,
+    "panelContainsMemoryLens": true,
+    "panelContainsRelations": true,
+    "screenshot": "testshots/v29-graph-390x844.png"
+  }
+]

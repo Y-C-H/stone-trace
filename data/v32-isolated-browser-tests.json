@@ -1,0 +1,722 @@
+[
+  {
+    "viewport": "1920x1080",
+    "pages": [
+      {
+        "page": "chapter-01",
+        "window": [
+          1920,
+          1080
+        ],
+        "texts": [
+          {
+            "text": "고인돌에 관한 이야기를 별자리처럼 이어 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              18,
+              37.78125,
+              710,
+              22.1875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-02",
+        "window": [
+          1920,
+          1080
+        ],
+        "texts": [
+          {
+            "text": "돌 위에 남은 시간을 가까이 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              280,
+              149.6875,
+              819.890625,
+              21
+            ]
+          },
+          {
+            "text": "이 돌의 표면에는 아주 오래전에 새겨진 흔적이 쌓여 있습니다. 지금은 아무도 쓰지 않아도 그대로 남아 있는 기억, 아스만은 이것을 '저장기억'이",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              1195.890625,
+              74.3125,
+              444.109375,
+              92.375
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-03",
+        "window": [
+          1920,
+          1080
+        ],
+        "texts": [
+          {
+            "text": "사람들은 이 흔적에 어떤 이름을 붙여 왔을까요",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              280,
+              149.359375,
+              819.890625,
+              18.84375
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-04",
+        "window": [
+          1920,
+          1080
+        ],
+        "texts": [
+          {
+            "text": "성혈과 별을 겹쳐 보며 우리도 물어봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              72,
+              118.78125,
+              802.234375,
+              20.875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "exhibition-ending",
+        "window": [
+          1920,
+          1080
+        ],
+        "texts": [
+          {
+            "text": "DATA AS A SKY\n    수치로 다시 그린 하늘\n    성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              124,
+              84.234375,
+              1672,
+              121.125
+            ]
+          },
+          {
+            "text": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              211.1875,
+              908.703125,
+              1497.625,
+              36.296875
+            ]
+          },
+          {
+            "text": "←",
+            "display": "grid",
+            "visible": true,
+            "bounds": [
+              16,
+              1017.609375,
+              48,
+              48
+            ]
+          }
+        ],
+        "crossed": []
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "viewport": "1440x900",
+    "pages": [
+      {
+        "page": "chapter-01",
+        "window": [
+          1440,
+          900
+        ],
+        "texts": [
+          {
+            "text": "고인돌에 관한 이야기를 별자리처럼 이어 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              18,
+              37.78125,
+              710,
+              22.1875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-02",
+        "window": [
+          1440,
+          900
+        ],
+        "texts": [
+          {
+            "text": "돌 위에 남은 시간을 가까이 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              100.796875,
+              137.75,
+              747.234375,
+              19.421875
+            ]
+          },
+          {
+            "text": "이 돌의 표면에는 아주 오래전에 새겨진 흔적이 쌓여 있습니다. 지금은 아무도 쓰지 않아도 그대로 남아 있는 기억, 아스만은 이것을 '저장기억'이",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              934.421875,
+              93.3125,
+              404.765625,
+              59.859375
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-03",
+        "window": [
+          1440,
+          900
+        ],
+        "texts": [
+          {
+            "text": "사람들은 이 흔적에 어떤 이름을 붙여 왔을까요",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              100.796875,
+              137.421875,
+              747.234375,
+              18.84375
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-04",
+        "window": [
+          1440,
+          900
+        ],
+        "texts": [
+          {
+            "text": "성혈과 별을 겹쳐 보며 우리도 물어봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              66.234375,
+              111.375,
+              586.734375,
+              19.84375
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "exhibition-ending",
+        "window": [
+          1440,
+          900
+        ],
+        "texts": [
+          {
+            "text": "DATA AS A SKY\n    수치로 다시 그린 하늘\n    성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              100.796875,
+              70.1875,
+              1238.40625,
+              120.140625
+            ]
+          },
+          {
+            "text": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              158.390625,
+              751.203125,
+              1123.21875,
+              36.296875
+            ]
+          },
+          {
+            "text": "←",
+            "display": "grid",
+            "visible": true,
+            "bounds": [
+              16,
+              837.609375,
+              48,
+              48
+            ]
+          }
+        ],
+        "crossed": []
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "viewport": "1366x768",
+    "pages": [
+      {
+        "page": "chapter-01",
+        "window": [
+          1366,
+          768
+        ],
+        "texts": [
+          {
+            "text": "고인돌에 관한 이야기를 별자리처럼 이어 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              18,
+              33.78125,
+              710,
+              21.21875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-02",
+        "window": [
+          1366,
+          768
+        ],
+        "texts": [
+          {
+            "text": "돌 위에 남은 시간을 가까이 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              95.625,
+              121.671875,
+              708.828125,
+              18.4375
+            ]
+          },
+          {
+            "text": "이 돌의 표면에는 아주 오래전에 새겨진 흔적이 쌓여 있습니다. 지금은 아무도 쓰지 않아도 그대로 남아 있는 기억, 아스만은 이것을 '저장기억'이",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              886.40625,
+              56.921875,
+              383.953125,
+              79.1875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-03",
+        "window": [
+          1366,
+          768
+        ],
+        "texts": [
+          {
+            "text": "사람들은 이 흔적에 어떤 이름을 붙여 왔을까요",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              95.625,
+              119.265625,
+              708.828125,
+              18.125
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-04",
+        "window": [
+          1366,
+          768
+        ],
+        "texts": [
+          {
+            "text": "성혈과 별을 겹쳐 보며 우리도 물어봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              62.828125,
+              70.640625,
+              555.828125,
+              18.8125
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "exhibition-ending",
+        "window": [
+          1366,
+          768
+        ],
+        "texts": [
+          {
+            "text": "DATA AS A SKY\n    수치로 다시 그린 하늘\n    성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              95.609375,
+              59.890625,
+              1174.78125,
+              116.046875
+            ]
+          },
+          {
+            "text": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              150.25,
+              633.078125,
+              1065.5,
+              34.921875
+            ]
+          },
+          {
+            "text": "←",
+            "display": "grid",
+            "visible": true,
+            "bounds": [
+              16,
+              705.609375,
+              48,
+              48
+            ]
+          }
+        ],
+        "crossed": []
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "viewport": "1024x768",
+    "pages": [
+      {
+        "page": "chapter-01",
+        "window": [
+          1024,
+          768
+        ],
+        "texts": [
+          {
+            "text": "고인돌에 관한 이야기를 별자리처럼 이어 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              18,
+              33.78125,
+              610,
+              17.75
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-02",
+        "window": [
+          1024,
+          768
+        ],
+        "texts": [
+          {
+            "text": "돌 위에 남은 시간을 가까이 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              51.203125,
+              114.78125,
+              549.125,
+              18
+            ]
+          },
+          {
+            "text": "이 돌의 표면에는 아주 오래전에 새겨진 흔적이 쌓여 있습니다. 지금은 아무도 쓰지 않아도 그대로 남아 있는 기억, 아스만은 이것을 '저장기억'이",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              632.328125,
+              49.59375,
+              340.46875,
+              79.1875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-03",
+        "window": [
+          1024,
+          768
+        ],
+        "texts": [
+          {
+            "text": "사람들은 이 흔적에 어떤 이름을 붙여 왔을까요",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              51.203125,
+              110.375,
+              549.125,
+              18.125
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-04",
+        "window": [
+          1024,
+          768
+        ],
+        "texts": [
+          {
+            "text": "성혈과 별을 겹쳐 보며 우리도 물어봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              47.09375,
+              70.640625,
+              412.984375,
+              17.171875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "exhibition-ending",
+        "window": [
+          1024,
+          768
+        ],
+        "texts": [
+          {
+            "text": "DATA AS A SKY\n    수치로 다시 그린 하늘\n    성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              71.671875,
+              59.890625,
+              880.65625,
+              99.625
+            ]
+          },
+          {
+            "text": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              112.625,
+              641.8125,
+              798.75,
+              26.1875
+            ]
+          },
+          {
+            "text": "←",
+            "display": "grid",
+            "visible": true,
+            "bounds": [
+              16,
+              705.609375,
+              48,
+              48
+            ]
+          }
+        ],
+        "crossed": []
+      }
+    ],
+    "pageErrors": []
+  },
+  {
+    "viewport": "390x844",
+    "pages": [
+      {
+        "page": "chapter-01",
+        "window": [
+          390,
+          844
+        ],
+        "texts": [
+          {
+            "text": "고인돌에 관한 이야기를 별자리처럼 이어 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              12,
+              43.578125,
+              270,
+              17.390625
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-02",
+        "window": [
+          390,
+          844
+        ],
+        "texts": [
+          {
+            "text": "돌 위에 남은 시간을 가까이 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              16,
+              102.96875,
+              358,
+              16.796875
+            ]
+          },
+          {
+            "text": "이 돌의 표면에는 아주 오래전에 새겨진 흔적이 쌓여 있습니다. 지금은 아무도 쓰지 않아도 그대로 남아 있는 기억, 아스만은 이것을 '저장기억'이",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              16,
+              127.765625,
+              358,
+              68.0625
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-03",
+        "window": [
+          390,
+          844
+        ],
+        "texts": [
+          {
+            "text": "사람들은 이 흔적에 어떤 이름을 붙여 왔을까요",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              16,
+              101.421875,
+              358,
+              16.796875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "chapter-04",
+        "window": [
+          390,
+          844
+        ],
+        "texts": [
+          {
+            "text": "성혈과 별을 겹쳐 보며 우리도 물어봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              10.390625,
+              64.203125,
+              369.21875,
+              16.796875
+            ]
+          }
+        ],
+        "crossed": []
+      },
+      {
+        "page": "exhibition-ending",
+        "window": [
+          390,
+          844
+        ],
+        "texts": [
+          {
+            "text": "DATA AS A SKY\n    수치로 다시 그린 하늘\n    성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              18,
+              67.515625,
+              354,
+              80.578125
+            ]
+          },
+          {
+            "text": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+            "display": "block",
+            "visible": true,
+            "bounds": [
+              24,
+              703.6875,
+              342,
+              24.3125
+            ]
+          },
+          {
+            "text": "←",
+            "display": "grid",
+            "visible": true,
+            "bounds": [
+              16,
+              781.609375,
+              48,
+              48
+            ]
+          }
+        ],
+        "crossed": []
+      }
+    ],
+    "pageErrors": []
+  }
+]

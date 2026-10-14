@@ -1,0 +1,412 @@
+[
+  {
+    "version": "v32",
+    "viewport": "1920x1080",
+    "file": "testshots/v32-ending-1920x1080.png",
+    "durationSeconds": 2.26,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": null,
+      "btnRect": {
+        "x": 16,
+        "y": 1017.609375,
+        "width": 48,
+        "height": 48
+      }
+    },
+    "errors": []
+  },
+  {
+    "version": "v33",
+    "viewport": "1920x1080",
+    "file": "testshots/v33-ending-1920x1080.png",
+    "durationSeconds": 2.3,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": {
+        "sourceStatus": "loaded",
+        "measuredCount": 46,
+        "decorativeCount": 570,
+        "active": true,
+        "viewport": {
+          "width": 1920,
+          "height": 1080,
+          "scale": 0.546478529559969
+        },
+        "reducedMotion": false,
+        "renderedFrames": 22,
+        "averageDrawMs": 0.9863636362451044
+      },
+      "btnRect": {
+        "x": 16,
+        "y": 1017.609375,
+        "width": 48,
+        "height": 48
+      },
+      "returnWorks": true,
+      "reentryActive": true,
+      "pageErrors": []
+    },
+    "errors": []
+  },
+  {
+    "version": "v32",
+    "viewport": "1440x900",
+    "file": "testshots/v32-ending-1440x900.png",
+    "durationSeconds": 1.93,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": null,
+      "btnRect": {
+        "x": 16,
+        "y": 837.609375,
+        "width": 48,
+        "height": 48
+      }
+    },
+    "errors": []
+  },
+  {
+    "version": "v33",
+    "viewport": "1440x900",
+    "file": "testshots/v33-ending-1440x900.png",
+    "durationSeconds": 2.26,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": {
+        "sourceStatus": "loaded",
+        "measuredCount": 46,
+        "decorativeCount": 418,
+        "active": true,
+        "viewport": {
+          "width": 1440,
+          "height": 900,
+          "scale": 0.40985889716997675
+        },
+        "reducedMotion": false,
+        "renderedFrames": 23,
+        "averageDrawMs": 0.921739130442881
+      },
+      "btnRect": {
+        "x": 16,
+        "y": 837.609375,
+        "width": 48,
+        "height": 48
+      },
+      "returnWorks": true,
+      "reentryActive": true,
+      "pageErrors": []
+    },
+    "errors": []
+  },
+  {
+    "version": "v32",
+    "viewport": "1366x768",
+    "file": "testshots/v32-ending-1366x768.png",
+    "durationSeconds": 1.9,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": null,
+      "btnRect": {
+        "x": 16,
+        "y": 705.609375,
+        "width": 48,
+        "height": 48
+      }
+    },
+    "errors": []
+  },
+  {
+    "version": "v33",
+    "viewport": "1366x768",
+    "file": "testshots/v33-ending-1366x768.png",
+    "durationSeconds": 1.96,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": {
+        "sourceStatus": "loaded",
+        "measuredCount": 46,
+        "decorativeCount": 338,
+        "active": true,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "scale": 0.38879670384318626
+        },
+        "reducedMotion": false,
+        "renderedFrames": 23,
+        "averageDrawMs": 0.7521739131568567
+      },
+      "btnRect": {
+        "x": 16,
+        "y": 705.609375,
+        "width": 48,
+        "height": 48
+      },
+      "returnWorks": true,
+      "reentryActive": true,
+      "pageErrors": []
+    },
+    "errors": []
+  },
+  {
+    "version": "v32",
+    "viewport": "1024x768",
+    "file": "testshots/v32-ending-1024x768.png",
+    "durationSeconds": 1.9,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": null,
+      "btnRect": {
+        "x": 16,
+        "y": 705.609375,
+        "width": 48,
+        "height": 48
+      }
+    },
+    "errors": []
+  },
+  {
+    "version": "v33",
+    "viewport": "1024x768",
+    "file": "testshots/v33-ending-1024x768.png",
+    "durationSeconds": 1.74,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": {
+        "sourceStatus": "loaded",
+        "measuredCount": 46,
+        "decorativeCount": 260,
+        "active": true,
+        "viewport": {
+          "width": 1024,
+          "height": 768,
+          "scale": 0.2914552157653168
+        },
+        "reducedMotion": false,
+        "renderedFrames": 22,
+        "averageDrawMs": 0.7545454545285214
+      },
+      "btnRect": {
+        "x": 16,
+        "y": 705.609375,
+        "width": 48,
+        "height": 48
+      },
+      "returnWorks": true,
+      "reentryActive": true,
+      "pageErrors": []
+    },
+    "errors": []
+  },
+  {
+    "version": "v32",
+    "viewport": "390x844",
+    "file": "testshots/v32-ending-390x844.png",
+    "durationSeconds": 1.92,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": null,
+      "btnRect": {
+        "x": 16,
+        "y": 781.609375,
+        "width": 48,
+        "height": 48
+      }
+    },
+    "errors": []
+  },
+  {
+    "version": "v33",
+    "viewport": "390x844",
+    "file": "testshots/v33-ending-390x844.png",
+    "durationSeconds": 1.72,
+    "state": {
+      "active": true,
+      "text": "DATA AS A SKY\n\n수치로 다시 그린 하늘\n\n성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다",
+      "question": "여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?",
+      "info": {
+        "source": "data/cupmarks-measured.json",
+        "count": 46,
+        "diameterRange": [
+          8.5907,
+          91.8344
+        ],
+        "depthRange": [
+          0.4196,
+          51.427
+        ],
+        "projection": "X -> screen right; Z -> screen down",
+        "uniformScale": true
+      },
+      "debug": {
+        "sourceStatus": "loaded",
+        "measuredCount": 46,
+        "decorativeCount": 185,
+        "active": true,
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "scale": 0.11100345131686871
+        },
+        "reducedMotion": false,
+        "renderedFrames": 20,
+        "averageDrawMs": 0.6550000000745058
+      },
+      "btnRect": {
+        "x": 16.013229370117188,
+        "y": 781.6082763671875,
+        "width": 47.999725341796875,
+        "height": 48.000244140625
+      },
+      "returnWorks": true,
+      "reentryActive": true,
+      "pageErrors": []
+    },
+    "errors": []
+  }
+]

@@ -1,0 +1,103 @@
+{
+  "version": {
+    "baseVersion": "v28",
+    "resultVersion": "v29"
+  },
+  "knowledgeMap": {
+    "sourceWorkbook": "data/knowledge-map-source.xlsx",
+    "nodeCount": 91,
+    "linkCount": 109,
+    "categoryCount": 13,
+    "duplicateIds": 0,
+    "invalidLinks": 0,
+    "b14Included": true,
+    "memoryRoleDataApplied": true,
+    "memoryLensDataApplied": true,
+    "relationDetailsApplied": true,
+    "originalImagesPreserved": 48,
+    "graphInteractionWorking": "passed_in_isolated_chapter01_browser",
+    "memoryRoleCount": 91,
+    "memoryLensCount": 23,
+    "relationReasonsCount": 89
+  },
+  "pointCloud": {
+    "originalPointCount": 1182,
+    "resultPointCount": 600,
+    "targetPointCount": 600,
+    "originalPointSize": {
+      "rim": 0.79,
+      "surface": 0.6,
+      "renderer": "dot.r * k * 1.1 (or 1.25 if focused)"
+    },
+    "resultPointSize": {
+      "rim": 0.79,
+      "surface": 0.6,
+      "renderer": "unchanged"
+    },
+    "pointSizeIncreased": false,
+    "supportStructureRemoved": "visual_geometry_mask_applied_to_rectangular_lower_region",
+    "capstonePreserved": "original sampled capstone points retained unmodified",
+    "samplingMethod": "support-like region mask using vertical profile and irregular external/rear rim + nearest-pair thinning to 600",
+    "multiAngleValidation": "orthographic 4-angle sampled cloud comparisons",
+    "geometryCaveat": "single GLB mesh lacks a separately tagged support mesh; precise capstone/support boundary not independently classified"
+  },
+  "dataIntegrity": {
+    "chapter02CupmarkDataModified": false,
+    "chapter02ModelModified": false,
+    "textureModified": false,
+    "chapter04AsterismDataModified": false,
+    "endingDataModified": false
+  },
+  "regression": {
+    "openingPreserved": "source_unchanged",
+    "chapter01InteractionsPreserved": "isolated_browser_checks_passed",
+    "chapter02Preserved": "source_unchanged",
+    "chapter03Preserved": "source_unchanged",
+    "chapter04Preserved": "source_unchanged",
+    "endingPreserved": "source_unchanged"
+  },
+  "tests": {
+    "desktopTests": [
+      {
+        "viewport": "1920x1080",
+        "isolatedGraphPassed": true
+      },
+      {
+        "viewport": "1440x900",
+        "isolatedGraphPassed": true
+      },
+      {
+        "viewport": "1366x768",
+        "isolatedGraphPassed": true
+      },
+      {
+        "viewport": "1024x768",
+        "isolatedGraphPassed": true
+      }
+    ],
+    "mobileTests": [
+      {
+        "viewport": "390x844",
+        "isolatedGraphPassed": true,
+        "actualTouchDevice": "not_tested"
+      }
+    ],
+    "visualComparison": "testshots/v29-cloud-before-after-multi-angle.png",
+    "browserTests": "isolated Chapter 01 DOM, CSS and scripts under headless Chromium; full site navigation and WebGL not verified (local network blocked)",
+    "knownIssues": [
+      "No integrated full-site navigation or actual GPU 3D viewer test in this environment",
+      "Capstone/support segmentation approximated from original cloud; boundary not independently confirmed against scan labels"
+    ]
+  },
+  "fileIntegrity": {
+    "unchangedBaselineFiles": 238,
+    "modifiedBaselineFiles": [
+      "css/style.css",
+      "data/knowledge-map-source.xlsx",
+      "js/dolmenScanCloud.js",
+      "js/knowledgeData.js",
+      "js/knowledgeGraph.js"
+    ],
+    "missingBaselineFiles": []
+  }
+}

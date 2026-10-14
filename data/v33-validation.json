@@ -1,0 +1,144 @@
+{
+  "version": {
+    "baseVersion": "v32",
+    "resultVersion": "v33"
+  },
+  "endingBackground": {
+    "gradientBackgroundAdded": true,
+    "naturalNightSkyApplied": true,
+    "auroraAdded": true,
+    "auroraAnimationWorking": "20s_browser_frames_captured_and_different",
+    "nebulaOrAtmosphericGlowAdded": true,
+    "backgroundStarsAdded": true,
+    "backgroundStarsCount": {
+      "1920x1080": 570,
+      "1440x900": 418,
+      "1366x768": 338,
+      "1024x768": 260,
+      "390x844": 185
+    },
+    "deterministicStarGeneration": true,
+    "backgroundContrastValidated": "visual_inspection_browser_screenshots",
+    "visualDescription": "Deep navy gradient, restrained teal atmospheric bands and diffuse aurora; background remains behind measured stars."
+  },
+  "endingCupmarks": {
+    "cupmarkCount": 46,
+    "measuredCoordinatesPreserved": true,
+    "measuredDiameterPreserved": true,
+    "measuredDepthPreserved": true,
+    "diameterSizeMappingPreserved": true,
+    "depthBrightnessMappingPreserved": true,
+    "mainStarVisibilityImproved": "contrast_and_shared_halo_adjustment",
+    "haloAdjusted": true,
+    "originalGeometryPreserved": true,
+    "sameToStarsFunctionAsV32": true,
+    "measurementSourceSha256": "582cdf5e46bae4a55ecf630be459976dc4be34f80e89599948f1dea668b6c4c5"
+  },
+  "animation": {
+    "entryAnimationWorking": "isolated_browser_passed",
+    "slowAuroraMotionWorking": "actual_wall_clock_20_second_screenshot_captured; image differs",
+    "backgroundStarTwinkleWorking": "source_inspected_dynamic_trigonometric_brightness; visually_sampled",
+    "cupmarkHaloMotionWorking": "source_inspected_dynamic_outer_halo; visually_sampled",
+    "pageExitStopsRendering": "source_logic_and_isolated_browser_checked",
+    "pageReentryRestartsRendering": true,
+    "noUnexpectedBrightnessJumps": "not_quantitatively_verified",
+    "motionPreferences": "reduced motion retains all 46 measured stars and full atmospheric static sky, reduces background motion"
+  },
+  "interface": {
+    "endingTitlePreserved": true,
+    "endingSubtitlePreserved": true,
+    "endingClosingQuestionPreserved": true,
+    "returnButtonWorking": true,
+    "mobileLayoutWorking": "isolated_chromium_viewport_passed; physical_device_not_tested",
+    "existingTouchSwipeCodePreserved": true
+  },
+  "dataIntegrity": {
+    "knowledgeMapDataModified": false,
+    "dolmenPointCloudModified": false,
+    "cupmarkDataModified": false,
+    "dolmenModelModified": false,
+    "dolmenTextureModified": false,
+    "easternAsterismDataModified": false,
+    "chapter03InterpretationsModified": false,
+    "modifiedBaselineFiles": [
+      "css/style.css",
+      "index.html",
+      "js/endingSky.js"
+    ],
+    "unchangedBaselineFiles": 283,
+    "baselineFilesRemoved": [],
+    "READMEunchanged": true
+  },
+  "tests": {
+    "desktopTests": [
+      {
+        "viewport": "1920x1080",
+        "measuredCount": 46,
+        "backgroundStarCount": 570,
+        "returnAndReentry": true,
+        "pageErrors": 0,
+        "averageDrawMs": 0.986
+      },
+      {
+        "viewport": "1440x900",
+        "measuredCount": 46,
+        "backgroundStarCount": 418,
+        "returnAndReentry": true,
+        "pageErrors": 0,
+        "averageDrawMs": 0.922
+      },
+      {
+        "viewport": "1366x768",
+        "measuredCount": 46,
+        "backgroundStarCount": 338,
+        "returnAndReentry": true,
+        "pageErrors": 0,
+        "averageDrawMs": 0.752
+      },
+      {
+        "viewport": "1024x768",
+        "measuredCount": 46,
+        "backgroundStarCount": 260,
+        "returnAndReentry": true,
+        "pageErrors": 0,
+        "averageDrawMs": 0.755
+      }
+    ],
+    "mobileTests": [
+      {
+        "viewport": "390x844",
+        "isolatedBrowserPassed": true,
+        "physicalTouchDevice": "not_tested"
+      }
+    ],
+    "visualComparison": [
+      "testshots/v33-before-after-1440x900.jpg",
+      "testshots/v33-before-after-1920x1080.jpg",
+      "testshots/v33-before-after-390x844.jpg"
+    ],
+    "animationVerification": "real 20-second screenshot at 1440x900; plus viewport tests of entry and return/reentry",
+    "browserTests": "isolated HTML/CSS/full JS except GLB viewer in headless Chromium; offline fetch stub uses original measured JSON",
+    "performanceResults": {
+      "testEnvironment": "headless Chromium with software rendering in sandbox; not representative of all GPUs",
+      "averageDrawMsPerFrameRange": [
+        0.655,
+        0.986
+      ],
+      "frameRateOfPhysicalDevices": "not_tested"
+    },
+    "javaScriptSyntaxCheck": {
+      "knowledgeGraph.js": true,
+      "endingSky.js": true,
+      "dolmenScanCloud.js": true,
+      "dolmenViewer.js": true,
+      "knowledgeData.js": true,
+      "skyOverlay.js": true,
+      "main.js": true
+    },
+    "knownIssues": [
+      "Full site integration with WebGL 3D viewer not tested in this runtime",
+      "Real-device GPU/mobile touch performance has not been verified",
+      "Subtle aurora color and intensity are aesthetic interpretations, not an astronomical sky reconstruction"
+    ]
+  }
+}

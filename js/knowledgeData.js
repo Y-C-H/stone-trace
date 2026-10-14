@@ -1,50 +1,21 @@
-/* v24 - latest uploaded workbook / user-requested exclusions; original attached images */
+/* v29 — generated from data/knowledge-map-source.xlsx; photos preserved by node ID. */
 window.STONE_GRAPH_DATA = {
   "meta": {
     "title": "고인돌 지식지도",
-    "sheetSource": "고인돌의 별자리 — 데이터(1).xlsx",
+    "sheetSource": "data/knowledge-map-source.xlsx",
     "sheetNames": [
       "안내",
       "노드",
       "연결",
-      "분류"
+      "분류",
+      "성혈"
     ],
     "nodeSource": "spreadsheet",
-    "excludedByUser": [
-      {
-        "id": "b14",
-        "label": "칠성바위",
-        "group": "r"
-      },
-      {
-        "id": "b15",
-        "label": "바위그림",
-        "group": "s"
-      }
-    ],
-    "invalidLinksExcluded": [
-      [
-        "dol",
-        "s1"
-      ],
-      [
-        "n1",
-        "s1"
-      ],
-      [
-        "n1",
-        "r1"
-      ],
-      [
-        "r1",
-        "k9"
-      ]
-    ],
     "counts": {
       "sheetRows": 91,
-      "retainedNodes": 89,
-      "retainedLinks": 67,
-      "groups": 10,
+      "retainedNodes": 91,
+      "retainedLinks": 109,
+      "groups": 13,
       "embeddedImages": 48
     }
   },
@@ -98,6 +69,21 @@ window.STONE_GRAPH_DATA = {
       "name": "세계의 고인돌",
       "color": "#FF7F00",
       "source": "spreadsheet"
+    },
+    "r": {
+      "name": "칠성바위",
+      "color": "#82f047",
+      "source": "spreadsheet"
+    },
+    "s": {
+      "name": "바위그림",
+      "color": "#4b6366",
+      "source": "spreadsheet"
+    },
+    "m": {
+      "name": "성혈",
+      "color": "#fff3c4",
+      "source": "spreadsheet"
     }
   },
   "nodes": [
@@ -109,6 +95,8 @@ window.STONE_GRAPH_DATA = {
       "text": "청동기시대 개념이 없던 시기입니다. 김해패총 조사에서 석기와 청동기가 함께 나오자 금석병용기라는 모호한 개념이 세워졌습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "기능기억",
+      "memoryLens": "당시 학계가 만든 개념이 청동기를 이해하는 틀이 되었습니다. 어떤 과거를 어떻게 정리할지 정한 학문의 모습입니다.",
       "source": "spreadsheet"
     },
     {
@@ -119,6 +107,8 @@ window.STONE_GRAPH_DATA = {
       "text": "1950년대 북한에서 무문토기 출토 유적이 조사되며 부정되었고, 남한에서는 1960년대에 폐기되어 청동기시대 개념이 자리 잡았습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "새 조사 자료가 쌓이며 기존 개념이 폐기되었습니다. 저장된 자료가 기억의 틀을 바로잡은 사례입니다.",
       "source": "spreadsheet"
     },
     {
@@ -129,6 +119,8 @@ window.STONE_GRAPH_DATA = {
       "text": "도유호, 김정학, 김원룡, 윤무병, 김정배 등이 서로 다른 상한과 하한을 제시했습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "저장된 자료는 하나인데 학설은 여러 갈래입니다. 자료가 있어도 어떻게 읽을지는 정해져 있지 않습니다.",
       "source": "spreadsheet"
     },
     {
@@ -139,6 +131,8 @@ window.STONE_GRAPH_DATA = {
       "text": "연대관이 평행선을 달리는 가운데, 최성락은 방사성탄소연대를 재계산해 기원전 1300~1200년을 제시했고 이형구는 발해만 지구에서 기원을 찾았습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -149,6 +143,8 @@ window.STONE_GRAPH_DATA = {
       "text": "청동기 개시를 기원전 1000년경, 7~8세기, 5세기 전후로 보는 세 견해가 맞섭니다. 무문토기 단계를 보는 시각, 담당 종족, 유입 경로에 따라 갈립니다.",
       "image": null,
       "images": [],
+      "memoryRole": "기능기억",
+      "memoryLens": "담당 종족과 유입 경로를 어떻게 보느냐에 따라 연대가 갈립니다. 집단이 어떤 기원을 기억하고 싶은지가 해석에 스며들 수 있는지 물어볼 수 있습니다.",
       "source": "spreadsheet"
     },
     {
@@ -159,6 +155,8 @@ window.STONE_GRAPH_DATA = {
       "text": "시베리아 카라수크·타가르 계통, 요령과 중국(화중, 은허) 계통 등의 가설이 맞섭니다. 요령식동검과 세형동검을 다른 문화로 볼지도 쟁점입니다.",
       "image": null,
       "images": [],
+      "memoryRole": "기능기억",
+      "memoryLens": "기원을 어디서 찾느냐는 집단이 자신을 어떻게 기억하느냐와 얽히는 물음입니다.",
       "source": "spreadsheet"
     },
     {
@@ -169,6 +167,8 @@ window.STONE_GRAPH_DATA = {
       "text": "청동기 제작 집단이나 공방의 발견이 실체 파악에 필요하다고 지적합니다. 요령과 시베리아 유적까지 직접 발굴해야 한다고 봅니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "아직 발견되지 않은 자료가 있다는 것은 저장기억에 빈 곳이 있다는 뜻입니다.",
       "source": "spreadsheet"
     },
     {
@@ -179,6 +179,8 @@ window.STONE_GRAPH_DATA = {
       "text": "농경이 발전하면서 생산물이 늘어나고, 이를 둘러싼 사회적 관계도 변화하였습니다. 청동기시대의 무덤과 부장품은 당시 사회의 차이를 살펴볼 수 있는 자료로 연구됩니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -189,6 +191,8 @@ window.STONE_GRAPH_DATA = {
       "text": "청동기시대 유적에서는 무덤뿐 아니라 의례와 관련된 공간과 유물이 확인됩니다. 고인돌 역시 무덤과 장송의례를 이해하는 중요한 자료입니다.",
       "image": null,
       "images": [],
+      "memoryRole": "기능기억",
+      "memoryLens": "의례는 기억을 되풀이해 살아 있게 하는 대표적인 방식으로 논의됩니다.",
       "source": "spreadsheet"
     },
     {
@@ -199,6 +203,8 @@ window.STONE_GRAPH_DATA = {
       "text": "시베리아 카라수크 돌널무덤 계통의 북방설, 동남아시아에서 왔다는 남방설, 한반도에서 독립적으로 생겼다는 자생설이 있습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -211,6 +217,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/b2-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -223,6 +231,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/b3-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -233,6 +243,8 @@ window.STONE_GRAPH_DATA = {
       "text": "땅속에 깊이 움을 파고 깬돌이나 모난돌을 사용하거나 또는 깬돌과 판돌로 관을 싸는 덧널을 직사각형으로 쌓아 만든 무덤형태 입니다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -243,6 +255,8 @@ window.STONE_GRAPH_DATA = {
       "text": "돌널무덤은 고인돌, 돌뚜껑움무덤, 독널무덤과 더불어 한국 청동기시대의 대표적인 무덤 양식 중 하나입니다. 돌널무덤은 지하에 묘광을 파고 판돌이나 깬돌 등으로 장방형의 매장주체부를 만들고 그 위에 1매 이상의 뚜껑돌을 덮은 무덤 양식을 의미합니다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -253,6 +267,8 @@ window.STONE_GRAPH_DATA = {
       "text": "북방식(탁자식), 남방식(기반식), 개석식으로 나눕니다. 북방식은 주로 한강 이북, 남방식은 한강 이남, 개석식은 한반도 전역에 분포합니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "분류는 흩어진 돌에 이름을 붙여 보관하는 저장의 방식입니다.",
       "source": "spreadsheet"
     },
     {
@@ -263,6 +279,8 @@ window.STONE_GRAPH_DATA = {
       "text": "북방식이 먼저 나타나 남으로 퍼졌다는 전통적 견해, 남방식을 말기 형식으로 보는 설, 개석식을 원초형으로 보는 설이 있습니다. 북한은 침촌형에서 오덕형으로 발전했다고 봅니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -273,6 +291,8 @@ window.STONE_GRAPH_DATA = {
       "text": "유럽에서는 보정된 방사성탄소연대로 기원전 4000년대까지 오른다고 보고됩니다. 프랑스, 영국, 중국, 일본, 인도, 러시아 사례를 함께 다룹니다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "돌에 기억을 맡기는 방식이 한 곳의 일이 아니었음을 보여 줍니다.",
       "source": "spreadsheet"
     },
     {
@@ -283,6 +303,8 @@ window.STONE_GRAPH_DATA = {
       "text": "강화, 고창, 부안, 화순 등 대표 유적을 개별 장으로 다룹니다. 고창 도산리는 남쪽에서 드물게 북방식이 발견되는 사례로 언급됩니다.",
       "image": null,
       "images": [],
+      "memoryRole": "기능기억",
+      "memoryLens": "일부 유적은 보존과 전시를 거치며 기억의 무대 위로 올라옵니다.",
       "source": "spreadsheet"
     },
     {
@@ -293,6 +315,8 @@ window.STONE_GRAPH_DATA = {
       "text": "지석묘 사회 연구의 이론과 방법, 형식 분류, 계급의 발생을 다룹니다. 뚜껑돌의 채석과 운반은 인구, 경제, 정치와 얽힌 문제로 봅니다.",
       "image": null,
       "images": [],
+      "memoryRole": "저장기억",
+      "memoryLens": "고고학은 돌에서 사회를 다시 짜 맞춥니다. 복원은 기억이 아니라 재구성이라는 점을 짚어 볼 수 있습니다.",
       "source": "spreadsheet"
     },
     {
@@ -303,6 +327,8 @@ window.STONE_GRAPH_DATA = {
       "text": "고고문화재의 효율적 관리와 지석묘의 보존 관리, 활용 방안을 다룹니다.",
       "image": null,
       "images": [],
+      "memoryRole": "기능기억",
+      "memoryLens": "무엇을 지키고 어떻게 보여 줄지 정하는 일은 기억을 선택하는 일입니다.",
       "source": "spreadsheet"
     },
     {
@@ -310,11 +336,13 @@ window.STONE_GRAPH_DATA = {
       "sheetId": "b12",
       "label": "탁자식 고인돌",
       "g": "b",
-      "text": "탁자식고인돌은 넓은 판석으로 축조한 무덤방이 지상에 노출되어 있는 형식으로, 판석 4매 혹은 6매 이내로 짜 맞춘 석실 위에 납작한 덮개돌이 올려진 것이다. 주로 한강 이북에서 중국 요령지방에 집중 분포되어 있기 때문에 북방식(北方式)으로 불리기도 한다. 북한에서는 오덕형(五德形)이라 하고, 중국에서는 집모양인 것에서 석붕(石棚)이라고 한다. ",
+      "text": "탁자식고인돌은 넓은 판석으로 축조한 무덤방이 지상에 노출되어 있는 형식으로, 판석 4매 혹은 6매 이내로 짜 맞춘 석실 위에 납작한 덮개돌이 올려진 것이다. 주로 한강 이북에서 중국 요령지방에 집중 분포되어 있기 때문에 북방식(北方式)으로 불리기도 한다. 북한에서는 오덕형(五德形)이라 하고, 중국에서는 집모양인 것에서 석붕(石棚)이라고 한다.",
       "image": "assets/knowledge-sheet/b12-01.jpg",
       "images": [
         "assets/knowledge-sheet/b12-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -327,6 +355,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/b13-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -337,6 +367,8 @@ window.STONE_GRAPH_DATA = {
       "text": "고인돌을 비롯한 거석문화의 분포는 북유럽, 서유럽, 지중해 연안지역, 인도, 동남아시아, 동북아시아 지역으로 유라시아 대륙을 에워싸고 있는 거의 세계적인 분포를 보이고 있다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "돌에 기억을 맡기는 방식이 한 지역을 넘어 공유되었음을 보여 줍니다.",
       "source": "spreadsheet"
     },
     {
@@ -349,6 +381,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/d1-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -361,6 +395,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/d2-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -373,6 +409,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/d3-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -385,6 +423,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/d4-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -395,6 +435,8 @@ window.STONE_GRAPH_DATA = {
       "text": "선사시대 돌무덤의 한 유형으로 거석문화에 속하며, 무덤의 기능을 한 것으로 인식됩니다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "문자 없는 사회가 남긴 거대한 기념물입니다. 무엇을 기억하려 했는지는 전해지지 않고, 기억하려 한 행위만 돌로 남았습니다.",
       "source": "spreadsheet"
     },
     {
@@ -405,6 +447,8 @@ window.STONE_GRAPH_DATA = {
       "text": "대상 유물이 출토된 지역인 금강 유역의 고인돌을 알아봅니다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "한 유역에 모인 돌들은 같은 기억의 공간이 남긴 흔적으로 읽어 볼 수 있습니다.",
       "source": "spreadsheet"
     },
     {
@@ -415,6 +459,8 @@ window.STONE_GRAPH_DATA = {
       "text": "나장초등학교 북동쪽 산구릉에 4기의 지석묘가 자리하고 있다. 지석은 확인되지 않으며, 개석은 남북으로 장축방향을 두고 있다. 지석이 있는 것도 있으며, 선돌로 보이는 것도 1기 있다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -427,6 +473,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k11-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -434,11 +482,13 @@ window.STONE_GRAPH_DATA = {
       "sheetId": "k12",
       "label": "군산 여방리 지석묘군 B",
       "g": "k",
-      "text": "수심마을은 오성산(227m) 동쪽 기슭의 하단부에 자리하고 있는데, 이 마을의 동쪽에는 오성산에서 동남쪽으로 뻗어 내린 능선이 마을의 동쪽 지역을 감싸고 있다. 능선은 동쪽 기슭의 중앙에서 시작해 남전마을까지 계속되고 있는데, 지석묘는 수심마을에서 북동쪽으로 300m 남짓 떨어진 능선의 정상부에 자리하고 있다. 지석묘는 동남쪽으로 뻗어 내린 주능선의 정상부에 1기가 자리하고 있으며, 그 주변지역에는 개석으로 추정되는 2기의 판석형 석재가 북쪽 기슭을 따라 기울어진 상태로 놓여 있다. 판석형 개석은 남쪽으로 약간 기울어진 상태로 능선과 평행되게 남북으로 장축방향을 두고 있으며, 그 상면에는 많은 수의 성혈이 선명하게 남아있다. 이 지석묘는 3개의 지석이 개석을 받치고 있는 지석식으로, 그 규모는 남북길이 406cm, 동서폭 385cm, 두께 96cm이다. 이것은 지금까지 군산을 비롯하여 금강 하류지역에서 조사된 지석묘 중 최대규모이고, 그 보존상태가 매우 양호하여 장차 이 지역의 선사시대를 연구하는데 있어 값진 자료로 주목을 받고 있다. ",
+      "text": "수심마을은 오성산(227m) 동쪽 기슭의 하단부에 자리하고 있는데, 이 마을의 동쪽에는 오성산에서 동남쪽으로 뻗어 내린 능선이 마을의 동쪽 지역을 감싸고 있다. 능선은 동쪽 기슭의 중앙에서 시작해 남전마을까지 계속되고 있는데, 지석묘는 수심마을에서 북동쪽으로 300m 남짓 떨어진 능선의 정상부에 자리하고 있다. 지석묘는 동남쪽으로 뻗어 내린 주능선의 정상부에 1기가 자리하고 있으며, 그 주변지역에는 개석으로 추정되는 2기의 판석형 석재가 북쪽 기슭을 따라 기울어진 상태로 놓여 있다. 판석형 개석은 남쪽으로 약간 기울어진 상태로 능선과 평행되게 남북으로 장축방향을 두고 있으며, 그 상면에는 많은 수의 성혈이 선명하게 남아있다. 이 지석묘는 3개의 지석이 개석을 받치고 있는 지석식으로, 그 규모는 남북길이 406cm, 동서폭 385cm, 두께 96cm이다. 이것은 지금까지 군산을 비롯하여 금강 하류지역에서 조사된 지석묘 중 최대규모이고, 그 보존상태가 매우 양호하여 장차 이 지역의 선사시대를 연구하는데 있어 값진 자료로 주목을 받고 있다.",
       "image": "assets/knowledge-sheet/k12-01.jpg",
       "images": [
         "assets/knowledge-sheet/k12-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -446,11 +496,13 @@ window.STONE_GRAPH_DATA = {
       "sheetId": "k13",
       "label": "논산 신기리 고암 지석묘",
       "g": "k",
-      "text": "1949년부터 그 존재가 알려졌으며 1965년 국립중앙박물관에서 2기, 1973년 국립부여 박물관에서 1기를 발굴 조사하였다. 장선천의 천변에 지석묘 20여기가 남아 있다. 지석묘는 석실을 판석으로 지상에 세우고 그 위에 상석을 올린 탁자식과 하부구조가 지하에 있고 지상에 상석을 관의 뚜껑처럼 덮은 개석식으로 구분된다. 1호와 2호는 탁자식 지석묘이며, 3호 지석묘는 개석식 지석묘이다. ",
+      "text": "1949년부터 그 존재가 알려졌으며 1965년 국립중앙박물관에서 2기, 1973년 국립부여 박물관에서 1기를 발굴 조사하였다. 장선천의 천변에 지석묘 20여기가 남아 있다. 지석묘는 석실을 판석으로 지상에 세우고 그 위에 상석을 올린 탁자식과 하부구조가 지하에 있고 지상에 상석을 관의 뚜껑처럼 덮은 개석식으로 구분된다. 1호와 2호는 탁자식 지석묘이며, 3호 지석묘는 개석식 지석묘이다.",
       "image": "assets/knowledge-sheet/k13-01.jpg",
       "images": [
         "assets/knowledge-sheet/k13-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -463,6 +515,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k14-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -475,6 +529,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k2-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -487,6 +543,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k3-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -499,6 +557,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k4-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -511,6 +571,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k5-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -523,6 +585,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k6-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -535,6 +599,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k7-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -547,6 +613,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/k8-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -554,9 +622,11 @@ window.STONE_GRAPH_DATA = {
       "sheetId": "k9",
       "label": "군산 나운동 지석묘",
       "g": "k",
-      "text": "대전마을의 이석우씨 댁(나운동 232번지) 북방 약 120m 지점에 위치하고 있었다. 이 지석묘는 속칭 '중바위'라고 하는데 이 부락에는 원래 '개바위' 혹은 '애기바위' 등 전설에 얽힌 바위가 있었다. 그 중 '개바위'는 대전마을에서 동쪽으로 100여m 지점에 있었는데 1962년 새마을 사업용으로 석재를 취하기 위해 파괴하는 과정에 '개바위'밑에서 석실 구조가 발견되었다고 한다. 이것으로 미루어 보면 '개바위'도 지석묘이었을것으로 추정된다. '애기바위'는 대전마을의 북방 150m 지점인 표고 30m 가량의 산 위에 있었는데 여러 개의 암석 덩어리가 겹겹이 쌓여 있었다. 이들 암석(수성암)덩어리에서 지석묘의 개석을 절취해 간 것으로 추정된다. ",
+      "text": "대전마을의 이석우씨 댁(나운동 232번지) 북방 약 120m 지점에 위치하고 있었다. 이 지석묘는 속칭 '중바위'라고 하는데 이 부락에는 원래 '개바위' 혹은 '애기바위' 등 전설에 얽힌 바위가 있었다. 그 중 '개바위'는 대전마을에서 동쪽으로 100여m 지점에 있었는데 1962년 새마을 사업용으로 석재를 취하기 위해 파괴하는 과정에 '개바위'밑에서 석실 구조가 발견되었다고 한다. 이것으로 미루어 보면 '개바위'도 지석묘이었을것으로 추정된다. '애기바위'는 대전마을의 북방 150m 지점인 표고 30m 가량의 산 위에 있었는데 여러 개의 암석 덩어리가 겹겹이 쌓여 있었다. 이들 암석(수성암)덩어리에서 지석묘의 개석을 절취해 간 것으로 추정된다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -567,6 +637,8 @@ window.STONE_GRAPH_DATA = {
       "text": "",
       "image": null,
       "images": [],
+      "memoryRole": "소통적 기억",
+      "memoryLens": "돌 표면의 흔적에 사람들이 붙여 온 이름들입니다. 이름은 소통적 기억이 돌에 닿은 자리입니다.",
       "source": "spreadsheet"
     },
     {
@@ -577,6 +649,8 @@ window.STONE_GRAPH_DATA = {
       "text": "성혈(性穴, cup-mark)이란 선사시대 예술의 일종으로, 돌 표면을 깎거나 파내어 도형을 만든 것이다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "돌 표면에 새긴 홈입니다. 새긴 이유는 알 수 없지만, 새겼다는 사실은 남아 있습니다. 이 전시의 핵심 장면입니다.",
       "source": "spreadsheet"
     },
     {
@@ -587,6 +661,8 @@ window.STONE_GRAPH_DATA = {
       "text": "주로 청동기시대 등 선사시대 사람들이 바위 표면을 작은 돌로 비비고 마찰시켜 구멍을 파낸 유적이다.",
       "image": null,
       "images": [],
+      "memoryRole": "소통적 기억",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -597,6 +673,8 @@ window.STONE_GRAPH_DATA = {
       "text": "주로 청동기시대 등 선사시대 사람들이 바위 표면을 작은 돌로 비비고 마찰시켜 구멍을 파낸 유적이다.",
       "image": null,
       "images": [],
+      "memoryRole": "소통적 기억",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -607,6 +685,8 @@ window.STONE_GRAPH_DATA = {
       "text": "주로 청동기시대 등 선사시대 사람들이 바위 표면을 작은 돌로 비비고 마찰시켜 구멍을 파낸 유적이다.",
       "image": null,
       "images": [],
+      "memoryRole": "소통적 기억",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -617,6 +697,8 @@ window.STONE_GRAPH_DATA = {
       "text": "성혈(性穴, cup-mark)이란 선사시대 예술의 일종으로, 돌 표면을 깎거나 파내어 도형을 만든 것이다.",
       "image": null,
       "images": [],
+      "memoryRole": "소통적 기억",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -627,6 +709,8 @@ window.STONE_GRAPH_DATA = {
       "text": "얀 아스만의 문화적 기억 이론은 역사에서 배제된 집단 기억을 연구하며, 이는 문화적으로 창출된 기억이 집단의 현재와 미래에 대한 기대와 희망을 담고 있음을 의미합니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -637,6 +721,8 @@ window.STONE_GRAPH_DATA = {
       "text": "아스만 부부는 의사소통적 기억과 대치되는 문화적 기억 이론을 제시하며 역사에서 배제된 집단기억을 연구했습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -644,11 +730,13 @@ window.STONE_GRAPH_DATA = {
       "sheetId": "p11",
       "label": "얀 아스만 『문화적 기억과 초기 문명』",
       "g": "p",
-      "text": "문화적 기억이란 말 그대로 문화적으로 창출된 기억이다. 집단의 현재와 미래에 대한 기대와 희망이 그 속에 담겨있다. 이 책은 그것이 구체적으로 무엇인지, 고대 이래 그것이 어떤 메커니즘을 통해 형성, 발전, 변이, 망각, 재생되었는지, 그것이 어떤 기능을 수행해 왔는지, 그리고 그것이 핵심 고대문명의 발전에 어떤 영향을 미쳤는지 등을 고찰한다.\n\n무엇보다 아스만은 초창기 문명의 형성 및 발전 과정을 이끈 다양한 문화적 요소 중, 우리가 전통, 과거 혹은 역사의식, 신화적 세계관, 자기 인식 등으로 부르는 모든 것을 포괄하는 개념으로 “문화적 기억”을 제안한다. 나아가 고대문명의 성쇠와 밀접하게 연관된 그러한 문화적 요소들을 역사/신화전설의 이분법적 틀을 넘어서 문화적 기억의 관점에서 재해석한다. ",
+      "text": "문화적 기억이란 말 그대로 문화적으로 창출된 기억이다. 집단의 현재와 미래에 대한 기대와 희망이 그 속에 담겨있다. 이 책은 그것이 구체적으로 무엇인지, 고대 이래 그것이 어떤 메커니즘을 통해 형성, 발전, 변이, 망각, 재생되었는지, 그것이 어떤 기능을 수행해 왔는지, 그리고 그것이 핵심 고대문명의 발전에 어떤 영향을 미쳤는지 등을 고찰한다.\n\n무엇보다 아스만은 초창기 문명의 형성 및 발전 과정을 이끈 다양한 문화적 요소 중, 우리가 전통, 과거 혹은 역사의식, 신화적 세계관, 자기 인식 등으로 부르는 모든 것을 포괄하는 개념으로 “문화적 기억”을 제안한다. 나아가 고대문명의 성쇠와 밀접하게 연관된 그러한 문화적 요소들을 역사/신화전설의 이분법적 틀을 넘어서 문화적 기억의 관점에서 재해석한다.",
       "image": "assets/knowledge-sheet/p11-01.jpg",
       "images": [
         "assets/knowledge-sheet/p11-01.jpg"
       ],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -656,11 +744,13 @@ window.STONE_GRAPH_DATA = {
       "sheetId": "p12",
       "label": "얀 아스만",
       "g": "p",
-      "text": "뮌헨, 하이델베르크, 파리, 괴팅겐 등지에서 이집트학과 고고학, 그리스학을 전공했다. 1971년 교수자격시험을 통과했고, 1976년부터 2003년 퇴임하기까지 하이델베르크 대학교의 이집트학과 정교수를 지냈다. 퇴임 후 현재는 독일 콘스탄츠 대학교의 일반문화학과 명예교수로 재직하고 있다. 아스만은 전공 영역인 이집트학을 넘어 종교학 연구에까지 연구범위를 확장해 역사학자, 문예학자, 종교학자들에게 문화적 기억이론으로 명망을 떨쳤다. ",
+      "text": "뮌헨, 하이델베르크, 파리, 괴팅겐 등지에서 이집트학과 고고학, 그리스학을 전공했다. 1971년 교수자격시험을 통과했고, 1976년부터 2003년 퇴임하기까지 하이델베르크 대학교의 이집트학과 정교수를 지냈다. 퇴임 후 현재는 독일 콘스탄츠 대학교의 일반문화학과 명예교수로 재직하고 있다. 아스만은 전공 영역인 이집트학을 넘어 종교학 연구에까지 연구범위를 확장해 역사학자, 문예학자, 종교학자들에게 문화적 기억이론으로 명망을 떨쳤다.",
       "image": "assets/knowledge-sheet/p12-01.png",
       "images": [
         "assets/knowledge-sheet/p12-01.png"
       ],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -671,6 +761,8 @@ window.STONE_GRAPH_DATA = {
       "text": "아스만은 기억을 소통적 기억과 문화적 기억이라는 두 가지 층위로 나누어 설명하며, 이 개념들은 개인의 경험을 넘어 집단 정체성 형성에 중요한 역할을 합니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -681,6 +773,8 @@ window.STONE_GRAPH_DATA = {
       "text": "아스만은 기억이 물질적 기반과 보조 수단인 기억 매체에 의존한다고 보았으며, 대표적인 매체로 문자, 그림, 몸, 장소를 제시했습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -691,6 +785,8 @@ window.STONE_GRAPH_DATA = {
       "text": "그녀는 기억의 전승 매체와 영향력을 기능, 매체, 저장소 관점에서 정리했으며, 이는 '기억의 공간(Erinnerungsräume)'으로 정리되었습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -703,6 +799,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/p5-01.jpg"
       ],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -713,6 +811,8 @@ window.STONE_GRAPH_DATA = {
       "text": "아스만에 의하면 당장의 생존이나 현재의 정체성에는 직접 쓰이지 않지만, 시간의 흐름 속에서 버려지지 않고 수많은 기록과 사물 형태로 차곡차곡 쌓여 있는 수동적이고 방대한 기억의 총체입니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -723,6 +823,8 @@ window.STONE_GRAPH_DATA = {
       "text": "아스만에 의하면 공동체가 자신들의 정체성을 확인하고 결속을 다지기 위해 현재 소환하여 사용하는 능동적이고 규범적인 기억입니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -733,6 +835,8 @@ window.STONE_GRAPH_DATA = {
       "text": "축조자와 오늘의 관람자 사이에는 전승이 끊겨 있습니다. 가능한 것은 복원이 아니라 현재에서 새 기억-이미지를 만드는 일입니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -743,6 +847,32 @@ window.STONE_GRAPH_DATA = {
       "text": "인류가 돌(고인돌)이라는 최초의 물질적 기억 장치에 새겨두었던 집단적 흔적을, 디지털이라는 가상의 공간 속에서 다시 현재화(기능 기억화)하고 무한히 확장(저장 기억화)하는, 기억의 현대적 진화 과정이라고 볼 수 있습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "해석틀",
+      "memoryLens": "",
+      "source": "spreadsheet"
+    },
+    {
+      "id": "r1",
+      "sheetId": "r1",
+      "label": "칠성바위",
+      "g": "r",
+      "text": "조선 정조 때 경상감사로 부임한 이태영이 대구읍성 북문 밖에 북두칠성이 떨어지는 꿈을 꾼 뒤, 그곳에서 북두칠성처럼 놓인 바위 7개를 발견하고 자신의 일곱 아들 이름을 새긴 데서 유래했다.",
+      "image": null,
+      "images": [],
+      "memoryRole": "소통적 기억",
+      "memoryLens": "이름이 전해지는 돌은 마을이 그 돌을 어떻게 기억해 왔는지 묻게 합니다.",
+      "source": "spreadsheet"
+    },
+    {
+      "id": "s1",
+      "sheetId": "s1",
+      "label": "바위그림",
+      "g": "s",
+      "text": "바위나 절벽 또는 동굴 내 벽면 등에 사물이나 기호를 쪼으기·새기기·칠하기 등의 기법으로 그린 그림. 암각화·암각·암화.",
+      "image": null,
+      "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "그림은 말보다 오래 남는 기억 매체입니다.",
       "source": "spreadsheet"
     },
     {
@@ -750,9 +880,11 @@ window.STONE_GRAPH_DATA = {
       "sheetId": "u1",
       "label": "세종 고인돌",
       "g": "u",
-      "text": " 세종시의 고인돌들은 주로 북서쪽의 금강을 바라보는 북서향 사면이나, 갑천·삼성천 등 하천 지류가 흐르는 평지 근처의 완만한 구릉성 경사면(산기슭 말단부)에 입지하고 있다.",
+      "text": "세종시의 고인돌들은 주로 북서쪽의 금강을 바라보는 북서향 사면이나, 갑천·삼성천 등 하천 지류가 흐르는 평지 근처의 완만한 구릉성 경사면(산기슭 말단부)에 입지하고 있다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -765,6 +897,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u10-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -772,11 +906,13 @@ window.STONE_GRAPH_DATA = {
       "sheetId": "u11",
       "label": "송용리 송룡 고인돌",
       "g": "u",
-      "text": " 원래 고갯마루 길 옆에 1기가 더 있었는데 10여 년 전에 도로를 넓히면서 석재로 이용되었다고 한다. 이 마을의 서쪽 전방으로는 미호천이 북에서 남으로 흐르고 있으며, 주변지역으로는 넓게 펼쳐진 평야지역과 구릉지대로 이루어져 있어 인류의 생활환경 조성에 매우 양호한 조건을 갖추고 있는 것으로 판단된다. 확인된 유구는 매장 주체부를 큰 판석으로 덮는 형태의 고인돌이다. 주민들의 전언에 의하면 일부 유실된 유구에서 유물이 나왔다고 하는데, 4개의 흑색 마제석촉이 출토되었다고 한다. 그러나 유물의 현황에 대해서는 구체적인 내용이 확인되지 않는다. 현재 확인된 고인돌 덮개돌의 규모는 길이 210㎝, 폭 100㎝ 정도이고, 장축은 남북방향으로 두고 있다. 현재 주변지역에서 유물은 수습되지 않으나, 미호천 주변의 선사유적으로서 주목되는 유적이다.",
+      "text": "원래 고갯마루 길 옆에 1기가 더 있었는데 10여 년 전에 도로를 넓히면서 석재로 이용되었다고 한다. 이 마을의 서쪽 전방으로는 미호천이 북에서 남으로 흐르고 있으며, 주변지역으로는 넓게 펼쳐진 평야지역과 구릉지대로 이루어져 있어 인류의 생활환경 조성에 매우 양호한 조건을 갖추고 있는 것으로 판단된다. 확인된 유구는 매장 주체부를 큰 판석으로 덮는 형태의 고인돌이다. 주민들의 전언에 의하면 일부 유실된 유구에서 유물이 나왔다고 하는데, 4개의 흑색 마제석촉이 출토되었다고 한다. 그러나 유물의 현황에 대해서는 구체적인 내용이 확인되지 않는다. 현재 확인된 고인돌 덮개돌의 규모는 길이 210㎝, 폭 100㎝ 정도이고, 장축은 남북방향으로 두고 있다. 현재 주변지역에서 유물은 수습되지 않으나, 미호천 주변의 선사유적으로서 주목되는 유적이다.",
       "image": "assets/knowledge-sheet/u11-01.jpg",
       "images": [
         "assets/knowledge-sheet/u11-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -789,6 +925,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u12-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -801,6 +939,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u13-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -813,6 +953,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u14-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -825,6 +967,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u15-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -837,6 +981,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u16-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -849,6 +995,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u17-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -861,6 +1009,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u8-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -873,6 +1023,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/u9-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -885,6 +1037,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w10-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -897,6 +1051,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w11-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -909,6 +1065,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w12-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -921,6 +1079,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w13-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -933,6 +1093,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w14-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -945,6 +1107,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w2-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -957,6 +1121,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w3-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -969,6 +1135,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w4-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -981,6 +1149,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w5-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -993,6 +1163,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w6-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -1005,6 +1177,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w7-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -1017,6 +1191,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w8-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -1029,6 +1205,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/w9-01.jpg"
       ],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -1039,6 +1217,8 @@ window.STONE_GRAPH_DATA = {
       "text": "암각화(巖刻畫)란 바위, 절벽(단애, 斷崖), 동굴의 벽면 등에 깎아서 새겨 놓은 그림(부조)을 말한다. 넓게는 금석문의 범주에도 속한다. 주로 신석기 시대~청동기 시대 만들어졌다. 당시의 신앙과 생활을 표현해 놓았으며 풍요를 기원하는 주술적인 측면이 있다고 여겨진다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "",
       "source": "spreadsheet"
     },
     {
@@ -1049,6 +1229,8 @@ window.STONE_GRAPH_DATA = {
       "text": "3D 스캐너을 통해 대상 유물을 스캔합니다. 데이터를 활용해 눈으로 확인하기 어려운 부분까지 확인할 수 있습니다.",
       "image": null,
       "images": [],
+      "memoryRole": "매체",
+      "memoryLens": "돌을 새롭게 기록하는 디지털 기억 매체입니다. 기억을 보존하는 동시에 보는 방식을 바꿉니다.",
       "source": "spreadsheet"
     },
     {
@@ -1061,6 +1243,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/e1-01.png"
       ],
+      "memoryRole": "지각",
+      "memoryLens": "음영은 눈에 보이지 않던 흔적을 드러내는 지각의 보조 장치입니다.",
       "source": "spreadsheet"
     },
     {
@@ -1073,6 +1257,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/e2-01.png"
       ],
+      "memoryRole": "지각",
+      "memoryLens": "표면의 곡률과 질감을 읽어 내는 지각의 보조 장치입니다.",
       "source": "spreadsheet"
     },
     {
@@ -1085,6 +1271,8 @@ window.STONE_GRAPH_DATA = {
       "images": [
         "assets/knowledge-sheet/e3-01.png"
       ],
+      "memoryRole": "지각",
+      "memoryLens": "깊이의 차이를 눈에 보이게 만드는 지각의 보조 장치입니다.",
       "source": "spreadsheet"
     }
   ],
@@ -1092,337 +1280,765 @@ window.STONE_GRAPH_DATA = {
     {
       "source": "dol",
       "target": "b1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "기원",
+      "reason": "고인돌이 어디서 왔는지를 다룬 학설입니다."
     },
     {
       "source": "dol",
       "target": "b2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "dol",
       "target": "b4",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "dol",
       "target": "b5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "dol",
       "target": "b6",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "dol",
       "target": "b7",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "dol",
       "target": "a5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "논쟁",
+      "reason": "고인돌이 속한 청동기시대의 시작 연대를 둘러싼 세 견해입니다."
     },
     {
       "source": "dol",
       "target": "a6",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "기원",
+      "reason": "고인돌과 함께 논의되는 청동기 문화의 기원 가설입니다."
     },
     {
       "source": "dol",
       "target": "p2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "지각",
+      "reason": "관람자가 돌을 처음 마주치는 몸의 경험입니다."
     },
     {
       "source": "dol",
       "target": "p8",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "단절",
+      "reason": "축조자와 오늘의 관람자 사이에 전승이 끊겨 있습니다."
     },
     {
       "source": "a1",
       "target": "a2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "변화",
+      "reason": "개념이 폐기되며 청동기시대 개념이 자리 잡았습니다."
     },
     {
       "source": "a2",
       "target": "a3",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "이어짐",
+      "reason": "개념 정리 뒤 연대 논쟁이 본격화됩니다."
     },
     {
       "source": "a3",
       "target": "a4",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "이어짐",
+      "reason": "1970년대 논쟁이 1980년대 연구로 이어집니다."
     },
     {
       "source": "a3",
       "target": "a5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "논쟁",
+      "reason": "연대 논쟁이 세 갈래의 견해로 정리됩니다."
     },
     {
       "source": "a4",
       "target": "a5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "논쟁",
+      "reason": "1980년대 연구도 같은 쟁점 위에서 움직입니다."
     },
     {
       "source": "a5",
       "target": "a6",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "쟁점",
+      "reason": "연대는 기원 경로를 어떻게 보느냐와 맞물립니다."
     },
     {
       "source": "a6",
       "target": "a7",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "과제",
+      "reason": "기원을 가리려면 제작 집단의 발견이 필요하다는 지적입니다."
     },
     {
       "source": "a6",
       "target": "b1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "비교",
+      "reason": "청동기 기원 경로와 고인돌 기원설을 나란히 비교합니다."
     },
     {
       "source": "b1",
       "target": "b3",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "b2",
       "target": "b3",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "b2",
       "target": "b5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "b5",
       "target": "b6",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "b6",
       "target": "b7",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "b4",
       "target": "b1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "p1",
       "target": "p2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "대비",
+      "reason": "문화적 기억은 소통적 기억과 짝을 이루는 개념입니다."
     },
     {
       "source": "p1",
       "target": "p3",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "매체",
+      "reason": "문화적 기억은 매체를 통해 세대를 넘어 유지됩니다."
     },
     {
       "source": "p1",
       "target": "p4",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "공간",
+      "reason": "기억은 장소와 공간에 의지해 유지됩니다."
     },
     {
       "source": "p5",
       "target": "p6",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "개념",
+      "reason": "알라이다 아스만은 저장기억과 기능기억을 구분합니다."
     },
     {
       "source": "p5",
       "target": "p7",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "개념",
+      "reason": "알라이다 아스만은 저장기억과 기능기억을 구분합니다."
     },
     {
       "source": "p1",
       "target": "p5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "p7",
       "target": "b7",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "p7",
       "target": "a1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "기억의 정치",
+      "reason": "학계가 만든 틀이 과거를 정리하는 기준이 된 사례입니다."
     },
     {
       "source": "p7",
       "target": "a2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "기억의 정치",
+      "reason": "새 자료로 기존 틀이 교정된 과정입니다."
     },
     {
       "source": "p7",
       "target": "a5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "기억의 정치",
+      "reason": "기원을 어떻게 볼지에 집단의 기억이 스며들 수 있는지 묻습니다."
     },
     {
       "source": "p6",
       "target": "b5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "p2",
       "target": "b2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "p8",
       "target": "p3",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "매체",
+      "reason": "전승이 끊긴 뒤에도 매체로서의 돌은 남습니다."
     },
     {
       "source": "p8",
       "target": "p7",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "p9",
       "target": "p6",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "저장",
+      "reason": "스캔 데이터는 새로운 방식의 저장입니다."
     },
     {
       "source": "p9",
       "target": "p2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "p4",
       "target": "p7",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "u8",
       "target": "b5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "u9",
       "target": "u1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
     },
     {
       "source": "u10",
       "target": "u1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
     },
     {
       "source": "u11",
       "target": "u1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
     },
     {
       "source": "u12",
       "target": "u1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
     },
     {
       "source": "u13",
       "target": "u1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
     },
     {
       "source": "k1",
       "target": "u1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "인접 지역",
+      "reason": "금강 유역과 세종 지역의 고인돌을 이어 봅니다."
     },
     {
       "source": "k1",
       "target": "k2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
     },
     {
       "source": "k1",
       "target": "k3",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
     },
     {
       "source": "k1",
       "target": "k4",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
     },
     {
       "source": "k1",
       "target": "k5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
     },
     {
       "source": "k1",
       "target": "k6",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
     },
     {
       "source": "k1",
       "target": "k7",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
     },
     {
       "source": "k1",
       "target": "k8",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
+    },
+    {
+      "source": "dol",
+      "target": "s1",
+      "sourceType": "spreadsheet",
+      "relationType": "인접 매체",
+      "reason": "돌에 남긴 또 다른 표현으로 함께 놓았습니다."
+    },
+    {
+      "source": "n1",
+      "target": "s1",
+      "sourceType": "spreadsheet",
+      "relationType": "비교",
+      "reason": "돌에 남긴 또 다른 흔적입니다."
     },
     {
       "source": "dol",
       "target": "n1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "새김",
+      "reason": "돌 표면에 남은 홈과 그 이름들입니다."
     },
     {
       "source": "n2",
       "target": "n1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "명칭",
+      "reason": "성혈과 관련해 불리는 이름입니다."
     },
     {
       "source": "n2",
       "target": "n3",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "명칭",
+      "reason": "성혈과 관련해 불리는 이름입니다."
     },
     {
       "source": "n2",
       "target": "n4",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "명칭",
+      "reason": "성혈과 관련해 불리는 이름입니다."
     },
     {
       "source": "n2",
       "target": "n5",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "명칭",
+      "reason": "성혈과 관련해 불리는 이름입니다."
     },
     {
       "source": "n2",
       "target": "n6",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "명칭",
+      "reason": "성혈과 관련해 불리는 이름입니다."
+    },
+    {
+      "source": "n1",
+      "target": "r1",
+      "sourceType": "spreadsheet",
+      "relationType": "이름",
+      "reason": "칠성바위라는 이름이 붙은 돌입니다."
+    },
+    {
+      "source": "r1",
+      "target": "k9",
+      "sourceType": "spreadsheet",
+      "relationType": "",
+      "reason": ""
     },
     {
       "source": "d0",
       "target": "dol",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 계열",
+      "reason": "고인돌도 거석문화의 한 갈래입니다."
     },
     {
       "source": "d0",
       "target": "d1",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "종류",
+      "reason": "거석문화에 속하는 기념물입니다."
     },
     {
       "source": "d0",
       "target": "d2",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "종류",
+      "reason": "거석문화에 속하는 기념물입니다."
     },
     {
       "source": "d0",
       "target": "d3",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "종류",
+      "reason": "거석문화에 속하는 기념물입니다."
     },
     {
       "source": "d0",
       "target": "d4",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "종류",
+      "reason": "거석문화에 속하는 기념물입니다."
     },
     {
       "source": "k1",
       "target": "k9",
-      "sourceType": "spreadsheet"
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
+    },
+    {
+      "source": "b10",
+      "target": "a8",
+      "sourceType": "spreadsheet",
+      "relationType": "연결",
+      "reason": "청동기 사회의 변화는 사회복원 논의와 맞닿아 있습니다."
+    },
+    {
+      "source": "dol",
+      "target": "a9",
+      "sourceType": "spreadsheet",
+      "relationType": "의례",
+      "reason": "고인돌을 의례와 함께 읽는 관점입니다."
+    },
+    {
+      "source": "dol",
+      "target": "b10",
+      "sourceType": "spreadsheet",
+      "relationType": "연구",
+      "reason": "고인돌에서 사회를 다시 짜 맞추는 연구입니다."
+    },
+    {
+      "source": "dol",
+      "target": "b11",
+      "sourceType": "spreadsheet",
+      "relationType": "보존",
+      "reason": "고인돌을 어떻게 지키고 활용할지의 문제입니다."
+    },
+    {
+      "source": "b6",
+      "target": "b12",
+      "sourceType": "spreadsheet",
+      "relationType": "형식",
+      "reason": "형식 분류의 한 형식입니다."
+    },
+    {
+      "source": "b6",
+      "target": "b13",
+      "sourceType": "spreadsheet",
+      "relationType": "형식",
+      "reason": "형식 분류의 한 형식입니다."
+    },
+    {
+      "source": "s1",
+      "target": "b14",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 갈래",
+      "reason": "바위에 새기거나 그린 표현이라는 점에서 한 갈래로 묶습니다."
+    },
+    {
+      "source": "dol",
+      "target": "b8",
+      "sourceType": "spreadsheet",
+      "relationType": "비교",
+      "reason": "세계 곳곳의 고인돌과 견주어 봅니다."
+    },
+    {
+      "source": "dol",
+      "target": "b9",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "한국의 대표적인 고인돌 유적입니다."
+    },
+    {
+      "source": "dol",
+      "target": "e0",
+      "sourceType": "spreadsheet",
+      "relationType": "기록",
+      "reason": "고인돌을 3D로 스캔한 데이터입니다."
+    },
+    {
+      "source": "e0",
+      "target": "e1",
+      "sourceType": "spreadsheet",
+      "relationType": "분석",
+      "reason": "스캔 데이터를 읽는 방법의 하나입니다."
+    },
+    {
+      "source": "e0",
+      "target": "e2",
+      "sourceType": "spreadsheet",
+      "relationType": "분석",
+      "reason": "스캔 데이터를 읽는 방법의 하나입니다."
+    },
+    {
+      "source": "e0",
+      "target": "e3",
+      "sourceType": "spreadsheet",
+      "relationType": "분석",
+      "reason": "스캔 데이터를 읽는 방법의 하나입니다."
+    },
+    {
+      "source": "k1",
+      "target": "k10",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
+    },
+    {
+      "source": "k1",
+      "target": "k11",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
+    },
+    {
+      "source": "k1",
+      "target": "k12",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
+    },
+    {
+      "source": "k1",
+      "target": "k13",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
+    },
+    {
+      "source": "k1",
+      "target": "k14",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 유역",
+      "reason": "금강 유역에 분포하는 고인돌입니다."
+    },
+    {
+      "source": "p1",
+      "target": "p10",
+      "sourceType": "spreadsheet",
+      "relationType": "제안",
+      "reason": "문화적 기억 이론을 제시한 부부입니다."
+    },
+    {
+      "source": "p12",
+      "target": "p11",
+      "sourceType": "spreadsheet",
+      "relationType": "저서",
+      "reason": "얀 아스만의 저서입니다."
+    },
+    {
+      "source": "p10",
+      "target": "p12",
+      "sourceType": "spreadsheet",
+      "relationType": "인물",
+      "reason": "아스만 부부 가운데 한 사람입니다."
+    },
+    {
+      "source": "u1",
+      "target": "u14",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
+    },
+    {
+      "source": "u1",
+      "target": "u15",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
+    },
+    {
+      "source": "u1",
+      "target": "u16",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
+    },
+    {
+      "source": "u1",
+      "target": "u17",
+      "sourceType": "spreadsheet",
+      "relationType": "같은 지역",
+      "reason": "세종 지역의 고인돌입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w10",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w11",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w12",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w13",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w14",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w2",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w3",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w4",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w5",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w6",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w7",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w8",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
+    },
+    {
+      "source": "b8",
+      "target": "w9",
+      "sourceType": "spreadsheet",
+      "relationType": "사례",
+      "reason": "세계의 고인돌 사례입니다."
     }
   ]
 };
