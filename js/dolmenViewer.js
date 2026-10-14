@@ -825,7 +825,9 @@
   }
   function error(message){loadingTitle.textContent=message;percent.textContent='';bar.hidden=true;loading.classList.add('is-error');window.__dolmenViewerStatus={model,error:message};}
   function activateIfNeeded(){
-    active=document.body.dataset.page==='1';if(!active)return;
+    // v34-2: After swapping Chapters 02/03, observation is page index 2 (third page).
+    // The old '1' gate disabled drawing on Chapter 03 and enabled it on Chapter 02.
+    active=document.body.dataset.page==='2';if(!active)return;
     const stage=document.getElementById('chapter-03').dataset.observationMode||'overview';
     const host=stage==='observation'?detail:overview;
     if(root.parentElement!==host){
@@ -873,7 +875,10 @@
   panelToggle.addEventListener('click',()=>{const collapse=!panel.classList.contains('is-collapsed');panel.classList.toggle('is-collapsed',collapse);panel.dataset.userExpanded=String(!collapse);panelToggle.setAttribute('aria-expanded',String(!collapse));panelToggle.textContent=collapse?'측정 정보 펼치기':'측정 정보 접기';});
   listToggle.addEventListener('click',()=>{const fold=!listWrap.classList.contains('is-folded');listWrap.classList.toggle('is-folded',fold);listToggle.setAttribute('aria-expanded',String(!fold));listToggle.textContent=fold?'성혈 목록 펼치기':'성혈 목록 접기';});
   loadMarkers();
+  // pagechange fires before the incoming page has finished becoming visible;
+  // pageactivated requests a fresh frame after the .active layout is applied.
   window.addEventListener('exhibition:pagechange',activateIfNeeded);
+  window.addEventListener('exhibition:pageactivated',activateIfNeeded);
   window.addEventListener('exhibition:observationchange',activateIfNeeded);
   window.addEventListener('resize',()=>{if(loaded){defaultDistance=fitDistance();requestFrame();}});
   new ResizeObserver(()=>requestFrame()).observe(root);

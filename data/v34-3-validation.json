@@ -1,0 +1,36 @@
+{
+  "version": {
+    "baseVersion": "v34-2",
+    "resultVersion": "v34-3"
+  },
+  "changes": {
+    "page": "Chapter 03 — 쌓여 있는 흔적",
+    "removedText": [
+      "돌은 시간에 저항하지 않는다. 시간을 담고 있을 뿐이다.",
+      "반복된 행위의 흔적으로 읽을 수 있을까? 누가, 왜 남겼을까?"
+    ],
+    "navigationButtonsPreserved": [
+      "enterObservation",
+      "returnOverview"
+    ],
+    "navigationAlignmentPreserved": "CSS margin-left: auto for observation navigation",
+    "openingVersionUpdated": "v34-3"
+  },
+  "files": {
+    "modified": [
+      "index.html",
+      "css/style.css"
+    ],
+    "new": [
+      "data/v34-3-validation.json"
+    ],
+    "v34_2_baselineUnchangedCount": 322
+  },
+  "tests": {
+    "htmlStructure": "passed: Chapter 03 still has two submodes, buttons present, unwanted copy absent",
+    "jsSyntax": "passed: node --check main.js and dolmenViewer.js (unchanged)",
+    "unchangedFilesComparedBySHA256": "passed",
+    "integratedBrowserOrWebGL": "not_tested",
+    "zipIntegrity": "passed: CRC check, file list, root index.html checked"
+  }
+}

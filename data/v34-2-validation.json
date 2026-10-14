@@ -1,0 +1,74 @@
+{
+  "version": {
+    "baseVersion": "v34-1",
+    "resultVersion": "v34-2",
+    "type": "critical-hotfix"
+  },
+  "rootCause": {
+    "file": "js/dolmenViewer.js",
+    "function": "activateIfNeeded",
+    "oldPageActivationPredicate": "document.body.dataset.page === '1'",
+    "correctPageActivationPredicate": "document.body.dataset.page === '2'",
+    "explanationKo": "v34의 2·3페이지 교환 과정에서 고인돌 Viewer 내부 활성화 인덱스를 갱신하지 않아 3페이지에서 렌더링이 차단되고 2페이지에서는 불필요하게 활성화되었습니다."
+  },
+  "fix": {
+    "pageIndexCorrected": true,
+    "pageActivatedFrameRefreshAdded": true,
+    "browserCacheVersionUpdated": "js/dolmenViewer.js?v=34-2",
+    "openingVersionLabel": "v34-2",
+    "filesModified": [
+      "js/dolmenViewer.js",
+      "index.html"
+    ],
+    "modifiedModelOrCupmarks": false
+  },
+  "regressionTests": {
+    "environment": "Headless Chromium; original viewer JavaScript and page navigation; simulated WebGL2 API; minimal synthetic GLB for render-path tests; original measured cupmarks JSON",
+    "baselineReproduction": {
+      "v34-1AtChapter03": {
+        "modelRequests": 0,
+        "drawCalls": 0,
+        "reproduced": true
+      }
+    },
+    "fixedV34-2": {
+      "desktop1440x900": {
+        "initialModelRequest": "pass",
+        "drawAfterEntry": "pass",
+        "dragCameraChange": "pass",
+        "dragTriggeredRender": "pass",
+        "leaveAndReturn": "pass",
+        "observationModeReparent": "pass",
+        "cupmark46Loaded": "pass",
+        "individualCupmarkFocus": "pass",
+        "animatedNavigationReturn": "pass"
+      },
+      "mobile390x844": {
+        "initialModelRequest": "pass",
+        "drawAfterEntry": "pass",
+        "dragCameraChange": "pass",
+        "dragTriggeredRender": "pass",
+        "leaveAndReturn": "pass",
+        "observationModeReparent": "pass",
+        "cupmark46Loaded": "pass",
+        "individualCupmarkFocus": "pass",
+        "animatedNavigationReturn": "pass"
+      },
+      "javascriptSyntax": "pass",
+      "browserJavascriptUnhandledErrors": 0
+    },
+    "notVerified": [
+      "Actual WebGL2 GPU rendering is unavailable in this environment",
+      "Original 700K GLB and texture streaming not tested in real GPU runtime",
+      "Physical mobile touch hardware not tested"
+    ]
+  },
+  "fileIntegrity": {
+    "unchangedExistingFiles": 321,
+    "modifiedExistingFiles": [
+      "index.html",
+      "js/dolmenViewer.js"
+    ],
+    "missingExistingFiles": []
+  }
+}

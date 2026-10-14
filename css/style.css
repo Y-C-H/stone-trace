@@ -1203,3 +1203,6 @@ body[data-page="4"] .constellation-toc,body[data-page="4"] .page-navigation,body
 @media(max-width:760px) and (max-height:720px){
   .page-ending .ending-closing-question{bottom:calc(61px + env(safe-area-inset-bottom,0px))}
 }
+
+/* v34-3: Preserve lower-right stage navigation after removing commentary copy. */
+.page-unified-observation .page-question .internal-observation-nav{margin-left:auto}
