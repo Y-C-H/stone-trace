@@ -1,0 +1,56 @@
+{
+  "version": "v36-1",
+  "baseline": "v36",
+  "changes": [
+    "CSS ending-only navigation concealment index moved from 4 to 5, restoring Page 5 previous/next controls",
+    "TOC SVG restored to native 126x230 coordinate space, aligning path vertices to all five interactive stars",
+    "Opening version/cache revised"
+  ],
+  "tests": [
+    {
+      "size": [
+        1440,
+        900
+      ],
+      "nav": "pass",
+      "toc_max_offset_px": 0,
+      "previous_next_ending": "pass",
+      "keyboard_and_browser_history": "pass"
+    },
+    {
+      "size": [
+        1024,
+        768
+      ],
+      "nav": "pass",
+      "toc_max_offset_px": 0,
+      "previous_next_ending": "pass",
+      "keyboard_and_browser_history": "pass"
+    },
+    {
+      "size": [
+        390,
+        844
+      ],
+      "nav": "pass",
+      "toc_max_offset_px": 8.750725148972854e-06,
+      "previous_next_ending": "pass",
+      "keyboard_and_browser_history": "pass"
+    },
+    {
+      "size": [
+        320,
+        568
+      ],
+      "nav": "visible and enabled",
+      "toc_max_offset_px": 0,
+      "previous_next_ending": "not exercised at 320px",
+      "keyboard_and_browser_history": "not exercised at 320px"
+    }
+  ],
+  "limitations": [
+    "Chromium tests used isolated HTML/CSS/JS with mocked fetch for data and stubbed media controls; not a complete HTTP server/browser session.",
+    "Physical devices and Safari were not tested."
+  ],
+  "screenshots_created_for_internal_validation": true
+}

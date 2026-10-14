@@ -400,14 +400,28 @@
   }
 
   function renderManager(){
-    if(!markList)return;markList.textContent='';
+    if(!markList)return;
+    // Keep the scroll position and focused toggle when selection state changes.
+    // Reuse all 46 buttons once constructed, avoiding scroll/focus reset entirely.
+    const existing=[...markList.querySelectorAll('.sky-mark-toggle')];
+    if(existing.length===state.points.length&&existing.every((btn,i)=>btn.dataset.pointId===state.points[i].id)){
+      for(const btn of existing){
+        const on=state.active.has(btn.dataset.pointId);
+        btn.classList.toggle('is-off',!on);
+        btn.setAttribute('aria-pressed',String(on));
+        btn.setAttribute('aria-label',`${btn.dataset.pointId} ${on?'숨기기':'다시 표시'}`);
+      }
+      updateReadouts();return;
+    }
+    const previousScroll=markList.scrollTop;
+    markList.textContent='';
     const frag=document.createDocumentFragment();
     for(const p of state.points){
       const on=state.active.has(p.id),btn=document.createElement('button');
       btn.type='button';btn.className=`sky-mark-toggle${on?'':' is-off'}`;btn.dataset.pointId=p.id;btn.setAttribute('aria-pressed',on?'true':'false');btn.setAttribute('aria-label',`${p.id} ${on?'숨기기':'다시 표시'}`);
       btn.innerHTML=`<span>${p.id}</span><i aria-hidden="true"></i>`;frag.appendChild(btn);
     }
-    markList.appendChild(frag);updateReadouts();
+    markList.appendChild(frag);markList.scrollTop=previousScroll;updateReadouts();
   }
 
   function resetState(){state.panX=0;state.panY=0;state.scale=1;state.rotation=0;state.hovered=null;state.handleHovered=false;state.active=new Set(state.points.map(p=>p.id));renderManager();draw()}

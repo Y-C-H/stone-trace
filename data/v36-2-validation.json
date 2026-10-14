@@ -1,0 +1,89 @@
+{
+  "version": "v36-2",
+  "baseline": "v36-1",
+  "changes": {
+    "js/endingSky.js": "Canvas rotation pivot changed from bottom-right (width,height) to bottom-center (width/2,height); rotation speed, direction, star and aurora layers unchanged",
+    "index.html": "Updated opening version label and endingSky.js cache query"
+  },
+  "browser_tests": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "canvas_size": [
+        1440,
+        900
+      ],
+      "rotation_pivot": [
+        720,
+        900
+      ],
+      "measured_stars": 46,
+      "rotation_period_ms": 1800000,
+      "result": "pass"
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "canvas_size": [
+        1024,
+        768
+      ],
+      "rotation_pivot": [
+        512,
+        768
+      ],
+      "measured_stars": 46,
+      "rotation_period_ms": 1800000,
+      "result": "pass"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "canvas_size": [
+        390,
+        844
+      ],
+      "rotation_pivot": [
+        195,
+        844
+      ],
+      "measured_stars": 46,
+      "rotation_period_ms": 1800000,
+      "result": "pass"
+    },
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "canvas_size": [
+        320,
+        568
+      ],
+      "rotation_pivot": [
+        160,
+        568
+      ],
+      "measured_stars": 46,
+      "rotation_period_ms": 1800000,
+      "result": "pass"
+    }
+  ],
+  "limitations": [
+    "Chromium tested with isolated HTML/CSS/JS and mocked JSON fetch due to restricted local HTTP access; full server-driven model assets not retested.",
+    "Physical phones, Safari and real network loading were not tested."
+  ],
+  "unchanged_features": [
+    "30-minute rotation period",
+    "46 measured cupmarks",
+    "Page 5/Ending routing",
+    "five-node constellation TOC",
+    "original Page 5 MP4 and opening WAV"
+  ]
+}

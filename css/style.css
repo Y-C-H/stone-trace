@@ -969,7 +969,7 @@ body.is-opening .constellation-toc,body.is-opening .page-navigation{visibility:h
 /* Only visible UI in the ending: deliberately subdued corner arrow. */
 .ending-return{position:absolute;z-index:5;left:calc(1rem + env(safe-area-inset-left,0px));bottom:calc(.9rem + env(safe-area-inset-bottom,0px));display:grid;place-items:center;width:48px;height:48px;min-width:44px;min-height:44px;padding:0;border:1px solid rgba(210,220,235,.28);border-radius:50%;color:#e4eaf7;background:rgba(11,19,35,.16);font:300 1.45rem/1 var(--sans);opacity:.15;cursor:pointer;transition:opacity .26s ease,background .26s ease,border-color .26s ease;}
 .ending-return:hover,.ending-return:focus-visible{opacity:.58;background:rgba(11,19,35,.46);border-color:rgba(210,220,235,.5)}
-body[data-page="4"] .constellation-toc,body[data-page="4"] .page-navigation,body[data-page="4"] .skip-link{opacity:0;visibility:hidden;pointer-events:none}
+body[data-page="5"] .constellation-toc,body[data-page="5"] .page-navigation,body[data-page="5"] .skip-link{opacity:0;visibility:hidden;pointer-events:none}
 @media(hover:none){.ending-return{opacity:.28}}
 
 /* v22: four actual chapter nodes connected, with line precisely terminating at Chapter 04. */
@@ -1218,3 +1218,38 @@ body[data-page="4"] .constellation-toc,body[data-page="4"] .page-navigation,body
 
 /* v34-3: Preserve lower-right stage navigation after removing commentary copy. */
 .page-unified-observation .page-question .internal-observation-nav{margin-left:auto}
+
+/* v36: fifth star extends existing four-node constellation without shifting its anchors. */
+@media(min-width:761px){.constellation-toc{height:230px}}
+.toc-map{height:230px}.toc-lines{height:214px}
+.toc-05{left:39px;top:175px}
+@media(max-width:760px){.constellation-toc{height:42px}.toc-map{height:230px}}
+
+/* v36: an accessible, unobstructed 16:9 film chapter. */
+.page-video{background:radial-gradient(ellipse at 52% 40%,#0c1726 0%,#03070d 60%,#010309 100%);overflow:hidden}
+.video-chapter-frame{position:relative;width:100%;height:100%;min-height:0;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:clamp(.8rem,2vh,1.6rem);padding:clamp(4rem,8vh,6rem) clamp(4.6rem,10.5vw,12rem) clamp(5.8rem,12vh,8rem)}
+.video-chapter-heading{align-self:stretch;width:min(100%,1100px);margin:0 auto;flex:0 0 auto}
+.video-chapter-heading .section-index{margin:0 0 .35rem}
+.video-chapter-heading h2{margin:0;color:#e1ddd2;font:500 clamp(1.6rem,2.7vw,2.7rem)/1.25 var(--font-curatorial,var(--serif));word-break:keep-all}
+.video-chapter-stage{min-width:0;min-height:0;flex:0 1 auto;align-self:center;display:flex;align-items:center;justify-content:center;width:min(100%,1100px);max-height:100%;aspect-ratio:16/9;border:1px solid rgba(202,217,235,.17);background:#000;box-shadow:0 25px 70px rgba(0,0,0,.4)}
+.video-chapter-stage video{display:block;max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;background:#000;aspect-ratio:16/9}
+.video-chapter-stage video:focus-visible{outline:2px solid #d3b077;outline-offset:3px}
+@media(max-width:760px){
+  .video-chapter-frame{padding:4.5rem 1rem calc(6.1rem + env(safe-area-inset-bottom,0px));gap:1rem}
+  .video-chapter-heading h2{font-size:clamp(1.4rem,6vw,2.2rem)}
+  /* Leave the fixed 42px constellation toggle a clear lane, even while the TOC is closed. */
+  .video-chapter-stage{align-self:flex-end;width:calc(100% - 50px);flex:0 0 auto;max-height:min(58dvh,calc(100dvh - 12rem))}
+}
+@media(max-height:560px){.video-chapter-frame{padding-top:3.2rem;padding-bottom:3.6rem;gap:.4rem}.video-chapter-heading h2{font-size:1.2rem}}
+
+/* v36-1: Align the TOC connector SVG to the exact CSS pixel coordinates of
+   all five node centers: (44,23), (78,63), (50,105), (84,146), (39,191).
+   An older two-class selector had constrained the SVG to 185px, causing
+   viewBox scaling and clipping while the new fifth node sits at y=191. */
+.constellation-toc .toc-lines{
+  position:absolute;top:0;left:0;right:auto;bottom:auto;
+  width:126px;height:230px;overflow:visible;
+}
+
+/* Keep the fifth star from the older sky-overlay.css legacy top:165px rule. */
+.constellation-toc .toc-05{left:39px;top:175px}

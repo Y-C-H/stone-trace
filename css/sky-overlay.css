@@ -1,4 +1,4 @@
-/* v15 — warm-star cup-mark rendering and direct rotation handle */
+/* v36 — preserve original sky UI; independently scrolling 46-cupmark manager. */
 .page-sky-overlay{background:#02050b;overflow:hidden}
 .sky-overlay-frame{height:100%;min-height:0;padding:clamp(1.2rem,2.4vw,2.2rem) clamp(1rem,4.6vw,4.5rem) clamp(5.2rem,8vh,6.8rem);display:flex;flex-direction:column;gap:.8rem}
 .sky-overlay-heading{flex:0 0 auto;display:grid;grid-template-columns:minmax(0,.92fr) minmax(22rem,1.08fr);gap:2rem;align-items:end;border-bottom:1px solid rgba(231,226,216,.1);padding-bottom:.78rem}
@@ -80,3 +80,20 @@
 
 /* v32: the new Chapter 04 introduction must remain visible on mobile. */
 @media(max-width:760px){.sky-overlay-heading .sky-overlay-intro>p:first-child{display:block;margin-top:0}}
+
+/* v36: isolated scrolling rows; avoid grid auto-row stretching and inaccessible lower marks. */
+.sky-mark-manager[open]{min-height:0;flex:1 1 0;overflow:hidden}
+.sky-mark-manager::details-content{display:flex;flex-direction:column;min-height:0;overflow:hidden;flex:1 1 0}
+.sky-mark-manager>summary,.sky-mark-manager>.sky-manager-actions{flex-shrink:0}
+.sky-mark-list{flex:1 1 0;min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;align-content:start;grid-auto-rows:minmax(30px,max-content);scrollbar-gutter:stable}
+@media(max-width:760px){
+  .sky-mark-manager[open],.sky-control-panel.eastern-active .sky-mark-manager[open]{flex:0 0 230px;height:230px;min-height:0;max-height:230px}
+  .sky-mark-manager:not([open]),.sky-control-panel.eastern-active .sky-mark-manager:not([open]){flex:0 0 40px;height:40px;max-height:40px}
+  .sky-mark-list{flex:1 1 0;max-height:none;min-height:0;}
+}
+
+/* Older engines without details-content support retain a bounded scrollable list. */
+@supports not selector(::details-content){
+ .sky-mark-manager[open] .sky-mark-list{flex:none;height:min(21vh,180px);overflow-y:auto}
+ @media(max-width:760px){.sky-mark-manager[open] .sky-mark-list{height:140px}}
+}

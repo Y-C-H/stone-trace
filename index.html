@@ -6,10 +6,10 @@
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="「돌에 새겨진 흔적」 — 3D 데이터를 활용해 세종 연기면 출토 지석묘의 기억과 성혈의 의미를 탐색하는 디지털 문화유산 전시" name="description"/>
 <title>돌에 새겨진 흔적 — 3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색</title>
-<link href="css/style.css?v=35" rel="stylesheet"/>
+<link href="css/style.css?v=36-1" rel="stylesheet"/>
 <link rel="preload" as="image" href="assets/opening/opening-stone.png"/>
 <link rel="preload" as="image" href="assets/opening/opening-logo.png"/>
-<link href="css/sky-overlay.css?v=34" rel="stylesheet"/>
+<link href="css/sky-overlay.css?v=36" rel="stylesheet"/>
 </head>
 <body data-page="0">
 <a class="skip-link" href="#chapter-01">전시 본문으로 바로가기</a>
@@ -20,7 +20,7 @@
     <img class="opening-logo" src="assets/opening/opening-logo.png" alt="돌에 새겨진 흔적" fetchpriority="high" decoding="async"/>
   </div>
   <span class="opening-fallback-title" aria-hidden="true">돌에 새겨진 흔적</span>
-  <span class="opening-version" aria-label="웹사이트 버전 v35">v35</span>
+  <span class="opening-version" aria-label="웹사이트 버전 v36-2">v36-2</span>
   <audio id="openingAudio" preload="auto" src="assets/audio/opening-soft-taps-starlight.wav"></audio>
   <button class="opening-start-button" id="openingStart" type="button">화면을 클릭하여 시작하세요</button>
 </div>
@@ -276,8 +276,23 @@
 <button class="sky-confirm-close" id="skyConfirmClose" type="button">편집으로 돌아가기</button>
 </div>
 </section>
+<!-- CHAPTER 05 — film: the engraver's imagined night sky. -->
+<section class="exhibition-page page-video" data-page-index="4" id="chapter-05" aria-labelledby="chapter-05-title">
+  <div class="video-chapter-frame">
+    <header class="video-chapter-heading">
+      <p class="section-index">05 <span>/</span> FILM · INTERPRETATION</p>
+      <h2 id="chapter-05-title">새긴 사람이 원하는 밤하늘</h2>
+    </header>
+    <div class="video-chapter-stage">
+      <video id="chapter05Video" controls preload="metadata" playsinline aria-label="새긴 사람이 원하는 밤하늘 영상">
+        <source src="assets/video/page-05.mp4" type="video/mp4"/>
+        브라우저가 MP4 영상 재생을 지원하지 않습니다.
+      </video>
+    </div>
+  </div>
+</section>
 <!-- Ending: actual measured cupmarks remain rendered exclusively by endingSky.js. -->
-<section class="exhibition-page page-ending" data-page-index="4" id="exhibition-ending" aria-labelledby="ending-title">
+<section class="exhibition-page page-ending" data-page-index="5" id="exhibition-ending" aria-labelledby="ending-title">
   <canvas id="endingSkyCanvas" class="ending-sky-canvas" aria-label="실제 측정 성혈 배치로 만든 밤하늘. 성혈 직경은 별 크기, 깊이는 밝기를 나타냅니다."></canvas>
   <header class="ending-curatorial-heading">
     <p class="ending-curatorial-label">DATA AS A SKY</p>
@@ -285,23 +300,24 @@
     <p class="ending-curatorial-subtitle">성혈의 크기와 깊이를 별의 크기와 밝기로 바꿔 봅니다</p>
   </header>
   <p class="ending-closing-question">여러분은 이 돌의 기억을 어떻게 이어 가고 싶나요?</p>
-  <button type="button" id="endingReturn" class="ending-return" aria-label="Chapter 04로 돌아가기"><span aria-hidden="true">←</span></button>
+  <button type="button" id="endingReturn" class="ending-return" aria-label="Chapter 05로 돌아가기"><span aria-hidden="true">←</span></button>
 </section>
 </main>
 <!-- Constellation-shaped table of contents -->
 <nav aria-label="별자리형 전시 목차" class="constellation-toc" id="constellationToc"><button aria-controls="tocMap" aria-expanded="false" class="toc-toggle" id="tocToggle" type="button"><span aria-hidden="true">✦</span><em>목차</em></button><div class="toc-map" id="tocMap">
-<svg aria-hidden="true" class="toc-lines" viewBox="0 0 126 185"><path d="M44 23 L78 63 L50 105 L84 146"></path></svg>
+<svg aria-hidden="true" class="toc-lines" viewBox="0 0 126 230"><path d="M44 23 L78 63 L50 105 L84 146 L39 191"></path></svg>
 <button aria-label="1장 고인돌 지식지도" class="toc-node toc-01" data-goto="0" title="고인돌 지식지도" type="button"><span class="toc-star"></span><small>01</small><em>고인돌 지식지도</em></button>
 <button aria-label="2장 전승된 기억" class="toc-node toc-02" data-goto="1" title="전승된 기억" type="button"><span class="toc-star"></span><small>02</small><em>전승된 기억</em></button>
 <button aria-label="3장 쌓여 있는 흔적" class="toc-node toc-03" data-goto="2" title="쌓여 있는 흔적" type="button"><span class="toc-star"></span><small>03</small><em>쌓여 있는 흔적</em></button>
 <button aria-label="4장 오늘의 하늘에 비춰 보다" class="toc-node toc-04" data-goto="3" title="오늘의 하늘에 비춰 보다" type="button"><span class="toc-star"></span><small>04</small><em>오늘의 하늘에 비춰 보다</em></button>
+<button aria-label="5장 새긴 사람이 원하는 밤하늘" class="toc-node toc-05" data-goto="4" title="새긴 사람이 원하는 밤하늘" type="button"><span class="toc-star"></span><small>05</small><em>새긴 사람이 원하는 밤하늘</em></button>
 </div></nav>
 <!-- Sequential previous / next navigation -->
 <nav aria-label="이전 및 다음 장 이동" class="page-navigation">
 <button aria-label="이전 장으로 이동" class="page-prev" id="pagePrev" type="button">
 <span aria-hidden="true" class="nav-arrow">←</span><span class="nav-copy"><small>PREVIOUS</small><strong>이전 장</strong></span>
 </button>
-<span class="page-index" id="pageIndex">01 / 04</span>
+<span class="page-index" id="pageIndex">01 / 05</span>
 <button aria-label="다음 장으로 이동" class="page-next" id="pageNext" type="button">
 <span class="nav-copy"><small>NEXT</small><strong>다음 장</strong></span><span aria-hidden="true" class="nav-arrow">→</span>
 </button>
@@ -342,10 +358,10 @@
 <script defer="" src="js/knowledgeGraph.js"></script>
 
 
-<script defer="" src="js/skyOverlay.js"></script>
+<script defer="" src="js/skyOverlay.js?v=36"></script>
 
 <script defer="" src="js/dolmenViewer.js?v=34-4"></script>
-<script defer="" src="js/endingSky.js?v=34"></script>
-<script defer="" src="js/main.js?v=35"></script>
+<script defer="" src="js/endingSky.js?v=36-2"></script>
+<script defer="" src="js/main.js?v=36"></script>
 </body>
 </html>

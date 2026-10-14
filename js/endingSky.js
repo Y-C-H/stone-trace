@@ -197,10 +197,11 @@
     const {width,height}=viewport,elapsed=Math.max(0,now-enteredAt);
     if(!skyCache)return;
     ctx.globalAlpha=1;ctx.drawImage(skyCache,0,0,width,height);
+    // Rotate around the canvas bottom-center (x=width/2, y=height).
     // Turn the entire star field + aurora as a rigid visual layer.  The gradient
     // night sky is fixed behind it; HTML headings and return control never rotate.
     const rotation=(skyElapsedMs%ROTATION_PERIOD_MS)/ROTATION_PERIOD_MS*Math.PI*2;
-    ctx.save();ctx.translate(width*.5,height*.5);ctx.rotate(rotation);ctx.translate(-width*.5,-height*.5);
+    ctx.save();ctx.translate(width * 0.5,height);ctx.rotate(rotation);ctx.translate(-width * 0.5,-height);
     // Atmospheric veil remains gentle and behind all stars and written elements.
     const auroraFade=reduced?1:clamp((elapsed-1050)/1750,0,1);
     const move=reduced?0:Math.sin(now/38000*Math.PI*2);
@@ -264,7 +265,7 @@
     canvas.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){gesture={id:e.pointerId,x:e.clientX,y:e.clientY};}});
     canvas.addEventListener('pointerup',e=>{if(!gesture||e.pointerId!==gesture.id)return;
       const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;gesture=null;
-      if(dx>75&&Math.abs(dx)>Math.abs(dy)*1.35)window.goToPage?.(3);
+      if(dx>75&&Math.abs(dx)>Math.abs(dy)*1.35)window.goToPage?.(4);
     });
     canvas.addEventListener('pointercancel',()=>{gesture=null;});
   }

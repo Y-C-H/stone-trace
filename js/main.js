@@ -6,6 +6,7 @@
     '전승된 기억',
     '쌓여 있는 흔적',
     '오늘의 하늘에 비춰 보다',
+    '새긴 사람이 원하는 밤하늘',
     '수치로 다시 그린 하늘'
   ];
 
@@ -15,13 +16,13 @@
   let navigationToken=0;
   let transitionLocked=false;
 
-  const CHAPTER_COUNT=4;
-  const ENDING_INDEX=4;
+  const CHAPTER_COUNT=5;
+  const ENDING_INDEX=5;
   function updateNavigation(){
     const ending=currentPage===ENDING_INDEX;
     document.body.dataset.page=String(currentPage);
     const counter=document.getElementById('pageIndex');
-    counter.textContent=`${String(Math.min(currentPage+1,CHAPTER_COUNT)).padStart(2,'0')} / 04`;
+    counter.textContent=`${String(Math.min(currentPage+1,CHAPTER_COUNT)).padStart(2,'0')} / 05`;
     const prev=document.getElementById('pagePrev'),next=document.getElementById('pageNext');
     prev.disabled=currentPage===0||ending;
     next.disabled=ending;
@@ -96,7 +97,11 @@
 
   function initBookNavigation(){
     pages=[...document.querySelectorAll('.exhibition-page')];
-    const readIndexFromHash=()=>location.hash==='#ending'?ENDING_INDEX:(location.hash.match(/^#chapter-(0[1-4])$/)?.[1]?Number(location.hash.match(/^#chapter-(0[1-4])$/)[1])-1:0);
+    const readIndexFromHash=()=>{
+      if(location.hash==='#ending')return ENDING_INDEX;
+      const match=location.hash.match(/^#chapter-(0[1-5])$/);
+      return match?Number(match[1])-1:0;
+    };
     currentPage=readIndexFromHash();
     pages.forEach((p,i)=>p.classList.toggle('active',i===currentPage));
     document.querySelectorAll('[data-goto]').forEach(btn=>btn.addEventListener('click',()=>goToPage(Number(btn.dataset.goto))));
@@ -115,16 +120,27 @@
         }
         return;
       }
-      if(currentPage===ENDING_INDEX&&e.key==='Escape'){e.preventDefault();goToPage(3);return;}
+      if(currentPage===ENDING_INDEX&&e.key==='Escape'){e.preventDefault();goToPage(ENDING_INDEX-1);return;}
       if(e.key==='ArrowRight'){e.preventDefault();nextPage()}if(e.key==='ArrowLeft'){e.preventDefault();previousPage()}
     });
 
     let sx=null,sy=null;
     const exhibition=document.querySelector('.exhibition');
-    exhibition.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'||e.target.closest('canvas,button,input,textarea,select,[role="button"],.graph-info-panel'))return;sx=e.clientX;sy=e.clientY;});
+    exhibition.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'||e.target.closest('canvas,video,button,input,textarea,select,[role="button"],.graph-info-panel'))return;sx=e.clientX;sy=e.clientY;});
     exhibition.addEventListener('pointerup',e=>{if(sx==null)return;const dx=e.clientX-sx,dy=e.clientY-sy;sx=sy=null;if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.4){dx<0?nextPage():previousPage();}});
-    document.getElementById('endingReturn')?.addEventListener('click',()=>goToPage(3));
+    document.getElementById('endingReturn')?.addEventListener('click',()=>goToPage(ENDING_INDEX-1));
     updateNavigation();
+  }
+
+  function initChapterVideo(){
+    const video=document.getElementById('chapter05Video');
+    if(!video)return;
+    const pauseUnlessActive=()=>{
+      if(!document.getElementById('chapter-05')?.classList.contains('active')&&!video.paused)video.pause();
+    };
+    window.addEventListener('exhibition:pagechange',pauseUnlessActive);
+    document.addEventListener('visibilitychange',()=>{if(document.hidden&&!video.paused)video.pause();});
+    // The video never auto-resumes after navigation. Keep its currentTime for a later manual play.
   }
 
   function initInterpretations(){
@@ -263,7 +279,7 @@
   function initOpening(){
     const overlay=document.getElementById('exhibitionOpening');
     if(!overlay)return;
-    if(location.hash==='#ending'||/^#chapter-0[2-4]$/.test(location.hash)){
+    if(location.hash==='#ending'||/^#chapter-0[2-5]$/.test(location.hash)){
       overlay.remove();return;
     }
     openingState='waiting';
@@ -289,7 +305,7 @@
 
   document.addEventListener('DOMContentLoaded',()=>{
     document.title=`${PROJECT_TITLE_KO} — ${PROJECT_SUBTITLE}`;
-    initBookNavigation();initConstellationToc();initInterpretations();initSources();initUnifiedObservation();
+    initBookNavigation();initConstellationToc();initChapterVideo();initInterpretations();initSources();initUnifiedObservation();
     window.initEndingSky?.();
     window.initDolmenViewer?.();window.initKnowledgeGraph?.();window.setKnowledgeGraphActive?.(currentPage===0);
     updateNavigation();initOpening();

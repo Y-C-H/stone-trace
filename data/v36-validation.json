@@ -1,0 +1,36 @@
+{
+  "version": "v36",
+  "base": "stone-traces-v35.zip",
+  "updates": [
+    "Page 4: independent cupmark list scrolling and DOM-preserving toggle updates",
+    "Page 5: HTML5 38s MP4 chapter, TOC fifth node, page routing and video pause on exit",
+    "Page 6: ending sky rotation pivot (width,height) and return to chapter 05"
+  ],
+  "files_changed": [
+    "index.html",
+    "css/style.css",
+    "css/sky-overlay.css",
+    "js/main.js",
+    "js/skyOverlay.js",
+    "js/endingSky.js"
+  ],
+  "files_added": [
+    "assets/video/page-05.mp4",
+    "data/v36-validation.json"
+  ],
+  "video_sha256": "6dd98fb2c596c1c624b4d3eb8bdd5b3904c4d5e70043a23d05e9b8d6ad464140",
+  "tests": {
+    "javascript_syntax": "passed: js/main.js, js/skyOverlay.js, js/endingSky.js (node --check)",
+    "chrome_desktop_dom": "passed 1440x900: measured count 46, cupmark list scroll range 553px, last point reached, ON/OFF and all-off preserve scroll, chapter 05 navigation & pause on page exit, return from ending, five-node TOC, ending pivot at (1440,900)",
+    "chrome_mobile_dom": "passed 390x844: measured count 46, cupmark list scroll range 401px, last point reached, toggles retain scroll, 16:9 inline video with reserved TOC lane, chapter 05 navigation & pause on exit, ending pivot at (390,844)",
+    "video_actual_media": "passed Chromium data-URI playback of unchanged Page 5.mp4: H.264/AAC, 38.0s duration, 1280x720, play advanced time to >0.3s, pause stopped playback",
+    "opening_regression": "passed isolated Chromium v35 opening suite: desktop, mobile, skip, Enter/Space, repeat start, audio-denied, direct #chapter-05",
+    "structural_integrity": "checked all v35 files present and unchanged except six declared edited files; original MP4 SHA-256 equals packaged asset"
+  },
+  "limitations": [
+    "Local HTTP URLs were blocked by the sandbox administrator, so full end-to-end server-driven 3D/WebGL rendering and browser network asset loads could not be exercised.",
+    "Desktop/mobile Playwright DOM interaction tests injected HTML/CSS/JS and mock-fetched measured JSON; real physical touch and trackpad devices were not tested.",
+    "Video was decoded/played from a data-URI in Chromium rather than loaded over HTTP. The video file in the ZIP is byte-for-byte identical to the original.",
+    "Automated playback of the full site on Safari was not available."
+  ]
+}
