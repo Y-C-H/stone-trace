@@ -1,0 +1,32 @@
+[
+  {
+    "screen": "1440x900",
+    "status": "passed",
+    "measuredCount": 46,
+    "rotationDegreesAfterMs": 0.17999399999999996,
+    "lines": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "skyIntroDeleted": true,
+    "pageErrors": [],
+    "scrollWidth": 1440
+  },
+  {
+    "screen": "390x844",
+    "status": "passed",
+    "measuredCount": 46,
+    "rotationDegreesAfterMs": 0.16667360000000003,
+    "lines": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "skyIntroDeleted": true,
+    "pageErrors": [],
+    "scrollWidth": 390
+  }
+]

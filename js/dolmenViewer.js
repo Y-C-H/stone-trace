@@ -323,7 +323,7 @@
     focusCounter.textContent=focused?`${markerData[selectedIndex].id} · ${selectedIndex+1} / ${markerData.length}`:'';
     focusPrev.disabled=!focused||selectedIndex===0;
     focusNext.disabled=!focused||selectedIndex===markerData.length-1;
-    document.getElementById('chapter-02').dataset.viewMode=viewMode;
+    document.getElementById('chapter-03').dataset.viewMode=viewMode;
     panelSelection.textContent=focused?`관찰 중 · ${markerData[selectedIndex].id}`:'';
     if(focused&&!panel.dataset.userExpanded&&isMobile){panel.classList.add('is-collapsed');panelToggle.setAttribute('aria-expanded','false');panelToggle.textContent='측정 정보 펼치기';}
     if(!focused){panel.classList.remove('is-collapsed');panelToggle.setAttribute('aria-expanded','true');panelToggle.textContent='측정 정보 접기';delete panel.dataset.userExpanded;}
@@ -826,7 +826,7 @@
   function error(message){loadingTitle.textContent=message;percent.textContent='';bar.hidden=true;loading.classList.add('is-error');window.__dolmenViewerStatus={model,error:message};}
   function activateIfNeeded(){
     active=document.body.dataset.page==='1';if(!active)return;
-    const stage=document.getElementById('chapter-02').dataset.observationMode||'overview';
+    const stage=document.getElementById('chapter-03').dataset.observationMode||'overview';
     const host=stage==='observation'?detail:overview;
     if(root.parentElement!==host){
       host.appendChild(root);

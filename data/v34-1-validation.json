@@ -1,0 +1,38 @@
+{
+  "version": {
+    "baseVersion": "v34",
+    "resultVersion": "v34-1",
+    "createdAtKST": "2026-10-14T11:57+09:00"
+  },
+  "textUpdates": {
+    "chapter02Title": {
+      "before": "다시 불러낸 뜻",
+      "after": "전승된 기억"
+    },
+    "navigationChapterTitlesUpdated": true,
+    "tocTitleAndAccessibilityLabelUpdated": true,
+    "sourceDialogReferenceHeadingUpdated": true,
+    "openingVersionBadge": "v34-1",
+    "javascriptCacheBuster": "js/main.js?v=34-1"
+  },
+  "integrity": {
+    "baselineFileCount": 322,
+    "changedBaselineFiles": [
+      "index.html",
+      "js/main.js"
+    ],
+    "deletedBaselineFiles": [],
+    "dataFilesUnchanged": true,
+    "modelsUnchanged": true,
+    "otherChaptersUnchanged": true
+  },
+  "tests": {
+    "javascriptSyntax": "passed_node_check",
+    "sourceTextChecks": "passed",
+    "browserIntegration": "not_run",
+    "mobilePhysicalDevice": "not_run",
+    "knownIssues": [
+      "The full-site WebGL and mobile touch flow were not retested for this text-only release."
+    ]
+  }
+}

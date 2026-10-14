@@ -1,0 +1,85 @@
+{
+  "version": {
+    "baseVersion": "v33",
+    "resultVersion": "v34"
+  },
+  "changes": {
+    "openingVersionLabel": "v34",
+    "versionLabelLocation": "opening right-bottom",
+    "chapterOrder": [
+      "chapter-01:knowledge",
+      "chapter-02:interpretation",
+      "chapter-03:observation",
+      "chapter-04:sky-overlay",
+      "ending"
+    ],
+    "chapter01TitleVisible": true,
+    "chapter01SubtitleRemoved": true,
+    "chapter01TypographyMatchesOtherHeadings": true,
+    "chapter03IntroSentenceBreaks": 4,
+    "chapter03IntroWidthFollowsLongestLineDesktop": true,
+    "interpretationButtonsSmallCategoryRemoved": 4,
+    "interpretationDetailLabelsUnchanged": true,
+    "chapter04TopIntroRemoved": true,
+    "endingHeadingLeftAligned": true,
+    "endingQuestionRightAlignedAndLowered": true,
+    "auroraDarkened": true,
+    "skyRotationPeriodSeconds": 1800,
+    "skyRotationIncludesAuroraDecorativeAndMeasuredStars": true,
+    "endingTextIsFixed": true
+  },
+  "dataIntegrity": {
+    "v33SourceChangedFiles": [
+      "css/style.css",
+      "index.html",
+      "js/dolmenViewer.js",
+      "js/endingSky.js",
+      "js/main.js"
+    ],
+    "v33SourceUnchangedFiles": 307,
+    "v33SourceMissingFiles": [],
+    "knowledgeDataModified": false,
+    "pointCloudModified": false,
+    "measuredCupmarkCoordinatesModified": false,
+    "asterismDataModified": false,
+    "dolmenModelModified": false,
+    "textureModified": false,
+    "interpretationBodiesModified": false
+  },
+  "tests": {
+    "javascriptSyntax": {
+      "main": "passed",
+      "dolmenViewer": "passed",
+      "endingSky": "passed"
+    },
+    "isolatedBrowserTestResults": "data/v34-browser-test-results.json",
+    "desktopViewports": [
+      "1920x1080",
+      "1440x900",
+      "1366x768",
+      "1024x768"
+    ],
+    "mobileViewport": "390x844",
+    "navigationAndChapterSwitching": "passed_in_isolated_1440x900_and_390x844",
+    "interpretationSources": "passed_in_isolated_1440x900_and_390x844",
+    "observationMode": "passed_in_isolated_1440x900_and_390x844",
+    "endingRotationAdvances": "passed_real_raf_in_isolated_browser",
+    "endingMeasuredStarCount": 46,
+    "fullIntegrationAndWebGL": "not_tested",
+    "mobilePhysicalDevice": "not_tested",
+    "visualScreenshots": [
+      "testshots/v34-final-0-1440x900.png",
+      "testshots/v34-final-1-1440x900.png",
+      "testshots/v34-final-2-1440x900.png",
+      "testshots/v34-final-4-1440x900.png",
+      "testshots/v34-final-0-390x844.png",
+      "testshots/v34-final-1-390x844.png",
+      "testshots/v34-final-2-390x844.png",
+      "testshots/v34-final-4-390x844.png"
+    ],
+    "knownIssues": [
+      "The chapter 03 3D Viewer could not be GPU-verified in isolated browser tests.",
+      "Page 03 observer loading panel is a placeholder in the isolated screenshots because the WebGL viewer was not loaded."
+    ]
+  }
+}
