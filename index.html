@@ -9,7 +9,7 @@
 <link href="css/style.css?v=40-1" rel="stylesheet"/>
 <link rel="preload" as="image" href="assets/opening/opening-stone.png"/>
 <link rel="preload" as="image" href="assets/opening/opening-logo.png"/>
-<link href="css/sky-overlay.css?v=37" rel="stylesheet"/>
+<link href="css/sky-overlay.css?v=42" rel="stylesheet"/>
 </head>
 <body data-page="0">
 <a class="skip-link" href="#chapter-01">전시 본문으로 바로가기</a>
@@ -20,7 +20,7 @@
     <img class="opening-logo" src="assets/opening/opening-logo.png" alt="돌에 새겨진 흔적" fetchpriority="high" decoding="async"/>
   </div>
   <span class="opening-fallback-title" aria-hidden="true">돌에 새겨진 흔적</span>
-  <span class="opening-version" aria-label="웹사이트 버전 v41">v41</span>
+  <span class="opening-version" aria-label="웹사이트 버전 v42">v42</span>
   <audio id="openingAudio" preload="auto" src="assets/audio/opening-soft-taps-starlight.wav"></audio>
   <button class="opening-start-button" id="openingStart" type="button">화면을 클릭하여 시작하세요</button>
 </div>
@@ -227,7 +227,7 @@
 <canvas aria-label="밤하늘 위에서 성혈 배열을 이동, 확대축소, 회전하며 비교하는 체험 화면" id="skyOverlayCanvas"></canvas>
 <div class="sky-status-row">
 
-<span class="sky-layer-legend"><i class="legend-cupmark-star" aria-hidden="true">✦</i> 금빛 별 · 성혈 <i class="legend-sky-star" aria-hidden="true">✦</i> 흰 별 · 밤하늘</span>
+<span class="sky-layer-legend"><i class="legend-cupmark-star" aria-hidden="true">✦</i> 금빛 별 · 성혈 <span class="sky-background-legend"><i class="legend-sky-star" aria-hidden="true">✦</i> 흰 별 · 밤하늘</span></span>
 
 </div>
 <button class="sky-mobile-scroll-cue" id="skyMobileControlsCue" type="button">성혈 조작하기 <span aria-hidden="true">↓</span></button>
@@ -243,6 +243,11 @@
 <div class="eastern-constellations-toggle" role="group" aria-label="동양 별자리">
   <span>동양 별자리 <small title="성관 내부 형태를 유지하고 성관 사이의 거리는 미학적으로 재배치한 전시용 밤하늘입니다. 실제 천문도는 아닙니다.">· 형태 재구성 12개</small></span><div class="eastern-constellations-buttons">
   <button type="button" id="easternOff" aria-pressed="true">OFF</button><button type="button" id="easternOn" aria-pressed="false">ON</button>
+  </div>
+</div>
+<div class="eastern-constellations-toggle sky-background-toggle" role="group" aria-label="우주 배경">
+  <span>우주 배경</span><div class="eastern-constellations-buttons">
+    <button type="button" id="skyBackgroundOff" aria-pressed="false">OFF</button><button type="button" id="skyBackgroundOn" aria-pressed="true">ON</button>
   </div>
 </div>
 <div class="sky-asterism-controls" role="group" aria-label="동양 성관 확대 관찰">
@@ -374,7 +379,7 @@
 <script defer="" src="js/knowledgeGraph.js"></script>
 
 
-<script defer="" src="js/skyOverlay.js?v=37"></script>
+<script defer="" src="js/skyOverlay.js?v=42"></script>
 
 <script defer="" src="js/dolmenViewer.js?v=34-4"></script>
 <script defer="" src="js/endingSky.js?v=39"></script>

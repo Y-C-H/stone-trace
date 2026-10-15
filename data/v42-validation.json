@@ -1,0 +1,263 @@
+{
+  "version": "v42",
+  "based_on": "v41",
+  "date": "2026-10-15",
+  "summary": "Page 4 cosmic background ON/OFF switch placed immediately below Eastern asterism ON/OFF.",
+  "changed_files": [
+    "index.html",
+    "css/sky-overlay.css",
+    "js/skyOverlay.js"
+  ],
+  "added_files": [
+    "data/v42-validation.json"
+  ],
+  "behavior": {
+    "default": "ON on page load",
+    "background_on": "original night sky gradient, haze, and 1150 decorative background stars rendered",
+    "background_off": "solid #000000 Canvas background, no gradient/haze/decorative stars",
+    "independent_layers": "measured cupmarks remain; Eastern asterisms shown only when their independent toggle is ON",
+    "confirmation": "same ON/OFF setting applied to confirmation view",
+    "memory": "persists during single-page navigation; resets to ON on browser reload"
+  },
+  "verification": {
+    "script_syntax": "node --check passed for js/skyOverlay.js",
+    "static_data": "46 measured cupmarks preserved; original JSON identical to v41",
+    "browser": "Chromium headless with real chapter-04 markup/CSS/skyOverlay.js and injected real JSON. Localhost navigation blocked by runtime policy; full integrated HTTP site not tested.",
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        1024,
+        768
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        320,
+        568
+      ]
+    ],
+    "off_mode_black_pixel_ratios": {
+      "1440x900": 0.951,
+      "1024x768": 0.926,
+      "390x844": 0.916,
+      "320x568": 0.899
+    },
+    "tested": [
+      "default background ON",
+      "background OFF suppresses all decorative sky stars/gradient/haze",
+      "46 measured cupmarks retained",
+      "Eastern constellations ON independently of background",
+      "button pressed states and reset to ON",
+      "button directly below Eastern toggle",
+      "cupmark management scroll region visible",
+      "confirm view background OFF on desktop",
+      "no JavaScript page errors from isolated page-04 tests"
+    ],
+    "limitations": [
+      "Full site HTTP navigation and other chapters were not functionally re-tested because Chromium blocks local URLs",
+      "Browser observations used isolated Chapter 04 DOM and source JS with actual original JSON injected"
+    ]
+  },
+  "browser_results": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "on": {
+        "enabled": true,
+        "backgroundStarsRendered": 1150,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "off": {
+        "enabled": false,
+        "backgroundStarsRendered": 0,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "offWithEastern": {
+        "enabled": false,
+        "backgroundStarsRendered": 0,
+        "measuredCupmarks": 46,
+        "easternEnabled": true,
+        "confirmOpen": false
+      },
+      "restored": {
+        "enabled": true,
+        "backgroundStarsRendered": 1150,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "pressedOn": "true",
+      "pressedOff": "true",
+      "blackPixelRatio": 0.951,
+      "directlyBelow": true,
+      "visible": true,
+      "managerHeight": 192,
+      "managerListHeight": 103,
+      "rowsY": [
+        212,
+        265
+      ],
+      "confirm": {
+        "visible": true,
+        "pixel": [
+          0,
+          0,
+          0
+        ]
+      },
+      "errors": []
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "on": {
+        "enabled": true,
+        "backgroundStarsRendered": 1150,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "off": {
+        "enabled": false,
+        "backgroundStarsRendered": 0,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "offWithEastern": {
+        "enabled": false,
+        "backgroundStarsRendered": 0,
+        "measuredCupmarks": 46,
+        "easternEnabled": true,
+        "confirmOpen": false
+      },
+      "restored": {
+        "enabled": true,
+        "backgroundStarsRendered": 1150,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "pressedOn": "true",
+      "pressedOff": "true",
+      "blackPixelRatio": 0.926,
+      "directlyBelow": true,
+      "visible": true,
+      "managerHeight": 136,
+      "managerListHeight": 54,
+      "rowsY": [
+        153,
+        206
+      ],
+      "confirm": null,
+      "errors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "on": {
+        "enabled": true,
+        "backgroundStarsRendered": 1150,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "off": {
+        "enabled": false,
+        "backgroundStarsRendered": 0,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "offWithEastern": {
+        "enabled": false,
+        "backgroundStarsRendered": 0,
+        "measuredCupmarks": 46,
+        "easternEnabled": true,
+        "confirmOpen": false
+      },
+      "restored": {
+        "enabled": true,
+        "backgroundStarsRendered": 1150,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "pressedOn": "true",
+      "pressedOff": "true",
+      "blackPixelRatio": 0.916,
+      "directlyBelow": true,
+      "visible": true,
+      "managerHeight": 230,
+      "managerListHeight": 141,
+      "rowsY": [
+        760,
+        805
+      ],
+      "confirm": null,
+      "errors": []
+    },
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "on": {
+        "enabled": true,
+        "backgroundStarsRendered": 1150,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "off": {
+        "enabled": false,
+        "backgroundStarsRendered": 0,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "offWithEastern": {
+        "enabled": false,
+        "backgroundStarsRendered": 0,
+        "measuredCupmarks": 46,
+        "easternEnabled": true,
+        "confirmOpen": false
+      },
+      "restored": {
+        "enabled": true,
+        "backgroundStarsRendered": 1150,
+        "measuredCupmarks": 46,
+        "easternEnabled": false,
+        "confirmOpen": false
+      },
+      "pressedOn": "true",
+      "pressedOff": "true",
+      "blackPixelRatio": 0.899,
+      "directlyBelow": true,
+      "visible": true,
+      "managerHeight": 230,
+      "managerListHeight": 141,
+      "rowsY": [
+        217,
+        262
+      ],
+      "confirm": null,
+      "errors": []
+    }
+  ]
+}

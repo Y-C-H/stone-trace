@@ -5,6 +5,8 @@
   const DATA_URL='data/cupmarks-measured.json';
   const EASTERN_URL='data/eastern-asterisms.json';
   const eastern={enabled:false,loading:false,loaded:false,data:null,error:null};
+  // Chapter 04 visual background is independent of the gold cupmarks and Eastern asterisms.
+  let skyBackgroundEnabled=true;
   const MIN_SCALE=.32, MAX_SCALE=4.5;
   const state={panX:0,panY:0,scale:1,rotation:0,hovered:null,handleHovered:false,points:[],active:new Set(),stars:[],ready:false};
   const pointers=new Map();
@@ -42,6 +44,11 @@
   }
 
   function drawSky(context,w,h){
+    if(!skyBackgroundEnabled){
+      context.fillStyle='#000000';
+      context.fillRect(0,0,w,h);
+      return;
+    }
     const bg=context.createRadialGradient(w*.52,h*.42,0,w*.52,h*.45,Math.max(w,h)*.78);
     bg.addColorStop(0,'#0b1728');bg.addColorStop(.42,'#050b16');bg.addColorStop(1,'#010309');
     context.fillStyle=bg;context.fillRect(0,0,w,h);
@@ -304,6 +311,16 @@
   }
   window.__easternAsterismDebug=()=>({enabled:eastern.enabled,loaded:eastern.loaded,loading:eastern.loading,error:eastern.error,count:eastern.data?.asterisms?.length||0,focusId:easternView.focusId,overview:easternView.focusId===null,view:easternView.lastView,labels:easternView.labelBoxes,hitTargets:easternView.hitTargets.length,cupmarkTransform:{panX:state.panX,panY:state.panY,scale:state.scale,rotation:state.rotation}});
 
+  function setSkyBackgroundEnabled(enabled){
+    skyBackgroundEnabled=Boolean(enabled);
+    document.getElementById('skyBackgroundOn')?.setAttribute('aria-pressed',String(skyBackgroundEnabled));
+    document.getElementById('skyBackgroundOff')?.setAttribute('aria-pressed',String(!skyBackgroundEnabled));
+    document.getElementById('skyCanvasShell')?.classList.toggle('sky-background-off',!skyBackgroundEnabled);
+    draw();
+    if(confirmOpen)drawConfirm();
+  }
+  window.__skyBackgroundDebug=()=>({enabled:skyBackgroundEnabled,backgroundStarsRendered:skyBackgroundEnabled?state.stars.length:0,measuredCupmarks:state.points.length,easternEnabled:eastern.enabled,confirmOpen});
+
   function pointBounds(){
     if(!state.points.length)return{minX:-.5,maxX:.5,minY:-.25,maxY:.25,rx:1,ry:.5};
     const xs=state.points.map(p=>p.x),ys=state.points.map(p=>p.y),minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
@@ -506,6 +523,8 @@
     document.getElementById('skyMobileControlsCue')?.addEventListener('click',()=>document.querySelector('.sky-control-panel')?.scrollIntoView({behavior:'smooth',block:'start'}));
     document.getElementById('easternOn')?.addEventListener('click',()=>setEasternEnabled(true));
     document.getElementById('easternOff')?.addEventListener('click',()=>setEasternEnabled(false));
+    document.getElementById('skyBackgroundOn')?.addEventListener('click',()=>setSkyBackgroundEnabled(true));
+    document.getElementById('skyBackgroundOff')?.addEventListener('click',()=>setSkyBackgroundEnabled(false));
     document.getElementById('easternOverview')?.addEventListener('click',()=>setEasternFocus(null));
     document.getElementById('easternFocusSelect')?.addEventListener('change',e=>setEasternFocus(e.target.value||null));
     markList?.addEventListener('click',e=>{const b=e.target.closest('[data-point-id]');if(b)togglePoint(b.dataset.pointId)});

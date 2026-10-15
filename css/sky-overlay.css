@@ -112,3 +112,9 @@
 }
 .sky-mark-list::-webkit-scrollbar-thumb:hover{background:rgba(215,191,147,.64)}
 .sky-mark-list::-webkit-scrollbar-corner{background:transparent}
+
+/* v42: Chapter 04 background toggle uses the existing Eastern-asterism button styling.
+   With the decorative background off, the Canvas itself paints solid black;
+   hide only the explanatory background-star legend, never the measured data. */
+.sky-background-toggle{flex:0 0 auto}
+.sky-background-off .sky-background-legend{display:none}
