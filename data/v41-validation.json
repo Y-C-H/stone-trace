@@ -1,0 +1,27 @@
+{
+  "version": "v41",
+  "baseVersion": "v40-1",
+  "change": "Replaced Chapter 05 MP4 with supplied 영상수정본.mp4; updated site version and video cache key.",
+  "modifiedFiles": [
+    "assets/video/page-05.mp4",
+    "index.html"
+  ],
+  "newVideo": {
+    "durationSeconds": 38.0,
+    "width": 1280,
+    "height": 720,
+    "videoCodec": "h264",
+    "audioCodec": "aac",
+    "sha256": "35523e285effb8a826286b04e3445c381ded019ddc711cde409d8e07caa8093e"
+  },
+  "checks": {
+    "ffmpegFullDecode": "passed",
+    "zipCrc": "pending",
+    "chapterVideoReference": "passed",
+    "otherExistingFilesByteIdentical": "pending"
+  },
+  "unverified": [
+    "Live-browser video seeking/playback on the deployed site",
+    "Other-site full regression tests"
+  ]
+}
