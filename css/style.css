@@ -1333,3 +1333,63 @@ body[data-page="5"] .constellation-toc,body[data-page="5"] .page-navigation,body
 }
 .page-ending .ending-data-legend-star{font-size:.9rem;color:#d8ebff;filter:drop-shadow(0 0 5px rgba(130,180,250,.7))}
 @media(max-width:760px){.page-ending .ending-data-legend{margin:.55rem 0 0;font-size:.67rem;max-width:100%}}
+
+
+/* v39 — Right-bottom time acceleration and source-inspired observer-sky UI. */
+.page-ending .ending-time-speed{
+  position:absolute;z-index:6;right:calc(14px + env(safe-area-inset-right,0px));
+  bottom:calc(14px + env(safe-area-inset-bottom,0px));
+  height:40px;min-width:88px;padding:0 14px;white-space:nowrap;
+  border-radius:20px;border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.07);color:#cfe0ff;
+  font:400 14px/1 var(--font-ui,system-ui,sans-serif);
+  cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:background .16s ease,border-color .16s ease;
+  -webkit-tap-highlight-color:transparent;
+}
+.page-ending .ending-time-speed:hover{background:rgba(255,255,255,.16)}
+.page-ending .ending-time-speed.fast{background:rgba(120,170,255,.28);border-color:rgba(160,200,255,.5)}
+.page-ending .ending-time-speed:focus-visible{outline:2px solid #eee4cb;outline-offset:2px}
+@media(max-width:760px){
+  /* Speed button stays bottom-right, while the original central tools take the row above. */
+  .page-ending .ending-view-controls{bottom:calc(70px + env(safe-area-inset-bottom,0px))}
+  .page-ending .ending-closing-question{bottom:calc(138px + env(safe-area-inset-bottom,0px))}
+}
+@media(max-width:350px){
+  .page-ending .ending-view-controls{bottom:calc(69px + env(safe-area-inset-bottom,0px))}
+  .page-ending .ending-return{bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+  .page-ending .ending-closing-question{bottom:calc(133px + env(safe-area-inset-bottom,0px))}
+}
+@media(max-width:760px) and (max-height:720px){
+  .page-ending .ending-closing-question{bottom:calc(136px + env(safe-area-inset-bottom,0px))}
+}
+@media(prefers-reduced-motion:reduce){.page-ending .ending-time-speed{transition:none}}
+
+/* v39 — Fade-in instructions and daylight-safe curatorial typography. */
+.page-ending .ending-sky-hint{
+  position:absolute;z-index:6;top:calc(14px + env(safe-area-inset-top,0px));
+  left:50%;transform:translateX(-50%);margin:0;pointer-events:none;
+  max-width:calc(100% - 32px);white-space:nowrap;text-align:center;
+  color:rgba(200,215,240,.75);font:400 13px/1.4 var(--font-ui,system-ui,sans-serif);
+  opacity:0;
+}
+.page-ending.active .ending-sky-hint{animation:v39-ending-hint 9s linear forwards}
+@keyframes v39-ending-hint{0%,68%{opacity:.78}100%{opacity:0}}
+.page-ending .ending-hint-mobile{display:none}
+.page-ending.sky-daylight .ending-curatorial-label{color:#304e6a;text-shadow:0 1px 2px rgba(255,255,255,.2)}
+.page-ending.sky-daylight .ending-curatorial-heading h2{color:#1b2b40;text-shadow:0 1px 2px rgba(255,255,255,.22)}
+.page-ending.sky-daylight .ending-curatorial-subtitle,
+.page-ending.sky-daylight .ending-data-legend,
+.page-ending.sky-daylight .ending-closing-question{color:#27364d;text-shadow:0 1px 3px rgba(255,255,255,.35)}
+.page-ending.sky-daylight .ending-data-legend-star{color:#294b74;filter:none}
+.page-ending.sky-daylight .ending-view-controls button,
+.page-ending.sky-daylight .ending-time-speed{background:rgba(9,23,43,.67);color:#eef5ff;border-color:rgba(40,55,77,.44)}
+.page-ending.sky-daylight .ending-time-speed.fast{background:rgba(31,75,130,.80)}
+.page-ending.sky-daylight .ending-sky-hint{color:rgba(30,48,77,.75)}
+.page-ending.sky-daylight .ending-return{opacity:.46;background:rgba(9,23,43,.65)}
+@media(max-width:760px){
+ .page-ending .ending-hint-desktop{display:none}
+ .page-ending .ending-hint-mobile{display:inline}
+ .page-ending .ending-sky-hint{font-size:10px;top:calc(13px + env(safe-area-inset-top,0px))}
+}
+@media(prefers-reduced-motion:reduce){.page-ending.active .ending-sky-hint{animation:none;opacity:.78}}

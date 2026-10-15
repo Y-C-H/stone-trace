@@ -1,0 +1,122 @@
+[
+  {
+    "viewport": "1440x900",
+    "render": true,
+    "errors": [],
+    "timeSpeedCycle": [
+      1,
+      60,
+      240,
+      900,
+      2000,
+      1
+    ],
+    "siderealPeriod": 86164.0905,
+    "clockAdvances": 96.38209913930271,
+    "visibleCounts": [
+      46,
+      44,
+      36,
+      28,
+      18,
+      12,
+      13,
+      20,
+      28,
+      32,
+      39,
+      44
+    ],
+    "controlOverlap": []
+  },
+  {
+    "viewport": "1024x768",
+    "render": true,
+    "errors": [],
+    "timeSpeedCycle": [
+      1,
+      60,
+      240,
+      900,
+      2000,
+      1
+    ],
+    "siderealPeriod": 86164.0905,
+    "clockAdvances": 84.3504247988744,
+    "visibleCounts": [
+      46,
+      45,
+      36,
+      28,
+      18,
+      12,
+      13,
+      20,
+      28,
+      32,
+      39,
+      44
+    ],
+    "controlOverlap": []
+  },
+  {
+    "viewport": "390x844",
+    "render": true,
+    "errors": [],
+    "timeSpeedCycle": [
+      1,
+      60,
+      240,
+      900,
+      2000,
+      1
+    ],
+    "siderealPeriod": 86164.0905,
+    "clockAdvances": 84.12689265701644,
+    "visibleCounts": [
+      46,
+      45,
+      37,
+      28,
+      18,
+      12,
+      13,
+      20,
+      28,
+      32,
+      39,
+      44
+    ],
+    "controlOverlap": []
+  },
+  {
+    "viewport": "320x568",
+    "render": true,
+    "errors": [],
+    "timeSpeedCycle": [
+      1,
+      60,
+      240,
+      900,
+      2000,
+      1
+    ],
+    "siderealPeriod": 86164.0905,
+    "clockAdvances": 81.89361277579667,
+    "visibleCounts": [
+      46,
+      45,
+      37,
+      28,
+      18,
+      12,
+      13,
+      20,
+      28,
+      32,
+      39,
+      44
+    ],
+    "controlOverlap": []
+  }
+]

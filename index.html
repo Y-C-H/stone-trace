@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="「돌에 새겨진 흔적」 — 3D 데이터를 활용해 세종 연기면 출토 지석묘의 기억과 성혈의 의미를 탐색하는 디지털 문화유산 전시" name="description"/>
 <title>돌에 새겨진 흔적 — 3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색</title>
-<link href="css/style.css?v=38-1" rel="stylesheet"/>
+<link href="css/style.css?v=39" rel="stylesheet"/>
 <link rel="preload" as="image" href="assets/opening/opening-stone.png"/>
 <link rel="preload" as="image" href="assets/opening/opening-logo.png"/>
 <link href="css/sky-overlay.css?v=37" rel="stylesheet"/>
@@ -20,7 +20,7 @@
     <img class="opening-logo" src="assets/opening/opening-logo.png" alt="돌에 새겨진 흔적" fetchpriority="high" decoding="async"/>
   </div>
   <span class="opening-fallback-title" aria-hidden="true">돌에 새겨진 흔적</span>
-  <span class="opening-version" aria-label="웹사이트 버전 v38-2">v38-2</span>
+  <span class="opening-version" aria-label="웹사이트 버전 v39">v39</span>
   <audio id="openingAudio" preload="auto" src="assets/audio/opening-soft-taps-starlight.wav"></audio>
   <button class="opening-start-button" id="openingStart" type="button">화면을 클릭하여 시작하세요</button>
 </div>
@@ -302,6 +302,8 @@
     <button type="button" data-sky-action="pan-right" aria-label="오른쪽 보기" title="오른쪽 보기">▶</button>
     <button type="button" data-sky-action="reset" aria-label="기본 시점 복원" title="기본 시점 복원" class="ending-view-reset">초기화</button>
   </div>
+  <p class="ending-sky-hint" aria-hidden="true"><span class="ending-hint-desktop">드래그 · ◀ ▶ : 좌우 이동　　휠 · 핀치 · − ＋ : 축소 / 확대　　⏩ : 시간 빠르게</span><span class="ending-hint-mobile">드래그 · ◀ ▶ · 핀치 · ⏩ 시간 배속</span></p>
+  <button type="button" id="endingTimeSpeed" class="ending-time-speed" aria-label="하늘 회전 속도 1배. 눌러서 속도 변경" aria-pressed="false" title="시간 흐름 배속 · F 키">⏩ ×1</button>
   <header class="ending-curatorial-heading">
     <p class="ending-curatorial-label">DATA AS A SKY</p>
     <h2 id="ending-title">수치로 다시 그린 하늘</h2>
@@ -370,7 +372,7 @@
 <script defer="" src="js/skyOverlay.js?v=37"></script>
 
 <script defer="" src="js/dolmenViewer.js?v=34-4"></script>
-<script defer="" src="js/endingSky.js?v=38-1"></script>
+<script defer="" src="js/endingSky.js?v=39"></script>
 <script defer="" src="js/main.js?v=37-1"></script>
 </body>
 </html>

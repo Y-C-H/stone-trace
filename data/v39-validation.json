@@ -1,0 +1,73 @@
+{
+  "version": "v39",
+  "base": "v38-2",
+  "date": "2026-10-15",
+  "reference_html": "5페이지_성혈_여명노을_2000배_속도버튼우측하단.html",
+  "implemented": [
+    "Ending remains a stereographic sky from measured 46 cupmarks and the original observer-based horizon",
+    "Adopts source reference sidereal period 86164.0905 seconds and constant angular speed",
+    "Adds click-to-cycle time-speed control at bottom-right: 1, 60, 240, 900, 2000",
+    "Adds approximate daylight and dawn/dusk gradient using measured points above the horizon",
+    "Retains measured-only stars and v38-2 enhanced star visibility with reference glow strength/size",
+    "Preserves page-5 return and prior center viewing tools and circular dome zoom",
+    "Adds automatically contrasting curatorial typography during bright sky",
+    "Preserves direct reference data and other-page files"
+  ],
+  "modified": [
+    "css/style.css",
+    "index.html",
+    "js/endingSky.js"
+  ],
+  "added": [
+    "data/v39-browser-tests.json",
+    "data/v39-validation.json"
+  ],
+  "reference_mapping": {
+    "rotation_period_s": 86164.0905,
+    "time_speeds": [
+      1,
+      60,
+      240,
+      900,
+      2000
+    ],
+    "day_visible_count": 14,
+    "night_visible_count": 28,
+    "default_fov_degrees": 130,
+    "new_daylight": "decorative day/dusk effect based on original cupmark visibility, not true solar calculations"
+  },
+  "data": {
+    "source": "data/cupmarks-measured.json",
+    "measured_points": 46,
+    "decorative_stars": 0,
+    "original_file_unchanged": true,
+    "diameter_depth_unchanged": true
+  },
+  "verified": {
+    "javascript_syntax": "node --check passed",
+    "isolated_chromium_viewports": [
+      "1440x900",
+      "1024x768",
+      "390x844",
+      "320x568"
+    ],
+    "tested": [
+      "actual rendering",
+      "speed button cycles five modes",
+      "sky clock advances at accelerated speeds",
+      "cupmark input values retained",
+      "no overlap among major UI controls",
+      "zoom and pan buttons",
+      "horizon visibility changes across 24h",
+      "twilight and daytime phase rendering",
+      "animation stops when page deactivates and resumes on reactivation"
+    ],
+    "zip_integrity": "verified after package"
+  },
+  "not_verified": [
+    "Full website browser run through local HTTP URL (Chromium blocked access with ERR_BLOCKED_BY_ADMINISTRATOR)",
+    "Whole-site 3D/WebGL and video playback not re-tested",
+    "Actual phone/tablet hardware and Safari not tested"
+  ],
+  "files_preserved_unchanged": 339
+}

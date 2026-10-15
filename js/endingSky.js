@@ -1,4 +1,4 @@
-/* v38-2 — Improve measured star visibility and contrast; retain the v38-1 observer sky engine.
+/* v39 — Integrate supplied sidereal observer sky, accelerated time, daylight and twilight.
  * 46 measured cupmarks are read from the existing dataset.
  * Spherical directions are interpretive visual mapping, not historical star coordinates. */
 (function(){
@@ -19,13 +19,15 @@ let W=0,H=0,DPR=1;
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ================= settings =================
-const ROTATION_PERIOD=900;          // seconds for one full turn of the sky (larger = slower)
-const SWEEP_EASE=0.6;               // 0 = constant speed; higher = sweeps slowly while the stars are in view and faster while they are out of sight
-const PITCH_LOW=50*D2R;             // how high the observer looks up at the normal zoom (degrees above the horizon)
+const ROTATION_PERIOD=86164.0905; // one sidereal day in seconds (reference HTML)
+const TIME_SPEEDS=[1,60,240,900,2000];
+let timeScale=1,timeTarget=1,speedIdx=0;
+const SWEEP_EASE=0; // constant angular rotation, matching the reference HTML
+const PITCH_LOW=45*D2R;             // how high the observer looks up at the normal zoom (degrees above the horizon)
 const FOV_DEFAULT=130,FOV_MIN=45;   // field of view (degrees); smaller = zoomed in
 let FOV_MAX=250;                    // set in resize(): the zoom-out limit where the whole sky fits inside a circle
 let hillK=1;                        // how tall the hills are (they flatten as you zoom out so the black rim becomes a round circle)
-const PAN_LIMIT=100*D2R;            // how far left/right the view may turn
+const PAN_LIMIT=180*D2R;            // how far left/right the view may turn
 // The stars are spread over the whole sky: AZ_SPAN = width in degrees around the observer, ALT_MIN..ALT_MAX = height
 // (86 is almost straight overhead). AZ_SPAN 360 = all the way around the observer.
 // Star positions are the measured x / z coordinates, only scaled evenly onto this sky range (nothing is moved individually).
@@ -33,6 +35,10 @@ const SKY={AZ_SPAN:360,ALT_MIN:8,ALT_MAX:86};
 // Like the real night sky seen by an observer facing the equator side: the whole sky sweeps sideways across the view
 // (rising on one side, setting behind the hills on the other) around an axis that sits behind the observer, at latitude LAT.
 const LAT=36.5*D2R;
+// Dawn and dusk are approximated by the number of measured marks above the silhouette.
+// These are exhibit transitions, not computed astronomical sunrise/sunset times.
+const DAY_VISIBLE_COUNT=14,NIGHT_VISIBLE_COUNT=28;
+let daylight=0,lastVisibleCount=0;
 
 // ================= star data → sky directions =================
 function prepareStarVectors(){
@@ -45,13 +51,30 @@ for(const p of data){
   p.v=[Math.cos(alt)*Math.sin(az),Math.cos(alt)*Math.cos(az),Math.sin(alt)]; // east, north, up
 }
 }
-const POLE=[0,-Math.cos(LAT),Math.sin(LAT)];   // sky rotation axis: behind the observer, tilted up by the latitude
+const POLE=[0,Math.cos(LAT),Math.sin(LAT)];   // sky rotation axis: behind the observer, tilted up by the latitude
 function rotateAboutPole(v,phi){
   const c=Math.cos(phi),s=Math.sin(phi),P=POLE;
   const cr=[P[1]*v[2]-P[2]*v[1],P[2]*v[0]-P[0]*v[2],P[0]*v[1]-P[1]*v[0]];
   const d=(P[0]*v[0]+P[1]*v[1]+P[2]*v[2])*(1-c);
   return [v[0]*c+cr[0]*s+P[0]*d,v[1]*c+cr[1]*s+P[1]*d,v[2]*c+cr[2]*s+P[2]*d];
 }
+
+function countAboveHorizon(ang,t){
+  let count=0;
+  for(const p of data){
+    const v=rotateAboutPole(p.v,-ang);
+    const alt=Math.asin(clamp(v[2],-1,1))/D2R;
+    const az=Math.atan2(v[0],v[1])/D2R;
+    if(alt>skyline(az,t))count++;
+  }
+  return count;
+}
+function mixHex(a,b,m){
+  const ca=[parseInt(a.slice(1,3),16),parseInt(a.slice(3,5),16),parseInt(a.slice(5,7),16)];
+  const cb=[parseInt(b.slice(1,3),16),parseInt(b.slice(3,5),16),parseInt(b.slice(5,7),16)];
+  return '#'+ca.map((v,i)=>Math.round(v+(cb[i]-v)*m).toString(16).padStart(2,'0')).join('');
+}
+
 
 // ================= camera (stereographic, like Stellarium) =================
 const view={az:0,fov:FOV_DEFAULT},target={az:0,fov:FOV_DEFAULT};
@@ -128,7 +151,9 @@ function horizonPolygon(t){
 }
 
 // ================= star look =================
-const STAR_BRIGHTNESS=1;   // measured cupmarks are the only stars; keep every depth grade plainly visible
+// Preserve the v38-2 stronger minimum visibility for all 46 measured stars.
+const GLOW_STRENGTH=1.6,GLOW_SIZE=1.5;
+const STAR_BRIGHTNESS=1;
 
 const radiusByGrade={1:3.1,2:2.85,3:2.6,4:2.3,5:2.05};
 const depthStyle={
@@ -207,7 +232,7 @@ function drawGlint(x,y,r,s,e,kind,rot,zf,grade){
 }
 
 // ================= drawing =================
-let skyTimeSeconds=0;
+let skyTimeSeconds=0,realTimeSeconds=0,lastFrameDt=1/60;
 function resize(){
   DPR=Math.min(window.devicePixelRatio||1,2);
   W=Math.max(1,host.clientWidth||innerWidth);H=Math.max(1,host.clientHeight||innerHeight);   // the window can report 0 size while loading
@@ -219,19 +244,40 @@ function resize(){
   target.fov=Math.min(target.fov,FOV_MAX);view.fov=Math.min(view.fov,FOV_MAX);
 }
 function draw(now){
-  const t=reducedMotion?0:skyTimeSeconds;
+  const t=reducedMotion?0:realTimeSeconds;
   updateCamera();
-  // sky: deep navy at the zenith, lighter bluish glow toward the horizon
+  // Daylight fades in when few of the original seonghyeol points remain above the horizon.
+  const ang=skyTimeSeconds*2*Math.PI/ROTATION_PERIOD,zf=Math.pow(FOV_DEFAULT/view.fov,0.4);
+  const visibleCount=countAboveHorizon(ang,t);lastVisibleCount=visibleCount;
+  const targetDay=1-smooth(clamp((visibleCount-DAY_VISIBLE_COUNT)/(NIGHT_VISIBLE_COUNT-DAY_VISIBLE_COUNT),0,1));
+  daylight+=(targetDay-daylight)*(1-Math.exp(-0.8*lastFrameDt));
+  const nightFactor=1-daylight;
+  host.classList.toggle('sky-daylight',daylight>0.38);
+  // Blend the original night gradient into a natural daylight-blue gradient; no sun or new objects are drawn.
   const Zp=projectRaw([0,0,1]),h0=3*D2R,Fp=projectRaw([Math.sin(view.az)*Math.cos(h0),Math.cos(view.az)*Math.cos(h0),Math.sin(h0)]);
   const Rg=Math.max(60,Math.hypot(Fp[0]-Zp[0],Fp[1]-Zp[1]));
+  // Dawn/dusk color peaks during the night-to-day transition, tinting the horizon
+  // warm orange and the middle sky rose-violet without adding any celestial objects.
+  const twilight=Math.pow(Math.max(0,Math.sin(Math.PI*daylight)),1.35);
+  const zenith=mixHex(mixHex('#030814','#8fc8f2',daylight),'#625477',twilight*.36);
+  const midSky=mixHex(mixHex('#07122a','#b9ddf7',daylight),'#c77f91',twilight*.52);
+  const horizonSky=mixHex(mixHex('#243a63','#e5f3ff',daylight),'#ff8958',twilight*.68);
   const bg=ctx.createRadialGradient(Zp[0],Zp[1],0,Zp[0],Zp[1],Rg);
-  bg.addColorStop(0,'#030814');bg.addColorStop(.55,'#07122a');bg.addColorStop(1,'#243a63');
-  ctx.fillStyle='#243a63';ctx.fillRect(0,0,W,H);
+  bg.addColorStop(0,zenith);bg.addColorStop(.55,midSky);bg.addColorStop(1,horizonSky);
+  ctx.fillStyle=horizonSky;ctx.fillRect(0,0,W,H);
   ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+  if(twilight>.015){
+    const glow=ctx.createRadialGradient(Fp[0],Fp[1],0,Fp[0],Fp[1],Math.max(45,Rg*.72));
+    glow.addColorStop(0,`rgba(255,112,66,${twilight*.23})`);
+    glow.addColorStop(.28,`rgba(255,133,101,${twilight*.14})`);
+    glow.addColorStop(.62,`rgba(235,118,143,${twilight*.055})`);
+    glow.addColorStop(1,'rgba(235,118,143,0)');
+    ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+  }
 
-  // stars: only the seonghyeol data; the whole pattern turns around the pole as the night goes on
-  const phi=t*2*Math.PI/ROTATION_PERIOD,ang=phi-SWEEP_EASE*Math.sin(phi),zf=Math.pow(FOV_DEFAULT/view.fov,0.4);
-  scheduleGlints(t,ang);const gmap={};for(const g of glints)gmap[g.i]=g;
+  // Only the original seonghyeol data are drawn; stars fade during inferred daytime.
+  if(nightFactor>0.015)scheduleGlints(t,ang);else glints=[];
+  const gmap={};for(const g of glints)gmap[g.i]=g;
   for(let i=0;i<data.length;i++){
     const p=data[i],q=project(rotateAboutPole(p.v,-ang));
     if(!q)continue;
@@ -242,12 +288,15 @@ function draw(now){
     const wave1=Math.sin(t*freq*2*Math.PI+phase),wave2=Math.sin(t*(freq*1.73)*2*Math.PI+phase*1.61),wave3=Math.sin(t*(freq*.37)*2*Math.PI+phase*.73);
     const shimmer=0.94+0.035*wave1+0.02*wave2+0.01*wave3; // keep faint depth grades readable
     const gg=gmap[i],ge=gg?glintEnv((t-gg.t0)/gg.dur)*GLINT_STRENGTH:0;   // 0..1 while this star is flaring
-    const a=Math.max(.52,Math.min(1,s.brightness*STAR_BRIGHTNESS*shimmer+0.35*ge)),pulse=1+0.035*wave2,hr=r*3.9*pulse*(1+0.7*ge);
+    const a=Math.max(.52,Math.min(1,s.brightness*STAR_BRIGHTNESS*shimmer+0.35*ge))*nightFactor,
+      pulse=1+0.035*wave2,hr=r*3.9*GLOW_SIZE*pulse*(1+0.7*ge),gA=a*GLOW_STRENGTH;
     const halo=ctx.createRadialGradient(x,y,0,x,y,hr);
-    halo.addColorStop(0,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},${a*.27})`);
-    halo.addColorStop(.30,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},${a*.12})`);
+    halo.addColorStop(0,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},${Math.min(1,gA*.34)})`);
+    halo.addColorStop(.22,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},${Math.min(1,gA*.17)})`);
+    halo.addColorStop(.55,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},${Math.min(1,gA*.06)})`);
     halo.addColorStop(1,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},0)`);
-    ctx.fillStyle=halo;ctx.beginPath();ctx.arc(x,y,hr,0,Math.PI*2);ctx.fill();
+    ctx.save();ctx.globalCompositeOperation='lighter';
+    ctx.fillStyle=halo;ctx.beginPath();ctx.arc(x,y,hr,0,Math.PI*2);ctx.fill();ctx.restore();
     const sh=shapeOf(i,p.sizeGrade),rot=sh.rot+0.03*wave3,rayAlpha=a*(0.62+0.38*(0.5+0.5*wave1));
     ctx.save();ctx.translate(x+0.16*wave2,y+0.16*wave3);
     for(const ray of sh.rays){
@@ -268,18 +317,33 @@ function draw(now){
     core.addColorStop(1,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},0)`);
     ctx.fillStyle=core;ctx.beginPath();ctx.arc(0,0,cr*1.5,0,Math.PI*2);ctx.fill();
     ctx.restore();
-    if(ge>0.02)drawGlint(x,y,r,s,Math.min(1,ge),gg.kind,gg.rot,zf,p.sizeGrade);
+    if(ge>0.02&&nightFactor>0.12)drawGlint(x,y,r,s,Math.min(1,ge*nightFactor),gg.kind,gg.rot,zf,p.sizeGrade);
   }
 
   // ground + treeline silhouette: everything outside the horizon loop is black
   const poly=horizonPolygon(t);
-  ctx.fillStyle='rgb(2,4,8)';ctx.beginPath();ctx.rect(-4,-4,W+8,H+8);
+  ctx.fillStyle=`rgb(${Math.round(2+daylight*34)},${Math.round(4+daylight*48)},${Math.round(8+daylight*62)})`;ctx.beginPath();ctx.rect(-4,-4,W+8,H+8);
   ctx.moveTo(poly[0][0],poly[0][1]);for(let i=1;i<poly.length;i++)ctx.lineTo(poly[i][0],poly[i][1]);
   ctx.closePath();ctx.fill('evenodd');
 }
 
 // ================= integration: input and page lifecycle =================
 const hold={l:0,r:0,zi:0,zo:0};
+const speedButton=document.getElementById('endingTimeSpeed');
+function updateSpeedButton(){
+  if(!speedButton)return;
+  speedButton.textContent='⏩ ×'+timeTarget;
+  speedButton.setAttribute('aria-label','하늘 회전 속도 '+timeTarget+'배. 눌러서 속도 변경');
+  speedButton.classList.toggle('fast',timeTarget>1);
+  speedButton.setAttribute('aria-pressed',String(timeTarget>1));
+}
+function cycleSpeed(){
+  if(!active)return;
+  speedIdx=(speedIdx+1)%TIME_SPEEDS.length;
+  timeTarget=TIME_SPEEDS[speedIdx];
+  updateSpeedButton();
+}
+
 const clampAz=()=>{target.az=clamp(target.az,-PAN_LIMIT,PAN_LIMIT);};
 const clampFov=()=>{target.fov=clamp(target.fov,FOV_MIN,FOV_MAX);};
 const pointers=new Map();let pinchDist=0;
@@ -330,10 +394,13 @@ function initInput(){
   bindButton('zoom-in','zi',()=>zoomBy(.90));
   bindButton('zoom-out','zo',()=>zoomBy(1.1));
   controls?.querySelector('[data-sky-action="reset"]')?.addEventListener('click',reset);
+  speedButton?.addEventListener('click',cycleSpeed);
+  updateSpeedButton();
   const keyMap={ArrowLeft:'l',ArrowRight:'r','+':'zi','=':'zi',ArrowUp:'zi','-':'zo','_':'zo',ArrowDown:'zo'};
   function keyEvent(e,down){
     if(!active||e.altKey||e.ctrlKey||e.metaKey)return;
     if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName))return;
+    if((e.key==='f'||e.key==='F')&&down&&!e.repeat){cycleSpeed();e.preventDefault();e.stopImmediatePropagation();return;}
     if(e.key==='Home'&&down){reset();e.preventDefault();e.stopImmediatePropagation();return;}
     const k=keyMap[e.key];
     if(k){hold[k]=down?1:0;e.preventDefault();e.stopImmediatePropagation();}
@@ -346,7 +413,9 @@ function frame(now){
   frameId=0;if(!active)return;
   if(host.clientWidth!==W||host.clientHeight!==H)resize();
   const dt=Math.min(.1,Math.max(0,(now-last)/1000));last=now;
-  if(!reducedMotion)skyTimeSeconds+=dt;
+  lastFrameDt=dt;
+  timeScale+=(timeTarget-timeScale)*(1-Math.exp(-dt*4));
+  if(!reducedMotion){skyTimeSeconds+=dt*timeScale;realTimeSeconds+=dt;}
   const sp=45*D2R*(view.fov/FOV_DEFAULT)*dt;
   if(hold.l)target.az-=sp;if(hold.r)target.az+=sp;
   if(hold.zi)target.fov*=Math.exp(-.9*dt);
@@ -375,7 +444,7 @@ async function loadData(){
       if(!grades||!v||![v.x,v.z,p.diameter,p.depth].every(Number.isFinite))throw new Error('측정값 오류: '+p.id);
       return {id:p.id,x:v.x,z:v.z,diameter:p.diameter,depth:p.depth,sizeGrade:grades[0],depthGrade:grades[1]};
     });
-    prepareStarVectors();window.__endingSkyInfo={source:SOURCE,measuredCount:data.length,decorativeCount:0,starEmphasis:'high-contrast measured-only',projection:'stereographic',sizeBy:'diameter grade',brightnessBy:'depth grade',skyRotationSeconds:ROTATION_PERIOD};
+    prepareStarVectors();window.__endingSkyInfo={source:SOURCE,measuredCount:data.length,decorativeCount:0,starEmphasis:'high-contrast measured-only',timeSpeeds:TIME_SPEEDS,dayNight:'visible-measured-cupmark-count',projection:'stereographic',sizeBy:'diameter grade',brightnessBy:'depth grade',skyRotationSeconds:ROTATION_PERIOD};
     resize();sync();
   }catch(err){console.error('Ending data load:',err);}
 }
@@ -388,8 +457,8 @@ function init(){
   addEventListener('exhibition:pageactivated',sync);
   loadData();
 }
-window.__endingSkyControls={setAz:az=>{target.az=clamp(az,-PAN_LIMIT,PAN_LIMIT);},setFov:fov=>{target.fov=clamp(fov,FOV_MIN,FOV_MAX);},reset};
-window.__endingSkyDebug={getStatus:()=>({active,count:data.length,measuredCount:data.length,decorativeCount:0,view:{...view},target:{...target},fovMax:FOV_MAX,rotationPeriodSeconds:ROTATION_PERIOD,skyTimeSeconds,canvas:{width:W,height:H},frameRunning:!!frameId}),getStarData:()=>data.map(p=>({id:p.id,x:p.x,z:p.z,diameter:p.diameter,depth:p.depth,sizeGrade:p.sizeGrade,depthGrade:p.depthGrade})),projectStars:()=>data.map(p=>project(p.v))};
+window.__endingSkyControls={setAz:az=>{target.az=clamp(az,-PAN_LIMIT,PAN_LIMIT);},setFov:fov=>{target.fov=clamp(fov,FOV_MIN,FOV_MAX);},setSkyTime:seconds=>{skyTimeSeconds=Math.max(0,seconds);},setSpeedIndex:index=>{speedIdx=Math.min(TIME_SPEEDS.length-1,Math.max(0,index|0));timeTarget=TIME_SPEEDS[speedIdx];updateSpeedButton();},reset};
+window.__endingSkyDebug={getStatus:()=>({active,count:data.length,measuredCount:data.length,decorativeCount:0,view:{...view},target:{...target},fovMax:FOV_MAX,rotationPeriodSeconds:ROTATION_PERIOD,skyTimeSeconds,timeScale,timeTarget,speedIdx,daylight,visibleCount:lastVisibleCount,canvas:{width:W,height:H},frameRunning:!!frameId}),getStarData:()=>data.map(p=>({id:p.id,x:p.x,z:p.z,diameter:p.diameter,depth:p.depth,sizeGrade:p.sizeGrade,depthGrade:p.depthGrade})),projectStars:()=>data.map(p=>project(p.v))};
 window.initEndingSky=init;
 
 })();
