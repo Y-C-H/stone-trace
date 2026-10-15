@@ -1,0 +1,106 @@
+[
+  {
+    "size": "1440x900",
+    "count": 46,
+    "zoomToDome": true,
+    "drag": true,
+    "wheel": true,
+    "controls": true,
+    "overlap": {
+      "q": false,
+      "back": false,
+      "head": false,
+      "controls": {
+        "left": 600,
+        "right": 840,
+        "top": 846,
+        "bottom": 886
+      },
+      "question": {
+        "left": 609.203125,
+        "right": 1339.203125,
+        "top": 764.703125,
+        "bottom": 801
+      }
+    },
+    "errors": []
+  },
+  {
+    "size": "1024x768",
+    "count": 46,
+    "zoomToDome": true,
+    "drag": true,
+    "wheel": true,
+    "controls": true,
+    "overlap": {
+      "q": false,
+      "back": false,
+      "head": false,
+      "controls": {
+        "left": 392,
+        "right": 632,
+        "top": 714,
+        "bottom": 754
+      },
+      "question": {
+        "left": 222.328125,
+        "right": 952.328125,
+        "top": 651.8125,
+        "bottom": 678
+      }
+    },
+    "errors": []
+  },
+  {
+    "size": "390x844",
+    "count": 46,
+    "zoomToDome": true,
+    "drag": true,
+    "wheel": true,
+    "controls": true,
+    "overlap": {
+      "q": false,
+      "back": false,
+      "head": false,
+      "controls": {
+        "left": 71,
+        "right": 319,
+        "top": 790,
+        "bottom": 834
+      },
+      "question": {
+        "left": 72,
+        "right": 370,
+        "top": 712.375,
+        "bottom": 761
+      }
+    },
+    "errors": []
+  },
+  {
+    "size": "320x568",
+    "count": 46,
+    "zoomToDome": true,
+    "drag": true,
+    "wheel": true,
+    "controls": true,
+    "overlap": {
+      "q": false,
+      "back": false,
+      "head": false,
+      "controls": {
+        "left": 45,
+        "right": 275,
+        "top": 516,
+        "bottom": 558
+      },
+      "question": {
+        "left": 72,
+        "right": 300,
+        "top": 440.21875,
+        "bottom": 485
+      }
+    },
+    "errors": []
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "version": "v38-2",
+  "base": "v38-1",
+  "purpose": "Measured cupmark stars visibility and identification",
+  "changedFiles": [
+    "index.html",
+    "css/style.css",
+    "js/endingSky.js"
+  ],
+  "addedFiles": [
+    "data/v38-2-validation.json"
+  ],
+  "measuredCupmarkCount": 46,
+  "decorativeStarCount": 0,
+  "sourceDatasetUnchanged": true,
+  "renderingUpdates": {
+    "radiusByDiameterGrade": "3.1,2.85,2.6,2.3,2.05 CSS pixels before zoom scaling",
+    "brightnessByDepthGrade": "0.98,0.91,0.82,0.73,0.64",
+    "backgroundStars": "still disabled",
+    "onScreenNote": "성혈 측정 데이터 46개 · 장식용 배경 별 없음"
+  },
+  "browser": "Isolated Ending real HTML CSS JS + actual JSON in Chromium",
+  "passedViewportScreens": [
+    "1440x900",
+    "1024x768",
+    "390x844",
+    "320x568"
+  ],
+  "tested": [
+    "measured 46 + decorative 0",
+    "measured coordinates identical to JSON",
+    "camera pan buttons and pointer drag",
+    "zoom in/out buttons and wheel",
+    "reset",
+    "max zoom out circular dome",
+    "no controls/heading/question overlap",
+    "no JS page errors"
+  ],
+  "limitations": [
+    "Full site 3D/WebGL integration not re-run",
+    "Real-device touch/Safari not re-run in this change",
+    "Not all 46 cupmarks can be in view at once due to 360-degree sky mapping"
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "scope": "v37-1 -> v38, Ending Page observer sky only",
+  "date": "2026-10-15",
+  "modified_files": [
+    "index.html",
+    "css/style.css",
+    "js/endingSky.js"
+  ],
+  "added_files": [
+    "data/v38-validation.json"
+  ],
+  "visual_changes": {
+    "scene": "dark blue-black sky and low imagined horizon silhouette; top-down measured cupmarks given a fixed ground-observer view",
+    "measured_stars": "46 measured cupmarks, uniform scale preserving 2D relative positions",
+    "background_stars": "removed entirely (0 decorative stars)",
+    "aurora": "localized upper-right faint veil with low-opacity cache; no whole-screen teal fog",
+    "camera": {
+      "zoom_min": 0.85,
+      "zoom_default": 1,
+      "zoom_max": 1.35,
+      "pan_limit_fraction_of_width": 0.2,
+      "gestures": [
+        "buttons",
+        "wheel",
+        "mouse drag",
+        "touch drag",
+        "two-finger pinch",
+        "keyboard when canvas focused"
+      ],
+      "reset": true
+    },
+    "animation": "replaces 360°/30min planar rotation with <=1.2% viewport width slow horizontal drift with a 30-minute phase period; pauses 6s after user input; disabled under reduced motion",
+    "fixed_layers": [
+      "horizon",
+      "heading",
+      "curatorial question",
+      "return button",
+      "camera UI"
+    ]
+  },
+  "real_browser_testing": {
+    "runtime": "Chromium headless; original Ending HTML/CSS/JS and measured JSON loaded into document via page.set_content; fetch stub returns unchanged original JSON",
+    "screen_sizes": [
+      "1440x900",
+      "1024x768",
+      "390x844",
+      "320x568"
+    ],
+    "assertions_passed": [
+      "46 measured stars and 0 decorative stars",
+      "measured 2D positions preserve the same uniform scale and pairwise offsets",
+      "all stars inside default screen and above ground",
+      "button zoom/pan/reset",
+      "limits zoom .85–1.35 and pan ±.20",
+      "mouse drag and wheel",
+      "no control overlap with heading/question/return button",
+      "touch pan and two-touch pinch",
+      "canvas keyboard arrows and Home",
+      "prefers-reduced-motion on/off",
+      "no page errors in isolated Ending test"
+    ],
+    "results": [
+      {
+        "size": "1440x900",
+        "success": true,
+        "averageDrawMs": 1.326000000012573,
+        "controlsOverlap": {
+          "question": false,
+          "heading": false,
+          "back": false,
+          "ctrl": {
+            "x": 1258,
+            "y": 634,
+            "width": 146,
+            "height": 95
+          },
+          "q": {
+            "x": 609.203125,
+            "y": 807.90625,
+            "width": 730,
+            "height": 36.296875
+          }
+        },
+        "dragPan": 0.03125,
+        "errors": []
+      },
+      {
+        "size": "1024x768",
+        "success": true,
+        "averageDrawMs": 0.8666666666610615,
+        "controlsOverlap": {
+          "question": false,
+          "heading": false,
+          "back": false,
+          "ctrl": {
+            "x": 847.28125,
+            "y": 520,
+            "width": 146,
+            "height": 95
+          },
+          "q": {
+            "x": 222.328125,
+            "y": 690.8125,
+            "width": 730,
+            "height": 26.1875
+          }
+        },
+        "dragPan": 0.0439453125,
+        "errors": []
+      },
+      {
+        "size": "390x844",
+        "success": true,
+        "averageDrawMs": 0.8452830188600171,
+        "controlsOverlap": {
+          "question": false,
+          "heading": false,
+          "back": false,
+          "ctrl": {
+            "x": 235,
+            "y": 595,
+            "width": 142,
+            "height": 93
+          },
+          "q": {
+            "x": 72,
+            "y": 725.375,
+            "width": 298,
+            "height": 48.625
+          }
+        },
+        "dragPan": 0.1,
+        "errors": []
+      },
+      {
+        "size": "320x568",
+        "success": true,
+        "averageDrawMs": 0.7807692307754993,
+        "controlsOverlap": {
+          "question": false,
+          "heading": false,
+          "back": false,
+          "ctrl": {
+            "x": 165,
+            "y": 343,
+            "width": 142,
+            "height": 93
+          },
+          "q": {
+            "x": 72,
+            "y": 462.21875,
+            "width": 228,
+            "height": 44.78125
+          }
+        },
+        "dragPan": 0.1,
+        "errors": []
+      }
+    ],
+    "actual_local_http_in_chromium": "not completed — local HTTP address blocked by browser administrator policy (ERR_BLOCKED_BY_ADMINISTRATOR)",
+    "limitations": [
+      "full-site WebGL/3D loading not retested in this run",
+      "Page 5 MP4 seek not replay-tested in this run (video and main.js preserved byte-for-byte)",
+      "hardware mobile and Safari not tested"
+    ]
+  },
+  "code_validation": {
+    "ending_js_node_check": "passed",
+    "source_archive_checksum_comparison": "338 source files checked, 3 modified, 0 missing"
+  },
+  "preservation": {
+    "original_files": 338,
+    "modified_files": [
+      "css/style.css",
+      "index.html",
+      "js/endingSky.js"
+    ],
+    "all_other_original_bytes_unchanged": true,
+    "cupmarks_json_sha256": "582cdf5e46bae4a55ecf630be459976dc4be34f80e89599948f1dea668b6c4c5",
+    "original_mp4_sha256": "6dd98fb2c596c1c624b4d3eb8bdd5b3904c4d5e70043a23d05e9b8d6ad464140"
+  }
+}

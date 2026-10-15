@@ -1,279 +1,395 @@
-/* v33 — Natural night sky; the 46 measured cupmark coordinates, diameters, depths,
- * and the one-scale orthographic projection remain identical to v32.
- * Decorative background stars and artistic aurora are not archaeological data.
- */
+/* v38-2 — Improve measured star visibility and contrast; retain the v38-1 observer sky engine.
+ * 46 measured cupmarks are read from the existing dataset.
+ * Spherical directions are interpretive visual mapping, not historical star coordinates. */
 (function(){
-  'use strict';
-  const canvas=document.getElementById('endingSkyCanvas');
-  const host=document.getElementById('exhibition-ending');
-  if(!canvas||!host){window.initEndingSky=()=>{};return;}
-  const ctx=canvas.getContext('2d',{alpha:false});
-  let stars=[],backgroundStars=[],active=false,frame=0,enteredAt=0,lastPaint=0,
-      viewport={width:0,height:0,scale:1},gesture=null,sourceStatus='pending',
-      skyCache=null,auroraCache=null,starCache=null,renderedFrames=0,renderWorkMs=0;
-  const SOURCE='data/cupmarks-measured.json';
-  // One revolution in 30 minutes, measured stars and decorative sky sharing a rigid turn.
-  const ROTATION_PERIOD_MS=1800000;
-  let skyElapsedMs=0,previousSkyTick=0;
-  const clamp=(x,min,max)=>Math.max(min,Math.min(max,x));
-  const lerp=(a,b,t)=>a+(b-a)*t;
-  const reduced=!!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  function hashId(text){let n=2166136261;for(const c of text){n=Math.imul(n^c.charCodeAt(0),16777619)}return n>>>0;}
-  function seededRandom(seed){let n=seed>>>0;return ()=>{n=(Math.imul(n,1664525)+1013904223)>>>0;return n/4294967296;};}
-  function toStars(measurements){
-    if(!Array.isArray(measurements)||!measurements.length)throw Error('측정 성혈 데이터가 없습니다.');
-    const seen=new Set();
-    const records=measurements.map(c=>{
-      const pos=c.sourcePosition||c.displayPosition;
-      if(!c.id||seen.has(c.id)||!pos||![pos.x,pos.z,c.diameter,c.depth].every(Number.isFinite)||c.diameter<=0||c.depth<0){
-        throw Error('성혈 측정값 누락 또는 중복 ID: '+String(c.id));
-      }
-      seen.add(c.id);
-      return {id:c.id,x:pos.x,z:pos.z,diameter:c.diameter,depth:c.depth};
-    });
-    const ds=records.map(r=>r.diameter),hs=records.map(r=>r.depth);
-    const dMin=Math.min(...ds),dMax=Math.max(...ds),hMin=Math.min(...hs),hMax=Math.max(...hs);
-    const xs=records.map(r=>r.x),zs=records.map(r=>r.z);
-    const xMin=Math.min(...xs),xMax=Math.max(...xs),zMin=Math.min(...zs),zMax=Math.max(...zs);
-    const xMid=(xMin+xMax)*.5,zMid=(zMin+zMax)*.5;
-    const norm=(v,min,max)=>max===min?.5:(v-min)/(max-min);
-    stars=records.map(r=>{
-      const d=norm(r.diameter,dMin,dMax),h=norm(r.depth,hMin,hMax),hash=hashId(r.id);
-      return {
-        id:r.id,
-        // Top-down projection: world X -> right; world Z -> down. Single uniform scale at draw time.
-        x:r.x-xMid,y:r.z-zMid,
-        coreSize:lerp(1.25,3.55,d),
-        brightness:lerp(.45,.99,h),
-        haloStrength:lerp(.12,.48,h),
-        haloRadius:lerp(7,19,d),
-        phase:(hash%6283)/1000,
-        period:lerp(4.3,7.9,((hash>>>9)%1000)/1000)
-      };
-    });
-    window.__endingSkyInfo=Object.freeze({source:SOURCE,count:stars.length,diameterRange:[dMin,dMax],depthRange:[hMin,hMax],projection:'X -> screen right; Z -> screen down',uniformScale:true});
-  }
+'use strict';
 
-  function makeCanvas(width,height){
-    const c=document.createElement('canvas');c.width=Math.max(1,Math.round(width));c.height=Math.max(1,Math.round(height));return c;
-  }
-  function softEllipse(c,x,y,rx,ry,rgb,opacity){
-    c.save();c.translate(x,y);c.scale(rx,ry);
-    const g=c.createRadialGradient(0,0,0,0,0,1);
-    g.addColorStop(0,`rgba(${rgb},${opacity})`);
-    g.addColorStop(.44,`rgba(${rgb},${opacity*.4})`);
-    g.addColorStop(1,`rgba(${rgb},0)`);
-    c.fillStyle=g;c.beginPath();c.arc(0,0,1,0,Math.PI*2);c.fill();c.restore();
-  }
-  function hash2(a,b){
-    let h=(Math.imul(a,374761393)+Math.imul(b,668265263)+1342337)|0;
-    h=Math.imul(h^(h>>>13),1274126177);return ((h^(h>>>16))>>>0)/4294967295;
-  }
-  function noise2(x,y){
-    const i=Math.floor(x),j=Math.floor(y),u=x-i,v=y-j;
-    const a=u*u*(3-2*u),b=v*v*(3-2*v);
-    return lerp(lerp(hash2(i,j),hash2(i+1,j),a),lerp(hash2(i,j+1),hash2(i+1,j+1),a),b);
-  }
-  function buildBackground(width,height){
-    skyCache=makeCanvas(width,height);
-    const c=skyCache.getContext('2d');
-    const g=c.createLinearGradient(0,0,width*.18,height);
-    g.addColorStop(0,'#071225');g.addColorStop(.32,'#09192e');
-    g.addColorStop(.72,'#0b1b2c');g.addColorStop(1,'#0b1b28');
-    c.fillStyle=g;c.fillRect(0,0,width,height);
-    softEllipse(c,width*.26,height*.34,width*.57,height*.53,'34,82,100',.115);
-    softEllipse(c,width*.8,height*.62,width*.59,height*.53,'29,64,95',.12);
-    softEllipse(c,width*.51,height*.96,width*.74,height*.42,'51,78,97',.08);
-    // Very faint vignette defines the night-sky horizon without a dark rectangular panel.
-    const vg=c.createRadialGradient(width*.5,height*.46,Math.min(width,height)*.2,
-      width*.5,height*.48,Math.max(width,height)*.78);
-    vg.addColorStop(0,'rgba(1,5,12,0)');vg.addColorStop(1,'rgba(1,4,12,.32)');
-    c.fillStyle=vg;c.fillRect(0,0,width,height);
-  }
-  function buildAurora(width,height){
-    // Fine veils rendered once at 45% resolution; only a slight translation/opacity changes per frame.
-    const ratio=.45;
-    const w=Math.max(1,Math.round(width*ratio)),h=Math.max(1,Math.round(height*ratio));
-    auroraCache=makeCanvas(w,h);
-    const c=auroraCache.getContext('2d');
-    const img=c.createImageData(w,h),data=img.data;
-    for(let y=0;y<h;y++){
-      const yy=y/h;
-      for(let x=0;x<w;x++){
-        const xx=x/w;
-        const wave=.32+.052*Math.sin(xx*5.6+.35)+.032*Math.sin(xx*11.9+1.4);
-        const dist=yy-wave;
-        const broad=Math.exp(-Math.pow(dist/.205,2)*.68);
-        const inner=Math.exp(-Math.pow((dist+.022)/.063,2)*.65);
-        const noise=.54*noise2(xx*8.5,yy*12)+.28*noise2(xx*19+8,yy*21)+.18*noise2(xx*41,yy*39);
-        const fold=.6+.4*Math.sin(xx*28+noise*3.2);
-        const across=Math.pow(Math.max(0,Math.sin(Math.PI*xx)),.55);
-        const strength=(broad*(.20+.37*noise)+inner*.25*fold)*across;
-        const alpha=clamp(strength*.30,0,.15);
-        const i=(y*w+x)*4;
-        data[i]=31+Math.round(10*noise);
-        data[i+1]=110+Math.round(30*noise);
-        data[i+2]=111+Math.round(34*noise);
-        data[i+3]=Math.round(alpha*255);
-      }
+let data=[];
+const SOURCE='data/cupmarks-measured.json';
+const REFERENCE_GRADES={"C01":[1,2],"C02":[2,3],"C03":[3,4],"C04":[2,2],"C05":[3,3],"C06":[4,4],"C07":[5,5],"C08":[3,3],"C09":[3,3],"C10":[4,2],"C11":[5,4],"C12":[4,4],"C13":[4,1],"C14":[3,3],"C15":[1,1],"C16":[3,2],"C17":[1,1],"C18":[1,3],"C19":[3,4],"C20":[4,4],"C21":[4,4],"C22":[4,3],"C23":[1,2],"C24":[5,5],"C25":[3,5],"C26":[4,3],"C27":[4,2],"C28":[4,3],"C29":[4,3],"C30":[3,4],"C31":[4,4],"C32":[3,5],"C33":[4,5],"C34":[5,4],"C35":[5,4],"C36":[5,4],"C37":[5,4],"C38":[4,5],"C39":[4,5],"C40":[4,4],"C41":[5,5],"C42":[4,5],"C43":[4,5],"C44":[5,5],"C45":[4,5],"C46":[4,3]};
+const canvas=document.getElementById('endingSkyCanvas');
+const host=document.getElementById('exhibition-ending');
+const controls=document.getElementById('endingViewControls');
+if(!canvas||!host){window.initEndingSky=()=>{};return;}
+const ctx=canvas.getContext('2d',{alpha:false});
+if(!ctx){window.initEndingSky=()=>{};return;}
+const hint=null;
+const D2R=Math.PI/180,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+let W=0,H=0,DPR=1;
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ================= settings =================
+const ROTATION_PERIOD=900;          // seconds for one full turn of the sky (larger = slower)
+const SWEEP_EASE=0.6;               // 0 = constant speed; higher = sweeps slowly while the stars are in view and faster while they are out of sight
+const PITCH_LOW=50*D2R;             // how high the observer looks up at the normal zoom (degrees above the horizon)
+const FOV_DEFAULT=130,FOV_MIN=45;   // field of view (degrees); smaller = zoomed in
+let FOV_MAX=250;                    // set in resize(): the zoom-out limit where the whole sky fits inside a circle
+let hillK=1;                        // how tall the hills are (they flatten as you zoom out so the black rim becomes a round circle)
+const PAN_LIMIT=100*D2R;            // how far left/right the view may turn
+// The stars are spread over the whole sky: AZ_SPAN = width in degrees around the observer, ALT_MIN..ALT_MAX = height
+// (86 is almost straight overhead). AZ_SPAN 360 = all the way around the observer.
+// Star positions are the measured x / z coordinates, only scaled evenly onto this sky range (nothing is moved individually).
+const SKY={AZ_SPAN:360,ALT_MIN:8,ALT_MAX:86};
+// Like the real night sky seen by an observer facing the equator side: the whole sky sweeps sideways across the view
+// (rising on one side, setting behind the hills on the other) around an axis that sits behind the observer, at latitude LAT.
+const LAT=36.5*D2R;
+
+// ================= star data → sky directions =================
+function prepareStarVectors(){
+const xs=data.map(p=>p.x),zs=data.map(p=>p.z);
+const minX=Math.min(...xs),maxX=Math.max(...xs),minZ=Math.min(...zs),maxZ=Math.max(...zs);
+data.forEach(p=>{p.fx=(p.x-minX)/(maxX-minX||1);p.fz=(p.z-minZ)/(maxZ-minZ||1);});   // exact proportional position
+for(const p of data){
+  const az=(p.fx-.5)*SKY.AZ_SPAN*D2R;
+  const alt=(SKY.ALT_MIN+p.fz*(SKY.ALT_MAX-SKY.ALT_MIN))*D2R;
+  p.v=[Math.cos(alt)*Math.sin(az),Math.cos(alt)*Math.cos(az),Math.sin(alt)]; // east, north, up
+}
+}
+const POLE=[0,-Math.cos(LAT),Math.sin(LAT)];   // sky rotation axis: behind the observer, tilted up by the latitude
+function rotateAboutPole(v,phi){
+  const c=Math.cos(phi),s=Math.sin(phi),P=POLE;
+  const cr=[P[1]*v[2]-P[2]*v[1],P[2]*v[0]-P[0]*v[2],P[0]*v[1]-P[1]*v[0]];
+  const d=(P[0]*v[0]+P[1]*v[1]+P[2]*v[2])*(1-c);
+  return [v[0]*c+cr[0]*s+P[0]*d,v[1]*c+cr[1]*s+P[1]*d,v[2]*c+cr[2]*s+P[2]*d];
+}
+
+// ================= camera (stereographic, like Stellarium) =================
+const view={az:0,fov:FOV_DEFAULT},target={az:0,fov:FOV_DEFAULT};
+let cam={R:[1,0,0],U:[0,0,1],F:[0,1,0],k:400};
+const smooth=x=>x*x*(3-2*x);
+// Zooming out also tilts the observer's gaze up to the zenith, so at the maximum zoom-out you lie on your back
+// and see the whole sky as a round dome with the horizon forming a black circle around it.
+function zoomMix(){return smooth(clamp((view.fov-FOV_DEFAULT)/(FOV_MAX-FOV_DEFAULT),0,1));}
+function updateCamera(){
+  const m=zoomMix(),pitch=PITCH_LOW+(Math.PI/2-PITCH_LOW)*m;hillK=1-0.75*m;
+  const sy=Math.sin(view.az),cy=Math.cos(view.az),sp=Math.sin(pitch),cp=Math.cos(pitch);
+  cam.R=[cy,-sy,0];cam.U=[-sp*sy,-sp*cy,cp];cam.F=[cp*sy,cp*cy,sp];
+  cam.k=(W/2)/(2*Math.tan(view.fov*D2R/4));
+}
+function projectRaw(v){
+  const {R,U,F,k}=cam,cz=v[0]*F[0]+v[1]*F[1]+v[2]*F[2],m=2*k/Math.max(0.03,1+cz);
+  return [W/2+m*(v[0]*R[0]+v[1]*R[1]+v[2]*R[2]),H/2-m*(v[0]*U[0]+v[1]*U[1]+v[2]*U[2])];
+}
+function project(v){
+  const {R,U,F,k}=cam,cz=v[0]*F[0]+v[1]*F[1]+v[2]*F[2];
+  if(cz<-0.6)return null;
+  const m=2*k/(1+cz);
+  return [W/2+m*(v[0]*R[0]+v[1]*R[1]+v[2]*R[2]),H/2-m*(v[0]*U[0]+v[1]*U[1]+v[2]*U[2])];
+}
+
+// ================= landscape: hills + treeline silhouette =================
+const hs=i=>{const v=Math.sin(i*127.1+311.7)*43758.5453;return v-Math.floor(v);};
+const md=(i,P)=>((i%P)+P)%P;
+function n1(x,P){const i=Math.floor(x),f=x-i,u=f*f*(3-2*f);return hs(md(i,P))*(1-u)+hs(md(i+1,P))*u;}   // repeats every 360° so there is no seam
+// Treeline: a ring of individual tree crowns (round broadleaf tops and pointed conifer tops of different sizes) that overlap
+// into a natural ragged edge. Built once as a lookup table (0.05° steps) and read with interpolation.
+const PROF_N=7200,profile=new Float32Array(PROF_N);
+(function(){
+  const rnd=rng(77),crowns=[];
+  for(let c=0;c<360;c+=0.3+rnd()*0.8)crowns.push({c,w:0.45+rnd()*1.1,h:0.5+Math.pow(rnd(),1.5)*2.3,pointed:rnd()<0.45});
+  for(let i=0;i<PROF_N;i++){
+    const az=i*360/PROF_N;let m=0;
+    for(const k of crowns){
+      let d=Math.abs(az-k.c);if(d>180)d=360-d;if(d>=k.w)continue;
+      const u=d/k.w,v=k.pointed?k.h*Math.pow(1-u,1.25):k.h*Math.sqrt(1-u*u);
+      if(v>m)m=v;
     }
-    c.putImageData(img,0,0);
-    // Subtle, curved wisp softened once at cache construction time.
-    c.save();c.filter=`blur(${Math.max(7,Math.round(w*.014))}px)`;
-    for(let i=0;i<3;i++){
-      c.strokeStyle=`rgba(${i===0?'99,172,157':'60,128,153'},${i===0?.04:.023})`;
-      c.lineWidth=(9+i*11)*ratio;
-      c.beginPath();c.moveTo(-40*ratio,h*(.28+.045*i));
-      c.bezierCurveTo(w*.22,h*(.13+.043*i),w*.57,h*(.48+.035*i),w+50*ratio,h*(.28+.025*i));
-      c.stroke();
-    }
-    c.restore();
+    profile[i]=m;
   }
-  function buildBackgroundStars(width,height){
-    const rng=seededRandom(0xA510E6);
-    const mobile=width<650;
-    const count=mobile?185:Math.round(clamp(width*height/3100,260,570));
-    backgroundStars=[];
-    starCache=makeCanvas(width,height);
-    const c=starCache.getContext('2d');
-    for(let i=0;i<count;i++){
-      let xx=rng(),yy=rng();
-      // Modest local density variation, not a grid or regular constellation.
-      if(rng()<.24){xx=clamp(.62+(rng()+rng()-1)*.48,0,1);yy=clamp(.48+(rng()+rng()-1)*.49,0,1);}
-      const rarity=rng(),radius=rarity>.95?1.08:lerp(.26,.76,rng());
-      const alpha=rarity>.95?lerp(.26,.46,rng()):lerp(.085,.29,rng());
-      const star={x:xx*width,y:yy*height,radius,alpha,phase:rng()*Math.PI*2,
-        period:lerp(6,16,rng()),twinkle:i%9===0};
-      backgroundStars.push(star);
-      if(!star.twinkle){
-        c.fillStyle=`rgba(${rarity>.8?'201,221,242':'157,187,218'},${alpha.toFixed(3)})`;
-        c.beginPath();c.arc(star.x,star.y,star.radius,0,Math.PI*2);c.fill();
-      }
-    }
+})();
+function profAt(az){
+  const x=(((az%360)+360)%360)*PROF_N/360,i=Math.floor(x),f=x-i;
+  return profile[i%PROF_N]*(1-f)+profile[(i+1)%PROF_N]*f;
+}
+// Wind blowing along the ridge: slow swells in strength, gusts that travel from left to right, quick small ripples
+function wind(az,t){
+  const gust=0.55+0.45*Math.sin(t*0.31)*Math.sin(t*0.13+1.0);
+  const wave=0.55*Math.sin(t*1.1-az*0.07)+0.3*Math.sin(t*2.3-az*0.15+1.7)+0.15*Math.sin(t*4.1-az*0.33);
+  return gust*(0.55+wave);   // leans downwind most of the time, swaying back and forth as gusts pass
+}
+// horizon height (degrees) at an azimuth: smooth hills (low valley in front, higher to both sides) plus the swaying treeline
+function skyline(az,t){
+  const a=az*D2R;
+  let h=2.2+hillK*(16*(1-Math.cos(a))+1.6*Math.sin(3*a+1.3)+1.1*Math.sin(7*a+0.4)+0.6*Math.sin(18*a+2));
+  h=Math.min(h,30);
+  const tree=clamp((h-2.5)/4,0.5,1),w=wind(az,t);
+  const top=profAt(az-0.5*w)*(1+0.05*w);                                   // crowns lean and sway sideways, breathing up and down
+  const leaf=0.14*Math.abs(w)*(n1(az*12+t*2.6,4320)-.5)*2;                 // leaves fluttering at the edge
+  return h+tree*(top+leaf);
+}
+// outline of the sky region = the horizon seen from the observer (a closed loop; everything outside it is ground)
+function horizonPolygon(t){
+  const pts=[];
+  for(let az=-180;az<180;az+=0.2){
+    const a=az*D2R,al=skyline(az,t)*D2R;
+    pts.push(projectRaw([Math.cos(al)*Math.sin(a),Math.cos(al)*Math.cos(a),Math.sin(al)]));
   }
-  function resize(){
-    // CSS page transitions may temporarily transform getBoundingClientRect(); client dimensions stay stable.
-    const width=Math.max(1,host.clientWidth||innerWidth),height=Math.max(1,host.clientHeight||innerHeight);
-    // DPR cap protects mobile GPUs; measured-star coordinates and relative sizes do not change.
-    const dpr=Math.min(devicePixelRatio||1,width<650?1.5:1.75);
-    canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
-    canvas.style.width=width+'px';canvas.style.height=height+'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    const px=stars.map(s=>s.x),py=stars.map(s=>s.y);
-    const spanX=stars.length?Math.max(...px)-Math.min(...px):1;
-    const spanY=stars.length?Math.max(...py)-Math.min(...py):1;
-    viewport={width,height,scale:Math.min(width*.77/Math.max(spanX,1),height*.65/Math.max(spanY,1))};
-    buildBackground(width,height);buildAurora(width,height);buildBackgroundStars(width,height);
+  return pts;
+}
+
+// ================= star look =================
+const STAR_BRIGHTNESS=1;   // measured cupmarks are the only stars; keep every depth grade plainly visible
+
+const radiusByGrade={1:3.1,2:2.85,3:2.6,4:2.3,5:2.05};
+const depthStyle={
+  1:{color:[133,190,255],core:'#e7f5ff',glow:[67,137,235],brightness:.98},
+  2:{color:[115,174,255],core:'#dceeff',glow:[59,122,220],brightness:.91},
+  3:{color:[238,242,255],core:'#ffffff',glow:[165,184,222],brightness:.82},
+  4:{color:[255,171,137],core:'#fff0e4',glow:[218,100,79],brightness:.73},
+  5:{color:[255,137,115],core:'#ffe4d7',glow:[194,66,57],brightness:.64}
+};
+function rng(seed){let t=(seed*2654435761+1013904223)>>>0;return()=>{t=(t+0x6D2B79F5)>>>0;let n=Math.imul(t^t>>>15,1|t);n=n+Math.imul(n^n>>>7,61|n)^n;return((n^n>>>14)>>>0)/4294967296;};}
+function hexRgb(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)].join(',');}
+function makeRays(n,base,rnd,spread){
+  const rays=[];
+  for(let k=0;k<n;k++)rays.push({ang:k*(Math.PI*2/n)+(rnd()-.5)*spread,len:base*(0.45+rnd()*0.75),w:0.10+rnd()*0.07,a:0.45+rnd()*0.4});
+  return rays;
+}
+const kindsByGrade={1:['five','six','burst','cross'],2:['six','five','cross','burst'],3:['cross','five','twin','soft'],4:['soft','twin','soft','cross'],5:['soft','soft','twin','soft']};
+const shapeCache={};
+function shapeOf(i,grade){
+  if(shapeCache[i])return shapeCache[i];
+  const rnd=rng(i+7),list=kindsByGrade[grade],kind=list[Math.floor(rnd()*list.length)],rot=rnd()*Math.PI;
+  const baseLen={1:3.3,2:3.1,3:2.9,4:2.6,5:2.3}[grade];
+  let rays=[],core=1;
+  if(kind==='soft')core=1.25;
+  else if(kind==='twin')rays=makeRays(2,baseLen,rnd,0.25);
+  else if(kind==='cross')rays=makeRays(4,baseLen,rnd,0.35);
+  else if(kind==='five')rays=makeRays(5,baseLen,rnd,0.3);
+  else if(kind==='six')rays=makeRays(6,baseLen,rnd,0.3);
+  else rays=makeRays(8,baseLen*1.05,rnd,0.4);
+  return shapeCache[i]={kind,rot,rays,core};
+}
+
+// ================= occasional glints: now and then a random seonghyeol star flares up with a + or * shaped spike =================
+const GLINT_EVERY=[1.5,3.8]; // seconds between flares (min,max); each flare lasts about 2-3 seconds (smaller numbers = more often)
+const GLINT_STRENGTH=1;      // 0 = off, higher = brighter and longer spikes (only existing stars flare; none are added)
+let glints=[],nextGlint=1.5;
+function scheduleGlints(t,ang){
+  if(reducedMotion||GLINT_STRENGTH<=0)return;
+  glints=glints.filter(g=>t-g.t0<g.dur);
+  if(t<nextGlint||glints.length>=3)return;
+  const cand=[];
+  for(let i=0;i<data.length;i++){
+    if(glints.some(g=>g.i===i))continue;
+    const v=rotateAboutPole(data[i].v,-ang),q=project(v);
+    if(!q||q[0]<30||q[0]>W-30||q[1]<30||q[1]>H-30)continue;
+    if(Math.asin(clamp(v[2],-1,1))/D2R<skyline(Math.atan2(v[0],v[1])/D2R,t)+3)continue;   // not behind the hills
+    cand.push(i);
   }
-  function drawMeasuredStars(elapsed,now){
-    const {width,height,scale}=viewport;
-    const fade=reduced?1:clamp(elapsed/1400,0,1);
-    const t=now/1000;
-    for(const star of stars){
-      const x=width/2+star.x*scale,y=height/2+star.y*scale;
-      const core=star.coreSize*(width<480?.83:1);
-      const outer=star.haloRadius+core*2.5;
-      const glow=ctx.createRadialGradient(x,y,0,x,y,outer*1.16);
-      glow.addColorStop(0,`rgba(215,235,255,${(.70*star.haloStrength*fade).toFixed(4)})`);
-      glow.addColorStop(.3,`rgba(153,194,236,${(.30*star.haloStrength*fade).toFixed(4)})`);
-      glow.addColorStop(1,'rgba(110,164,221,0)');
-      ctx.fillStyle=glow;ctx.beginPath();ctx.arc(x,y,outer*1.16,0,Math.PI*2);ctx.fill();
-      // Only peripheral light changes with time: core radius and measured brightness remain fixed.
-      const shimmer=reduced?.5:.5+.5*Math.sin(t*Math.PI*2/star.period+star.phase);
-      const alpha=star.haloStrength*.09*shimmer*fade;
-      const fringe=ctx.createRadialGradient(x,y,outer*.60,x,y,outer*1.42);
-      fringe.addColorStop(0,`rgba(167,204,248,${alpha.toFixed(4)})`);
-      fringe.addColorStop(1,'rgba(167,204,248,0)');
-      ctx.fillStyle=fringe;ctx.beginPath();ctx.arc(x,y,outer*1.42,0,Math.PI*2);ctx.fill();
-      // Shared 5% contrast lift strictly preserves rank order of all measured values.
-      const b=star.brightness;
-      ctx.fillStyle=`rgba(243,248,255,${((.05+.95*b)*fade).toFixed(4)})`;
-      ctx.beginPath();ctx.arc(x,y,core,0,Math.PI*2);ctx.fill();
-      ctx.fillStyle=`rgba(255,255,255,${((.05+.95*b)*.78*fade).toFixed(4)})`;
-      ctx.beginPath();ctx.arc(x,y,core*.42,0,Math.PI*2);ctx.fill();
-    }
-  }
-  function drawScene(now){
-    const {width,height}=viewport,elapsed=Math.max(0,now-enteredAt);
-    if(!skyCache)return;
-    ctx.globalAlpha=1;ctx.drawImage(skyCache,0,0,width,height);
-    // Rotate around the canvas bottom-center (x=width/2, y=height).
-    // Turn the entire star field + aurora as a rigid visual layer.  The gradient
-    // night sky is fixed behind it; HTML headings and return control never rotate.
-    const rotation=(skyElapsedMs%ROTATION_PERIOD_MS)/ROTATION_PERIOD_MS*Math.PI*2;
-    ctx.save();ctx.translate(width * 0.5,height);ctx.rotate(rotation);ctx.translate(-width * 0.5,-height);
-    // Atmospheric veil remains gentle and behind all stars and written elements.
-    const auroraFade=reduced?1:clamp((elapsed-1050)/1750,0,1);
-    const move=reduced?0:Math.sin(now/38000*Math.PI*2);
-    const breathe=reduced?1:.96+.04*Math.sin(now/27000*Math.PI*2);
-    ctx.globalAlpha=.78*auroraFade*breathe;
-    ctx.drawImage(auroraCache,-7+move*7,-5+Math.cos(now/41000*Math.PI*2)*3,width+14,height+10);
-    ctx.globalAlpha=1;
-    const bgFade=reduced?1:clamp((elapsed-1300)/1500,0,1);
-    ctx.globalAlpha=bgFade;
-    ctx.drawImage(starCache,0,0,width,height);
-    const time=now/1000;
-    for(const s of backgroundStars){
-      if(!s.twinkle)continue;
-      const brightness=reduced?.75:.76+.20*Math.sin(time*Math.PI*2/s.period+s.phase);
-      ctx.fillStyle=`rgba(194,215,236,${(s.alpha*brightness).toFixed(4)})`;
-      ctx.beginPath();ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);ctx.fill();
-    }
-    ctx.globalAlpha=1;
-    if(sourceStatus==='failed'){
-      ctx.fillStyle='rgba(234,231,223,.88)';ctx.font='14px sans-serif';ctx.textAlign='center';
-      ctx.fillText('성혈 데이터를 불러올 수 없습니다.',width/2,height*.52);
-      ctx.restore();return;
-    }
-    drawMeasuredStars(elapsed,now);
+  nextGlint=t+GLINT_EVERY[0]+Math.random()*(GLINT_EVERY[1]-GLINT_EVERY[0]);
+  if(!cand.length)return;
+  glints.push({i:cand[Math.floor(Math.random()*cand.length)],t0:t,dur:2+Math.random()*1.2,kind:Math.random()<.5?'plus':'star',rot:(Math.random()-.5)*0.1});
+}
+function glintEnv(p){p=clamp(p,0,1);if(p<0.15)return Math.sin(p/0.15*Math.PI/2);const q=(p-0.15)/0.85;return Math.pow(1-q,1.7);}   // quick flare-up, slow fade
+function drawGlint(x,y,r,s,e,kind,rot,zf,grade){
+  const base=(11+(6-grade)*3)*zf*(0.6+0.4*GLINT_STRENGTH),w=Math.max(0.55,r*0.3)*(0.7+0.3*e),c=hexRgb(s.core);
+  // 'plus' = 4 spikes (+); 'star' = 4 long spikes plus 4 shorter diagonal ones (*)
+  const rays=kind==='plus'?[[0,1],[1,1],[2,1],[3,1]]:[[0,1],[1,1],[2,1],[3,1],[0.5,0.55],[1.5,0.55],[2.5,0.55],[3.5,0.55]];
+  ctx.save();ctx.translate(x,y);ctx.globalCompositeOperation='lighter';
+  for(const [k,len] of rays){
+    const L=base*len*e;
+    ctx.save();ctx.rotate(rot+k*Math.PI/2);
+    const g=ctx.createLinearGradient(0,0,L,0);
+    g.addColorStop(0,`rgba(${c},${0.95*e})`);
+    g.addColorStop(.35,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},${0.45*e})`);
+    g.addColorStop(1,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},0)`);
+    ctx.fillStyle=g;ctx.beginPath();
+    ctx.moveTo(0,-w);ctx.quadraticCurveTo(L*.25,-w*.4,L,0);ctx.quadraticCurveTo(L*.25,w*.4,0,w);ctx.closePath();ctx.fill();
     ctx.restore();
   }
-  function paint(now){
-    frame=0;if(!active)return;
-    if(previousSkyTick)skyElapsedMs+=Math.min(Math.max(0,now-previousSkyTick),100);
-    previousSkyTick=now;
-    if(!lastPaint||now-lastPaint>=(viewport.width<650?33:22)){
-      const before=performance.now();drawScene(now);renderWorkMs+=performance.now()-before;renderedFrames++;lastPaint=now;
+  const fr=r*(2.2+2.2*e),fg=ctx.createRadialGradient(0,0,0,0,0,fr);
+  fg.addColorStop(0,`rgba(255,255,255,${0.9*e})`);
+  fg.addColorStop(.4,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},${0.35*e})`);
+  fg.addColorStop(1,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},0)`);
+  ctx.fillStyle=fg;ctx.beginPath();ctx.arc(0,0,fr,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+}
+
+// ================= drawing =================
+let skyTimeSeconds=0;
+function resize(){
+  DPR=Math.min(window.devicePixelRatio||1,2);
+  W=Math.max(1,host.clientWidth||innerWidth);H=Math.max(1,host.clientHeight||innerHeight);   // the window can report 0 size while loading
+  canvas.width=W*DPR;canvas.height=H*DPR;
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  const fm=4*Math.atan(W/(0.92*Math.min(W,H)))/D2R;   // horizon circle ends up ~92% of the shorter screen side
+  FOV_MAX=isFinite(fm)?clamp(fm,FOV_DEFAULT+30,300):250;
+  if(!isFinite(target.fov))target.fov=FOV_DEFAULT;if(!isFinite(view.fov))view.fov=FOV_DEFAULT;
+  target.fov=Math.min(target.fov,FOV_MAX);view.fov=Math.min(view.fov,FOV_MAX);
+}
+function draw(now){
+  const t=reducedMotion?0:skyTimeSeconds;
+  updateCamera();
+  // sky: deep navy at the zenith, lighter bluish glow toward the horizon
+  const Zp=projectRaw([0,0,1]),h0=3*D2R,Fp=projectRaw([Math.sin(view.az)*Math.cos(h0),Math.cos(view.az)*Math.cos(h0),Math.sin(h0)]);
+  const Rg=Math.max(60,Math.hypot(Fp[0]-Zp[0],Fp[1]-Zp[1]));
+  const bg=ctx.createRadialGradient(Zp[0],Zp[1],0,Zp[0],Zp[1],Rg);
+  bg.addColorStop(0,'#030814');bg.addColorStop(.55,'#07122a');bg.addColorStop(1,'#243a63');
+  ctx.fillStyle='#243a63';ctx.fillRect(0,0,W,H);
+  ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+
+  // stars: only the seonghyeol data; the whole pattern turns around the pole as the night goes on
+  const phi=t*2*Math.PI/ROTATION_PERIOD,ang=phi-SWEEP_EASE*Math.sin(phi),zf=Math.pow(FOV_DEFAULT/view.fov,0.4);
+  scheduleGlints(t,ang);const gmap={};for(const g of glints)gmap[g.i]=g;
+  for(let i=0;i<data.length;i++){
+    const p=data[i],q=project(rotateAboutPole(p.v,-ang));
+    if(!q)continue;
+    const x=q[0],y=q[1];
+    if(x<-40||x>W+40||y<-40||y>H+40)continue;
+    const r=radiusByGrade[p.sizeGrade]*zf,s=depthStyle[p.depthGrade];
+    const phase=i*2.3999632297,freq=0.42+(i%7)*0.105;
+    const wave1=Math.sin(t*freq*2*Math.PI+phase),wave2=Math.sin(t*(freq*1.73)*2*Math.PI+phase*1.61),wave3=Math.sin(t*(freq*.37)*2*Math.PI+phase*.73);
+    const shimmer=0.94+0.035*wave1+0.02*wave2+0.01*wave3; // keep faint depth grades readable
+    const gg=gmap[i],ge=gg?glintEnv((t-gg.t0)/gg.dur)*GLINT_STRENGTH:0;   // 0..1 while this star is flaring
+    const a=Math.max(.52,Math.min(1,s.brightness*STAR_BRIGHTNESS*shimmer+0.35*ge)),pulse=1+0.035*wave2,hr=r*3.9*pulse*(1+0.7*ge);
+    const halo=ctx.createRadialGradient(x,y,0,x,y,hr);
+    halo.addColorStop(0,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},${a*.27})`);
+    halo.addColorStop(.30,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},${a*.12})`);
+    halo.addColorStop(1,`rgba(${s.glow[0]},${s.glow[1]},${s.glow[2]},0)`);
+    ctx.fillStyle=halo;ctx.beginPath();ctx.arc(x,y,hr,0,Math.PI*2);ctx.fill();
+    const sh=shapeOf(i,p.sizeGrade),rot=sh.rot+0.03*wave3,rayAlpha=a*(0.62+0.38*(0.5+0.5*wave1));
+    ctx.save();ctx.translate(x+0.16*wave2,y+0.16*wave3);
+    for(const ray of sh.rays){
+      const L=r*ray.len*(0.94+0.06*wave2),w=r*ray.w;
+      ctx.save();ctx.rotate(rot+ray.ang);
+      const g=ctx.createLinearGradient(0,0,L,0);
+      g.addColorStop(0,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},${rayAlpha*ray.a})`);
+      g.addColorStop(.45,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},${rayAlpha*ray.a*.35})`);
+      g.addColorStop(1,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},0)`);
+      ctx.fillStyle=g;ctx.beginPath();
+      ctx.moveTo(0,-w);ctx.quadraticCurveTo(L*.3,-w*.45,L,0);ctx.quadraticCurveTo(L*.3,w*.45,0,w);ctx.closePath();ctx.fill();
+      ctx.restore();
     }
-    frame=requestAnimationFrame(paint);
+    const cr=r*sh.core*pulse,core=ctx.createRadialGradient(0,0,0,0,0,cr*1.5);
+    core.addColorStop(0,`rgba(255,255,255,${a})`);
+    core.addColorStop(.28,`rgba(${hexRgb(s.core)},${a*.95})`);
+    core.addColorStop(.62,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},${a*.45})`);
+    core.addColorStop(1,`rgba(${s.color[0]},${s.color[1]},${s.color[2]},0)`);
+    ctx.fillStyle=core;ctx.beginPath();ctx.arc(0,0,cr*1.5,0,Math.PI*2);ctx.fill();
+    ctx.restore();
+    if(ge>0.02)drawGlint(x,y,r,s,Math.min(1,ge),gg.kind,gg.rot,zf,p.sizeGrade);
   }
-  function start(){
-    if(active)return;
-    active=true;enteredAt=performance.now();lastPaint=0;previousSkyTick=0;
-    resize();frame=requestAnimationFrame(paint);
-  }
-  function stop(){active=false;cancelAnimationFrame(frame);frame=0;lastPaint=0;previousSkyTick=0;}
-  function sync(){
-    const shouldRun=host.classList.contains('active')&&document.visibilityState!=='hidden';
-    if(shouldRun)start();else stop();
-  }
-  async function load(){
-    try{
-      const res=await fetch(SOURCE,{cache:'no-store'});
-      if(!res.ok)throw Error('HTTP '+res.status);
-      toStars(await res.json());sourceStatus='loaded';resize();sync();
-    }catch(error){sourceStatus='failed';console.error('엔딩 성혈 데이터를 불러오지 못했습니다:',error);resize();sync();}
-  }
-  function init(){
-    if(!ctx){console.error('2D Canvas 초기화 실패');return;}
-    load();
-    window.addEventListener('exhibition:pagechange',sync);
-    window.addEventListener('exhibition:pageactivated',sync);
-    document.addEventListener('visibilitychange',sync);
-    window.addEventListener('resize',()=>{resize();});
-    // Original swipe-back navigation stays attached to the canvas.
-    canvas.addEventListener('pointerdown',e=>{if(e.pointerType==='touch'){gesture={id:e.pointerId,x:e.clientX,y:e.clientY};}});
-    canvas.addEventListener('pointerup',e=>{if(!gesture||e.pointerId!==gesture.id)return;
-      const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;gesture=null;
-      if(dx>75&&Math.abs(dx)>Math.abs(dy)*1.35)window.goToPage?.(4);
-    });
-    canvas.addEventListener('pointercancel',()=>{gesture=null;});
-  }
-  window.__endingSkyDebug=Object.freeze({
-    getStatus:()=>({sourceStatus,measuredCount:stars.length,decorativeCount:backgroundStars.length,
-      active,viewport:{...viewport},reducedMotion:reduced,skyRotationDegrees:skyElapsedMs/ROTATION_PERIOD_MS*360,rotationPeriodMs:ROTATION_PERIOD_MS,renderedFrames,averageDrawMs:renderedFrames?renderWorkMs/renderedFrames:0}),
-    // Deterministic isolated-browser screenshots of the real Canvas renderer.
-    renderAt:(seconds)=>{if(skyCache)drawScene(enteredAt+Math.max(0,seconds)*1000);}
+
+  // ground + treeline silhouette: everything outside the horizon loop is black
+  const poly=horizonPolygon(t);
+  ctx.fillStyle='rgb(2,4,8)';ctx.beginPath();ctx.rect(-4,-4,W+8,H+8);
+  ctx.moveTo(poly[0][0],poly[0][1]);for(let i=1;i<poly.length;i++)ctx.lineTo(poly[i][0],poly[i][1]);
+  ctx.closePath();ctx.fill('evenodd');
+}
+
+// ================= integration: input and page lifecycle =================
+const hold={l:0,r:0,zi:0,zo:0};
+const clampAz=()=>{target.az=clamp(target.az,-PAN_LIMIT,PAN_LIMIT);};
+const clampFov=()=>{target.fov=clamp(target.fov,FOV_MIN,FOV_MAX);};
+const pointers=new Map();let pinchDist=0;
+let active=false,initialized=false,last=performance.now(),frameId=0;
+const easing=1.0;
+function panBy(delta){target.az+=delta;clampAz();}
+function zoomBy(factor){target.fov*=factor;clampFov();}
+function reset(){target.az=0;target.fov=FOV_DEFAULT;}
+function onPointerDown(e){
+  if(!active)return;
+  if(e.pointerType==='mouse'&&e.button!==0)return;
+  canvas.setPointerCapture(e.pointerId);
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pointers.size===2){const [a,b]=[...pointers.values()];pinchDist=Math.hypot(a.x-b.x,a.y-b.y)||1;}
+}
+function onPointerMove(e){
+  const pt=pointers.get(e.pointerId);if(!pt)return;
+  const dx=e.clientX-pt.x;
+  pt.x=e.clientX;pt.y=e.clientY;
+  if(pointers.size===1){panBy(-dx/(Math.max(80,cam.k)*.85));}
+  if(pointers.size===2){const [a,b]=[...pointers.values()],d=Math.hypot(a.x-b.x,a.y-b.y)||1;zoomBy(pinchDist/d);pinchDist=d;}
+}
+function onPointerEnd(e){pointers.delete(e.pointerId);if(pointers.size<2)pinchDist=0;}
+function onWheel(e){if(!active)return;e.preventDefault();zoomBy(Math.exp(e.deltaY*.0012));}
+function bindButton(action,key,step){
+  const b=controls?.querySelector(`[data-sky-action="${action}"]`);
+  if(!b)return;
+  let heldAt=0;
+  b.addEventListener('pointerdown',e=>{
+    if(e.button!==0&&e.pointerType==='mouse')return;
+    e.preventDefault();heldAt=performance.now();hold[key]=1;
+    try{b.setPointerCapture(e.pointerId);}catch(err){}
   });
-  window.initEndingSky=init;
+  const stop=()=>{hold[key]=0;};
+  for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,stop);
+  b.addEventListener('click',()=>{
+    // Every click is effective, including a short keyboard/button tap.
+    if(!heldAt||performance.now()-heldAt<350)step();heldAt=0;
+  });
+}
+function initInput(){
+  canvas.addEventListener('pointerdown',onPointerDown);
+  canvas.addEventListener('pointermove',onPointerMove);
+  for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,onPointerEnd);
+  canvas.addEventListener('wheel',onWheel,{passive:false});
+  bindButton('pan-left','l',()=>panBy(-8*D2R));
+  bindButton('pan-right','r',()=>panBy(8*D2R));
+  bindButton('zoom-in','zi',()=>zoomBy(.90));
+  bindButton('zoom-out','zo',()=>zoomBy(1.1));
+  controls?.querySelector('[data-sky-action="reset"]')?.addEventListener('click',reset);
+  const keyMap={ArrowLeft:'l',ArrowRight:'r','+':'zi','=':'zi',ArrowUp:'zi','-':'zo','_':'zo',ArrowDown:'zo'};
+  function keyEvent(e,down){
+    if(!active||e.altKey||e.ctrlKey||e.metaKey)return;
+    if(['INPUT','TEXTAREA','SELECT'].includes(e.target?.tagName))return;
+    if(e.key==='Home'&&down){reset();e.preventDefault();e.stopImmediatePropagation();return;}
+    const k=keyMap[e.key];
+    if(k){hold[k]=down?1:0;e.preventDefault();e.stopImmediatePropagation();}
+  }
+  // Capture events before the site's chapter-arrow key navigation.
+  document.addEventListener('keydown',e=>keyEvent(e,true),true);
+  document.addEventListener('keyup',e=>keyEvent(e,false),true);
+}
+function frame(now){
+  frameId=0;if(!active)return;
+  if(host.clientWidth!==W||host.clientHeight!==H)resize();
+  const dt=Math.min(.1,Math.max(0,(now-last)/1000));last=now;
+  if(!reducedMotion)skyTimeSeconds+=dt;
+  const sp=45*D2R*(view.fov/FOV_DEFAULT)*dt;
+  if(hold.l)target.az-=sp;if(hold.r)target.az+=sp;
+  if(hold.zi)target.fov*=Math.exp(-.9*dt);
+  if(hold.zo)target.fov*=Math.exp(.9*dt);
+  clampAz();clampFov();
+  const e=1-Math.exp(-dt*9*easing);
+  view.az+=(target.az-view.az)*e;
+  view.fov+=(target.fov-view.fov)*e;
+  try{draw(now);}catch(err){console.error('Ending sky render:',err);}
+  frameId=requestAnimationFrame(frame);
+}
+function sync(){
+  const should=host.classList.contains('active')&&document.visibilityState!=='hidden';
+  if(should&&!active){active=true;last=performance.now();resize();frameId=requestAnimationFrame(frame);}
+  else if(!should&&active){active=false;cancelAnimationFrame(frameId);frameId=0;pointers.clear();for(const k in hold)hold[k]=0;}
+}
+async function loadData(){
+  try{
+    const res=await fetch(SOURCE,{cache:'no-store'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const raw=await res.json();
+    if(raw.length!==46)throw new Error('46개 성혈 데이터가 아닙니다.');
+    data=raw.map(p=>{
+      const v=p.sourcePosition||p.displayPosition;
+      const grades=REFERENCE_GRADES[p.id];
+      if(!grades||!v||![v.x,v.z,p.diameter,p.depth].every(Number.isFinite))throw new Error('측정값 오류: '+p.id);
+      return {id:p.id,x:v.x,z:v.z,diameter:p.diameter,depth:p.depth,sizeGrade:grades[0],depthGrade:grades[1]};
+    });
+    prepareStarVectors();window.__endingSkyInfo={source:SOURCE,measuredCount:data.length,decorativeCount:0,starEmphasis:'high-contrast measured-only',projection:'stereographic',sizeBy:'diameter grade',brightnessBy:'depth grade',skyRotationSeconds:ROTATION_PERIOD};
+    resize();sync();
+  }catch(err){console.error('Ending data load:',err);}
+}
+function init(){
+  if(initialized)return;initialized=true;
+  initInput();
+  addEventListener('resize',resize);
+  document.addEventListener('visibilitychange',sync);
+  addEventListener('exhibition:pagechange',sync);
+  addEventListener('exhibition:pageactivated',sync);
+  loadData();
+}
+window.__endingSkyControls={setAz:az=>{target.az=clamp(az,-PAN_LIMIT,PAN_LIMIT);},setFov:fov=>{target.fov=clamp(fov,FOV_MIN,FOV_MAX);},reset};
+window.__endingSkyDebug={getStatus:()=>({active,count:data.length,measuredCount:data.length,decorativeCount:0,view:{...view},target:{...target},fovMax:FOV_MAX,rotationPeriodSeconds:ROTATION_PERIOD,skyTimeSeconds,canvas:{width:W,height:H},frameRunning:!!frameId}),getStarData:()=>data.map(p=>({id:p.id,x:p.x,z:p.z,diameter:p.diameter,depth:p.depth,sizeGrade:p.sizeGrade,depthGrade:p.depthGrade})),projectStars:()=>data.map(p=>project(p.v))};
+window.initEndingSky=init;
+
 })();

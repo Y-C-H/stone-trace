@@ -1,0 +1,50 @@
+{
+  "version": "v38-1",
+  "base": "v38",
+  "reference": "stone_trace_2d_nightsky_stellarium_view (2).html",
+  "filesChanged": [
+    "index.html",
+    "css/style.css",
+    "js/endingSky.js"
+  ],
+  "sourceData": "data/cupmarks-measured.json",
+  "sourceCupmarks": 46,
+  "notes": [
+    "Reference stereographic sky with sky rotation axis, cylindrical observer azimuth controls, wide-angle round dome at maximum zoom out, tree-lined horizon and depth-grade star shimmer.",
+    "Removes prior v38 aurora and flat projection; preserves independent exhibition UI, navigation and original cupmark JSON.",
+    "The sample projection maps cupmark X/Z to illustrative azimuth/altitude. This is not an archaeological reconstruction."
+  ],
+  "verifiedChangedFiles": [
+    "css/style.css",
+    "index.html",
+    "js/endingSky.js"
+  ],
+  "originalFileCount": 339,
+  "originalFilesPreserved": 339,
+  "testedScreenSizes": [
+    "1440x900",
+    "1024x768",
+    "390x844",
+    "320x568"
+  ],
+  "browser": "Chromium (isolated Ending with production CSS/JS and actual JSON)",
+  "testResults": {
+    "sourceIdsAndPositionsUnchanged": true,
+    "measuredStars": 46,
+    "decorativeStars": 0,
+    "stereographicPerspective": true,
+    "referenceHorizon": true,
+    "zoomOutToCircularSky": true,
+    "cameraPanByButtonAndDrag": true,
+    "zoomByButtonsAndWheel": true,
+    "touchPinch": true,
+    "keyboardButtons": true,
+    "returnToChapter05Button": "Preserved, isolated HTML button preserved but site-level navigation not reexecuted",
+    "lifecyclePageSwitchPauseResume": true,
+    "prefersReducedMotion": true,
+    "controlsTextNoOverlap": true,
+    "page1to5Integration": "Not rerun in this test environment",
+    "normalFullServer": "Not verified due Chromium file/localhost restrictions"
+  },
+  "note": "Sky angles and pole rotation replicate user supplied demonstration. The mapping is illustrative, not validated astronomy."
+}
