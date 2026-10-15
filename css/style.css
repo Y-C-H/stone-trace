@@ -1422,3 +1422,18 @@ body.is-opening .site-bgm-control {visibility:hidden;pointer-events:none}
   .page-ending .ending-sky-hint{top:calc(61px + env(safe-area-inset-top,0px))}
 }
 @media(prefers-reduced-motion:reduce){.site-bgm-control{transition:none}}
+
+
+/* v40-1 — prevent Chapter 01 graph controls from covering the global music toggle.
+   The music button remains at the same fixed position on all six chapters. */
+@media (min-width: 761px) {
+  .page-knowledge .graph-actions {
+    right: calc(78px + env(safe-area-inset-right, 0px));
+  }
+}
+@media (max-width: 760px) {
+  .page-knowledge .graph-actions {
+    top: calc(70px + env(safe-area-inset-top, 0px));
+    right: calc(12px + env(safe-area-inset-right, 0px));
+  }
+}

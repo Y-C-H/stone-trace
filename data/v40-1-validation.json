@@ -1,0 +1,43 @@
+{
+  "version": "v40-1",
+  "base": "v40",
+  "date": "2026-10-15",
+  "changed_files": [
+    "index.html",
+    "css/style.css"
+  ],
+  "added_files": [
+    "data/v40-1-validation.json"
+  ],
+  "fix": {
+    "chapter": "Page 1",
+    "issue": "Graph controls overlap global background-music toggle at upper right",
+    "cause": "Positioned graph-actions and fixed global music button occupy same top-right region",
+    "solution_desktop": "Shift graph actions horizontally left; right offset 78px plus safe-area",
+    "solution_mobile": "Place graph actions below music button; top offset 70px plus safe-area",
+    "music_button_moved": false,
+    "other_pages_changed": false
+  },
+  "tests": {
+    "method": "Chromium Playwright static DOM layout with original index.html and full CSS, no full-site JavaScript or media initialization",
+    "viewports": [
+      "1920x1080",
+      "1440x900",
+      "1024x768",
+      "800x700",
+      "761x700",
+      "760x700",
+      "390x844",
+      "320x568"
+    ],
+    "overlap_graph_actions_music": "pass",
+    "overlap_graph_actions_graph_filters": "pass",
+    "visual_screenshots": [
+      "v40-1-page1-1440.png",
+      "v40-1-page1-390.png",
+      "v40-1-page1-320.png"
+    ],
+    "full_integrated_navigation_and_media": "not retested",
+    "real_device_touch": "not retested"
+  }
+}
