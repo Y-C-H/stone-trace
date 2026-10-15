@@ -1,0 +1,20 @@
+{
+  "version": "v39-2",
+  "base": "v39-1",
+  "changes": [
+    "Page 1 sources: 박창범 · 이용복 reference year 2001",
+    "Page 1 sources: 박창범 외 reference year 2003",
+    "Page 1 sources: 오산문화총서 reference year 2016",
+    "Opening version label v39-2"
+  ],
+  "scope": "Three reference years were supplied by the user; the formal bibliographic records were not independently verified.",
+  "file_changed": "index.html",
+  "before_sha256": "ef9a01a1459bae292f5696408e0af83ce9dcf172cf87a84699962a98c66cdbeb",
+  "after_sha256": "fb4f5bcdac550c01b030cd352c8886139b2c176ae115b911e526f09e4cedfbf4",
+  "checks": {
+    "all_target_entries_exactly_once": true,
+    "remaining_unverified_year_placeholders": 0,
+    "bibliographic_titles_unchanged": true,
+    "other_site_assets_unchanged": true
+  }
+}
