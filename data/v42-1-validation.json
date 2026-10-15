@@ -1,0 +1,23 @@
+{
+  "version": "v42-1",
+  "base_version": "v42",
+  "change": "Page 1 reference \"울주 방기리 알바위\" bibliographic URL/access date",
+  "source": {
+    "title": "울주 방기리 알바위",
+    "publisher": "지역N문화",
+    "url": "https://ncms.nculture.org/stonecraft/story/6689",
+    "access_date": "2026.10.15"
+  },
+  "modified_files": [
+    "index.html",
+    "css/style.css"
+  ],
+  "static_checks": {
+    "source_label": true,
+    "source_url_and_link_attributes": true,
+    "access_date": true,
+    "version": true,
+    "css_cache_revision": true
+  },
+  "browser_execution": "Not performed; HTML source and ZIP integrity verified."
+}

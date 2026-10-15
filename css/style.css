@@ -1437,3 +1437,7 @@ body.is-opening .site-bgm-control {visibility:hidden;pointer-events:none}
     right: calc(12px + env(safe-area-inset-right, 0px));
   }
 }
+
+/* v42-1: reference source hyperlink */
+.reference-placeholder li strong a{color:inherit;text-decoration:underline;text-decoration-color:rgba(170,169,164,.48);text-underline-offset:.2em}
+.reference-placeholder li strong a:hover,.reference-placeholder li strong a:focus-visible{color:#f0ede5;text-decoration-color:currentColor}
