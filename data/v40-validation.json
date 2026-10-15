@@ -1,0 +1,70 @@
+{
+  "version": "v40",
+  "base": "v39-2",
+  "date": "2026-10-15",
+  "modified_files": [
+    "README.txt",
+    "css/style.css",
+    "index.html",
+    "js/main.js"
+  ],
+  "added_files": [
+    "js/bgm.js",
+    "assets/audio/stone-memory-mystic-v2-4min.wav",
+    "data/v40-validation.json"
+  ],
+  "bgm": {
+    "source": "assets/audio/stone-memory-mystic-v2-4min.wav",
+    "duration_seconds": 240,
+    "sample_rate_hz": 32000,
+    "channels": 2,
+    "codec": "PCM 16-bit WAV",
+    "size_bytes": 30720044,
+    "sha256": "56294426a27b5cca70477af6f3f6311a9db9f51d668ec584077d30fa52609c01",
+    "single_audio_instance": true,
+    "loop": true,
+    "volume": 0.27,
+    "ducked_volume": 0.054,
+    "settings_key": "stone-traces-bgm-enabled"
+  },
+  "readme": {
+    "format": "UTF-8 .txt",
+    "public_url": "https://y-c-h.github.io/stone-trace/",
+    "heading": "로컬 실행 방법",
+    "public_url_web_open": "responded with HTML on 2026-10-15"
+  },
+  "tested": {
+    "WAV_file_integrity": "sha256 matches uploaded file",
+    "WAV_full_decode": "ffmpeg -f null: passed",
+    "changed_JavaScript_syntax": "node --check: passed",
+    "original_file_comparison": "341 original files byte-for-byte unchanged; 4 files modified",
+    "playwright_isolated_Chromium": "HTML/CSS and main.js/bgm.js injected via set_content because local HTTP/file navigation blocked by browser admin",
+    "browser_audio_source": "12-second synthetic valid PCM WAV data URI substituted for local file source because navigation and media requests were blocked",
+    "viewports": [
+      "1440x900",
+      "1024x768",
+      "390x844",
+      "320x568"
+    ],
+    "browser_checks": [
+      "start screen gesture triggers actual HTMLAudioElement playback",
+      "single audio object remains playing across page indices 1–6",
+      "same 44x44 fixed button position on pages 1–5 and Ending",
+      "OFF fade and pause with preserved currentTime",
+      "ON resumes from paused position",
+      "page-5 video play/pause event simulation reduces/restores BGM volume",
+      "no JavaScript console errors in isolated 1440px test"
+    ],
+    "README_content": "verified with UTF-8 text reads",
+    "website_link": "public URL responded in web lookup"
+  },
+  "not_tested": [
+    "full-site local HTTP browser navigation blocked by ERR_BLOCKED_BY_ADMINISTRATOR",
+    "full 240-second live browser audio playback through packaged WAV",
+    "perceptual seamlessness at audio loop boundary",
+    "real Page 5 MP4 playback with BGM simultaneously on deployed host (ducking tested by simulated media events)",
+    "hardware mobile browser / Safari / Firefox",
+    "actual on-site 3D/WebGL integration and video seeking"
+  ],
+  "notes": "Browser harness used actual site DOM/CSS and production JS with synthetic PCM for playback. It does not imply full deployed-site verification."
+}

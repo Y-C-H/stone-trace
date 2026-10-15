@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="「돌에 새겨진 흔적」 — 3D 데이터를 활용해 세종 연기면 출토 지석묘의 기억과 성혈의 의미를 탐색하는 디지털 문화유산 전시" name="description"/>
 <title>돌에 새겨진 흔적 — 3D 데이터를 활용한 고인돌의 기억과 성혈의 의미 탐색</title>
-<link href="css/style.css?v=39" rel="stylesheet"/>
+<link href="css/style.css?v=40" rel="stylesheet"/>
 <link rel="preload" as="image" href="assets/opening/opening-stone.png"/>
 <link rel="preload" as="image" href="assets/opening/opening-logo.png"/>
 <link href="css/sky-overlay.css?v=37" rel="stylesheet"/>
@@ -20,7 +20,7 @@
     <img class="opening-logo" src="assets/opening/opening-logo.png" alt="돌에 새겨진 흔적" fetchpriority="high" decoding="async"/>
   </div>
   <span class="opening-fallback-title" aria-hidden="true">돌에 새겨진 흔적</span>
-  <span class="opening-version" aria-label="웹사이트 버전 v39-2">v39-2</span>
+  <span class="opening-version" aria-label="웹사이트 버전 v40">v40</span>
   <audio id="openingAudio" preload="auto" src="assets/audio/opening-soft-taps-starlight.wav"></audio>
   <button class="opening-start-button" id="openingStart" type="button">화면을 클릭하여 시작하세요</button>
 </div>
@@ -314,6 +314,11 @@
   <button type="button" id="endingReturn" class="ending-return" aria-label="Chapter 05로 돌아가기"><span aria-hidden="true">←</span></button>
 </section>
 </main>
+<!-- v40 — A single music controller lives outside all chapter sections. -->
+<button type="button" id="siteBgmButton" class="site-bgm-control" aria-label="배경음악 켜기" aria-pressed="false" title="배경음악 켜기" hidden>
+  <svg class="bgm-on-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+  <svg class="bgm-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>
+</button>
 <!-- Constellation-shaped table of contents -->
 <nav aria-label="별자리형 전시 목차" class="constellation-toc" id="constellationToc"><button aria-controls="tocMap" aria-expanded="false" class="toc-toggle" id="tocToggle" type="button"><span aria-hidden="true">✦</span><em>목차</em></button><div class="toc-map" id="tocMap">
 <svg aria-hidden="true" class="toc-lines" viewBox="0 0 126 230"><path d="M44 23 L78 63 L50 105 L84 146 L39 191"></path></svg>
@@ -373,6 +378,7 @@
 
 <script defer="" src="js/dolmenViewer.js?v=34-4"></script>
 <script defer="" src="js/endingSky.js?v=39"></script>
-<script defer="" src="js/main.js?v=37-1"></script>
+<script defer="" src="js/bgm.js?v=40"></script>
+<script defer="" src="js/main.js?v=40"></script>
 </body>
 </html>

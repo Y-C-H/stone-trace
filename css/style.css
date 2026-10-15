@@ -1393,3 +1393,32 @@ body[data-page="5"] .constellation-toc,body[data-page="5"] .page-navigation,body
  .page-ending .ending-sky-hint{font-size:10px;top:calc(13px + env(safe-area-inset-top,0px))}
 }
 @media(prefers-reduced-motion:reduce){.page-ending.active .ending-sky-hint{animation:none;opacity:.78}}
+
+/* v40 — Shared, fixed-position music toggle across chapters 1–6. */
+.site-bgm-control {
+  position:fixed;z-index:180;
+  top:calc(18px + env(safe-area-inset-top,0px));
+  right:calc(18px + env(safe-area-inset-right,0px));
+  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+  padding:0;border:1px solid rgba(209,222,239,.36);border-radius:50%;
+  color:#dce5f3;background:rgba(7,15,26,.78);
+  box-shadow:0 3px 20px rgba(0,0,0,.25);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  cursor:pointer;transition:border-color .2s,background .2s,opacity .2s;
+}
+.site-bgm-control[hidden] {display:none!important}
+body.is-opening .site-bgm-control {visibility:hidden;pointer-events:none}
+.site-bgm-control:hover {border-color:rgba(229,236,249,.67);background:rgba(23,39,60,.9)}
+.site-bgm-control:focus-visible {outline:2px solid #e1c390;outline-offset:3px}
+.site-bgm-control svg {width:21px;height:21px;pointer-events:none}
+.site-bgm-control[data-playing="true"] .bgm-off-icon,
+.site-bgm-control:not([data-playing="true"]) .bgm-on-icon {display:none}
+@media(max-width:760px) {
+  .site-bgm-control {
+    top:calc(12px + env(safe-area-inset-top,0px));
+    right:calc(12px + env(safe-area-inset-right,0px));
+  }
+  /* Ending's temporary keyboard/touch hint must not overlap the global toggle. */
+  .page-ending .ending-sky-hint{top:calc(61px + env(safe-area-inset-top,0px))}
+}
+@media(prefers-reduced-motion:reduce){.site-bgm-control{transition:none}}

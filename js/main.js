@@ -301,6 +301,7 @@
       stopOpeningAudio();
       document.body.classList.remove('is-opening');
       overlay?.remove();
+      window.exhibitionBgm?.openingFinished();
     },immediate?0:620);
   }
 
@@ -311,7 +312,8 @@
     const button=document.getElementById('openingStart');
     if(button){button.disabled=true;button.hidden=true;}
 
-    // Trigger CSS animations and audio playback in the very same user gesture.
+    // Trigger background music and opening SFX in the same user gesture.
+    window.exhibitionBgm?.startFromOpeningGesture();
     overlay?.classList.add('is-playing');
     if(openingAudio){
       openingAudio.volume=.65;
@@ -357,6 +359,9 @@
     initBookNavigation();initConstellationToc();initChapterVideo();initInterpretations();initSources();initUnifiedObservation();
     window.initEndingSky?.();
     window.initDolmenViewer?.();window.initKnowledgeGraph?.();window.setKnowledgeGraphActive?.(currentPage===0);
-    updateNavigation();initOpening();
+    updateNavigation();
+    window.exhibitionBgm?.init();
+    initOpening();
+    if(openingState==='finished')window.exhibitionBgm?.tryDirectPageAutoplay();
   });
 })();
